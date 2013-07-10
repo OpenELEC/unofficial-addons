@@ -1,0 +1,13 @@
+diff --git a/configure.in b/configure.in
+index d643cd8..d876839 100644
+--- a/configure.in
++++ b/configure.in
+@@ -16,7 +16,7 @@ AC_REVISION($Revision: 1.100 $)
+ AC_PREREQ(2.57)
+ 
+ # The file we use to pass #define's to the source
+-AM_CONFIG_HEADER([config.h])
++AC_CONFIG_HEADER(config.h)
+ 
+ # Checks for programs
+ AC_PROG_CC
