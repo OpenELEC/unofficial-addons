@@ -43,3 +43,6 @@ sed -i -e '/curl\/types.h/d' lib/curl_transport/xmlrpc_curl_transport.c
             --disable-cgi-server
 
 $MAKEINSTALL
+
+sed -i "s:/usr/include:$LIB_PREFIX/include:g" $SYSROOT_PREFIX/usr/bin/xmlrpc-c-config
+sed -i "s:/usr/lib:$LIB_PREFIX/lib:g" $SYSROOT_PREFIX/usr/bin/xmlrpc-c-config
