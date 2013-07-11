@@ -36,3 +36,5 @@ PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
 
 PKG_AUTORECONF="no"
+
+PKG_MAINTAINER="Daniel Forsberg <daniel.forsberg1@gmail.com>"

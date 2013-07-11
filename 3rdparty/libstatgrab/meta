@@ -31,3 +31,5 @@ PKG_LONGDESC="libstatgrab is a library that provides cross platform access to st
 PKG_IS_ADDON="no"
 
 PKG_AUTORECONF="yes"
+
+PKG_MAINTAINER="Stefan Saraev <seo at irc.freenode.net>"
