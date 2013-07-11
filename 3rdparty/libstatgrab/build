@@ -34,5 +34,7 @@ ac_cv_func_malloc_0_nonnull=yes \
        --disable-saidar \
        --disable-examples \
        --disable-manpages \
+       --disable-setuid-binaries \
+       --disable-setgid-binaries \
 
 $MAKEINSTALL
