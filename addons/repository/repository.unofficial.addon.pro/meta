@@ -36,3 +36,5 @@ PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.addon.repository"
 
 PKG_AUTORECONF="no"
+
+PKG_MAINTAINER="unofficial.openelec.pro"
