@@ -11,7 +11,7 @@
         </extension>
         <extension point="xbmc.addon.metadata">
                 <summary>Unofficial addon repository for OpenELEC</summary>
-                <description>UUnofficial addon repository for OpenELEC</description>
+                <description>Unofficial addon repository for OpenELEC</description>
                 <disclaimer>This is an unofficial addon repository. please don't ask for support in openelec forum / irc channel</disclaimer>
                 <platform>all</platform>
         </extension>
