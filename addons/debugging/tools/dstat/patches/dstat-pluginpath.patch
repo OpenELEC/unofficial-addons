@@ -1,0 +1,12 @@
+diff --git a/dstat b/dstat
+index 1c1a83a..58bd189 100755
+--- a/dstat
++++ b/dstat
+@@ -65,6 +65,7 @@ if sys.version_info < (2, 3):
+ pluginpath = [
+     os.path.expanduser('~/.dstat/'),                                # home + /.dstat/
+     os.path.abspath(os.path.dirname(sys.argv[0])) + '/plugins/',    # binary path + /plugins/
++    os.path.abspath(os.path.dirname(sys.argv[0])) + '/../plugins/',    # binary path + /../plugins/
+     '/usr/share/dstat/',
+     '/usr/local/share/dstat/',
+ ]
