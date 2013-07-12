@@ -37,4 +37,4 @@ PKG_ADDON_TYPE="xbmc.python.script"
 
 PKG_AUTORECONF="yes"
 
-PKG_MAINTAINER="unofficial.openelec.pro"
+PKG_MAINTAINER="unofficial.addon.pro"

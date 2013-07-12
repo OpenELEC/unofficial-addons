@@ -34,4 +34,4 @@ PKG_LONGDESC="PycURL is a Python interface to libcurl. PycURL can be used to fet
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-PKG_MAINTAINER="unofficial.openelec.pro"
+PKG_MAINTAINER="unofficial.addon.pro"
