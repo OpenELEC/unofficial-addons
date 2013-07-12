@@ -38,4 +38,4 @@ PKG_ADDON_TYPE="xbmc.service"
 
 PKG_AUTORECONF="no"
 
-PKG_MAINTAINER="Stefan Saraev <seo at irc.freenode.net>"
+PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"

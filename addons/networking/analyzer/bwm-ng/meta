@@ -38,4 +38,4 @@ PKG_ADDON_TYPE="xbmc.python.script"
 
 PKG_AUTORECONF="yes"
 
-PKG_MAINTAINER="Stefan Saraev <seo at irc.freenode.net>"
+PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"

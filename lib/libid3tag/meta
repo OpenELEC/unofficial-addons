@@ -35,4 +35,4 @@ PKG_IS_ADDON="no"
 
 PKG_AUTORECONF="no"
 
-PKG_MAINTAINER="Lukas Sabota <LTsmooth42@gmail.com>"
+PKG_MAINTAINER="Lukas Sabota (LTsmooth42@gmail.com)"
