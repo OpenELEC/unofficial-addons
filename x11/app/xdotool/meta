@@ -34,4 +34,4 @@ PKG_LONGDESC="This tool lets you simulate keyboard input and mouse activity, mov
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-PKG_MAINTAINER="unofficial.addon.pro"
+PKG_MAINTAINER="vpeter4 (peter.vicman@gmail.com)"

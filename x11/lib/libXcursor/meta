@@ -34,4 +34,4 @@ PKG_LONGDESC="X11 Cursor management library"
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="yes"
 
-PKG_MAINTAINER="unofficial.addon.pro"
+PKG_MAINTAINER="vpeter4 (peter.vicman@gmail.com)"

@@ -34,4 +34,4 @@ PKG_LONGDESC="bbe: sed-like editor for binary files"
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-PKG_MAINTAINER="unofficial.addon.pro"
+PKG_MAINTAINER="vpeter4 (peter.vicman@gmail.com)"
