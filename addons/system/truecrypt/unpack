@@ -29,4 +29,4 @@ cd $BUILD
 
 tar xzf "$SRC_ARCHIVE"  
 
-mv ${PKG_NAME}-${PKG_VERSION}-source ${PKG_NAME}_${PKG_VERSION}
+mv ${PKG_NAME}-${PKG_VERSION}-source ${PKG_NAME}-${PKG_VERSION}

@@ -25,7 +25,7 @@
 ADDON_DIR="/storage/.xbmc/addons/$PKG_ADDON_ID"
 
 mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
-cp $ROOT/$BUILD/truecrypt_*/Main/truecrypt $ADDON_BUILD/$PKG_ADDON_ID/bin/
+cp $PKG_BUILD/Main/truecrypt $ADDON_BUILD/$PKG_ADDON_ID/bin/
 cp $ROOT/$BUILD/util-linux-*/losetup $ADDON_BUILD/$PKG_ADDON_ID/bin/
 cp $ROOT/$BUILD/ntfs-3g_ntfsprogs-*/ntfsprogs/mkntfs $ADDON_BUILD/$PKG_ADDON_ID/bin/
 cp $ROOT/$BUILD/LVM2.*/tools/dmsetup.static $ADDON_BUILD/$PKG_ADDON_ID/bin/dmsetup
