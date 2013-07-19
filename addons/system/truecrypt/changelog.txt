@@ -1,0 +1,66 @@
+3.1.2
+- Put in unofficial OpenELEC repository
+
+3.1.1
+Fixed:
+- Issue when mounting NTFS formated drives.
+
+3.1.0
+Fixed:
+- Compatibility issue with OL 3.0.5 /3.0.6 (no workaround anymore)
+- "No child processes error" seams to be solved
+
+Added / improved
+- Debugging mode
+- Escaping of special characters in passwords before passed to shell script-  $ ' " \
+- Improved internal checks when mounting drive (fixed mounting same TC file to 2 loop devices)
+- Improved mount checks - able to recognize if mount point is in use by other file (for now in logs only)
+- Removed hard coded strings from settings
+
+Still to do:
+- support for key files
+- make compatible with XBMC 13
+
+3.0.7
+Fixed:
+- Compatibility issue of truecrpyt.sh with OL 3.0.5/ 3.0.6 --> migrated to ash shell, removed usage of arrays, removed bash syntax
+
+Still to do:
+- current version of truecrpyt.sh uses workaround - running mounting twice to make it work
+- better debugging possibilities 
+- support for key files
+- make compatible with XBMC 13
+
+
+3.0.6
+Fixed:
+- Wrong default path to the bash script in settings.xml
+- Removed error message "unmount failed" when unmounted correctly.
+
+Added / improved:
+- added possibility to create non existing folders for mount point.
+- added possibility to turn off mount checking
+- Improved escaping of special chars in passwords when mounting (thanks to andPS2)
+- added check for links when unmounting
+- improved localization possibilites.
+
+Still to do:
+- support for key files
+- make compatible with XBMC 13
+
+3.0.5
+- fixed addon.xml (thanks to smory)
+3.0.4
+- addon scripts by smory
+- addon renamed to plugin.program.truecrypt
+3.0.3
+- add missing libdevmapper.so library
+3.0.2
+- bump addon version
+2.1.3
+- container for script truecrypt-create-container.sh is read from settings.xml
+2.1.2
+- recompile for OpenELEC 2.0
+1.90.0
+- initial version of Truecrypt addon 
+

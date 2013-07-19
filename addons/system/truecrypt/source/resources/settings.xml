@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+	<category label="30218">
+		<setting id="truecrypt" type="file" source="files" label="TrueCrypt.exe" default="/storage/.xbmc/addons/plugin.program.truecrypt/bin/truecrypt.sh" />
+        <setting id="riskyActions" type="bool" label="50074" default="true" />
+        <setting id="performMountChecks" type="bool" label="50075" default="true" />
+        <setting id="createFolders" type="bool" label="50076" default="true" />
+        <setting id="debug" type="bool" label="50077" default="false" />
+        <setting id="debugPrintPassword" type="bool" label="50078" default="false" visible="eq(-1,true)" />
+	</category>
+	<category label="Item 0">
+		<setting id="active0" type="bool" label="Active" default="false" />
+		<setting id="name0" visible="true" type="text" label="551" default="Item 0" />
+		<setting id="filePath0" visible="true" type="file" source="files" label="50079" default="" />
+		<setting id="drive0" visible="true" type="text" label="50080" default="" />
+		<setting label="50081" visible="true" type="lsep"/>
+		<setting id="password0" type="text" option="hidden" label="50082" visible="false" default="" />
+		<setting id="icon0" visible="true" type="file" source="files" label="50083" default="" />
+		<setting id="tc_aux_mnt0" visible="false" type="text" label="tc_aux_mnt" default="" />
+		<setting id="lock0" visible="false" type="bool" label="20166" default="false" />
+        <setting id="useCert0" visible="false" type="bool" label="50084" default="false" />
+        <setting id="cetificate0" visible="false" type="text" label="50085" default="" />
+	</category>
+	<category label="Item 1">
+		<setting id="active1" type="bool" label="Active" default="false" />
+		<setting id="name1" visible="true" type="text" label="551" default="Item 1" />
+		<setting id="filePath1" visible="true" type="file" source="files" label="50079" default="" />
+		<setting id="drive1" visible="true" type="text" label="50080" default="" />
+		<setting label="50081" visible="true" type="lsep"/>
+		<setting id="password1" type="text" option="hidden" label="50082" visible="false" default="" />
+		<setting id="icon1" visible="true" type="file" source="files" label="50083" default="" />
+        <setting id="tc_aux_mnt1" visible="false" type="text" label="tc_aux_mnt" default="" />
+		<setting id="lock1" visible="false" type="bool" label="20166" default="false" />
+        <setting id="useCert1" visible="false" type="bool" label="50084" default="false" />
+        <setting id="cetificate1" visible="false" type="text" label="50085" default="" />
+	</category>
+	<category label="Item 2">
+		<setting id="active2" type="bool" label="Active" default="false" />
+		<setting id="name2" visible="true" type="text" label="551" default="Item 2" />
+		<setting id="filePath2" visible="true" type="file" source="files" label="50079" default="" />
+		<setting id="drive2" visible="true" type="text" label="50080" default="" />
+		<setting label="50081" visible="true" type="lsep"/>
+		<setting id="password2" type="text" option="hidden" label="50082" visible="false" default="" />
+		<setting id="icon2" visible="true" type="file" source="files" label="50083" default="" />
+		<setting id="tc_aux_mnt2" visible="false" type="text" label="tc_aux_mnt" default="" />
+		<setting id="lock2" visible="false" type="bool" label="20166" default="false" />
+        <setting id="useCert2" visible="false" type="bool" label="50084" default="false" />
+        <setting id="cetificate2" visible="false" type="text" label="50085" default="" />
+	</category>
+	<category label="Item 3">
+		<setting id="active3" type="bool" label="Active" default="false" />
+		<setting id="name3" visible="true" type="text" label="551" default="Item 3" />
+		<setting id="filePath3" visible="true" type="file" source="files" label="50079" default="" />
+		<setting id="drive3" visible="true" type="text" label="50080" default="" />
+		<setting label="50081" visible="true" type="lsep"/>
+		<setting id="password3" type="text" option="hidden" label="50082" visible="false" default="" />
+		<setting id="icon3" visible="true" type="file" source="files" label="50083" default="" />
+		<setting id="tc_aux_mnt3" visible="false" type="text" label="tc_aux_mnt" default="" />
+		<setting id="lock3" visible="false" type="bool" label="20166" default="false" />
+        <setting id="useCert3" visible="false" type="bool" label="50084" default="false" />
+        <setting id="cetificate3" visible="false" type="text" label="50085" default="" />
+	</category>
+	<category label="Item 4">
+		<setting id="active4" type="bool" label="Active" default="false" />
+		<setting id="name4" visible="true" type="text" label="551" default="Item 4" />
+		<setting id="filePath4" visible="true" type="file" source="files" label="50079" default="" />
+		<setting id="drive4" visible="true" type="text" label="50080" default="" />
+		<setting label="50081" visible="true" type="lsep"/>
+		<setting id="password4" type="text" option="hidden" label="50082" visible="false" default="" />
+		<setting id="icon4" visible="true" type="file" source="files" label="50083" default="" />
+		<setting id="tc_aux_mnt4" visible="false" type="text" label="tc_aux_mnt" default="" />
+		<setting id="lock4" visible="false" type="bool" label="20166" default="false" />
+        <setting id="useCert4" visible="false" type="bool" label="50084" default="false" />
+        <setting id="cetificate4" visible="false" type="text" label="50085" default="" />
+	</category>
+	<category label="Item 5">
+		<setting id="active5" type="bool" label="Active" default="false" />
+		<setting id="name5" visible="true" type="text" label="551" default="Item 5" />
+		<setting id="filePath5" visible="true" type="file" source="files" label="50079" default="" />
+		<setting id="drive5" visible="true" type="text" label="50080" default="" />
+		<setting label="50081" visible="true" type="lsep"/>
+		<setting id="password5" type="text" option="hidden" label="50082" visible="false" default="" />
+		<setting id="icon5" visible="true" type="file" source="files" label="50083" default="" />
+		<setting id="tc_aux_mnt5" visible="false" type="text" label="tc_aux_mnt" default="" />
+		<setting id="lock5" visible="false" type="bool" label="20166" default="false" />
+        <setting id="useCert5" visible="false" type="bool" label="50084" default="false" />
+        <setting id="cetificate5" visible="false" type="text" label="50085" default="" />
+	</category>
+	<category label="Item 6">
+		<setting id="active6" type="bool" label="Active" default="false" />
+		<setting id="name6" visible="true" type="text" label="551" default="Item 6" />
+		<setting id="filePath6" visible="true" type="file" source="files" label="50079" default="" />
+		<setting id="drive6" visible="true" type="text" label="50080" default="" />
+		<setting label="50081" visible="true" type="lsep"/>
+		<setting id="password6" type="text" option="hidden" label="50082" visible="false" default="" />
+		<setting id="icon6" visible="true" type="file" source="files" label="50083" default="" />
+		<setting id="tc_aux_mnt6" visible="false" type="text" label="tc_aux_mnt" default="" />
+		<setting id="lock6" visible="false" type="bool" label="20166" default="false" />
+        <setting id="useCert6" visible="false" type="bool" label="50084" default="false" />
+        <setting id="cetificate6" visible="false" type="text" label="50085" default="" />
+	</category>
+	<category label="Item 7">
+		<setting id="active7" type="bool" label="Active" default="false" />
+		<setting id="name7" visible="true" type="text" label="551" default="Item 7" />
+		<setting id="filePath7" visible="true" type="file" source="files" label="50079" default="" />
+		<setting id="drive7" visible="true" type="text" label="50080" default="" />
+		<setting label="50081" visible="true" type="lsep"/>
+		<setting id="password7" type="text" option="hidden" label="50082" visible="false" default="" />
+		<setting id="icon7" visible="true" type="file" source="files" label="50083" default="" />
+		<setting id="tc_aux_mnt7" visible="false" type="text" label="tc_aux_mnt" default="" />
+		<setting id="lock7" visible="false" type="bool" label="20166" default="false" />
+        <setting id="useCert7" visible="false" type="bool" label="50084" default="false" />
+        <setting id="cetificate7" visible="false" type="text" label="50085" default="" />
+	</category>
+	<category label="Item 8">
+		<setting id="active8" type="bool" label="Active" default="false" />
+		<setting id="name8" visible="true" type="text" label="551" default="Item 8" />
+		<setting id="filePath8" visible="true" type="file" source="files" label="50079" default="" />
+		<setting id="drive8" visible="true" type="text" label="50080" default="" />
+		<setting label="50081" visible="true" type="lsep"/>
+		<setting id="password8" type="text" option="hidden" label="50082" visible="false" default="" />
+		<setting id="icon8" visible="true" type="file" source="files" label="50083" default="" />
+		<setting id="tc_aux_mnt8" visible="false" type="text" label="tc_aux_mnt" default="" />
+		<setting id="lock8" visible="false" type="bool" label="20166" default="false" />
+        <setting id="useCert8" visible="false" type="bool" label="50084" default="false" />
+        <setting id="cetificate8" visible="false" type="text" label="50085" default="" />
+	</category>
+	<category label="Item 9">
+		<setting id="active9" type="bool" label="Active" default="false" />
+		<setting id="name9" visible="true" type="text" label="551" default="Item 9" />
+		<setting id="filePath9" visible="true" type="file" source="files" label="50079" default="" />
+		<setting id="drive9" visible="true" type="text" label="50080" default="" />
+		<setting label="50081" visible="true" type="lsep"/>
+		<setting id="password9" type="text" option="hidden" label="50082" visible="false" default="" />
+		<setting id="icon9" visible="true" type="file" source="files" label="50083" default="" />
+		<setting id="tc_aux_mnt9" visible="false" type="text" label="tc_aux_mnt" default="" />
+		<setting id="lock9" visible="false" type="bool" label="20166" default="false" />
+        <setting id="useCert9" visible="false" type="bool" label="50084" default="false" />
+        <setting id="cetificate9" visible="false" type="text" label="50085" default="" />
+	</category>
+</settings>
