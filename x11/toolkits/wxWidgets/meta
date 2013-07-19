@@ -35,3 +35,4 @@ PKG_SHORTDESC="A cross-platform GUI and tools library for GTK, MS Windows, and M
 PKG_LONGDESC="A cross-platform GUI and tools library for GTK, MS Windows, and MacOS."
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
+PKG_MAINTAINER="vpeter4 (peter.vicman@gmail.com)"
