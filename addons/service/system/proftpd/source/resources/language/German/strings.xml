@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+  <!-- proftpd -->
+  <string id="40000">General</string>
+  <string id="40010">Einstellungen</string>
+  <string id="40030">Erlaube Ueberschreiben</string>
+  <string id="40040">Port</string>
+  <string id="40050">Max Klienten</string>
+  <string id="40060">Max Klienten pro Host</string>
+  <string id="40070">Max Hosts pro Benutzer</string>
+  <string id="40080">Max Instanzen</string>
+  <string id="40090">Umask</string>
+  <string id="40100">Server Name</string>
+  <string id="40110">Server Ident</string>
+  <string id="40120">Server Ident Text</string>
+  <string id="40180">Erlaube Upload Wiederaufnahme</string>
+  <string id="40190">Erlaube Download Wiederaufnahme</string>
+  <string id="40200">Erlaube Root Login</string>
+  <string id="40210">Debug niveau</string> 
+  <string id="50000">Benutzer</string>
+  <string id="50010">Hash Algorythmus</string>
+  <string id="50020">Benutzername 1</string>
+  <string id="50030">Benutzerpasswort 1</string>
+  <string id="50040">Benutzerpfad 1</string>
+  <string id="50050">Benutzername 2</string>
+  <string id="50060">Benutzerpasswort 2</string>
+  <string id="50070">Benutzerpfad 2</string>
+  <string id="50080">Benutzername 3</string>
+  <string id="50090">Benutzerpasswort 3</string>
+  <string id="50100">Benutzerpfad 3</string>
+  <string id="50110">Benutzername 4</string>
+  <string id="50120">Benutzerpasswort 4</string>
+  <string id="50130">Benutzerpfad 4</string>
+  <string id="50140">Benutzername 5</string>
+  <string id="50150">Benutzerpasswort 5</string>
+  <string id="50160">Benutzerpfad 5</sring>
+  <string id="60000">TLS</sring>
+  <string id="60010">Aktiviere TLS Engine</string>
+  <string id="60020">Erlaube nur TLS Login</string>
+  <string id="60030">Zertifikat Lebensdauer (Tage)</string>
+  <string id="60040">Zertifikat Hash Algorythmus</string>
+  <string id="60050">Zertifikat Kryptosystem</string>
+  <string id="60060">Zertifikat Bit-Staerke</string>
+  <string id="70000">FXP</sring>
+  <string id="70010">Erlaube FXP</string>
+  <string id="70020">Passiver Portbereich Start</string>
+  <string id="70030">Passiver Portbereich Ende</string> 
+  <string id="70040">Aktiviere Masquerade Adresse</string>
+  <string id="70050">Masquerade Adresse</string>
+</strings>

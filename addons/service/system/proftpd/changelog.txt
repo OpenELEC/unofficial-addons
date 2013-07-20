@@ -1,0 +1,66 @@
+3.1.1
+- put sources to unofficial repository
+
+3.0.10
+- rebuild because of no longer suplied shared libraries with openelec
+
+3.0.9
+- persistent log files in addon userdata folder:
+    transfer_log.txt, extended_log.txt, system_log.txt 
+    
+3.0.8
+- correctly shows file sizes larger then 4GB on 32bit system
+
+3.0.7
+- log files support (saved in user home folder)
+  possible to use 100 users (manually adding them in proftpd.conf)
+  
+3.0.6
+- fixed certificates creation (thanks to DugieHowsa)
+  using only SSLv3 and TLSv1
+
+3.0.5
+- new binaries
+  new static openssl 1.0.1e
+  fixed TLS connection
+  mod_lang enabled
+
+3.0.4
+- bugs hunting
+
+3.0.3
+- creating folder /var/config
+- few small (or big) bugs removed
+
+3.0.2
+- start script redone (binary copied)
+
+3.0.1
+- RPi support
+
+0.99.3
+- ProFTPD 1.3.4a
+- Allow Root Login			  (Enable default oe root account to login)
+- Allow Overwrite on/off	  (Overwriting files and folders)
+- TLS Engine on/off			  (Enable encryption)
+- TLS Required on/off		  (Force encryption)
+
+- User support                (Create up to five users with their own passwords and home directory)
+
+Cosmetic clean up in Addon Settings, everything is now grouped in:
+- General
+- FXP
+- TLS
+- User
+
+0.99.2
+- ProFTPD 1.3.4a
+- PassivePorts x x            (Passive Portrange)
+- MasqueradeAddress IP/FQDN   (Passive Mode Address) 
+- AllowForeignAddress on/off  (Enable FXP)
+- AllowStoreRestart on/off    (Allow sending resume)
+- AllowRetrieveRestart on/off (Allow receiving resume)
+
+0.99.1
+- ProFTPD 1.3.4a
+- initial version 
