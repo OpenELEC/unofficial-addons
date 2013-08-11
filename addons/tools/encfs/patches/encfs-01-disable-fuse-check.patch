@@ -1,0 +1,37 @@
+commit 5fee395f0575e59d3e149dcdc8f7c0ac0475ba0f
+Author: Stefan Saraev <stefan@saraev.ca>
+Date:   Sun Aug 11 17:59:41 2013 +0300
+
+    disable fuse check
+
+diff --git a/configure.ac b/configure.ac
+index 72d3b9b..faf4406 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -82,26 +82,6 @@ AC_CHECK_LIB(fuse_ino64,fuse_new, [FUSE_LIBS="-lfuse_ino64"],
+ 
+ AC_SUBST(FUSE_LIBS)
+ 
+-# check for a supported FUSE_MAJOR_VERSION.
+-AC_MSG_CHECKING([For supported FUSE API version])
+-AC_RUN_IFELSE([ 
+-    AC_LANG_PROGRAM([[#include "fuse.h"]],
+-[[
+-    if(FUSE_MAJOR_VERSION == 2 && FUSE_MINOR_VERSION >= 5)
+-    {
+-	return 0;
+-    } else
+-	return -1;
+-]])], 
+-    [AC_MSG_RESULT([yes])],
+-    [AC_MSG_RESULT([no])
+-    AC_MSG_FAILURE([
+-Encfs 1.3 requires FUSE 2.5 or newer.  Please check config.log for errors.  If
+-you cannot determine the problem, mail encfs-users@lists.sourceforge.net
+-and include the config.log file])
+-    ]
+-)
+-
+ dnl fuse_operations.setxattr was added 2004-03-31
+ dnl only enable it if setxattr function is found..
+ AC_CHECK_HEADERS([attr/xattr.h sys/xattr.h])
