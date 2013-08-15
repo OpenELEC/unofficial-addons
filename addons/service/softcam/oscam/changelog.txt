@@ -1,3 +1,6 @@
+3.1.2
+- update to oscam-8835
+
 3.1.1
 - rebuild for OpenELEC-3.2
 
