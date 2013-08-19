@@ -4,7 +4,6 @@
        version="3.1.3"
        provider-name="vpeter4 (peter.vicman@gmail.com) and smory (smoradap@gmail.com)">
   <requires>
-    <import addon="os.openelec.tv" version="3.0"/>
     <import addon="xbmc.python" version="2.0"/>
   </requires>
   <extension point="xbmc.python.pluginsource"
