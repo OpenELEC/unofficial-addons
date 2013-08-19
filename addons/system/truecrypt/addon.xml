@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.program.truecrypt"
+       name="truecrypt"
+       version="3.1.3"
+       provider-name="vpeter4 (peter.vicman@gmail.com) and smory (smoradap@gmail.com)">
+  <requires>
+    <import addon="os.openelec.tv" version="3.0"/>
+    <import addon="xbmc.python" version="2.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+             library="default.py">
+        <provides>executable</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Mount TrueCrypt Files.</summary>
+    <description>
+Manage Truecrypt files within XBMC. Up to 10 containers are supported. It's possible to mount, unmount, format, delete and create new files.
+    </description>
+    <platform>all</platform>
+  </extension>
+</addon>
