@@ -26,7 +26,7 @@ ADDON_HOME="$HOME/.xbmc/userdata/addon_data/service.softcam.oscam"
 ADDON_SETTINGS="$ADDON_HOME/settings.xml"
 RESTART_ON_RESUME=`grep RESTART_ON_RESUME $ADDON_SETTINGS | awk '{print $3}' | sed -e "s,value=,," -e "s,\",,g"`
 
-LOCKFILE="/var/lock/oscam.sleep"
+LOCKFILE_SLEEP="/var/lock/oscam.sleep"
 
 if [ "$RESTART_ON_RESUME" == "true" ] ; then
   case "$1" in
@@ -39,7 +39,7 @@ if [ "$RESTART_ON_RESUME" == "true" ] ; then
       ;;
 
     thaw|resume|post)
-      if [ -f "$LOCKFILE" ] ; then
+      if [ -f "$LOCKFILE_SLEEP" ] ; then
         progress "Restarting oscam for wakeup..."
         rm -rf "$LOCKFILE_SLEEP"
       fi
