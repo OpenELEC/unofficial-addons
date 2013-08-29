@@ -25,11 +25,22 @@
 
 LOCKDIR="/var/lock/"
 LOCKFILE="oscam.disabled"
+LOCKFILE_SLEEP="tvheadend.sleep"
+
+ADDON_BIN="oscam"
 
 mkdir -p "$LOCKDIR"
-touch "$LOCKDIR/$LOCKFILE"
-
-if [ "$(pidof oscam)" ];then
-  killall oscam
+if [ ! -e "$LOCKDIR/$LOCKFILE_SLEEP" ] ; then
+  touch "$LOCKDIR/$LOCKFILE"
 fi
 
+if [ "$(pidof $ADDON_BIN)" ] ; then
+  killall -q $ADDON_BIN
+  for seq in `seq 1 10` ; do
+    if [ ! "$(pidof $ADDON_BIN)" ] ; then
+      break
+    fi
+    usleep 200000
+  done
+  killall -q -9 $ADDON_BIN
+fi

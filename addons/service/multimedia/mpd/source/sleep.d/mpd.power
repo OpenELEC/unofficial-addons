@@ -30,7 +30,7 @@ LOCKFILE="/var/lock/mpd.sleep"
 
 if [ "$RESTART_ON_RESUME" == "true" ] ; then
   case "$1" in
-    hibernate|suspend)
+    hibernate|suspend|pre)
       if [ "$(pidof mpd)" ];then
         progress "Shutting down mpd for suspending..."
         mpd.stop
@@ -38,9 +38,9 @@ if [ "$RESTART_ON_RESUME" == "true" ] ; then
       fi
       ;;
 
-    thaw|resume)
-      progress "Restarting mpd for wakeup..."
+    thaw|resume|post)
       if [ -f "$LOCKFILE" ] ; then
+        progress "Restarting mpd for wakeup..."
         mpd.stop
         for seq in `seq 1 10` ; do
           if [ ! "$(pidof mpd)" ];then
