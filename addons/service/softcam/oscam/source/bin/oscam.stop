@@ -25,7 +25,7 @@
 
 LOCKDIR="/var/lock/"
 LOCKFILE="oscam.disabled"
-LOCKFILE_SLEEP="tvheadend.sleep"
+LOCKFILE_SLEEP="oscam.sleep"
 
 ADDON_BIN="oscam"
 
