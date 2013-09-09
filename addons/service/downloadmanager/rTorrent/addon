@@ -45,11 +45,9 @@ mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
   cp $PKG_DIR/extra/rtorrent.default.rc $ADDON_BUILD/$PKG_ADDON_ID/rtorrent.default.rc
 
 # add RPi tunning
-if [ "$PROJECT" = "RPi" ] ; then
-  echo "# RPi ARM Tunning
-max_peers = 10
-max_uploads_global = 5
-max_downloads_global = 5
-max_memory_usage = 128M" >> $ADDON_BUILD/$PKG_ADDON_ID/rtorrent.default.rc
-fi
+# RPi ARM Tunning
+#max_peers = 10
+#max_uploads_global = 5
+#max_downloads_global = 5
+#max_memory_usage = 128M" 
 
