@@ -23,14 +23,14 @@
 . config/options $1
 
 mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
-#  cp $PKG_BUILD/src/rtorrent $ADDON_BUILD/$PKG_ADDON_ID/bin
+  #cp $PKG_BUILD/src/rtorrent $ADDON_BUILD/$PKG_ADDON_ID/bin
   cp $BUILD/rtorrent-[0-9]*/src/rtorrent $ADDON_BUILD/$PKG_ADDON_ID/bin
   cp $BUILD/dtach-[0-9]*/dtach $ADDON_BUILD/$PKG_ADDON_ID/bin
   cp $BUILD/php-[0-9]*/sapi/cgi/php-cgi $ADDON_BUILD/$PKG_ADDON_ID/bin
   cp $BUILD/miniupnpc-[0-9]*/upnpc-static $ADDON_BUILD/$PKG_ADDON_ID/bin/upnpc
 
 mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
-#  cp -P $BUILD/libtorrent-[0-9]*/src/.libs/libtorrent.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib
+  #cp -P $BUILD/libtorrent-[0-9]*/src/.libs/libtorrent.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib
   cp $LIB_PREFIX/lib/libtorrent.so.[0-9][0-9] $ADDON_BUILD/$PKG_ADDON_ID/lib
   #cp $BUILD/xmlrpc-c-[0-9]*/lib/libutil/libxmlrpc*.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib
   #cp $BUILD/xmlrpc-c-[0-9]*/src/libxmlrpc.so.* $ADDON_BUILD/$PKG_ADDON_ID/lib
@@ -42,10 +42,14 @@ mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
 
   cp -r $BUILD/rutorrent-[0-9]* $ADDON_BUILD/$PKG_ADDON_ID/rutorrent
 
-#  echo "
-  # arm tunning
-#  max_peers = 10
-#  max_uploads_global = 3
-#  max_downloads_global = 3
-#  max_memory_usage = 32M" >> $ADDON_BUILD/$PKG_ADDON_ID/rtorrent.default.rc2
+  cp $PKG_DIR/extra/rtorrent.default.rc $ADDON_BUILD/$PKG_ADDON_ID/rtorrent.default.rc
+
+# add RPi tunning
+if [ "$PROJECT" = "RPi" ] ; then
+  echo "# RPi ARM Tunning
+max_peers = 10
+max_uploads_global = 5
+max_downloads_global = 5
+max_memory_usage = 128M" >> $ADDON_BUILD/$PKG_ADDON_ID/rtorrent.default.rc
+fi
 
