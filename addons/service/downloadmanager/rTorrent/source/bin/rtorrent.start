@@ -61,6 +61,16 @@ if [ ! -f "$ADDON_SETTINGS" ]; then
   cp $ADDON_DIR/settings-default.xml $ADDON_SETTINGS
 fi
 
+uname -m |grep -q -i arm
+if [ $? -eq 0 ];then
+  grep -q -i "RPi ARM" $ADDON_DIR/rtorrent.default.rc
+  [ $? -gt 0 ] && echo "# RPi ARM Tunning
+max_peers = 10
+max_uploads_global = 5
+max_downloads_global = 5
+max_memory_usage = 128M" >> $ADDON_DIR/rtorrent.default.rc
+fi
+
 if [ ! -f "$RTORRENT_RC" ]; then
   cp $ADDON_DIR/rtorrent.default.rc $RTORRENT_RC
 fi
