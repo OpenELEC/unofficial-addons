@@ -1,3 +1,6 @@
+3.1.5
+- options to change incoming/watch dirs
+
 3.1.4
 - update to transmission-2.82
 
