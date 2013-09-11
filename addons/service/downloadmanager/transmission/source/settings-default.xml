@@ -4,4 +4,6 @@
     <setting id="TRANSMISSION_PWD" value="openelec" />
     <setting id="TRANSMISSION_USER" value="openelec" />
     <setting id="TRANSMISSION_DL_DIR" value="/storage/downloads" />
+    <setting id="TRANSMISSION_INC_DIR" value="/storage/downloads/incoming" />
+    <setting id="TRANSMISSION_WATCH_DIR" value="/storage/downloads/watch" />
 </settings>
