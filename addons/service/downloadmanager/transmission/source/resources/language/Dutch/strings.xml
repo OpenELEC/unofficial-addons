@@ -10,4 +10,8 @@
 	<string id="2010">Netwerk instellingen</string>
 	<string id="2021">Toegestane IP adressen (gescheiden met een ',')</string>
 
+	<string id="3110">Andere</string>
+	<string id="3121">Downloadmap</string>
+	<string id="3122">Volgmap</string>
+	<string id="3123">Inkomende (onvoltooide) Downloadmap</string>
 </strings>
