@@ -1,15 +1,37 @@
-3.1.3
+[B]3.5[/B]
+Added:
+ - Support for key files - creation, mounting, adding, changing and removing
+ - Support for hidden volumes - mounting with hidden volume protection, creation of container with hidden volume
+ - Possibility to mount volumes at start up
+ - Easier mounting of partition through guide -> mounting by drive id so it is persistent when different drives are connected
+ - Reason why some items are locked
+ - Detection of mount point being in use by other mounted volumes
+ - Mounting files without storing paths and mount points
+ - Added a little bit of color in the menu
+ - Possibility to use secondary shell script (development or testing)
+ - New settings
+ - Added strings.po language file, strings.xml is still kept
+ 
+ 
+ Changed:
+  - Debugging mode can only be turned on the XBMC debugging settings, errors are always written in the log  
+  - shell script has been rewritten to provide better flexibility 
+ 
+  
+[B]3.1.3[/B]
+
 Fixed:
 - Could not start up (ION version reported) --> fixed addon.xml
 
-3.1.2
+[B]3.1.2[/B]
 - Put in unofficial OpenELEC repository
 
-3.1.1
+[B]3.1.1[/B]
 Fixed:
 - Issue when mounting NTFS formated drives.
 
-3.1.0
+
+[B]3.1.0[/B]
 Fixed:
 - Compatibility issue with OL 3.0.5 /3.0.6 (no workaround anymore)
 - "No child processes error" seams to be solved
@@ -66,5 +88,4 @@ Still to do:
 2.1.2
 - recompile for OpenELEC 2.0
 1.90.0
-- initial version of Truecrypt addon 
-
+- initial version of Truecrypt addon

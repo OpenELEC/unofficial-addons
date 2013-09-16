@@ -38,10 +38,10 @@ def getStringFromUser(heading, hidden = False, default = ""):
     else:
         return "";
 
-def getConfirmedPassword():
+def getConfirmedPassword(header1 = xbmc.getLocalizedString(12340), header2 = xbmc.getLocalizedString(12341)):   # Enter password   # Re-Enter password
     while True:
-        str1 = getStringFromUser(xbmc.getLocalizedString(12340), True); # Enter password
-        str2 = getStringFromUser(xbmc.getLocalizedString(12341), True); # Re-Enter password
+        str1 = getStringFromUser(header1, True);
+        str2 = getStringFromUser(header2, True); 
         if str1 == str2:
             break;
         else :
