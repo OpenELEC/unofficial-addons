@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 	<addon id="plugin.program.truecrypt"
 	       name="TrueCrypt"
-	       version="3.5"
+	       version="3.5.0"
 	       provider-name="vpeter4 (peter.vicman@gmail.com) and smory (smoradap@gmail.com)">
 		<requires>
 		  	<import addon="xbmc.python" version="2.0"/>		

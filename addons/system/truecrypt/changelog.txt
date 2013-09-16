@@ -1,4 +1,4 @@
-[B]3.5[/B]
+[B]3.5.0[/B]
 Added:
  - Support for key files - creation, mounting, adding, changing and removing
  - Support for hidden volumes - mounting with hidden volume protection, creation of container with hidden volume
