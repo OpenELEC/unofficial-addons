@@ -2,8 +2,6 @@
 
 ################################################################################
 #  Copyright (C) Peter Smorada 2013
-#  Based on the code created by Stephan Raue (stephan@openelec.tv) and code
-#  originally found in http://linux.sparsile.org/2009/09/automated-truecrypt-container-creation.html
 #
 #  This Program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -26,244 +24,407 @@
 
 ADDON_DIR="$HOME/.xbmc/addons/plugin.program.truecrypt"
 ADDON_HOME="$HOME/.xbmc/userdata/addon_data/plugin.program.truecrypt"
-echo $PATH | grep -q $ADDON_DIR/bin
-if [ $? != "0" ]; then
-	echo "Adding addon bin dir to PATH." >&2
-	export PATH=$PATH:$ADDON_DIR/bin
-fi
-used_tc_aux_mnt=$(mount | awk '/truecrypt_aux_mnt/ {print $3}')
 
-# The function will return tc_aux_mnt created after truecrypt attempt to mount a device
-# by comparing state at the start of the script with the state after calling truecrypt
-gettcmnt() {
-
-	for a in $@
-	do
-		found="1"
-		for b in $used_tc_aux_mnt
-		do
-		  if [ "$b" == "$a" ]; then
-				found="0"
-			break
-			fi
-		done
-		if [ "$found" = "1" ]; then # if not found in inner loop
-			tc_aux_mnt=$a
-		break
-		fi
-	done
-	echo "$tc_aux_mnt"
+# Function adds addon exec directory to the PATH if necessary. This method is
+# run at start up of XBMC
+addToPath(){
+	echo $PATH | grep -q $ADDON_DIR/bin
+	if [ "$?" != "0" ]; then
+		echo "Adding addon bin dir to PATH." >&2
+		export PATH="$PATH:$ADDON_DIR/bin"
+	fi
 }
 
+
 # The function will return tc_aux_mnt created after truecrypt attempt to mount a device
-# by searching in mounts and used loop devices
-getTcauxmntFromMountPoint() {
-	drive=$1
+# by searching in used loop devices. Argument has to be tc file or a mount point and
+# optional loop device.
+getTcAuxMnt() {
+	local arg="$1"		
+	local loopDevice=""
+	if [ "$2" == "" ]; then
+		loopDevice=$(getLoopDev "$arg")
 		
-	loop_dev=$(mount | grep $drive | cut -d" " -f 1)
-	echo "Loop device connected to the mount point: $loop_dev" >&2
-	tc_mnt=$(losetup -a | grep $loop_dev | awk '/truecrypt_aux_mnt/ {print substr($3, 2, length($3)-9)}')
-	echo "Found tc_aux_mnt: $tc_mnt" >&2
-	echo $tc_mnt
+		if [ "$?" != "0" ]; then
+			echo "Loop device not found." >&2
+			return 1
+		fi
+	else
+		loopDevice="$2"
+	fi
+
+	local escapedLoopDev=$(escapePathforAwk "$loopDevice")
+	
+	local tc_mnt=$(losetup -a | awk "/$escapedLoopDev/"'{print substr($3, 2, length($3)-2)}')	
+	echo -n $tc_mnt
 	
 	if [ "$tc_mnt" != "" ]; then
 		return 0
 	else
 		return 1
 	fi
+
 }
+# Function returns loop device associated with trucrypt mounted file or mount point
+getLoopDev() {
+	local arg=$(checkForLink "$1") 
+	arg=$(escapePathforAwk "$arg")
+
+	local loop_dev=$(truecrypt -l | awk "/$arg/ "'{
+	for (i=1; i <= NF; i++){
+		if ( $i  ~ /\/dev\/loop/ )
+			print $i
+	}}')
+	
+	if [ "$loop_dev" != "" ]; then
+		echo -n "$loop_dev"
+		return 0
+	else
+		echo "Failed to find loop device used - $loop_dev" >&2
+		return 1
+	fi
+}
+
+# Function returns escaped path to a file for use in awk. All '/' are escaped as '\/' .
+escapePathforAwk() {
+
+	echo "$1" | awk -v path="" '{
+		for (i=0; ++i <= length($0);) {
+			letter=substr($0, i, 1)
+			if(letter == "/" ) {
+				letter="\\" letter
+			} 
+			if(letter == " "){
+				letter="[[:space:]]"
+			}
+			path=path letter
+		}
+		print path
+	  }'
+
+}
+
+# function checks for symbolic or hard links. It will return path to the targer file
+# or or the same file if link is not found.
+checkForLink() {
+	local arg="$1"
+
+	linkTest=$(readlink -f -s "$arg") >&2
+	if [ "${linkTest}" != "" ]; then
+		arg="$linkTest"
+	fi
+	echo -n "$arg"
+}
+
+# Removes trailing / if needed, otherwise returns the same string.
+removeTrailingSlash() {
+	local arg="$1"
+	if [ "${arg#${arg%?}}" == "/" ]; then
+		echo "Drive name ends in /. Removing last character." >&2
+		arg="${arg%?}"
+	fi
+	echo -n "$arg"	
+}
+
+# Function checks supplied path for links and trailing '/'. It returns 
+# corrected path if needed
+checkFolderPath() {
+	local arg=$(checkForLink "$1")
+	arg=$(removeTrailingSlash "$arg")
+	echo -n "$arg"
+}
+
+# Function will print all mounted TC volumes / files
+getMountedFiles() {
+	# local listing=$(truecrypt -l) 2>/dev/null
+	# if [ "$listing" == "" ]; then
+		# return
+	# fi
+	# echo "$listing" | awk -F"([']?[[:space:]][']?)" '{print $2}'
+	
+	truecrypt -l 2>/dev/null | awk -F"([']?[[:space:]][']?)" '{print $2}' 2>/dev/null
+}
+
+# Function will print all partitions on the system. Devices with following format are retruned: 
+# sdXY and hdXY.
+# It won't return whole disk like sda or hda. 
+getPartitions() {
+	ls /dev 2>/dev/null | awk "/sd[a-z]?[0-9]+$|hd[a-z]?[0-9]+$/"'{print $1}' 2>/dev/null
+}
+
+# Function returns corespnding label to the partition. Only name of the partition should be supplied e.g. sda1
+getPartitionLabel() {
+	if [ "$1" != "" ] ; then
+		ls /dev/disk/by-label -l 2>/dev/null | awk "/$1\$/"'{printf $9}'
+		# more "d:\test.txt" | awk "/$1\$/"'{print $9}'
+	fi
+	
+}
+
+# Function will pring mount point associated with the tc volume
+getMountPoint() {
+	local arg=$(checkForLink "$1")
+	arg=$(escapePathforAwk "$arg")
+	truecrypt -l 2>/dev/null | awk -F"([']?[[:space:]][']?/?)" "/$arg\>/ "'{print "/" $4}'
+		
+}
+
+# Function retruns /dev/disk/by-id/... link to the partition
+getByIdPath() {
+	ids=$(ls /dev/disk/by-id/)
+	for id in $ids
+	do
+		readlink -f "/dev/disk/by-id/$id" | grep -q "$1"
+		if [ "$?" == "0" ]; then
+			echo -n "/dev/disk/by-id/$id"
+			break
+		fi
+	done
+	
+}
+
 
 mountdrive() {
-	tcfile=$1
-	drive=$2
-	pass=$3
-	keyfiles=$4
+	local tcfile="$1"
+	local drive="$2"
+	local pass="$3"
+	local keyfiles="$4"
 	#mkdir -p $drive
-	echo "Used tc_aux_mnt at start: $used_tc_aux_mnt" >&2
 	
-	echo "Available loop device: " $(losetup -f) >&2
-	truecrypt --non-interactive --protect-hidden=no -m=nokernelcrypto -k "$keyfiles" -p "$pass" "$tcfile" "$drive" >&2
-	#cmd="truecrypt --non-interactive --protect-hidden=no -m=nokernelcrypto -k \"\" -p\"\$pass\" \"\$tcfile\" \"\$drive\""
-	#eval $cmd 1>&2
+	# mount tc to the loop device 
+	mountspecial "$tcfile" "$drive" "$pass" "$keyfiles"
 	
-	tc_exit_value=$?
-	if [ "$tc_exit_value" != "0" ]; then
-		echo "Execution of truecrypt unsuccessfull. Executing it with NTFS option." >&2
-		truecrypt --non-interactive --protect-hidden=no -m=nokernelcrypto --filesystem=ntfs-3g -k "$keyfiles" -p "$pass" "$tcfile" "$drive" >&2
-		tc_exit_value=$?
+	if [ "$?" != "0" ]; then # check whether previous operation was successfull
+		return 1
 	fi
 	
-	echo "truecrypt return value: $tc_exit_value" >&2
-	echo "Mounted loop devices after truecrypt bin being executed:" >&2
-	echo $(mount | grep "loop") >&2
-	echo "Mounted truecrypt devices after truecrypt bin being executed:" >&2
-	echo $(mount | grep "truecrypt") >&2
+	# mount file system
 	
-	curr_tc_aux_mnt=$(mount | awk '/truecrypt_aux_mnt/ {print $3}')
-	echo "Currently used tc_aux_mnt: $curr_tc_aux_mnt" >&2
-	tc_aux_mnt=$(gettcmnt $curr_tc_aux_mnt)
-	echo "tc_aux_mnt used by truecrypt: $tc_aux_mnt" >&2
+	mountfs "$tcfile" "$drive"
+	
+	if [ "$?" != "0" ]; then # check whether previous operation was successfull
+		echo "File system mount was unsuccessfull, unmounting tc drive from loop device."
+		unmountdrive "$tcfile" "$drive"
+		return 1
+	fi
 
 	# test if mounted sucessfully
-	ismounted $tcfile $drive
+	ismounted "$tcfile" "$drive"
 	if [ "$?" == "0" ]; then
-		echo "Mounted successfuly directly by truecrypt." >&2
-		rv=0
+		echo "Mounted successfuly." >&2
+		return 0
 	else
-		echo "Mounting by TrueCrypt failed. Remounting within script." >&2
-		loop_dev=$(losetup -f)
-		echo "Setting up a loop device - $tc_aux_mnt/volume on $loop_dev" >&2
-		losetup "$loop_dev" "$tc_aux_mnt/volume" >&2
-		echo "Mounting $loop_dev on $drive" >&2
-		mount "$loop_dev" "$drive" >&2
-
-		# if previous attempt to mount FS was unsuccessful, it will try to mount it as NTFS drive.
-		if [ "$?" != "0" ]; then  
-			echo "Mounting was unsuccessful, will try as NTFS drive." >&2
-			ntfs-3g "$loop_dev" "$drive" >&2
-		fi
-	
-		ismounted $tcfile $drive
-		if [ "$?" == "0" ]; then
-			echo "Mounting was successful." >&2
-			rv=0
-		else
-			echo "Mounting was unsuccessful." >&2
-			rv=1
-		fi
+		echo "Mount failed." >&2
+		return 1
 	fi
-	# Returning used tc_aux_mnt to the python script for easier unmount or other tasks.
-	echo -n "$tc_aux_mnt"
-	return $rv
 }
 
-unmountdrive() {
-	echo "unmounting." >&2
-	tcfile=$1
-	drive=$2
+mountHidden() {
+	local tcfile="$1"
+	local drive="$2"
+	local passOuter="$3"
+	local keyFilesOuter="$4"
+	local passHidden="$5"
+	local keyFilesHidden="$6"
+	local additionalOptions="$7"
+	#mkdir -p $drive
 	
-	# check for links and their usage in case they are found
-	linkTest=$(readlink -f $drive) >&2
-	if [ "${linkTest}" != "" ]; then
-		echo "Provided mount point drive is a link. Using real folder instead of link." >&2
-		drive=${linkTest}
+	# mount tc to the loop device 
+	mountspecial "$tcfile" "$drive" "$passOuter" "$keyFilesOuter" "$additionalOptions" "yes" "$passHidden" "$keyFilesHidden"
+	
+	if [ "$?" != "0" ]; then # check whether previous operation was successfull
+		return 1
+	fi
+	
+	# mount file system
+	
+	mountfs "$tcfile" "$drive"
+	
+	if [ "$?" != "0" ]; then # check whether previous operation was successfull
+		echo "File system mount was unsuccessfull, unmounting tc drive from loop device."
+		unmountdrive "$tcfile" "$drive"
+		return 1
 	fi
 
-	if [ "${drive#${drive%?}}" == "/" ]; then
-		echo "Drive name ends in /. Removing last character." >&2
-		drive=${drive%?}
-	fi
-
-	if [ "$3" == "" ]; then
-		echo "tc_aux_mnt was not supplied. Searching for it..." >&2
-		tc_aux_mnt=$(getTcauxmntFromMountPoint $drive)
+	# test if mounted sucessfully
+	ismounted "$tcfile" "$drive"
+	if [ "$?" == "0" ]; then
+		echo "Mounted successfuly." >&2
+		return 0
 	else
-		tc_aux_mnt="${3}"
-	fi  
+		echo "Mount failed." >&2
+		return 1
+	fi
 
-	loop_dev=$(mount | grep ${drive%?} | cut -d" " -f 1)
-	echo "Loop device used for mounting: $loop_dev" >&2
-  
-	echo "Executing truecrypt" >&2
-	truecrypt --non-interactive -d "$tcfile" "$drive" >&2
+}
 
-	if grep -qs "$tc_aux_mnt" /proc/mounts; then
-  
-		echo "Drive is still mounted. Proceeding with manual unmount." >&2
+mountspecial() {
+	#echo "$@"
+	local tcfile=$(checkForLink "$1")
+	local drive=$(checkFolderPath "$2")
+	local pass="$3"
+	local keyfiles="$4"
+	local mountoptions=""
+	if [ "$5" == "" ]; then
+		mountoptions="nokernelcrypto"
+	else
+		mountoptions="nokernelcrypto,$5"
+	fi
 	
+	losetup -f > /dev/null 2>&1
+	
+	if [ "$?" != "0" ]; then
+		echo "Loop device is not available." >&2
+	fi
+	
+	if [ "$6" == "yes" ]; then
+		protectionpass="$7"
+		protectionkeyfiles="$8"
+
+		truecrypt --non-interactive --protect-hidden=yes --mount-options="$mountoptions" --filesystem=none -k "$keyfiles" --protection-keyfiles="$protectionkeyfiles" -p "$pass" --protection-password="$protectionpass" "$tcfile" >&2
+	else 
+		truecrypt --non-interactive --protect-hidden=no --mount-options="$mountoptions" --filesystem=none -k "$keyfiles" -p "$pass" "$tcfile" "$drive" >&2
+	fi
+	
+	tc_exit_value=$?
+	
+	return $tc_exit_value
+}
+
+# It mounts file system to the loop device connected to the truecrypt volume
+mountfs() {
+	local tcfile="$1"
+	local drive="$2"
+	local loop_dev=$(getLoopDev "$tcfile")
+	
+	mount -t auto "$loop_dev" "$drive" >&2
+	rv=$?
+	
+	if [ "$rv" == "0" ]; then # check whether previous operation was successfull
+		return 0
+	fi
+	
+	ntfs-3g "$loop_dev" "$drive" >&2
+	rv=$?
+	if [ "$rv" != "0" ]; then # check whether previous operation was successfull
+		echo "Mounting file system failed" 
+		return 0
+	fi
+}
+
+# The function will unmount file system connected to the tc drive.
+# Usefull when formatting or manipulating or creating hidden volumes.
+umountfs() {
+	local drive=$(checkFolderPath "$1")
+	local loop_dev=$(getLoopDev "$drive")
+	
+	ev=$?	
+	if [ "$ev" != "0" ]; then
+		echo "Unable to find loop device. Therefore; not proceeding with file system umount." >&2
+		return 1
+	fi
+	
+	tc_aux_mnt=$(getTcAuxMnt "$drive" "$loop_dev")
+	umount "$drive" >&2
+	ev=$?	
+	if [ "$ev" != "0" ]; then 
+		return 1
+	fi
+
+	losetup "${loop_dev}" "${tc_aux_mnt}" >&2
+	ev=$?
+	if [ "$ev" != "0" ]; then 
+		echo "Failed to set up loop device. " >&2
+		return 1
+	else
+		return 0
+	fi
+}
+
+
+unmountdrive() {
+
+	local tcfile=$(checkForLink "$1")
+	local drive=$(checkFolderPath "$2")	
+	
+	truecrypt --non-interactive -d "$tcfile" "$drive" >&2
+	ev=$?
+	if [ "$?" != "0" ]; then
+	
+		local loop_dev=$(getLoopDev "$tcfile")
+		local tc_aux_mnt=$(getTcAuxMnt "$drive" "$loop_dev")
+		
 		truecrypt --non-interactive -d --force "$tcfile" "$drive" >&2
 		umount "$drive" >&2
 		losetup -d "$loop_dev" >&2
 		umount "$tc_aux_mnt" >&2
-
-		if grep -qs "$tc_aux_mnt" /proc/mounts; then
-			rv=0
-		else
-			rv=1
+		ismounted "$tcfile" "$drive"
+		if [ "$?" == "0" ]; then
+			echo "Failed to unmount drive."
+			return 1
 		fi
-	else
-		echo "Unmount successfull directly by Truecrypt." >&2
-		rv=0
 	fi
-	return $rv
+	echo "Unmount successful."
+	return 0
+	
 }
 
 ismounted(){
-	tcfile=$1
-	drive=$2
-  
-  # check for links and their usage in case they are found
-	linkTest=$(readlink -f $drive) >&2
-	if [ "${linkTest}" != "" ]; then
-		drive=${linkTest}
-	fi
-  
-	# if drive's named ends in "/" it will be removed
-	if [ "${drive#${drive%?}}" == "/" ]; then
-		drive=${drive%?}
+	local tcfile=$(checkForLink "$1")
+	local drive=$(checkFolderPath "$2")
+	
+	# check if tc file was supplied, if not then act as if it was not mounted, thus can return mount in use if needed
+	if [ "$tcfile" != "" ]; then
+		truecrypt -l | grep -q "$tcfile" >&2
+		rv1=$?
+	else
+		rv1=1
 	fi
 	
-	truecrypt -l | grep -q "$tcfile" >&2
-	rv1=$?
-	echo  "Checking if file is mounted in Truecrypt list: ${rv1}" >&2
-
-	mount | grep -q "$drive" >&2
-	rv2=$?
-	echo "Checking if drive is listed in mounts: ${rv1}" >&2
+	if [ "$drive" != "" ]; then      # in case second argument was not supplied
+		mount | grep -q "$drive" >&2
+		rv2=$?
+	fi
 
 	if [ "$rv1" == "0" ] && [ "$rv2" == "0" ]; then
-		echo "Truecrypt drive is mounted." >&2
+		#echo "Truecrypt drive is mounted." >&2
 		return 0
 	elif [ "$rv1" == "1" ] && [ "$rv2" == "0" ]; then
-		echo "Mountpoint is being used by other file or process." >&2
+		#echo "Mountpoint is being used by other file or process." >&2
 		return 2
+	elif [ "$rv1" == "0" ] && [ "$rv2" == "" ]; then
+		#echo "Truecrypt drive is mounted." >&2
+		return 0
 	else
-		echo "Truecrypt drive is not mounted." >&2
+		#echo "Truecrypt drive is not mounted." >&2
 		return 1
 	fi
 }
 
-format() {
-	tcfile=$1
-	drive=$2
-	tc_aux_mnt=$3
-	filesys=$4
+# a prerequisite: drive has to be mounted
+formatdrive() {
+	local tcfile=$(checkForLink "$1")
+	local drive=$(checkFolderPath "$2")
+	local filesys="$4"
 	
-	if [ "${drive#${drive%?}}" == "/" ]; then
-		loop_dev=$(mount | grep ${drive%?} | cut -d" " -f 1) # ${drive%?} = string without last character
-	else
-		loop_dev=$(mount | grep $drive | cut -d" " -f 1)
-	fi
-	echo "Found loop device: $loop_dev" >&2
-
-	echo "Unmounting drive." >&2
-	umount "$drive" >&2
+	# look for needed variables
+	local loop_dev=$(getLoopDev "$tcfile")		
 	if [ "$?" != "0" ]; then
-		echo "Failed to unmount drive before formating." >&2
+		echo "Failed to find associated loop device. Not proceeding with formatting." >&2
 		return 1
 	fi
-
-	echo "Setting up loop device with tc_aux_mnt" >&2
-	losetup "${loop_dev}" "${tc_aux_mnt}/volume" >&2
-
-	echo "Formatting..." >&2
-	if [ "$filesys" = "FAT32" ]; then
-		mkdosfs "$loop_dev" >&2
-	elif [ "$filesys" = "NTFS" ]; then
-		mkntfs "$loop_dev" >&2
-	else
-		"mkfs.$4" "$loop_dev" >&2
+	
+	# unmounting file system
+	umountfs "$drive"
+	if [ "$?" != "0" ]; then
+		echo "Failed to unmount file system. Not proceeding with formatting." >&2
+		return 1
 	fi
+	
+	format "$loop_dev" "$filesys"
 	rv=$?
-	sleep 5
 	
-	echo "Detaching loop device: ${loop_dev}." >&2
-	losetup -d "${loop_dev}" >&2
-	# umount $drive
-	
-	echo "Unmounting tc_aux_mnt."
-	umount $tc_aux_mnt >&2
-	# truecrypt -d $tcfile
+	unmountdrive "$tcfile" "$drive"
 
 	if [ "$rv" != "0" ]; then
 		echo "Failed to format drive."
@@ -274,51 +435,178 @@ format() {
 	fi
 }
 
+# Function performs actual formatting of tc device. File system has to be unmounted
+# before it is used. Used loop device and file system has to be provided.
+format() {
+	loop_dev="$1"
+	filesys="$2"
+	
+	echo "Formatting..." >&2
+	if [ "$filesys" == "FAT32" ]; then
+		mkdosfs "$loop_dev" >&2
+	elif [ "$filesys" == "NTFS" ]; then
+		mkntfs "$loop_dev" >&2
+	else
+		"mkfs.$2" "$loop_dev" >&2
+	fi
+	rv=$?
+	
+	sleep 5
+	return $rv
+}
+
 mkcontainer() {
-	tcfile=${1}
-	drive=${2}
-	pass="--password=${3}"
-	SIZE=${4} # in GB
-	filesys=${5}
-	keyfiles="$6"
-	if [ "$7" != "" ]; then
-		ENTROPY=$7
+	local tcfile="$1"
+	local drive="$2"
+	local pass="--password=${3}"
+	local SIZE="$4" # in bytes
+	local keyfiles="$5"
+	if [ "$6" != "" ]; then
+		ENTROPY="$6"
 	else
 		ENTROPY="/dev/urandom"
 	fi
 	
-	mkdir -p "$drive"
+	if [ "$7" == "none" ]; then
+		filesys="none"
+	else 
+		filesys="FAT"
+	fi
 	
-	echo "Executing unmouning of the drive by truecrypt." >&2
-	truecrypt -t -d "$drive" >&2
-
+	if [ "$8" == "hidden" ]; then
+		type="hidden"
+	else
+		type="normal"
+	fi
+	
+	mkdir -p "$drive"
+		
+	ismounted "" "$drive"
+	if [ "$?" == "2" ]; then   # mount point is in use
+		echo "Executing unmouning of the drive by truecrypt as mount point is in use." >&2
+		truecrypt -t -d "$drive" >&2
+	fi
+	
 	echo "Executing creation of the container." >&2
-	truecrypt -t \
-	--create \
-	--keyfiles="$keyfiles" \
-	--protect-hidden=no \
-	--volume-type=normal \
-	--size=${SIZE} \
-	--encryption=AES \
-	--hash=SHA-512 \
-	--filesystem=FAT \
-	--random-source=${ENTROPY} \
-	"$pass" \
-	"$tcfile" >&2 
-
+	truecrypt -t --create --non-interactive --keyfiles="$keyfiles" --protect-hidden=no --volume-type="$type" --size="$SIZE" --encryption=AES --hash=SHA-512 --filesystem="$filesys" --random-source="$ENTROPY" "$pass" "$tcfile" >&2 
+	
 	if [ "$?" != "0" ]; then
 		echo "Container creation failed." >&2
+		echo $tcfile >&2
 		return 1
 	else
-		"Container creation successfully." >&2
+		echo "Container created successfully." >&2
 		return 0
 	fi
 }
 
+createHiddenVolume() {
+    # set up needed variables
+    local tcfile="$1"
+    local drive="$2"
+    local passOuter="$3"
+    local keyFilesOuter="$4"
+    local sizeOuter="$5"
+    local passHidden="$6"
+    local keyFilesHidden="$7"
+    local sizeHidden="$8"
+    local fileSystem="$9"
+	local randomNumberGenerator="$10"
+	
+	if [ "$randomNumberGenerator" == "" ]; then
+		randomNumberGenerator="/dev/random"
+	fi
+	
+   
+    # creation of outer volume without file system
+    mkcontainer "$tcfile" "$drive" "$passOuter" "$sizeOuter" "$keyFilesOuter" "$randomNumberGenerator" "none"
+    if [ "$?" != "0" ]; then
+        echo "Failed to create outer volume." >&2
+        return 1
+    fi
+	
+	#  mountspecial "$tcfile" "$drive" "$passOuter" "$keyFilesOuter"
+   
+    # creation of hidden volume
+    mkcontainer "$tcfile" "$drive" "$passHidden" "$sizeHidden" "$keyFilesHidden" "$randomNumberGenerator" "none" "hidden"
+    if [ "$?" != "0" ]; then
+        echo "Failed to create hidden volume." >&2
+        return 1
+    fi
+   
+    # mounting of outer volume with hidden volume protection without mounting file system
+    mountspecial "$tcfile" "$drive" "$passOuter" "$keyFilesOuter" "" "yes" "$passHidden" "$keyFilesHidden"
+    if [ "$?" != "0" ]; then
+        echo "Failed to mount outer volume." >&2
+        return 1
+    fi
+   
+    local loopDev=$(getLoopDev "$tcfile")
+   
+    # creation of file system on the outer volume
+    format "$loopDev" "$fileSystem"
+    if [ "$?" != "0" ]; then
+        echo "Failed to create file system ($fileSystem) for the outer volume on $loopDev" >&2
+        return 1
+    fi
+   
+    # test mount of newly created FS
+    mountfs "$tcfile" "$drive"
+    if [ "$?" != "0" ]; then
+        echo "Failed to mount file system of outer volume after formatting." >&2
+        return 1
+    fi
+   
+    # umounting outer volume
+    unmountdrive "$tcfile" "$drive"
+    if [ "$?" != "0" ]; then
+        echo "Failed to umount outer volume." >&2
+        return 1
+    fi
+   
+    # mouting hidden volume
+    mountspecial "$tcfile" "$drive" "$passHidden" "$keyFilesHidden"
+    if [ "$?" != "0" ]; then
+        echo "Failed to mount hidden volume." >&2
+        return 1
+    fi
+   
+    loopDev=$(getLoopDev "$tcfile")
+   
+    # creation of file system on the hidden volume
+    format "$loopDev" "$fileSystem"
+    if [ "$?" != "0" ]; then
+        echo "Failed to create file system ($fileSystem) for the outer volume on $loopDev" >&2
+        return 1
+    fi
+   
+    # test mount of newly created FS
+    mountfs "$tcfile" "$drive"
+    if [ "$?" != "0" ]; then
+        echo "Failed to mount file system of outer volume after formatting." >&2
+        return 1
+    fi
+   
+    # umounting hidden volume
+    unmountdrive "$tcfile" "$drive"
+    if [ "$?" != "0" ]; then
+        echo "Failed to umount hidden volume." >&2
+        return 1
+    fi
+   
+    # successful end :)
+    echo "" >&2
+    echo "Warning: To copy files to the outer volume, mount it with hidden volume protection." >&2
+    echo "Not doing so might result in destroying the hidden volume." >&2
+    return 0
+
+}
+
 changepassword(){
-	tcfile=$1
-	oldpass=$2
-	newpass=$3
+	tcfile="$1"
+	oldpass="$2"
+	newpass="$3"
+	keyfiles="$4"
 
 	echo "Executing truecrypt password change." >&2
 	truecrypt -t \
@@ -326,13 +614,41 @@ changepassword(){
 	--non-interactive \
 	--password="${oldpass}" \
 	--new-password="${newpass}" \
+	--keyfiles="$keyfiles" \
+	--new-keyfiles="$keyfiles" \
 	"$tcfile" >&2
-  
+	  
 if [ "$?" != "0" ]; then
 		echo "Password change failed." >&2
 		return 1
 	else
-		"Password changed successfully." >&2
+		echo "Password changed successfully." >&2
+		return 0
+	fi
+
+}
+
+changekeyfiles(){
+	tcfile="$1"
+	password="$2"
+	oldkeyfiles="$3"
+	newkeyfiles="$4"
+
+	echo "Executing truecrypt change of key file(s)." >&2
+	truecrypt -t \
+	-C \
+	--non-interactive \
+	--keyfiles="$oldkeyfiles" \
+	--new-keyfiles="$newkeyfiles" \
+	--password="$password" \
+	--new-password="$password" \
+	"$tcfile" >&2
+	  
+if [ "$?" != "0" ]; then
+		echo "Change of key file(s) failed." >&2
+		return 1
+	else
+		"Key file(s) changed successfully." >&2
 		return 0
 	fi
 
@@ -347,13 +663,13 @@ createkeyfile(){
 	fi
 	
 	if [ "$2" != "" ]; then
-		ENTROPY=$2
+		ENTROPY="$2"
 	else
 		ENTROPY="/dev/urandom"
 	fi
 	
 	echo "Creating key file. Source of random data: $ENTROPY" >&2
-	truecrypt --non-interactive --create-keyfile --random-source=$ENTROPY $keyfile >&2
+	truecrypt --non-interactive --create-keyfile --random-source="$ENTROPY" "$keyfile" >&2
 	
 	return $?	
 }
@@ -366,8 +682,11 @@ showinfo() {
 	echo "mount TRUECRYPT_FILE/PARTION MOUNT_POINT PASSWORD [KEY_FILES]"
 	echo "dismount TRUECRYPT_FILE/PARTION MOUNT_POINT [TC_AUX_MNT]"
 	echo "ismounted TRUECRYPT_FILE/PARTION MOUNT_POINT"
-	echo "changepass TRUECRYPT_FILE/PARTION OLD_PASS NEW_PASS"
+	echo "changepass TRUECRYPT_FILE/PARTION OLD_PASS NEW_PASS [KEY_FILES]"
 	echo "create TRUECRYPT_FILE/PARTION MOUNT_POINT PASSWORD SIZE_IN_GB [KEY_FILES RANDOM_DATA_GENERATOR]"
+	echo "changekeyfiles TRUECRYPT_FILE/PARTION PASSWORD CURRENT_KEY_FILE(S) NEW_KEY_FILE(S)"
+	echo "addkeyfiles TRUECRYPT_FILE/PARTION PASSWORD NEW_KEY_FILE(S)"
+	echo "removekeyfiles TRUECRYPT_FILE/PARTION PASSWORD CURRENT_KEY_FILE(S)"
 	echo "createkey KEY_FILE [RANDOM_DATA_GENERATOR]"
 	echo "format TRUECRYPT_FILE/PARTION MOUNT_POINT TC_AUX_MNT FILE_SYSTEM"
 	echo 
@@ -379,26 +698,76 @@ case "$1" in
 	mount) mountdrive "$2" "$3" "$4" "$5"
 		rv=$?
 		;;
+	mountHidden) mountHidden "$2" "$3" "$4" "$5" "$6" "$7" "$8"
+		;;
 	dismount) unmountdrive "$2" "$3" "$4"
 		;;
 	ismounted) ismounted "$2" "$3"
 		rv=$?
 		echo "EV:$rv"
 		;;
-	create) mkcontainer "$2" "$3" "$4" "$5" "$6" "$7"
+	create) mkcontainer "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9"
 		rv=$?
 		;;
-	format) format "$2" "$3" "$4" "$5"
+	format) formatdrive "$2" "$3" "$4" "$5"
 		rv=$?
 		echo "EV:$rv"
 		;;
-	changepass) changepassword "$2" "$3" "$4"
+	changepass) changepassword "$2" "$3" "$4" "$5"
 		rv=$?
 		echo "EV:$rv"
 		;;
 	createkey) createkeyfile "$2" "$3"
 		rv=$?
 		echo "EV:$rv"
+		;;
+	changekeyfiles)	changekeyfiles "$2" "$3" "$4" "$5"
+		rv=$?
+		echo "EV:$rv"
+		;;
+	addkeyfiles)	changekeyfiles "$2" "$3" "" "$4"
+		rv=$?
+		echo "EV:$rv"
+		;;
+	removekeyfiles)	changekeyfiles "$2" "$3" "$4" ""
+		rv=$?
+		echo "EV:$rv"
+		;;
+	ms) mountspecial "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9"
+		rv=$?
+		echo "EV:$rv"
+		;;
+	gld) getLoopDev "$2"
+		;;
+	mfs) mountfs "$2" "$3"
+		;;
+	umfs) umountfs "$2"
+		;;
+	gtam) getTcAuxMnt "$2"
+		;;
+	chckfp) checkFolderPath "$2"
+		;;
+	epawk) escapePathforAwk "$2"
+		;;
+	f) format "$2" "$3"
+		;;
+	chv) createHiddenVolume "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9" "$10" "$11"
+		ev=$?
+		echo "EV:$rv"
+		;;
+	gmf) getMountedFiles
+		;;
+	gmp) getMountPoint "$2"
+		;;
+	gp) getPartitions
+		;;
+	gpl) getPartitionLabel "$2"
+		;;
+	path) addToPath
+		;;
+	by-id) getByIdPath "$2"
+		;;
+	chlink) checkForLink "$2"
 		;;
 	*) showinfo
 		rv=0

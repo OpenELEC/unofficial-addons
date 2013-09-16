@@ -1,0 +1,690 @@
+﻿# XBMC Media Center language file
+msgid ""
+msgstr ""
+"Project-Id-Version: XBMC-Addons\n"
+"Report-Msgid-Bugs-To: alanwww1@xbmc.org\n"
+"POT-Creation-Date: 2013-09-13 16:05+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: sk\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2\n"
+
+msgctxt "#50001"
+msgid "Mount"
+msgstr "Pripojiť"
+
+msgctxt "#50002"
+msgid "Unmount"
+msgstr "Odpojiť"
+
+msgctxt "#50003"
+msgid "Deactivate"
+msgstr "Deaktivovať"
+
+msgctxt "#50004"
+msgid "Reset settings"
+msgstr "Vymazať nastavenia"
+
+msgctxt "#50005"
+msgid "Recreate container"
+msgstr "Znovu vytvoriť súbor"
+
+msgctxt "#50006"
+msgid "Format"
+msgstr "Formatovať"
+
+msgctxt "#50007"
+msgid "Store password"
+msgstr "Uložiť heslo"
+
+msgctxt "#50008"
+msgid "Remove stored password"
+msgstr "Vymazať uložené heslo"
+
+msgctxt "#50009"
+msgid "Choose action:"
+msgstr "Vyberte činnost"
+
+msgctxt "#50010"
+msgid "Passwords don't match."
+msgstr "Heslo sa nezhoduje."
+
+msgctxt "#50011"
+msgid "Enter password"
+msgstr "Zadajte heslo"
+
+msgctxt "#50012"
+msgid "Info"
+msgstr "Info"
+
+msgctxt "#50013"
+msgid "Item is deactivated."
+msgstr "Položka je deaktivovaná."
+
+msgctxt "#50014"
+msgid "Use Addon settings to re-activate it."
+msgstr "V nastaveniach doplnku ju môžete aktivotať-"
+
+msgctxt "#50015"
+msgid "Store password?"
+msgstr "Uložiť heslo?"
+
+msgctxt "#50016"
+msgid "It is possible to store password for this file."
+msgstr "Heslo pre tento súbor môže byž uložené."
+
+msgctxt "#50017"
+msgid "This way you won't need to specify it when mounting."
+msgstr "Nebudete ho musieť uvázat pri pripojovaní."
+
+msgctxt "#50018"
+msgid "It's stored encoded, but be carefull when using this feature."
+msgstr "Uloží sa kodovane, ale treba zachovávať opatrnosť!"
+
+msgctxt "#50019"
+msgid "Continue?"
+msgstr "Pokračovať?"
+
+msgctxt "#50020"
+msgid "Your current truecrypt file will be removed."
+msgstr "Truecrypt súbor bude vymazaný."
+
+msgctxt "#50021"
+msgid "Enter size in MB."
+msgstr "Zadajte veľkosť v MB."
+
+msgctxt "#50022"
+msgid "Creation of cantainer started."
+msgstr "Vytvorenie kontainéru začaté."
+
+msgctxt "#50023"
+msgid "Attempting to mount created file."
+msgstr "Pokus o pripojenie vytvoreného súboru."
+
+msgctxt "#50024"
+msgid "All settings for selected item will be removed."
+msgstr "Všetky nastavenia pre položku budú vymazané"
+
+msgctxt "#50025"
+msgid "Select file system:"
+msgstr "Vyberte systém súborov:"
+
+msgctxt "#50027"
+msgid "Formatting"
+msgstr "Formatovanie"
+
+msgctxt "#50028"
+msgid "Container will be formated with FAT32 by default."
+msgstr "Predvolený system súborov je FAT32."
+
+msgctxt "#50029"
+msgid "Would you like to choose other file system?"
+msgstr "Chcete vybrať iný systém súborov?"
+
+msgctxt "#50030"
+msgid "Truecrypt error"
+msgstr "Truecrypt chyba"
+
+msgctxt "#50031"
+msgid "Failed to mount file."
+msgstr "Pripojenie zlyhalo."
+
+msgctxt "#50032"
+msgid "Not proceeding with formatting."
+msgstr "Nepokračujem s formátovaním."
+
+msgctxt "#50033"
+msgid "Starting formatting."
+msgstr "Začínam formatovať"
+
+msgctxt "#50034"
+msgid "Formating completed."
+msgstr "Formátovanie ukončené"
+
+msgctxt "#50035"
+msgid "Failed to format drive."
+msgstr "Formátovanie sa nepodarilo."
+
+msgctxt "#50036"
+msgid "All files in your container will be removed!"
+msgstr "Všetky súbory v kontainery budú odstránené."
+
+msgctxt "#50037"
+msgid "Container mounted successfully after formatting."
+msgstr "Kontainer úspešne pripojený po formátovaní."
+
+msgctxt "#50038"
+msgid "Failed to mount file after formatting."
+msgstr "Nepodarilo sa pripojiť po formátovaní."
+
+msgctxt "#50039"
+msgid "Select item:"
+msgstr "Vyberte položku:"
+
+msgctxt "#50040"
+msgid "Tasks:"
+msgstr "Úlohy:"
+
+msgctxt "#50041"
+msgid "Create new Truecrypt volume"
+msgstr "Vytvoriť nový Truecrypt súbor"
+
+msgctxt "#50042"
+msgid "Assign existing TrueCrypt file"
+msgstr "Priradiť existujúci TrueCrypt súbor"
+
+msgctxt "#50043"
+msgid "Display name"
+msgstr "Zobrazovacie meno"
+
+msgctxt "#50044"
+msgid "Select folder for new file"
+msgstr "Vyberte adresár pre nový súbor"
+
+msgctxt "#50045"
+msgid "Select file"
+msgstr "Vyberte súbor"
+
+msgctxt "#50046"
+msgid "Select mount point/drive"
+msgstr "Vyberte prípojný bod/jednotku "
+
+msgctxt "#50047"
+msgid "Select icon (optional)"
+msgstr "Vyberte ikonu (nepovynné)"
+
+msgctxt "#50048"
+msgid "The truecrypt drive is mounted."
+msgstr "Truecrypt jednotka je pripojená."
+
+msgctxt "#50049"
+msgid "The truecrypt drive failed to mount."
+msgstr "Nepodarilo sa pripojit jednotku Truecrypt"
+
+msgctxt "#50050"
+msgid "The truecrypt drive is unmounted."
+msgstr "Truecrypt jednotka je odpojená."
+
+msgctxt "#50051"
+msgid "Select item:"
+msgstr "Vyberte položku:"
+
+msgctxt "#50052"
+msgid "assigned file"
+msgstr "priradený súbor"
+
+msgctxt "#50053"
+msgid "Creation of container started."
+msgstr "Vytvorenie kontainera začaté."
+
+msgctxt "#50054"
+msgid "Attempting to mount created file."
+msgstr "Pokus o pripojenie vytvoreného súboru."
+
+msgctxt "#50055"
+msgid "The truecrypt drive failed to unmount."
+msgstr "Nepodarilo sa odpojiť jednotku truecrypt"
+
+msgctxt "#50056"
+msgid "mounted"
+msgstr "pripojené"
+
+msgctxt "#50057"
+msgid "File deleted sucessfully."
+msgstr "Súbor vymazaný"
+
+msgctxt "#50058"
+msgid "Failed"
+msgstr "Neuspečné"
+
+msgctxt "#50059"
+msgid "Failed to delete specified file."
+msgstr "Nepodarilo sa vymazať súbor."
+
+msgctxt "#50060"
+msgid "Item"
+msgstr "Polozka"
+
+msgctxt "#50061"
+msgid "Failed to format truecrypt drive."
+msgstr "Nepodarilo sa naformatovať jednotku truecrypt."
+
+msgctxt "#50062"
+msgid "Formatting was successfull"
+msgstr "Formatovanie úspešne ukončené."
+
+msgctxt "#50063"
+msgid "Container created sucessfully"
+msgstr "Kontainer úspešne vytvorený."
+
+msgctxt "#50064"
+msgid "locked"
+msgstr "zamknuté"
+
+msgctxt "#50065"
+msgid "No action available as item is locked."
+msgstr "Úlohy nedostupné pretože položka je zamknutá."
+
+msgctxt "#50066"
+msgid "Change password"
+msgstr "Zmeniť heslo"
+
+msgctxt "#50067"
+msgid "Password changed sucessfully."
+msgstr "Heslo úspešne zmenené."
+
+msgctxt "#50068"
+msgid "Failed to change pasword."
+msgstr "Heslo sa nepodarilo zmeniť."
+
+msgctxt "#50069"
+msgid "Delete file?"
+msgstr "Vymazať súbor?"
+
+msgctxt "#50070"
+msgid "Wrong/Missing Setting"
+msgstr "Nesprávne/chýbajúce nastavenie"
+
+msgctxt "#50071"
+msgid "The Setting for the Truecrypt script is wrong or missing."
+msgstr "Nastavenie Truecrypt scriptu je nesprávne alebo chýba."
+
+msgctxt "#50072"
+msgid "The Setting for the TC File/partition is wrong or missing."
+msgstr "Nastavenie TC súboru / oddielu chýba alebo je nesprávne."
+
+msgctxt "#50073"
+msgid "No mount point was specified or it doesn't exists."
+msgstr "Prípojný bod nie je špecifikovaný alebo neexistuje."
+
+msgctxt "#50074"
+msgid "Allow unsafe operations"
+msgstr "Povoliť nebezpečné úlohy"
+
+msgctxt "#50075"
+msgid "Perform mount checks (off disables some actions)"
+msgstr "Povolit kontroly priponjenia (vypnuté vypne niektore úlohy)"
+
+msgctxt "#50076"
+msgid "Create mount folder if not exists"
+msgstr "Vytvoriť adresár pre prípojný bod ak neexistuje"
+
+msgctxt "#50077"
+msgid "Debugging mode"
+msgstr "Ladenie"
+
+msgctxt "#50078"
+msgid " - show password in log"
+msgstr " - zobraziť heslo v logu"
+
+msgctxt "#50079"
+msgid "Truecrypt file"
+msgstr "Súbor truecrypt"
+
+msgctxt "#50080"
+msgid "Mount point / drive"
+msgstr "Prípojný bod / zariadenie"
+
+msgctxt "#50081"
+msgid "Optional settings:"
+msgstr "Volitelné nastavenia:"
+
+msgctxt "#50082"
+msgid "Password"
+msgstr "Heslo"
+
+msgctxt "#50083"
+msgid "Icon"
+msgstr "Ikona"
+
+msgctxt "#50084"
+msgid "Use key file(s)"
+msgstr "Používať súbor(y) kľúča"
+
+msgctxt "#50085"
+msgid "Key file(s)"
+msgstr "Kľúčový súbor"
+
+msgctxt "#50086"
+msgid "Name"
+msgstr "Názov"
+
+msgctxt "#50087"
+msgid "Create key file"
+msgstr "Vytvoriť súbor použiteľný ako kľúč"
+
+msgctxt "#50088"
+msgid "Failed to create key file."
+msgstr "Nepodarilo sa vytvoriť súbor kľúca."
+
+msgctxt "#50089"
+msgid "Check XBMC log for details."
+msgstr "Detaily sa nachádzajú XBMC logu."
+
+msgctxt "#50090"
+msgid "Enable debug mode in plugin settings and run the task again for details."
+msgstr "Zapnite mód ladenia v nastaveniach doplnku a znova spuste úlohu pre zobrazenie detailov."
+
+msgctxt "#50091"
+msgid "Key file created successfuly."
+msgstr "Súbor použiteľný ako kľúč je úspešne vytvorený."
+
+msgctxt "#50092"
+msgid "Select key file no. "
+msgstr "Vyberte súbor kľuča č. "
+
+msgctxt "#50093"
+msgid " - number of key files (-1 means always ask for it)"
+msgstr " - počet súborov kľúča (-1 znamená vždy sa spýtať)"
+
+msgctxt "#50094"
+msgid " - show key files in log"
+msgstr " - zobraziť súbory kľuča v logu"
+
+msgctxt "#50095"
+msgid "Are key file(s) used?"
+msgstr "Používajú sa súbory kľúča?"
+
+msgctxt "#50096"
+msgid "Would you like to store key files number?"
+msgstr "Prajete si uložiť počet súborov kľúča?"
+
+msgctxt "#50097"
+msgid "Otherwise it will always ask for it."
+msgstr "Ináč sa bude stále pýtať na to."
+
+msgctxt "#50098"
+msgid "Would you like to use key file(s)?"
+msgstr "Prajete si použoť súbory kľúča?"
+
+msgctxt "#50099"
+msgid "Add key file(s)"
+msgstr "Pridať súbor(y) kľúča"
+
+msgctxt "#50100"
+msgid "Remove key file(s)"
+msgstr "Odobrať súbor(y) kľúča"
+
+msgctxt "#50101"
+msgid "Change key files(s)"
+msgstr "Zmeniť súbor(y) kľúča"
+
+msgctxt "#50102"
+msgid "Store key file(s) path"
+msgstr "Uložiť cesku k súboru(om) kľúča"
+
+msgctxt "#50103"
+msgid "Remove stored key file(s) path"
+msgstr "Odstrámiť uloženú cesku k súboru(om) kľúča"
+
+msgctxt "#50104"
+msgid "Drive has to be unmounted first."
+msgstr "Zariadenie musí byť najprv odpojené."
+
+msgctxt "#50105"
+msgid "Proceed?"
+msgstr "Pokračovať?"
+
+msgctxt "#50106"
+msgid "Key file(s) modified successfully."
+msgstr "Súbor(y) kľúča sú úspešne pozmenené."
+
+msgctxt "#50107"
+msgid "Failed to modify key file(s)."
+msgstr "Nepodarilo sa pozmeniť súbor(y) kľúča."
+
+msgctxt "#50108"
+msgid "Please provide information concerning old key file(s)."
+msgstr "Prosím zadajte informácie o starých súboroch kľúča."
+
+msgctxt "#50109"
+msgid "Please provide information concerning new key file(s)."
+msgstr "Prosím zadajte informácie o nových súboroch kľúča."
+
+msgctxt "#50110"
+msgid "Allow password or key files manipulation."
+msgstr "Povoliť zmeny v hesla a v súboroch kľúča."
+
+msgctxt "#50111"
+msgid "Tasks settings"
+msgstr "Nastavenie úloh"
+
+msgctxt "#50112"
+msgid "Debugging"
+msgstr "Ladenie"
+
+msgctxt "#50113"
+msgid "Store path to the key file(s)?"
+msgstr "Uložiť cestu k súboru(om) kľúča?"
+
+msgctxt "#50114"
+msgid "It is possible to key files path for this file."
+msgstr "Je možné uložiť cestu k súboru(om) kľúča pre tento súbor."
+
+msgctxt "#50115"
+msgid "Remove stored key file(s) path"
+msgstr "Odstrániť uloženú cestu k súboru(om) kľúča"
+
+msgctxt "#50116"
+msgid "Remove also stored number of key files?"
+msgstr "Odstrániť tiež uložený počet súborov kľúča?"
+
+msgctxt "#50117"
+msgid "Use alternative shell script"
+msgstr "Použiť alternatívny shell script"
+
+msgctxt "#50118"
+msgid "Alternative shell script"
+msgstr "Alternatívny shell script"
+
+msgctxt "#50119"
+msgid "Debugging and development"
+msgstr "Ladenie a vývoj"
+
+msgctxt "#50120"
+msgid "New file creation"
+msgstr "Vytvorenie nového súboru"
+
+msgctxt "#50121"
+msgid "Random number generator"
+msgstr "Generátor náhodných čísel"
+
+msgctxt "#50122"
+msgid "changing password or key file(s)"
+msgstr "menenie hesla alebo súboru(ov) kľúča"
+
+msgctxt "#50123"
+msgid "new file creation"
+msgstr "Vytvorenie nového súboru"
+
+msgctxt "#50124"
+msgid "Enter password for outer volume"
+msgstr "Zadajte heslo vonkajšieho zväzku"
+
+msgctxt "#50125"
+msgid "Enter password for hidden volume"
+msgstr "Zadajte heslo skrýtého zväzku"
+
+msgctxt "#50126"
+msgid "Select number of key files for outer volume"
+msgstr "Zadajte počet súborv kľúča vonkajšieho zväzku"
+
+msgctxt "#50127"
+msgid "Select number of key files for hidden volume"
+msgstr "Zadajte počet súborv kľúča skrýtého zväzku"
+
+msgctxt "#50128"
+msgid "Size of hidden volume is bigger or the same as size of outer volume."
+msgstr "Skritý zväzkok je väčší/rovnaký ako vonkajší zväzok."
+
+msgctxt "#50129"
+msgid "Enter size of outer volume in MB"
+msgstr "Zadajte velkosť vonkajšieho zväzku v MB"
+
+msgctxt "#50130"
+msgid "Enter size of hiden volume in MB"
+msgstr "Zadajte velkosť skrytého zväzku v MB"
+
+msgctxt "#50131"
+msgid "Creation process failed."
+msgstr "Proces vytvorenia zlihal."
+
+msgctxt "#50132"
+msgid "Volume created successfuly."
+msgstr "Zväzok úspešne vytvorený."
+
+msgctxt "#50133"
+msgid "Add volume to the list?"
+msgstr "Pridať zväzok do zoznamu?"
+
+msgctxt "#50134"
+msgid "Create container with hidden volume"
+msgstr "Vytvoriť kontainer so skrytým zväzkom"
+
+msgctxt "#50135"
+msgid "Enter old password"
+msgstr "Zadajte staré heslo"
+
+msgctxt "#50136"
+msgid "Enter new password"
+msgstr "Zadajte nové heslo"
+
+msgctxt "#50137"
+msgid "Enter number of new key files"
+msgstr "Zadajte počet nových súborov kľúča"
+
+msgctxt "#50138"
+msgid "Enter number of old key files"
+msgstr "Zadajte počet starých súborov kľúča"
+
+msgctxt "#50139"
+msgid "Enter password for outer volume"
+msgstr "Zadajte heslo vonkajšieho zväzku"
+
+msgctxt "#50140"
+msgid "Re-enter password for outer volume"
+msgstr "Znovu zadajte heslo vonkajšieho zväzku"
+
+msgctxt "#50141"
+msgid "Enter enter password for hidden volume"
+msgstr "Zadajte heslo skrýtého zväzku"
+
+msgctxt "#50142"
+msgid "Re-enter password for hidden volume"
+msgstr "Znovu zadajte heslo skrýtého zväzk"
+
+msgctxt "#50143"
+msgid "mount point in use"
+msgstr "prípojný bod sa používa"
+
+msgctxt "#50144"
+msgid "Actions not available as mount point is in use."
+msgstr "Úlohy sú nedostupné lebo prípojný bod sa používa."
+
+msgctxt "#50146"
+msgid "Enter password for"
+msgstr "Zadajte heslo pre"
+
+msgctxt "#50148"
+msgid "Choose partition"
+msgstr "Vyberte diskový oddiel"
+
+msgctxt "#50149"
+msgid "Choose type"
+msgstr "Vyberte typ"
+
+msgctxt "#50150"
+msgid "TrueCrypt file"
+msgstr "TrueCrypt súbor"
+
+msgctxt "#50151"
+msgid "Partition"
+msgstr "Diskový oddiel"
+
+msgctxt "#50152"
+msgid "No action available as mount point is in use."
+msgstr "Úlohy sú nedostupné lebo prípojný bod sa používa."
+
+msgctxt "#50153"
+msgid "Mount at start up"
+msgstr "Pripojiť pri štarte"
+
+msgctxt "#50154"
+msgid "Turn off mounting at start up"
+msgstr "Vypnuť pripojenie pri štarte"
+
+msgctxt "#50155"
+msgid "Mount with hidden volume protection"
+msgstr "Pripojiť s ochranou skrytého zväzku"
+
+msgctxt "#50156"
+msgid "Choose file to dismount"
+msgstr "Vyberte súbor na odpojenie"
+
+msgctxt "#50157"
+msgid "To add files to outer volume, use hidden volume protection."
+msgstr "Pridávajte súbory do vonk. zväzku iba s ochranou skr. zväzku."
+
+msgctxt "#50158"
+msgid "Otherwise you may destroy hidden volume."
+msgstr "Ináč možete zničiť skrytý zväzok."
+
+msgctxt "#50159"
+msgid "Failed to create new volume."
+msgstr "Nepodarilo sa vytvorit nový zväzok."
+
+msgctxt "#50160"
+msgid "Drive may not be connected."
+msgstr "Zariadenie nemusí byť pripojené."
+
+msgctxt "#50161"
+msgid "Volume"
+msgstr "Zväzok"
+
+msgctxt "#50162"
+msgid "TrueCrypt file with hidden volume"
+msgstr "TrueCrypt súbor so skrytým zväzkom"
+
+msgctxt "#50163"
+msgid "Choose volume type"
+msgstr "Vyberte typ zväzku"
+
+msgctxt "#50164"
+msgid "Select number of key files"
+msgstr "Vyberte počet súborov kľúča"
+
+msgctxt "#50165"
+msgid "No volume is mounted."
+msgstr "Nie je pripojený žiaden zväzok."
+
+msgctxt "#50166"
+msgid "Don't store any information"
+msgstr "Neukladať žiadné informácie"
+
+msgctxt "#50167"
+msgid "Allow storing password and key file paths (can be security breach)"
+msgstr "Povoliť ukladanie hesiel a cesty k súborom kľúča (možnosť narušenia bezpečnosti)"
+
+msgctxt "#50168"
+msgid "Store information about key file usage (can be security breach)"
+msgstr "Ukladať informáciu o použití súborov kľúča (možnosť narušenia bezpečnosti)"
+
+msgctxt "#50169"
+msgid "Security"
+msgstr "Bezpečnosť"
+
+msgctxt "#50170"
+msgid "Not proceeding with unmout."
+msgstr "Nepokračujem s odpojením."
+
+msgctxt "#50171"
+msgid "Volume is locked by other internal process."
+msgstr "Zväzok je uzamknutý iným interným procesom."
+
+msgctxt "#50172"
+msgid "Failed to mount/unmount after volume creation."
+msgstr "Nepodarilo sa pripojit/odpojit zväzok po vytvorení."

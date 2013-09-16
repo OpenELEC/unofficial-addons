@@ -1,0 +1,698 @@
+# XBMC Media Center language file
+msgid ""
+msgstr ""
+"Project-Id-Version: XBMC-Addons\n"
+"Report-Msgid-Bugs-To: alanwww1@xbmc.org\n"
+"POT-Creation-Date: 2013-09-13 16:05+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+msgctxt "#50001"
+msgid "Mount"
+msgstr ""
+
+msgctxt "#50002"
+msgid "Unmount"
+msgstr ""
+
+msgctxt "#50003"
+msgid "Deactivate"
+msgstr ""
+
+msgctxt "#50004"
+msgid "Reset settings"
+msgstr ""
+
+msgctxt "#50005"
+msgid "Recreate container"
+msgstr ""
+
+msgctxt "#50006"
+msgid "Format"
+msgstr ""
+
+msgctxt "#50007"
+msgid "Store password"
+msgstr ""
+
+msgctxt "#50008"
+msgid "Remove stored password"
+msgstr ""
+
+msgctxt "#50009"
+msgid "Choose action:"
+msgstr ""
+
+msgctxt "#50010"
+msgid "Passwords don't match."
+msgstr ""
+
+msgctxt "#50011"
+msgid "Enter password"
+msgstr ""
+
+msgctxt "#50012"
+msgid "Info"
+msgstr ""
+
+msgctxt "#50013"
+msgid "Item is deactivated."
+msgstr ""
+
+msgctxt "#50014"
+msgid "Use Addon settings to re-activate it."
+msgstr ""
+
+msgctxt "#50015"
+msgid "Store password?"
+msgstr ""
+
+msgctxt "#50016"
+msgid "It is possible to store password for this file."
+msgstr ""
+
+msgctxt "#50017"
+msgid "This way you won't need to specify it when mounting."
+msgstr ""
+
+msgctxt "#50018"
+msgid "It's stored encoded, but be carefull when using this feature."
+msgstr ""
+
+msgctxt "#50019"
+msgid "Continue?"
+msgstr ""
+
+msgctxt "#50020"
+msgid "Your current truecrypt file will be removed."
+msgstr ""
+
+msgctxt "#50021"
+msgid "Enter size in MB."
+msgstr ""
+
+msgctxt "#50022"
+msgid "Creation of cantainer started."
+msgstr ""
+
+msgctxt "#50023"
+msgid "Attempting to mount created file."
+msgstr ""
+
+msgctxt "#50024"
+msgid "All settings for selected item will be removed."
+msgstr ""
+
+msgctxt "#50025"
+msgid "Select file system:"
+msgstr ""
+
+#empty string with id 50026
+
+msgctxt "#50027"
+msgid "Formatting"
+msgstr ""
+
+msgctxt "#50028"
+msgid "Container will be formated with FAT32 by default."
+msgstr ""
+
+msgctxt "#50029"
+msgid "Would you like to choose other file system?"
+msgstr ""
+
+msgctxt "#50030"
+msgid "Truecrypt error"
+msgstr ""
+
+msgctxt "#50031"
+msgid "Failed to mount file."
+msgstr ""
+
+msgctxt "#50032"
+msgid "Not proceeding with formatting."
+msgstr ""
+
+msgctxt "#50033"
+msgid "Starting formatting."
+msgstr ""
+
+msgctxt "#50034"
+msgid "Formating completed."
+msgstr ""
+
+msgctxt "#50035"
+msgid "Failed to format drive."
+msgstr ""
+
+msgctxt "#50036"
+msgid "All files in your container will be removed!"
+msgstr ""
+
+msgctxt "#50037"
+msgid "Container mounted successfully after formatting."
+msgstr ""
+
+msgctxt "#50038"
+msgid "Failed to mount file after formatting."
+msgstr ""
+
+msgctxt "#50039"
+msgid "Select item:"
+msgstr ""
+
+msgctxt "#50040"
+msgid "Tasks:"
+msgstr ""
+
+msgctxt "#50041"
+msgid "Create new Truecrypt volume"
+msgstr ""
+
+msgctxt "#50042"
+msgid "Assign existing truecrypt file"
+msgstr ""
+
+msgctxt "#50043"
+msgid "Display name"
+msgstr ""
+
+msgctxt "#50044"
+msgid "Select folder for new file"
+msgstr ""
+
+msgctxt "#50045"
+msgid "Select file"
+msgstr ""
+
+msgctxt "#50046"
+msgid "Select mount point/drive"
+msgstr ""
+
+msgctxt "#50047"
+msgid "Select icon (optional)"
+msgstr ""
+
+msgctxt "#50048"
+msgid "The truecrypt drive is mounted."
+msgstr ""
+
+msgctxt "#50049"
+msgid "The truecrypt drive failed to mount."
+msgstr ""
+
+msgctxt "#50050"
+msgid "The truecrypt drive is unmounted."
+msgstr ""
+
+msgctxt "#50051"
+msgid "Select item:"
+msgstr ""
+
+msgctxt "#50052"
+msgid "assigned file"
+msgstr ""
+
+msgctxt "#50053"
+msgid "Creation of container started."
+msgstr ""
+
+msgctxt "#50054"
+msgid "Attempting to mount created file."
+msgstr ""
+
+msgctxt "#50055"
+msgid "The truecrypt drive failed to unmount."
+msgstr ""
+
+msgctxt "#50056"
+msgid "mounted"
+msgstr ""
+
+msgctxt "#50057"
+msgid "File deleted sucessfully."
+msgstr ""
+
+msgctxt "#50058"
+msgid "Failed"
+msgstr ""
+
+msgctxt "#50059"
+msgid "Failed to delete specified file."
+msgstr ""
+
+msgctxt "#50060"
+msgid "Item"
+msgstr ""
+
+msgctxt "#50061"
+msgid "Failed to format truecrypt drive."
+msgstr ""
+
+msgctxt "#50062"
+msgid "Formatting was successfull"
+msgstr ""
+
+msgctxt "#50063"
+msgid "Container created sucessfully"
+msgstr ""
+
+msgctxt "#50064"
+msgid "locked"
+msgstr ""
+
+msgctxt "#50065"
+msgid "No action available as item is locked."
+msgstr ""
+
+msgctxt "#50066"
+msgid "Change password"
+msgstr ""
+
+msgctxt "#50067"
+msgid "Password changed sucessfully."
+msgstr ""
+
+msgctxt "#50068"
+msgid "Failed to change pasword."
+msgstr ""
+
+msgctxt "#50069"
+msgid "Delete file?"
+msgstr ""
+
+msgctxt "#50070"
+msgid "Wrong/Missing Setting"
+msgstr ""
+
+msgctxt "#50071"
+msgid "The Setting for the Truecrypt script is wrong or missing."
+msgstr ""
+
+msgctxt "#50072"
+msgid "The Setting for the TC File / partition to mount is wrong or missing."
+msgstr ""
+
+msgctxt "#50073"
+msgid "No mount point was specified or it doesn't exists."
+msgstr ""
+
+#items in settings
+
+msgctxt "#50074"
+msgid "Allow unsafe operations"
+msgstr ""
+
+msgctxt "#50075"
+msgid "Perform mount checks (off disables some actions)"
+msgstr ""
+
+msgctxt "#50076"
+msgid "Create mount folder if not exists"
+msgstr ""
+
+msgctxt "#50077"
+msgid "Debugging mode"
+msgstr ""
+
+msgctxt "#50078"
+msgid " - show password in log"
+msgstr ""
+
+msgctxt "#50079"
+msgid "Truecrypt file"
+msgstr ""
+
+msgctxt "#50080"
+msgid "Mount point / drive"
+msgstr ""
+
+msgctxt "#50081"
+msgid "Optional settings:"
+msgstr ""
+
+msgctxt "#50082"
+msgid "Password"
+msgstr ""
+
+msgctxt "#50083"
+msgid "Icon"
+msgstr ""
+
+msgctxt "#50084"
+msgid "Use key file(s)"
+msgstr ""
+
+msgctxt "#50085"
+msgid "Key file(s)"
+msgstr ""
+
+msgctxt "#50086"
+msgid "Name"
+msgstr ""
+
+msgctxt "#50087"
+msgid "Create key file"
+msgstr ""
+
+msgctxt "#50088"
+msgid "Failed to create key file."
+msgstr ""
+
+msgctxt "#50089"
+msgid "Check XBMC log for details."
+msgstr ""
+
+msgctxt "#50090"
+msgid "Enable debug mode in plugin settings and run the task again for details."
+msgstr ""
+
+msgctxt "#50091"
+msgid "Key file created successfuly."
+msgstr ""
+
+msgctxt "#50092"
+msgid "Select key file no. "
+msgstr ""
+
+msgctxt "#50093"
+msgid " - number of key files (-1 means always ask for it) "
+msgstr ""
+
+msgctxt "#50094"
+msgid " - show key files in log"
+msgstr ""
+
+msgctxt "#50095"
+msgid "Are key file(s) used?"
+msgstr ""
+
+msgctxt "#50096"
+msgid "Would you like to store key files number?"
+msgstr ""
+
+msgctxt "#50097"
+msgid "Otherwise it will always ask for it."
+msgstr ""
+
+msgctxt "#50098"
+msgid "Would you like to use key file(s)?"
+msgstr ""
+
+msgctxt "#50099"
+msgid "Add key file(s)"
+msgstr ""
+
+msgctxt "#50100"
+msgid "Remove key file(s)"
+msgstr ""
+
+msgctxt "#50101"
+msgid "Change key files(s)"
+msgstr ""
+
+msgctxt "#50102"
+msgid "Store key file(s) path"
+msgstr ""
+
+msgctxt "#50103"
+msgid "Remove stored key file(s) path"
+msgstr ""
+
+msgctxt "#50104"
+msgid "Drive has to be unmounted first."
+msgstr ""
+
+msgctxt "#50105"
+msgid "Proceed?"
+msgstr ""
+
+msgctxt "#50106"
+msgid "Key file(s) modified successfully."
+msgstr ""
+
+msgctxt "#50107"
+msgid "Failed to modify key file(s)."
+msgstr ""
+
+msgctxt "#50108"
+msgid "Please provide information concerning old key file(s)."
+msgstr ""
+
+msgctxt "#50109"
+msgid "Please provide information concerning new key file(s)."
+msgstr ""
+
+msgctxt "#50110"
+msgid "Allow password or key files manipulation."
+msgstr ""
+
+msgctxt "#50111"
+msgid "Tasks settings"
+msgstr ""
+
+msgctxt "#50112"
+msgid "Debugging"
+msgstr ""
+
+msgctxt "#50113"
+msgid "Store path to the key file(s)?"
+msgstr ""
+
+msgctxt "#50114"
+msgid "It is possible to key files path for this file."
+msgstr ""
+
+msgctxt "#50115"
+msgid "Remove stored key file(s) path"
+msgstr ""
+
+msgctxt "#50116"
+msgid "Remove also stored number of key files?"
+msgstr ""
+
+msgctxt "#50117"
+msgid "Use alternative shell script"
+msgstr ""
+
+msgctxt "#50118"
+msgid "Alternative shell script"
+msgstr ""
+
+msgctxt "#50119"
+msgid "Debugging and development"
+msgstr ""
+
+msgctxt "#50120"
+msgid "New file creation"
+msgstr ""
+
+msgctxt "#50121"
+msgid "Random number generator"
+msgstr ""
+
+msgctxt "#50122"
+msgid "changing password or key file(s)"
+msgstr ""
+
+msgctxt "#50123"
+msgid "new file creation"
+msgstr ""
+
+msgctxt "#50124"
+msgid "Enter password for outer volume"
+msgstr ""
+
+msgctxt "#50125"
+msgid "Enter password for hidden volume"
+msgstr ""
+
+msgctxt "#50126"
+msgid "Select number of key files for outer volume"
+msgstr ""
+
+msgctxt "#50127"
+msgid "Select number of key files for hidden volume"
+msgstr ""
+
+msgctxt "#50128"
+msgid "Size of hidden volume is bigger or the same as size of outer volume."
+msgstr ""
+
+msgctxt "#50129"
+msgid "Enter size of outer volume in MB"
+msgstr ""
+
+msgctxt "#50130"
+msgid "Enter size of hiden volume in MB"
+msgstr ""
+
+msgctxt "#50131"
+msgid "Creation process failed."
+msgstr ""
+
+msgctxt "#50132"
+msgid "Volume created successfuly."
+msgstr ""
+
+msgctxt "#50133"
+msgid "Add volume to the list?"
+msgstr ""
+
+msgctxt "#50134"
+msgid "Create container with hidden volume"
+msgstr ""
+
+msgctxt "#50135"
+msgid "Enter old password"
+msgstr ""
+
+msgctxt "#50136"
+msgid "Enter new password"
+msgstr ""
+
+msgctxt "#50137"
+msgid "Enter number of new key files"
+msgstr ""
+
+msgctxt "#50138"
+msgid "Enter number of old key files"
+msgstr ""
+
+msgctxt "#50139"
+msgid "Enter password for outer volume"
+msgstr ""
+
+msgctxt "#50140"
+msgid "Re-enter password for outer volume"
+msgstr ""
+
+msgctxt "#50141"
+msgid "Enter enter password for hidden volume"
+msgstr ""
+
+msgctxt "#50142"
+msgid "Re-enter password for hidden volume"
+msgstr ""
+
+msgctxt "#50143"
+msgid "mount point in use"
+msgstr ""
+
+msgctxt "#50144"
+msgid "Actions not available as mount point is in use."
+msgstr ""
+
+#empty string with id 50145
+
+msgctxt "#50146"
+msgid "Enter password for"
+msgstr ""
+
+#empty string with id 50147
+
+msgctxt "#50148"
+msgid "Choose partition"
+msgstr ""
+
+msgctxt "#50149"
+msgid "Choose type"
+msgstr ""
+
+msgctxt "#50150"
+msgid "TrueCrypt file"
+msgstr ""
+
+msgctxt "#50151"
+msgid "Partition"
+msgstr ""
+
+msgctxt "#50152"
+msgid "No action available as mount point is in use."
+msgstr ""
+
+msgctxt "#50153"
+msgid "Mount at start up"
+msgstr ""
+
+msgctxt "#50154"
+msgid "Turn off mounting at start up"
+msgstr ""
+
+msgctxt "#50155"
+msgid "Mount with hidden volume protection"
+msgstr ""
+
+msgctxt "#50156"
+msgid "Choose file to dismount"
+msgstr ""
+
+msgctxt "#50157"
+msgid "To add files to outer volume, mount it with hidden volume protection."
+msgstr ""
+
+msgctxt "#50158"
+msgid "Otherwise you may destroy hidden volume."
+msgstr ""
+
+msgctxt "#50159"
+msgid "Failed to create new volume."
+msgstr ""
+
+msgctxt "#50160"
+msgid "Drive may not be connected."
+msgstr ""
+
+msgctxt "#50161"
+msgid "Volume"
+msgstr ""
+
+msgctxt "#50162"
+msgid "TrueCrypt file with hidden volume"
+msgstr ""
+
+msgctxt "#50163"
+msgid "Choose volume type"
+msgstr ""
+
+msgctxt "#50164"
+msgid "Select number of key files"
+msgstr ""
+
+msgctxt "#50165"
+msgid "No volume is mounted."
+msgstr ""
+
+msgctxt "#50166"
+msgid "Don't store any information"
+msgstr ""
+
+msgctxt "#50167"
+msgid "Allow storing password and key file paths (can be security breach)"
+msgstr ""
+
+msgctxt "#50168"
+msgid "Store information about key file usage (can be security breach)"
+msgstr ""
+
+msgctxt "#50169"
+msgid "Security"
+msgstr ""
+
+msgctxt "#50170"
+msgid "Not proceeding with unmout."
+msgstr ""
+
+msgctxt "#50171"
+msgid "Volume is locked by other internal process."
+msgstr ""
+
+msgctxt "#50172"
+msgid "Failed to mount/unmount after volume creation."
+msgstr ""
