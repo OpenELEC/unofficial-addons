@@ -1,3 +1,6 @@
+[B]3.5.1[/B]
+ - no changes. version bump only
+
 [B]3.5.0[/B]
 Added:
  - Support for key files - creation, mounting, adding, changing and removing
