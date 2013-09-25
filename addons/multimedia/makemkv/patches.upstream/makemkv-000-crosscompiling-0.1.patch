@@ -1,5 +1,5 @@
 diff --git a/lib/makefile.linux b/lib/makefile.linux
-index b3b5afa..07322ad 100644
+index 15425ff..c2db198 100644
 --- a/lib/makefile.linux
 +++ b/lib/makefile.linux
 @@ -1,10 +1,10 @@
@@ -19,7 +19,7 @@ index b3b5afa..07322ad 100644
  LIBDIR=${PREFIX}/lib
  
  
--all: out/libdriveio.so.0 out/libmakemkv.so.1 out/makemkv
+-all: out/libdriveio.so.0 out/libmakemkv.so.1 out/makemkv out/libmmbd.so.0
 +all: out/libdriveio.so.0 out/libmakemkv.so.1
  	@echo "type \"sudo make -f makefile.linux install\" to install"
  
