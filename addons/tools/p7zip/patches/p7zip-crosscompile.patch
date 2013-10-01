@@ -1,0 +1,15 @@
+diff --git a/makefile.machine b/makefile.machine
+index 05731d8..7d7ef22 100644
+--- a/makefile.machine
++++ b/makefile.machine
+@@ -10,8 +10,8 @@ ALLFLAGS=${OPTFLAGS} -pipe -s \
+ 	-D_7ZIP_LARGE_PAGES \
+ 	$(LOCAL_FLAGS)
+ 
+-CXX=g++ $(ALLFLAGS)
+-CC=gcc $(ALLFLAGS)
++CXX=$(TARGET_CXX) $(ALLFLAGS)
++CC=$(TARGET_CC) $(ALLFLAGS)
+ CC_SHARED=-fPIC
+ LINK_SHARED=-fPIC -shared
+ 
