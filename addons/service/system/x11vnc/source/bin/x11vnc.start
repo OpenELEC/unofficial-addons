@@ -1,0 +1,61 @@
+#!/bin/sh
+
+################################################################################
+#      This file is part of OpenELEC - http://www.openelec.tv
+#      Copyright (C) 2009-2013 Stephan Raue (stephan@openelec.tv)
+#      Copyright (C) 2012      x23
+#      Copyright (C) 2012-2013 ultraman
+#
+#  This Program is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 2, or (at your option)
+#  any later version.
+#
+#  This Program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+#  GNU General Public License for more details.
+#
+#  You should have received a copy of the GNU General Public License
+#  along with OpenELEC.tv; see the file COPYING.  If not, write to
+#  the Free Software Foundation, 51 Franklin Street, Suite 500, Boston, MA 02110, USA.
+#  http://www.gnu.org/copyleft/gpl.html
+################################################################################
+
+. /etc/profile
+
+LOCKDIR="/var/lock/"
+LOCKFILE="x11vnc.disabled"
+
+ADDON_DIR="$HOME/.xbmc/addons/service.system.x11vnc"
+ADDON_HOME="$HOME/.xbmc/userdata/addon_data/service.system.x11vnc"
+ADDON_SETTINGS="$ADDON_HOME/settings.xml"
+
+ADDON_CONFIG_DIR="$ADDON_HOME/config"
+
+if [ ! -f "$ADDON_SETTINGS" ]; then
+  mkdir -p $ADDON_HOME
+  cp $ADDON_DIR/settings-default.xml $ADDON_SETTINGS
+fi
+
+mkdir -p /var/config
+cat "$ADDON_DIR/settings-default.xml" | awk -F\" '{print $2"=\""$4"\""}' | sed '/^=/d' > /var/config/x11vnc.conf.default
+cat "$ADDON_SETTINGS" | awk -F\" '{print $2"=\""$4"\""}' | sed '/^=/d' > /var/config/x11vnc.conf
+
+. /var/config/x11vnc.conf.default
+. /var/config/x11vnc.conf
+
+x11vnc.stop
+rm -rf "$LOCKDIR/$LOCKFILE" &>/dev/null
+
+if [ ! "$(pidof x11vnc)" ];then
+  while [ true ] ; do
+    if [ -f "$LOCKDIR/$LOCKFILE" ] ; then
+      break
+    fi
+
+    x11vnc -storepasswd $VNC_PASSWORD $ADDON_HOME/passwd.xbmc >/dev/null &>/dev/null
+    exec x11vnc -forever -loop -nopw -rfbauth $ADDON_HOME/passwd.xbmc -display :0 -rfbport $VNC_PORT &>/dev/null
+    sleep 1
+  done &
+fi

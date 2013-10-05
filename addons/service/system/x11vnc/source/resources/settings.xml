@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+  <category label="60000" >
+    <setting type="lsep" />
+    <setting id="VNC_PORT" type="number" label="60010" default="5900" />
+    <setting id="VNC_PASSWORD" type="text"   label="60020" default="openelec" />
+  </category>
+</settings>

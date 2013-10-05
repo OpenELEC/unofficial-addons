@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+  <string id="60000">VNC</string>
+  <string id="60010">VNC Port</string>
+  <string id="60020">VNC Password</string>
+</strings>

@@ -1,0 +1,5 @@
+<settings>
+    <setting id="VNC_PASSWORD" value="openelec" />
+    <setting id="VNC_PORT" value="5900" />
+</settings>
+
