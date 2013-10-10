@@ -1,0 +1,94 @@
+#!/bin/sh
+
+################################################################################
+#  Copyright (C) Peter Smorada 2013
+#
+#  This Program is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 2, or (at your option)
+#  any later version.
+#
+#  This Program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+#  GNU General Public License for more details.
+#
+#  You should have received a copy of the GNU General Public License
+#  along with OpenELEC.tv; see the file COPYING.  If not, write to
+#  the Free Software Foundation, 51 Franklin Street, Suite 500, Boston, MA 02110, USA.
+#  http://www.gnu.org/copyleft/gpl.html
+################################################################################
+
+db="/storage/.xbmc/userdata/addon_data/plugin.program.smartmontools/drivedb.h"
+config="/storage/.config/smartd.conf"
+exec_dir="/storage/.xbmc/addons/plugin.program.smartmontools/bin"
+smartd="smartd"
+SMARTD_BIN="$exec_dir/$smartd"
+warning_exec="$exec_dir/smartd_warning.sh"
+
+start(){
+	echo Starting smartd daemon
+	$SMARTD_BIN --configfile="$config" --drivedb="$db" --warnexec="$warning_exec"
+	return $?
+}
+
+stop(){
+	echo Stopping smartd daemon
+	killall $smartd
+	return $?
+}
+
+reload(){
+	echo -n "Reloading smartd configuration: "
+	killall -s HUP $smartd
+	return $?
+}
+
+report(){
+	echo -n "Checking SMART devices now."
+	killall -s USR1 $smartd
+	return $?
+}
+
+status(){
+	pidof $smartd >& /dev/null 
+	if [ "$?" == "0" ]; then
+		echo "$smartd is running."
+		return 0
+	else
+		echo "$smartd is not running."
+		return 1
+	fi
+}
+
+showinfo(){
+echo Usage:
+}
+
+
+case "$1" in
+	start) start
+		rv=$?
+		;;
+	stop) stop
+		rv=$?
+	    ;;
+	reload) reload
+		rv=$?
+		;;
+	report) report
+		rv=$?
+		;;
+	status) status
+		rv=$?
+		;;
+	*) showinfo
+		rv=0
+		;;
+esac
+if [ "$rv" != "0" ]; then
+	echo return value: $rv
+fi
+
+
+exit $rv

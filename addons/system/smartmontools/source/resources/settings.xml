@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+	<category label="30218">
+		<setting id="runOnStartup" type="bool" label="50021" default="true" />
+		<setting id="showPopups" type="bool" label="50023" default="true" />
+        <setting id="diskTypes" visible="false" type="text" label="" default="" />
+        <setting id="updateDB" type="bool" label="50022" default="true" />
+        <setting id="dbUpdateInterval" type="labelenum" label="Update drive databes every (in days)" default="5" visible="false" values="1|3|5|7|14|30"/>
+        <setting id="lastDBupdateChecked" visible="false" type="text" label="" default="" />
+	</category>
+</settings>
