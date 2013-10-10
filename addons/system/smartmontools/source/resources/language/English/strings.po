@@ -1,0 +1,254 @@
+# XBMC Media Center language file
+msgid ""
+msgstr ""
+"Project-Id-Version: XBMC-Addons\n"
+"Report-Msgid-Bugs-To: alanwww1@xbmc.org\n"
+"POT-Creation-Date: 2013-09-13 16:05+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+msgctxt "#50001"
+msgid "smartd daemon started"
+msgstr ""
+
+msgctxt "#50002"
+msgid "Select device type"
+msgstr ""
+
+msgctxt "#50003"
+msgid "Setting changed."
+msgstr ""
+
+msgctxt "#50004"
+msgid "Refresh folder for change to activate."
+msgstr ""
+
+msgctxt "#50005"
+msgid "Set device type"
+msgstr ""
+
+msgctxt "#50006"
+msgid "Short"
+msgstr ""
+
+msgctxt "#50007"
+msgid "Extended"
+msgstr ""
+
+msgctxt "#50008"
+msgid "Conveyance"
+msgstr ""
+
+msgctxt "#50009"
+msgid "Offline"
+msgstr ""
+
+msgctxt "#50010"
+msgid "Cancel running test"
+msgstr ""
+
+msgctxt "#50011"
+msgid "Choose test type:"
+msgstr ""
+
+msgctxt "#50012"
+msgid "smartd daemon tasks:"
+msgstr ""
+
+msgctxt "#50013"
+msgid "reload configuration file"
+msgstr ""
+
+msgctxt "#50014"
+msgid "run test now"
+msgstr ""
+
+msgctxt "#50015"
+msgid "stop"
+msgstr ""
+
+msgctxt "#50016"
+msgid "start"
+msgstr ""
+
+msgctxt "#50017"
+msgid "show log"
+msgstr ""
+
+msgctxt "#50018"
+msgid "Choose disk for smartctl:"
+msgstr ""
+
+msgctxt "#50019"
+msgid "custom device type"
+msgstr ""
+
+msgctxt "#50020"
+msgid "Enter device type string"
+msgstr ""
+
+msgctxt "#50021"
+msgid "Run smartd on startup."
+msgstr ""
+
+msgctxt "#50022"
+msgid "Check drive database updates on startup"
+msgstr ""
+
+msgctxt "#50023"
+msgid "Show smartd popup messages"
+msgstr ""
+
+msgctxt "#50024"
+msgid "Failed to start smartd daemon."
+msgstr ""
+
+msgctxt "#50025"
+msgid "smartd daemon stopped"
+msgstr ""
+
+msgctxt "#50026"
+msgid "Failed to start smartd daemon."
+msgstr ""
+
+msgctxt "#50027"
+msgid "Perform self-test"
+msgstr ""
+
+msgctxt "#50028"
+msgid "Overall health status"
+msgstr ""
+
+msgctxt "#50029"
+msgid "health status"
+msgstr ""
+
+msgctxt "#50030"
+msgid "Other:"
+msgstr ""
+
+msgctxt "#50031"
+msgid "Show XBMC log entries"
+msgstr ""
+
+msgctxt "#50032"
+msgid "All available information about device"
+msgstr ""
+
+msgctxt "#50033"
+msgid "SMART information about device"
+msgstr ""
+
+msgctxt "#50034"
+msgid "Self test started"
+msgstr ""
+
+msgctxt "#50035"
+msgid "Failed to start self test."
+msgstr ""
+
+msgctxt "#50036"
+msgid "min."
+msgstr ""
+
+msgctxt "#50037"
+msgid "Drive information"
+msgstr ""
+
+msgctxt "#50038"
+msgid "Reports"
+msgstr ""
+
+msgctxt "#50039"
+msgid "SMART capabilities"
+msgstr ""
+
+msgctxt "#50040"
+msgid "SMART attributes (vendor specific)"
+msgstr ""
+
+msgctxt "#50041"
+msgid "SMART Error Log"
+msgstr ""
+
+msgctxt "#50042"
+msgid "Extended Comprehensive SMART error log (ATA only)"
+msgstr ""
+
+msgctxt "#50043"
+msgid "SMART self-test log"
+msgstr ""
+
+msgctxt "#50044"
+msgid "Custom log report"
+msgstr ""
+
+msgctxt "#50045"
+msgid "Extended SMART self-test log (ATA only)"
+msgstr ""
+
+msgctxt "#50046"
+msgid "ATA Device Statistics log (ATA only)"
+msgstr ""
+
+msgctxt "#50047"
+msgid "Background scan results log (SCSI only)"
+msgstr ""
+
+msgctxt "#50048"
+msgid "Current temperature and ranges (ATA only)"
+msgstr ""
+
+msgctxt "#50049"
+msgid "Temperature history (ATA only)"
+msgstr ""
+
+msgctxt "#50050"
+msgid "SATA Phy Event Counters (SATA only)"
+msgstr ""
+
+msgctxt "#50051"
+msgid "SAS (SSP) Protocol Specific log (SCSI only)"
+msgstr ""
+
+msgctxt "#50052"
+msgid "Log Directory"
+msgstr ""
+
+msgctxt "#50053"
+msgid "SSD Statistics log"
+msgstr ""
+
+msgctxt "#50054"
+msgid " (ATA only)"
+msgstr ""
+
+msgctxt "#50055"
+msgid " (SATA only)"
+msgstr ""
+
+msgctxt "#50056"
+msgid " (SCSI only)"
+msgstr ""
+
+msgctxt "#50057"
+msgid "SMART warnings were detected."
+msgstr ""
+
+msgctxt "#50058"
+msgid "Check smartmontools for more details."
+msgstr ""
+
+msgctxt "#50059"
+msgid "Please restart OpenELEC before using this addon!"
+msgstr ""
+
+msgctxt "#50060"
+msgid ""
+msgstr ""
