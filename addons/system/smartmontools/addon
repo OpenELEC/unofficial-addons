@@ -23,8 +23,6 @@
 
 . config/options $1
 
-ADDON_DIR="/storage/.xbmc/addons/$PKG_ADDON_ID"
-
 mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
 cp $PKG_BUILD/smartctl $ADDON_BUILD/$PKG_ADDON_ID/bin/smartctl
 cp $PKG_BUILD/smartd $ADDON_BUILD/$PKG_ADDON_ID/bin/smartd

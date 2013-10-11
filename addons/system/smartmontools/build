@@ -24,4 +24,10 @@
 . config/options $1
 
 # make smartmontools binarys
+cd $PKG_BUILD
+
+./configure --host=$TARGET_NAME \
+--build=$HOST_NAME \
+--prefix=/usr
+
 make
