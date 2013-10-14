@@ -1,3 +1,6 @@
+[B]3.5.2[/B]
+ - rebuild for OpenELEC-4.0
+
 [B]3.5.1[/B]
  - no changes. version bump only
 

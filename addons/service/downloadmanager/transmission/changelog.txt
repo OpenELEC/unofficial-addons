@@ -1,3 +1,6 @@
+4.0.0
+- rebuild for OpenELEC-4.0
+
 3.1.5
 - options to change incoming/watch dirs
 

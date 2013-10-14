@@ -1,3 +1,6 @@
+4.0.0
+- rebuild for OpenELEC-4.0
+
 3.1.9
 - fixed sort series with sNNeNN in name and added option to switch on/off, default is off
 - added sort based on rutorrent labels function, allways on!!

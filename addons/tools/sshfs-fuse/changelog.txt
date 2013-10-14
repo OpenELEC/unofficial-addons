@@ -1,2 +1,5 @@
+4.0.0
+- rebuild for OpenELEC-4.0
+
 3.1.0
 - initial addon based on sshfs-fuse-2.4
