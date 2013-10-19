@@ -688,3 +688,7 @@ msgstr "Zväzok je uzamknutý iným interným procesom."
 msgctxt "#50172"
 msgid "Failed to mount/unmount after volume creation."
 msgstr "Nepodarilo sa pripojit/odpojit zväzok po vytvorení."
+
+msgctxt "#50173"
+msgid "Prosím reštartujte OpenElec pred použitím doplnku!"
+msgstr ""

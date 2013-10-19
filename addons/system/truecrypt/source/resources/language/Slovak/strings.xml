@@ -173,4 +173,5 @@
 	<string id="50170">Nepokračujem s odpojením.</string>
 	<string id="50171">Zväzok je uzamknutý iným interným procesom.</string>
 	<string id="50172">Nepodarilo sa pripojit/odpojit zväzok po vytvorení.</string>
+	<string id="50173">Prosím reštartujte OpenElec pred použitím doplnku!</string>
 </strings>
