@@ -696,3 +696,7 @@ msgstr ""
 msgctxt "#50172"
 msgid "Failed to mount/unmount after volume creation."
 msgstr ""
+
+msgctxt "#50173"
+msgid "Please restart OpenELEC before using this addon!"
+msgstr ""

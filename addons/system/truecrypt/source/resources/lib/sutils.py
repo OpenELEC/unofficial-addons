@@ -22,6 +22,7 @@ import re;
 import urllib2;
 import sys;
 import random;
+import subprocess
 
 shellCharsToBeEscaped = ["$", "\"", "\\", "`"];
 
@@ -42,11 +43,18 @@ def getDaysFromToday(numDays):
 
 def findAllMatches(string, pattern, flag = re.MULTILINE | re.DOTALL):
     regex = re.compile(pattern , flag);
-    return regex.findall(string);
+    list = regex.findall(string);
+    re.purge();
+    return list;
 
-def findMatch(string, pattern, flag = re.MULTILINE | re.DOTALL):
-    regex = re.compile(pattern , flag);
-    return regex.match(string);
+def findMatch(string, pattern, flag = re.MULTILINE | re.DOTALL, group = 0):
+    m = re.search(pattern, string, flag);
+    if m != None:
+        match = m.group(group);
+        print(match);
+        return match;
+    else:
+        return None;
 
 def createRequest(url, ParamDictionary={}):
     ""
@@ -91,11 +99,11 @@ def downloadFile(url, filePath, userAgent = None, sendStatusTo = None):
             sendStatusTo.receiveStatus(status);
     downloadedFile.close()
 
-def get_params():
-    param=[];
-    paramstring=sys.argv[2];
+def get_params(string = None):
+    param={};
+    paramstring=sys.argv[2] if string == None else string;
     if len(paramstring)>=2:
-        params=sys.argv[2];
+        params=sys.argv[2] if string == None else string;
         cleanedparams=params.replace('?','');
         if (params[len(params)-1]=='/'):
             params=params[0:len(params)-2]
@@ -105,7 +113,7 @@ def get_params():
             splitparams={};
             splitparams=pairsofparams[i].split('=');
             if (len(splitparams))==2:
-                param[splitparams[0]]=splitparams[1];
+                param[urllib2.unquote(splitparams[0])]=urllib2.unquote(splitparams[1]);
     return param;
 
 def encodeStr(sourceStr):
@@ -162,6 +170,16 @@ def decodeStr(sourceString):
         i+=1;
     return retStr;
 
+def isFileExecutableByOwner(path):
+    cmd = "ls -l " + path;
+    p = subprocess.Popen(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE, shell=True);
+    output, errors = p.communicate();
+    
+    if output and output[3] == "x":
+        return True;
+    else:
+        return False;
+
 def escapeCharsForShell(string):
     """Method escapes special characters in string to be used in linux shell."""    
     tempStr = ""
@@ -174,6 +192,23 @@ def escapeCharsForShell(string):
             if i == (len(shellCharsToBeEscaped) -1):
                 tempStr = tempStr + a;
     return tempStr;
+
+def readFileAsString(path):
+    with open (path, "r") as f:
+        text = f.read();
+        return text;
+    
+def readFileAsStringShell(path):
+    cmd = "cat \"" + path + "\"";            
+    p = subprocess.Popen(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE, shell=True);
+    output, errors = p.communicate();
+    return output;
+
+def readFileAsStringAndFilterShell(path, searchString, regex = False):
+    cmd = "cat \"" + path + "\" | grep " +("-E " if regex else "") +  "\"" +  searchString + "\"";            
+    p = subprocess.Popen(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE, shell=True);
+    output, errors = p.communicate();
+    return output;
 
 #print(escapeCharsForShell("$'dfsa&%^*"));
 #u = "http://python.org/ftp/python/2.7.3/python-2.7.3.msi"

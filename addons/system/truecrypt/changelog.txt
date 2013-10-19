@@ -1,3 +1,8 @@
+[B]3.5.3[/B]
+ Fixed:
+ - Exception thrown right after installation of addon before exec permission is given
+   (before OpenELEC gets restarted) - user is notified that restart is needed. 
+
 [B]3.5.2[/B]
  - rebuild for OpenELEC-4.0
 

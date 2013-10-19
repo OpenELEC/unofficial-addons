@@ -36,10 +36,10 @@ import consts;
 import sutils;  # @UnresolvedImport
 import tcitem;  # @UnresolvedImport
 import sutilsxbmc;  # @UnresolvedImport
-from time import sleep
+
 
 reload(sys);
-sys.setdefaultencoding("utf-8");
+sys.setdefaultencoding("utf-8");# @UndefinedVariable
 
 # Script constants
 __scriptname__ = "TrueCrypt"
@@ -1290,21 +1290,28 @@ else:  # creation of menu strutured as xbmc folders
         pass;    
         
     if index == None : # creates initial folder structured menu if  index value is None
-        activeItems = tcitem.getTCitems(True);
-        
-        if len(activeItems) > 0:
-            addFolderItem(consts.fontBold + consts.colorBlue + addon.getLocalizedString(50039) + 
-                          consts.colorEnd + consts.fontBoldEnd, -99);  # Select item:
-            addAllActiveItemsToXBMCView(activeItems);
-        addFolderItem(consts.fontBold + consts.colorBlue + addon.getLocalizedString(50040) +
-                      consts.colorEnd + consts.fontBoldEnd, -99);   # Tasks:
-        addFolderItem(addon.getLocalizedString(50001), -5);   # Mount
-        addFolderItem(addon.getLocalizedString(50002), -6);   # Unmount
-        if not dontStoreAnyInfo:
-            addFolderItem(addon.getLocalizedString(50042), -1); #"Assign existing truecrypt file"
-        addFolderItem(addon.getLocalizedString(50041), -2);  # Create new Truecrypt volume 
-        addFolderItem(addon.getLocalizedString(50087), -3); # "Create key file"
-#         addFolderItem("Gui test", -98); 
+           
+        # test if exec rights are given to the script
+        if sutils.isFileExecutableByOwner(tcitem.shellScript):
+            activeItems = tcitem.getTCitems(True);
+            
+            if len(activeItems) > 0:
+                addFolderItem(consts.fontBold + consts.colorBlue + addon.getLocalizedString(50039) + 
+                              consts.colorEnd + consts.fontBoldEnd, -99);  # Select item:
+                addAllActiveItemsToXBMCView(activeItems);
+                
+            addFolderItem(consts.fontBold + consts.colorBlue + addon.getLocalizedString(50040) +
+                          consts.colorEnd + consts.fontBoldEnd, -99);   # Tasks:
+            addFolderItem(addon.getLocalizedString(50001), -5);   # Mount
+            addFolderItem(addon.getLocalizedString(50002), -6);   # Unmount
+            if not dontStoreAnyInfo:
+                addFolderItem(addon.getLocalizedString(50042), -1); #"Assign existing truecrypt file"
+            addFolderItem(addon.getLocalizedString(50041), -2);  # Create new Truecrypt volume 
+            addFolderItem(addon.getLocalizedString(50087), -3); # "Create key file"
+        else: # show that restart is needed
+            s = consts.colorShadeOfRed + addon.getLocalizedString(50173) + consts.colorEnd;     # restart of OL required
+            addFolderItem(s, -99);
+
         xbmcplugin.endOfDirectory(int(sys.argv[1]));
     # Execute chosen task from the XBMC folder menu based on index value
     elif index == -1:

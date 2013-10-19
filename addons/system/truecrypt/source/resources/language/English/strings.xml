@@ -174,5 +174,5 @@
 	<string id="50170">Not proceeding with unmout.</string>
 	<string id="50171">Volume is locked by other internal process.</string>
 	<string id="50172">Failed to mount/unmount after volume creation.</string>
-
+	<string id="50173">Please restart OpenELEC before using this addon!</string>
 </strings>
