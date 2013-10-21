@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Update XBMC Librarys
 sleep 2
