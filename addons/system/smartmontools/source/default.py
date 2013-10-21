@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-#
+#  Copyright (C) Peter Smorada 2013 
+# 
 #  This Program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
 #  the Free Software Foundation; either version 2, or (at your option)
@@ -61,18 +62,17 @@ def addFolderItem(name, index, additionalParams = "", isFolder = False):
 
 def startUp():
     smartmontools.checkConfigurationFilesExistance();
-    #smartmontools.dbUpdater().start();
     if addon.getSetting(consts.settingDBupdates ) == "true":
         smartmontools.updateDatabase();
     if addon.getSetting(consts.settingRunDaemonOnStartup ) == "true":
-        startSmartd();        
+        startSmartd(True if consts.settingSmartdStartupPopup == "true" else False);        
 
   
-def startSmartd(): 
+def startSmartd(popup = True): 
     if not smartd.daemonRunning():
         smartd.startDaemon();
         if smartd.daemonRunning():
-            if showPopups:
+            if popup:
                 xbmc.executebuiltin("Notification(smartmontools, " + addon.getLocalizedString(50001)+ ", 7, " + __icon__ + ")");  # smartd started
         else:
             xbmc.log(consts.logHeader + "failed to start smartd", xbmc.LOGERROR);
@@ -86,6 +86,17 @@ def stopSmartd():
                 xbmc.executebuiltin("Notification(smartmontools, " + addon.getLocalizedString(50025)+ ", 7, " + __icon__ + ")");  # smartd stopped
         else:
             xbmcgui.Dialog().ok(consts.dialogHeader, addon.getLocalizedString(50026));   # Failed to stop smartd
+            
+def reloadSmartdConfig():
+    smartd.reloadDaemonConfiguration();
+    if showPopups:
+        xbmc.executebuiltin("Notification(smartmontools, " + addon.getLocalizedString(50061)+ ", 7, " + __icon__ + ")");  # smartd reloading config
+
+def runTestNowSmartd():
+    smartd.runDaemonTestNow();
+    if showPopups:
+        xbmc.executebuiltin("Notification(smartmontools, " + addon.getLocalizedString(50062)+ ", 7, " + __icon__ + ")");  # smartd running test now
+
 
 def listDisks():
     disksData = smartmontools.getDisks();
@@ -106,15 +117,18 @@ def listDisks():
             displayName = "";
             
             # add color to device name
-            if dic[consts.paramDeviceIsSuported]:
-                if dic[consts.paramOverallHealth] == "PASSED":
-                    displayName = consts.colorShadeOfGreen;
+            try:
+                if dic[consts.paramDeviceIsSuported]:
+                    if dic[consts.paramOverallHealth] == "PASSED":
+                        displayName = consts.colorShadeOfGreen;
+                    else:
+                        displayName = consts.colorShadeOfRed;
                 else:
-                    displayName = consts.colorShadeOfRed;
-            else:
-                displayName = consts.colorOrange;
+                    displayName = consts.colorOrange;
+            except:
+                displayName = "";
             
-            displayName += l[0] + " (" + l[2] + ")" + consts.colorEnd;
+            displayName += l[0] + " (" + l[2] + ")" + (consts.colorEnd if displayName else "");
                     
             addFolderItem(displayName , 20, params, True);
 
@@ -328,7 +342,6 @@ if len(sys.argv) <= 1: # this part is executed at XBMC startup
     xbmc.log(msg= consts.logHeader + "starting start up initialization.", level=xbmc.LOGDEBUG);
     startUp();
 else:  # creation of menu strutured as xbmc folders
-    # startUp();
     params = sutils.get_params();    
     
     xbmc.log(msg="smartmontools initial params:" + str(params), level=xbmc.LOGDEBUG);
@@ -358,9 +371,9 @@ else:  # creation of menu strutured as xbmc folders
         stopSmartd();
         sutilsxbmc.refreshCurrentListing();
     elif index == 3:
-        smartd.reloadDaemonConfiguration();
+        reloadSmartdConfig();
     elif index == 4:
-        smartd.runDaemonTestNow();
+        runTestNowSmartd();
     elif index == 5:
         showSmartdLog();
        
@@ -383,7 +396,7 @@ else:  # creation of menu strutured as xbmc folders
 
     # indexes 40 - 49 are reserved for smartctl reports + indexes higher than 50000
     elif (index >= 40 and index <50) or index > 50000:
-        executeIndexesReservedForSmartctlReports(index)
+        executeIndexesReservedForSmartctlReports(index);
      
     elif index == 90:
         print("smartmontools: " + str(params));

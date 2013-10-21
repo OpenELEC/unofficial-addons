@@ -76,33 +76,14 @@ def checkConfigurationFilesExistance():
       
     daemonConfExists = os.path.exists(consts.fileDaemonConfig);        
     if not daemonConfExists:
-        xbmc.log(msg="smartmontools addon: daemon config file doesn't exist, copying default and creating link.", level=xbmc.LOGDEBUG);       
-        # removing old link if exists
-        if os.path.exists(consts.fileDaemonConfigLink):
-            xbmc.log(msg="smartmontools addon: removing old link.", level=xbmc.LOGDEBUG);
-            cmd = "rm " + consts.fileDaemonConfigLink;
-            p = subprocess.Popen(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE, shell=True);
-            output, errors = p.communicate();
-            xbmc.log(msg="smartmontools stdout: " + str(output), level=xbmc.LOGDEBUG);
-            xbmc.log(msg="smartmontools stderr: " + str(errors), level=xbmc.LOGDEBUG);
-      
         xbmc.log(msg="smartmontools addon: copying default daemon config file.", level=xbmc.LOGDEBUG)
-         
+     
         cmd = "cp " + consts.fileDaemonConfigDefault + " " + consts.fileDaemonConfig;
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE, shell=True);
         output, errors = p.communicate();
         xbmc.log(msg="smartmontools stdout: " + str(output), level=xbmc.LOGDEBUG);
         xbmc.log(msg="smartmontools stderr: " + str(errors), level=xbmc.LOGDEBUG);                 
-      
-    # link creation:
-    elif (daemonConfExists and not os.path.exists(consts.fileDaemonConfigLink)) or not daemonConfExists:
-        xbmc.log(msg="smartmontools addon: creating link for daemon conf.", level=xbmc.LOGDEBUG)
-        
-        cmd = "ln -s " + consts.fileDaemonConfig + " " + consts.fileDaemonConfigLink;
-        p = subprocess.Popen(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE, shell=True);
-        output, errors = p.communicate();
-        xbmc.log(msg="smartmontools stdout: " + str(output), level=xbmc.LOGDEBUG);
-        xbmc.log(msg="smartmontools stderr: " + str(errors), level=xbmc.LOGDEBUG);  
+
   
         
 def getDisks():

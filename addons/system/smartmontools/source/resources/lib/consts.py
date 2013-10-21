@@ -32,10 +32,12 @@ settingDBupdates = "updateDB";
 settingLastDBupdateChecked = "lastDBupdateChecked";
 settingDBupdateInterval = "dbUpdateInterval";
 settingSmardPoupus = "showPopups"
+settingSmartdStartupPopup = "showSmartdStartUpPopup";
 
-smartdScript = "/storage/.xbmc/addons/plugin.program.smartmontools/bin/smartd-daemon";
-script = "/storage/.xbmc/addons/plugin.program.smartmontools/bin/smartmontools.sh";
-updateScript = "/storage/.xbmc/addons/plugin.program.smartmontools/bin/update-smart-drivedb";
+binFolder = "/storage/.xbmc/addons/plugin.program.smartmontools/bin/";
+smartdScript = binFolder + "smartd-daemon";
+script = binFolder + "smartmontools.sh";
+updateScript = binFolder + "update-smart-drivedb";
 commandStart = "start";
 commandStop = "stop";
 commandStatus = "status";
@@ -54,7 +56,7 @@ dialogHeader = "smartmontools";
 fileDB = "/storage/.xbmc/userdata/addon_data/plugin.program.smartmontools/drivedb.h";
 fileDBDefault = "/storage/.xbmc/addons/plugin.program.smartmontools/resources/default/drivedb.h";
 fileDaemonConfig = "/storage/.xbmc/userdata/addon_data/plugin.program.smartmontools/smartd.conf";
-fileDaemonConfigLink = "/storage/.config/smartd.conf"
+# fileDaemonConfigLink = "/storage/.config/smartd.conf"
 fileDaemonConfigDefault = "/storage/.xbmc/addons/plugin.program.smartmontools/resources/default/smartd.conf"
 fileSystemLog = "/var/log/messages";
 
