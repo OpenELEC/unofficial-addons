@@ -250,5 +250,13 @@ msgid "Please restart OpenELEC before using this addon!"
 msgstr ""
 
 msgctxt "#50060"
-msgid ""
+msgid "Show smartd popup message at xbmc start up"
+msgstr ""
+
+msgctxt "#50061"
+msgid "smartd realoading configuration"
+msgstr ""
+
+msgctxt "#50062"
+msgid "smartd executing test now"
 msgstr ""

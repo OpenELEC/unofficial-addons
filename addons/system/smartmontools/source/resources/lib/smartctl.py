@@ -35,7 +35,7 @@ def __createBasicExecutionString(deviceType = "auto"):
     to the database and device type if other then auto
     :param deviceType: type of the device
     '''
-    cmd = consts.smartctlWithDB + ("" if deviceType == "auto" else " --device=" + deviceType);
+    cmd = consts.binFolder + consts.smartctlWithDB + ("" if deviceType == "auto" else " --device=" + deviceType);
     return cmd
 
 def executeSelfTest(testType, device, deviceType = "auto"):
@@ -64,7 +64,7 @@ def cancelSelfTest(device, deviceType = "auto"):
     
     xbmc.log(consts.logStandardOut + str(output), level=xbmc.LOGDEBUG);
     xbmc.log(consts.logErrorOut + str(errors), xbmc.LOGERROR if errors else xbmc.LOGDEBUG);
-   
+   
 def getOverallHealthStatus(device, deviceType = "auto"):
     cmd = __createBasicExecutionString(deviceType) + " -H " + device
      
