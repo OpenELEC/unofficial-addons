@@ -12,7 +12,7 @@
         <provides>executable</provides>
   </extension>
   <extension point="xbmc.service"
-             library="default.py" start="startup">
+             library="service.py" start="startup">
   </extension>
   <extension point="xbmc.addon.metadata">
     <summary>S.M.A.R.T. disk monitoring tool with XBMC gui.</summary>

@@ -1,3 +1,5 @@
+[B]1.0.1[/B]
+fixed: shout down properly on XBMC request
 
 [B]1.0.0[/B]
 - initial public version of smartmontools addon

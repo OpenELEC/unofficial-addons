@@ -35,16 +35,15 @@ import smartd;
 import smartctl;
 import smartmontools;
 import windows;
-import re;
+
 
 
 #reload(sys);
 #sys.setdefaultencoding("utf-8");
 
 # Script constants
-__author__ = "Peter Smorada"
 home = addon.getAddonInfo('path');
-__icon__ = os.path.join(home, "icon.png");
+icon = os.path.join(home, "icon.png");
 
 
 if addon.getSetting(consts.settingSmardPoupus) == "true":
@@ -59,43 +58,34 @@ def addFolderItem(name, index, additionalParams = "", isFolder = False):
     ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u, listitem=liz,isFolder=isFolder);
     return ok;
 
-
-def startUp():
-    smartmontools.checkConfigurationFilesExistance();
-    if addon.getSetting(consts.settingDBupdates ) == "true":
-        smartmontools.updateDatabase();
-    if addon.getSetting(consts.settingRunDaemonOnStartup ) == "true":
-        startSmartd(True if consts.settingSmartdStartupPopup == "true" else False);        
-
   
-def startSmartd(popup = True): 
-    if not smartd.daemonRunning():
-        smartd.startDaemon();
-        if smartd.daemonRunning():
-            if popup:
-                xbmc.executebuiltin("Notification(smartmontools, " + addon.getLocalizedString(50001)+ ", 7, " + __icon__ + ")");  # smartd started
-        else:
-            xbmc.log(consts.logHeader + "failed to start smartd", xbmc.LOGERROR);
-            xbmcgui.Dialog().ok(consts.dialogHeader, addon.getLocalizedString(50024));   # Failed to start smartd
+def startSmartd(): 
+    smartd.startDaemon();
+    if smartd.daemonRunning():
+        if showPopups:
+            xbmc.executebuiltin("Notification(smartmontools, " + addon.getLocalizedString(50001)+ ", 7, " + icon + ")");  # smartd started
+    else:
+        xbmc.log(consts.logHeader + "failed to start smartd", xbmc.LOGERROR);
+        xbmcgui.Dialog().ok(consts.dialogHeader, addon.getLocalizedString(50024));   # Failed to start smartd
          
 def stopSmartd(): 
     if smartd.daemonRunning():
         smartd.stopDaemon();
         if not smartd.daemonRunning():
             if showPopups:
-                xbmc.executebuiltin("Notification(smartmontools, " + addon.getLocalizedString(50025)+ ", 7, " + __icon__ + ")");  # smartd stopped
+                xbmc.executebuiltin("Notification(smartmontools, " + addon.getLocalizedString(50025)+ ", 7, " + icon + ")");  # smartd stopped
         else:
             xbmcgui.Dialog().ok(consts.dialogHeader, addon.getLocalizedString(50026));   # Failed to stop smartd
             
 def reloadSmartdConfig():
     smartd.reloadDaemonConfiguration();
     if showPopups:
-        xbmc.executebuiltin("Notification(smartmontools, " + addon.getLocalizedString(50061)+ ", 7, " + __icon__ + ")");  # smartd reloading config
+        xbmc.executebuiltin("Notification(smartmontools, " + addon.getLocalizedString(50061)+ ", 7, " + icon + ")");  # smartd reloading config
 
 def runTestNowSmartd():
     smartd.runDaemonTestNow();
     if showPopups:
-        xbmc.executebuiltin("Notification(smartmontools, " + addon.getLocalizedString(50062)+ ", 7, " + __icon__ + ")");  # smartd running test now
+        xbmc.executebuiltin("Notification(smartmontools, " + addon.getLocalizedString(50062)+ ", 7, " + icon + ")");  # smartd running test now
 
 
 def listDisks():
@@ -264,7 +254,7 @@ def executeSmartctlTest(index, device, diskId, diskType):
     
     if success:
         if showPopups:
-            xbmc.executebuiltin("Notification(smartmontools, " + addon.getLocalizedString(50034)+ ", 7, " + __icon__ + ")");  # Self test started
+            xbmc.executebuiltin("Notification(smartmontools, " + addon.getLocalizedString(50034)+ ", 7, " + icon + ")");  # Self test started
     else:
         xbmcgui.Dialog().ok(consts.dialogHeader, addon.getLocalizedString(50035));   # Failed to start self test
 
@@ -338,74 +328,71 @@ xbmc.log(msg="smartmontools plugin v " + addon.getAddonInfo("version"), level=xb
 xbmc.log(msg="smartmontools number of params: " + str(len(sys.argv)), level=xbmc.LOGDEBUG);
 xbmc.log(msg="smartmontools initial params: " + str(sys.argv), level=xbmc.LOGDEBUG);
 
-if len(sys.argv) <= 1: # this part is executed at XBMC startup
-    xbmc.log(msg= consts.logHeader + "starting start up initialization.", level=xbmc.LOGDEBUG);
-    startUp();
-else:  # creation of menu strutured as xbmc folders
-    params = sutils.get_params();    
-    
-    xbmc.log(msg="smartmontools initial params:" + str(params), level=xbmc.LOGDEBUG);
-    
-    try:
-        index = int(params[consts.paramIndex]);
-    except:
-        index = None;
-        
-    if index == None : # creates initial folder structured menu
-        if sutils.isFileExecutableByOwner(consts.script):
-            listDisks();
-            listSmartdTasks();
-            listOtherTasks();
-        else:
-            s = consts.colorShadeOfRed + addon.getLocalizedString(50059) + consts.colorEnd;     # restart of OL required
-            addFolderItem(s, -99);
-            
-        xbmcplugin.endOfDirectory(int(sys.argv[1]));
-    
-    # Execute chosen task    
-    # indexes 1 - 20 are reserved for common smartd tasks 
-    elif index == 1:
-        startSmartd();
-        sutilsxbmc.refreshCurrentListing();
-    elif index == 2:
-        stopSmartd();
-        sutilsxbmc.refreshCurrentListing();
-    elif index == 3:
-        reloadSmartdConfig();
-    elif index == 4:
-        runTestNowSmartd();
-    elif index == 5:
-        showSmartdLog();
-       
-    # indexes 20 - 29 are reserved for common smartctl tasks 
-    elif index == 20:
-        diskId = params[consts.paramDiskId];
-        listSmartctlTasks(params[consts.paramDevice], diskId, smartmontools.getDiskType(diskId) ); 
-    elif index == 21:
-        setDeviceType(params[consts.paramDiskId]);
-        
-    # indexes 30 - 39 are reserved for smartctl tests
-    elif index == 30:
-        listSmartctlTests(params[consts.paramDevice], params[consts.paramDiskId], 
-                          params[consts.paramDiskType]);
-    elif index > 30 and index <35:
-        executeSmartctlTest(index, params[consts.paramDevice], params[consts.paramDiskId], 
-                            params[consts.paramDiskType]);
-    elif index == 39:
-        smartctl.cancelSelfTest(params[consts.paramDevice], params[consts.paramDiskType]);
 
-    # indexes 40 - 49 are reserved for smartctl reports + indexes higher than 50000
-    elif (index >= 40 and index <50) or index > 50000:
-        executeIndexesReservedForSmartctlReports(index);
-     
-    elif index == 90:
-        print("smartmontools: " + str(params));
-        print("smartmontools: " + str(smartctl.getStatusInfo(params[consts.paramDevice])));
-    elif index == 91:
-        showXbmcLogEntries();
-    elif index == 99:
-        warning();  
-    elif index == -99:
-        pass;
+params = sutils.get_params();    
+
+xbmc.log(msg="smartmontools initial params:" + str(params), level=xbmc.LOGDEBUG);
+
+try:
+    index = int(params[consts.paramIndex]);
+except:
+    index = None;
+    
+if index == None : # creates initial folder structured menu
+    if sutils.isFileExecutableByOwner(consts.script):
+        listDisks();
+        listSmartdTasks();
+        listOtherTasks();
+    else:
+        s = consts.colorShadeOfRed + addon.getLocalizedString(50059) + consts.colorEnd;     # restart of OL required
+        addFolderItem(s, -99);
+        
+    xbmcplugin.endOfDirectory(int(sys.argv[1]));
+
+# Execute chosen task    
+# indexes 1 - 20 are reserved for common smartd tasks 
+elif index == 1:
+    startSmartd();
+    sutilsxbmc.refreshCurrentListing();
+elif index == 2:
+    stopSmartd();
+    sutilsxbmc.refreshCurrentListing();
+elif index == 3:
+    reloadSmartdConfig();
+elif index == 4:
+    runTestNowSmartd();
+elif index == 5:
+    showSmartdLog();
+   
+# indexes 20 - 29 are reserved for common smartctl tasks 
+elif index == 20:
+    diskId = params[consts.paramDiskId];
+    listSmartctlTasks(params[consts.paramDevice], diskId, smartmontools.getDiskType(diskId) ); 
+elif index == 21:
+    setDeviceType(params[consts.paramDiskId]);
+    
+# indexes 30 - 39 are reserved for smartctl tests
+elif index == 30:
+    listSmartctlTests(params[consts.paramDevice], params[consts.paramDiskId], 
+                      params[consts.paramDiskType]);
+elif index > 30 and index <35:
+    executeSmartctlTest(index, params[consts.paramDevice], params[consts.paramDiskId], 
+                        params[consts.paramDiskType]);
+elif index == 39:
+    smartctl.cancelSelfTest(params[consts.paramDevice], params[consts.paramDiskType]);
+
+# indexes 40 - 49 are reserved for smartctl reports + indexes higher than 50000
+elif (index >= 40 and index <50) or index > 50000:
+    executeIndexesReservedForSmartctlReports(index);
+ 
+elif index == 90:
+    print("smartmontools: " + str(params));
+    print("smartmontools: " + str(smartctl.getStatusInfo(params[consts.paramDevice])));
+elif index == 91:
+    showXbmcLogEntries();
+elif index == 99:
+    warning();  
+elif index == -99:
+    pass;
 
 

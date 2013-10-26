@@ -179,6 +179,11 @@ def isFileExecutableByOwner(path):
         return True;
     else:
         return False;
+    
+def addExecPermissions(path, recursive = False):
+    cmd = "chmod " + ("-R " if recursive else "") + "+x " + path;
+    p = subprocess.Popen(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE, shell=True);
+    output, errors = p.communicate();
 
 def escapeCharsForShell(string):
     """Method escapes special characters in string to be used in linux shell."""    
