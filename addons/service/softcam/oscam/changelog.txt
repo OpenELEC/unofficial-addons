@@ -1,3 +1,6 @@
+4.0.1
+- update to oscam-8999
+
 4.0.0
 - rebuild for OpenELEC-4.0
 
