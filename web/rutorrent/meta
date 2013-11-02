@@ -19,12 +19,12 @@
 ################################################################################
 
 PKG_NAME="rutorrent"
-PKG_VERSION="3.5"
-PKG_REV="3"
+PKG_VERSION="3.6"
+PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://rutorrent.googlecode.com/"
-PKG_URL="http://rutorrent.googlecode.com/files/$PKG_NAME-$PKG_VERSION.tar.gz"
+PKG_URL="http://dl.bintray.com/novik65/generic/$PKG_NAME-$PKG_VERSION.tar.gz"
 PKG_DEPENDS=""
 PKG_BUILD_DEPENDS="toolchain"
 PKG_PRIORITY="optional"
