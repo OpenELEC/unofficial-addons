@@ -29,7 +29,7 @@ cd $PKG_BUILD
 # install some useful plugins
 for plugin in $install_plugins ;do
    echo "Installing rutorrent plugin: $plugin-$PKG_VERSION..."
-   wget -q http://rutorrent.googlecode.com/files/$plugin-$PKG_VERSION.tar.gz 
+   wget -q http://dl.bintray.com/novik65/generic/plugins/$plugin-$PKG_VERSION.tar.gz 
    tar zxf $plugin-$PKG_VERSION.tar.gz -C plugins/
    rm -f $plugin-$PKG_VERSION.tar.gz
 done
@@ -38,7 +38,4 @@ echo "Installing rutorrent plugin: lbll-suite-0.8.1..."
 wget -q http://rutorrent-tadd-labels.googlecode.com/files/lbll-suite_0.8.1.tar.gz
 tar zxf lbll-suite_0.8.1.tar.gz -C plugins/
 rm -f lbll-suite_0.8.1.tar.gz
-
-# Set rss updateInterval to 10 minutes insted of 30
-sed -i -e 's/updateInterval = 30/updateInterval = 10/g' plugins/rss/conf.php
 
