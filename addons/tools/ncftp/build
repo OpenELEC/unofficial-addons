@@ -31,5 +31,6 @@ ac_cv_header_librtmp_rtmp_h=yes \
             --enable-readline \
             --disable-universal \
             --disable-ccdv \
+            --without-curses \
 
 make
