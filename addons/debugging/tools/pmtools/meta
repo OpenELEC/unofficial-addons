@@ -20,7 +20,7 @@
 
 PKG_NAME="pmtools"
 PKG_VERSION="20110323"
-PKG_REV="0"
+PKG_REV="1"
 PKG_ARCH="i386 x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="https://lesswatts.org/projects/acpi/utilities.php"

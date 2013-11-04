@@ -1,3 +1,6 @@
+4.0.2
+- rebuild
+
 4.0.1
 - ruTorrent upgraded to 3.6 old version is gone! Changelog: http://code.google.com/p/rutorrent/wiki/Versions
 - fixed rutorrent label sort on complete action, multiple slashes and spaces now works in labels!
