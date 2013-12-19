@@ -25,26 +25,14 @@
 ADDON_DIR="$HOME/.xbmc/addons/service.proxy.polipo"
 ADDON_HOME="$HOME/.xbmc/userdata/addon_data/service.proxy.polipo"
 
-LOCKDIR="/var/lock/"
-LOCKFILE="polipo.disabled"
-
 mkdir -p $ADDON_HOME
 mkdir -p $ADDON_HOME/cache
 mkdir -p $ADDON_HOME/www
+
+chmod a+x $ADDON_DIR/bin/*
 
 if [ ! -f "$ADDON_HOME/polipo.conf" ]; then
   cp $ADDON_DIR/config/polipo.conf $ADDON_HOME/polipo.conf
 fi
 
-if [ ! "$(pidof polipo)" ];then
-  if [ -f "$LOCKDIR/$LOCKFILE" ] ; then
-    rm -rf "$LOCKDIR/$LOCKFILE"
-  fi
-  while [ true ] ; do
-    if [ -f "$LOCKDIR/$LOCKFILE" ] ; then
-      break
-    fi
-    polipo -c "$ADDON_HOME/polipo.conf" daemonise=false
-    sleep 1
-  done &
-fi
+exec polipo -c "$ADDON_HOME/polipo.conf" daemonise=false
