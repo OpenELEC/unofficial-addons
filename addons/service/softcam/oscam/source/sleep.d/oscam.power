@@ -22,29 +22,22 @@
 
 . /etc/profile
 
+SERVICE="service.softcam.oscam.service"
 ADDON_HOME="$HOME/.xbmc/userdata/addon_data/service.softcam.oscam"
 ADDON_SETTINGS="$ADDON_HOME/settings.xml"
 RESTART_ON_RESUME=`grep RESTART_ON_RESUME $ADDON_SETTINGS | awk '{print $3}' | sed -e "s,value=,," -e "s,\",,g"`
 
-LOCKFILE_SLEEP="/var/lock/oscam.sleep"
-
 if [ "$RESTART_ON_RESUME" == "true" ] ; then
   case "$1" in
-    hibernate|suspend|pre)
-      if [ "$(pidof oscam)" ];then
-        progress "Shutting down oscam for suspending..."
-        touch $LOCKFILE_SLEEP
-        oscam.stop
+    pre)
+      if systemctl is-active "$SERVICE" &>/dev/null ; then
+        systemctl stop "$SERVICE"
       fi
       ;;
-
-    thaw|resume|post)
-      if [ -f "$LOCKFILE_SLEEP" ] ; then
-        progress "Restarting oscam for wakeup..."
-        rm -rf "$LOCKFILE_SLEEP"
+    post)
+      if systemctl is-enabled "$SERVICE" &>/dev/null ; then
+        systemctl start "$SERVICE"
       fi
-      ;;
-    *) exit $NA
       ;;
   esac
 fi

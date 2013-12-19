@@ -23,78 +23,41 @@
 
 . /etc/profile
 
-LOCKDIR="/var/lock/"
-LOCKFILE="oscam.disabled"
-LOCKFILE_SLEEP="oscam.sleep"
+ADDON_DIR="$HOME/.xbmc/addons/service.softcam.oscam"
+ADDON_HOME="$HOME/.xbmc/userdata/addon_data/service.softcam.oscam"
 
-rm -rf "$LOCKDIR/$LOCKFILE_SLEEP" &>/dev/null
-oscam.stop
-rm -rf "$LOCKDIR/$LOCKFILE" &>/dev/null
+mkdir -p $ADDON_HOME
+mkdir -p $ADDON_HOME/config
+mkdir -p $ADDON_HOME/log
 
-# Check if process is already running
-# use "$(pidof)" instead of $(pidof). otherwise 'if' statement will fail
-# because oscam spawns at least one 'extra' process
-if [ ! "$(pidof oscam)" ]; then
+touch $ADDON_HOME/config/oscam.ac
+touch $ADDON_HOME/config/oscam.cert
+touch $ADDON_HOME/config/oscam.dvbapi
+touch $ADDON_HOME/config/oscam.guess
+touch $ADDON_HOME/config/oscam.ird
+touch $ADDON_HOME/config/oscam.provid
+touch $ADDON_HOME/config/oscam.server
+touch $ADDON_HOME/config/oscam.services
+touch $ADDON_HOME/config/oscam.srvid
+touch $ADDON_HOME/config/oscam.tiers
+touch $ADDON_HOME/config/oscam.user
 
-  ADDON_DIR="$HOME/.xbmc/addons/service.softcam.oscam"
-  ADDON_HOME="$HOME/.xbmc/userdata/addon_data/service.softcam.oscam"
-  ADDON_LOG_DIR="$ADDON_HOME/log"
+chmod a+x $ADDON_DIR/bin/*
 
-  ADDON_SETTINGS="$ADDON_HOME/settings.xml"
-  ADDON_CONF_DIR="$ADDON_HOME/config"
-  ADDON_CONF="$ADDON_CONF_DIR/oscam.conf"
-  ADDON_CONF_AC="$ADDON_CONF_DIR/oscam.ac"
-  ADDON_CONF_CERT="$ADDON_CONF_DIR/oscam.cert"
-  ADDON_CONF_DVBAPI="$ADDON_CONF_DIR/oscam.dvbapi"
-  ADDON_CONF_GUESS="$ADDON_CONF_DIR/oscam.guess"
-  ADDON_CONF_IRD="$ADDON_CONF_DIR/oscam.ird"
-  ADDON_CONF_PROVID="$ADDON_CONF_DIR/oscam.provid"
-  ADDON_CONF_SERVER="$ADDON_CONF_DIR/oscam.server"
-  ADDON_CONF_SERVICES="$ADDON_CONF_DIR/oscam.services"
-  ADDON_CONF_SRVID="$ADDON_CONF_DIR/oscam.srvid"
-  ADDON_CONF_TIERS="$ADDON_CONF_DIR/oscam.tiers"
-  ADDON_CONF_USER="$ADDON_CONF_DIR/oscam.user"
-
-  OSCAM_ARG="-c $ADDON_CONF_DIR"
-
-  mkdir -p $ADDON_HOME
-  mkdir -p $ADDON_CONF_DIR
-  mkdir -p $ADDON_LOG_DIR
-
-  if [ ! -f "$ADDON_CONF" ]; then
-    cp $ADDON_DIR/oscam-default.conf $ADDON_CONF
-  fi
-
-  touch $ADDON_CONF_AC
-  touch $ADDON_CONF_CERT
-  touch $ADDON_CONF_DVBAPI
-  touch $ADDON_CONF_GUESS
-  touch $ADDON_CONF_IRD
-  touch $ADDON_CONF_PROVID
-  touch $ADDON_CONF_SERVER
-  touch $ADDON_CONF_SERVICES
-  touch $ADDON_CONF_SRVID
-  touch $ADDON_CONF_TIERS
-  touch $ADDON_CONF_USER
-
-  if [ ! -f "$ADDON_SETTINGS" ]; then
-    cp $ADDON_DIR/settings-default.xml $ADDON_SETTINGS
-  fi
-
-  while [ true ] ; do
-    while [ -f "$LOCKDIR/$LOCKFILE_SLEEP" ] ; do
-      usleep 100000
-    done
-    if [ -f "$LOCKDIR/$LOCKFILE" ] ; then
-      break
-    fi
-    # start userspace DVB driver/addon
-    for driver_dvb in $(find /storage/.xbmc/addons/driver.dvb.*/bin/userspace-driver.sh -type f 2>/dev/null); do
-      driver_dvb_name=$(echo $driver_dvb | awk 'BEGIN {FS="/"} {printf("%s", $5)}')
-      logger -t OSCAM "### Loading userspace DVB driver: $driver_dvb_name ###"
-      # use ". " because of variable export
-      . $driver_dvb
-    done
-    oscam $OSCAM_ARG > /dev/null 2>&1
-  done &
+if [ ! -f "$ADDON_HOME/settings.xml" ]; then
+  cp $ADDON_DIR/settings-default.xml $ADDON_HOME/settings.xml
 fi
+
+if [ ! -f "$ADDON_HOME/config/oscam.conf" ]; then
+  cp $ADDON_DIR/oscam-default.conf $ADDON_HOME/config/oscam.conf
+fi
+
+# start userspace DVB driver/addon
+for driver_dvb in $(find /storage/.xbmc/addons/driver.dvb.*/bin/userspace-driver.sh -type f 2>/dev/null); do
+  driver_dvb_name=$(echo $driver_dvb | awk 'BEGIN {FS="/"} {printf("%s", $5)}')
+  logger -t OSCAM "### Loading userspace DVB driver: $driver_dvb_name ###"
+  # use ". " because of variable export
+  . $driver_dvb
+done
+
+exec oscam -c $ADDON_HOME/config > /dev/null 2>&1

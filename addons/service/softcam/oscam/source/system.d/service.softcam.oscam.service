@@ -1,0 +1,13 @@
+[Unit]
+Description=OScam
+After=graphical.target
+
+[Service]
+ExecStart=/bin/sh -c "exec sh /storage/.xbmc/addons/service.softcam.oscam/bin/oscam.start"
+TimeoutStopSec=1
+Restart=always
+RestartSec=2
+StartLimitInterval=0
+
+[Install]
+WantedBy=xbmc.target
