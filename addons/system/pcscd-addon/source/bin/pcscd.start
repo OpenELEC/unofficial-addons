@@ -20,36 +20,20 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-ADDON_NAME="service.system.pcscd-addon"
-ADDON_DIR="$HOME/.xbmc/addons/$ADDON_NAME"
-ADDON_HOME="$HOME/.xbmc/userdata/addon_data/$ADDON_NAME"
+. /etc/profile
+
+ADDON_DIR="$HOME/.xbmc/addons/service.system.pcscd-addon"
+ADDON_HOME="$HOME/.xbmc/userdata/addon_data/service.system.pcscd-addon"
 
 ADDON_CONFIG_DIR="$ADDON_HOME/config"
 
-LOCKDIR="/var/lock/"
-LOCKFILE="pcscd.disabled"
-
 mkdir -p $ADDON_HOME
+mkdir -p $ADDON_HOME/config
 
-export PATH=$ADDON_DIR/bin:$PATH
+chmod a+x $ADDON_DIR/bin/*
 
-cd $ADDON_DIR/config
-mkdir -p $ADDON_CONFIG_DIR
-for config in `find . -type f -name "*.conf*"`; do
-  if [ ! -f $ADDON_CONFIG_DIR/$config ]; then
-    cp $config $ADDON_CONFIG_DIR/$config
-  fi
-done
-
-if [ ! "$(pidof pcscd.bin)" ];then
-  if [ -f "$LOCKDIR/$LOCKFILE" ] ; then
-    rm -rf "$LOCKDIR/$LOCKFILE"
-  fi
-  while [ true ] ; do
-    if [ -f "$LOCKDIR/$LOCKFILE" ] ; then
-      break
-    fi
-    pcscd.bin --foreground -c $ADDON_CONFIG_DIR/reader.conf
-    sleep 1
-  done &
+if [ ! -f "$ADDON_HOME/config/reader.conf" ]; then
+  cp $ADDON_DIR/config/reader.conf $ADDON_HOME/config/reader.conf
 fi
+
+exec pcscd.bin --foreground -c $ADDON_CONFIG_DIR/reader.conf
