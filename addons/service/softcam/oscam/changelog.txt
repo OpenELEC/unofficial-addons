@@ -1,3 +1,9 @@
+4.0.3
+- update to oscam-9131
+- convert to systemd service
+- add option to wait for frontend init
+  * useful when using dvbapi
+
 4.0.2
 - rebuild
 
