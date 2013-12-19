@@ -25,6 +25,7 @@
 
 ADDON_DIR="$HOME/.xbmc/addons/service.softcam.oscam"
 ADDON_HOME="$HOME/.xbmc/userdata/addon_data/service.softcam.oscam"
+ADDON_SETTINGS="$ADDON_HOME/settings.xml"
 
 mkdir -p $ADDON_HOME
 mkdir -p $ADDON_HOME/config
@@ -52,6 +53,13 @@ if [ ! -f "$ADDON_HOME/config/oscam.conf" ]; then
   cp $ADDON_DIR/oscam-default.conf $ADDON_HOME/config/oscam.conf
 fi
 
+mkdir -p /var/config
+cat "$ADDON_DIR/settings-default.xml" | awk -F\" '{print $2"=\""$4"\""}' | sed '/^=/d' > /var/config/oscam.conf.default
+cat "$ADDON_SETTINGS" | awk -F\" '{print $2"=\""$4"\""}' | sed '/^=/d' > /var/config/oscam.conf
+
+. /var/config/oscam.conf.default
+. /var/config/oscam.conf
+
 # start userspace DVB driver/addon
 for driver_dvb in $(find /storage/.xbmc/addons/driver.dvb.*/bin/userspace-driver.sh -type f 2>/dev/null); do
   driver_dvb_name=$(echo $driver_dvb | awk 'BEGIN {FS="/"} {printf("%s", $5)}')
@@ -59,5 +67,16 @@ for driver_dvb in $(find /storage/.xbmc/addons/driver.dvb.*/bin/userspace-driver
   # use ". " because of variable export
   . $driver_dvb
 done
+
+# (wait for) at least 1 adapter (xbmc allows to set 0)
+[ $NUM_ADAPTERS -lt 1 ] && NUM_ADAPTERS=1
+if [ "$WAIT_FOR_FEINIT" == "true" ] ; then
+  while [ true ] ; do
+    if [ -e /dev/dvb/adapter$((NUM_ADAPTERS-1))/frontend* ] ; then
+      break
+    fi
+    sleep 1
+  done
+fi
 
 exec oscam -c $ADDON_HOME/config > /dev/null 2>&1
