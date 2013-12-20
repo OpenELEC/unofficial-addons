@@ -19,23 +19,3 @@
 #  the Free Software Foundation, 51 Franklin Street, Suite 500, Boston, MA 02110, USA.
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################ 
-
-import xbmc, xbmcaddon, time, os, subprocess
-
-__scriptname__ = "ProFTPD Service"
-__author__     = "OpenELEC"
-__url__        = "http://www.openelec.tv"
-__settings__   = xbmcaddon.Addon(id='service.system.proftpd')
-__cwd__        = __settings__.getAddonInfo('path')
-__start__      = xbmc.translatePath( os.path.join( __cwd__, 'bin', "proftpd.start") )
-__stop__       = xbmc.translatePath( os.path.join( __cwd__, 'bin', "proftpd.stop") )
-
-#make binary files executable in adson bin folder
-subprocess.Popen("chmod -R +x " + __cwd__ + "/bin/*" , shell=True, close_fds=True)
-
-subprocess.Popen(__start__, shell=True, close_fds=True)
-
-while (not xbmc.abortRequested):
-  time.sleep(0.250)
-
-subprocess.Popen(__stop__, shell=True, close_fds=True) 
