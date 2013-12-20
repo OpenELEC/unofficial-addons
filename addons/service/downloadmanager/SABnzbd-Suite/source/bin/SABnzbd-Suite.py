@@ -119,7 +119,7 @@ if firstLaunch:
     if not os.path.exists(pSuiteSettings):
         shutil.copy(pDefaultSuiteSettings, pSuiteSettings)
     # make utilities executable
-    for utility in {'par2','unrar','unzip'}:
+    for utility in {'par2','unrar'}:
         try:
             os.chmod(os.path.join(pAddon, 'bin', utility), 0755)
         except:
