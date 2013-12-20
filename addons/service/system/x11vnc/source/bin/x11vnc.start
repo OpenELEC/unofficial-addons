@@ -24,17 +24,17 @@
 
 . /etc/profile
 
-LOCKDIR="/var/lock/"
-LOCKFILE="x11vnc.disabled"
-
 ADDON_DIR="$HOME/.xbmc/addons/service.system.x11vnc"
 ADDON_HOME="$HOME/.xbmc/userdata/addon_data/service.system.x11vnc"
 ADDON_SETTINGS="$ADDON_HOME/settings.xml"
 
 ADDON_CONFIG_DIR="$ADDON_HOME/config"
 
+mkdir -p $ADDON_HOME
+
+chmod a+x $ADDON_DIR/bin/*
+
 if [ ! -f "$ADDON_SETTINGS" ]; then
-  mkdir -p $ADDON_HOME
   cp $ADDON_DIR/settings-default.xml $ADDON_SETTINGS
 fi
 
@@ -45,17 +45,5 @@ cat "$ADDON_SETTINGS" | awk -F\" '{print $2"=\""$4"\""}' | sed '/^=/d' > /var/co
 . /var/config/x11vnc.conf.default
 . /var/config/x11vnc.conf
 
-x11vnc.stop
-rm -rf "$LOCKDIR/$LOCKFILE" &>/dev/null
-
-if [ ! "$(pidof x11vnc)" ];then
-  while [ true ] ; do
-    if [ -f "$LOCKDIR/$LOCKFILE" ] ; then
-      break
-    fi
-
-    x11vnc -storepasswd $VNC_PASSWORD $ADDON_HOME/passwd.xbmc >/dev/null &>/dev/null
-    exec x11vnc -forever -loop -nopw -rfbauth $ADDON_HOME/passwd.xbmc -display :0 -rfbport $VNC_PORT &>/dev/null
-    sleep 1
-  done &
-fi
+x11vnc -storepasswd $VNC_PASSWORD $ADDON_HOME/passwd.xbmc >/dev/null &>/dev/null
+exec x11vnc -forever -loop -nopw -rfbauth $ADDON_HOME/passwd.xbmc -display :0 -rfbport $VNC_PORT &>/dev/null
