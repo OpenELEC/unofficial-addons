@@ -22,56 +22,27 @@
 
 . /etc/profile
 
-LOCKDIR="/var/lock"
-LOCKFILE="mpd.lock"
+ADDON_DIR="$HOME/.xbmc/addons/service.multimedia.mpd"
+ADDON_HOME="$HOME/.xbmc/userdata/addon_data/service.multimedia.mpd"
+ADDON_SETTINGS="$ADDON_HOME/settings.xml"
 
-# Check if process is already running
-# use "$(pidof)" instead of $(pidof). otherwise 'if' statement will fail
-# because oscam spawns at least one 'extra' process
-if [ ! "$(pidof mpd)" ]; then
+mkdir -p $ADDON_HOME
+mkdir -p $ADDON_HOME/config
+mkdir -p $ADDON_HOME/log
+mkdir -p $ADDON_HOME/playlists
+mkdir -p $ADDON_HOME/music
+touch $ADDON_HOME/log/mpd.log
+touch $ADDON_HOME/mpd.db
+touch $ADDON_HOME/state
 
-  ADDON_DIR="$HOME/.xbmc/addons/service.multimedia.mpd"
-  ADDON_HOME="$HOME/.xbmc/userdata/addon_data/service.multimedia.mpd"
-  ADDON_LOG_DIR="$ADDON_HOME/log"
-  ADDON_LOG="$ADDON_LOG_DIR/mpd.log"
+chmod a+x $ADDON_DIR/bin/*
 
-  ADDON_SETTINGS="$ADDON_HOME/settings.xml"
-  ADDON_CONF_DIR="$ADDON_HOME/config"
-  ADDON_CONF="$ADDON_CONF_DIR/mpd.conf"
-
-  MPD_ARG="$ADDON_CONF"
-  MPD_PLAYLIST_DIR="$ADDON_HOME/playlists"
-  MPD_DB="$ADDON_HOME/mpd.db"
-  MPD_STATE="$ADDON_HOME/state"
-  MPD_MUSIC_DIR="$ADDON_HOME/music"
-
-  mkdir -p $ADDON_HOME
-  mkdir -p $ADDON_CONF_DIR
-  mkdir -p $ADDON_LOG_DIR
-  touch $ADDON_LOG
-  mkdir -p $MPD_PLAYLIST_DIR
-  mkdir -p $MPD_MUSIC_DIR
-  touch $MPD_DB
-  touch $MPD_STATE
-
-  if [ ! -f "$ADDON_CONF" ]; then
-    cp $ADDON_DIR/config/mpd.conf $ADDON_CONF
-  fi
-
-  if [ ! -f "$ADDON_SETTINGS" ]; then
-    cp $ADDON_DIR/settings-default.xml $ADDON_SETTINGS
-  fi
-
-# Restart process if it terminates.
-  if [ -f "$LOCKDIR/$LOCKFILE" ] ; then
-    rm -rf "$LOCKDIR/$LOCKFILE"
-  fi
-  while [ true ] ; do
-    if [ -f "$LOCKDIR/$LOCKFILE" ] ; then
-      break
-    fi
-    logger -t mpd "### starting mpd ###"
-    mpd --no-daemon $MPD_ARG > /dev/null 2>&1
-    sleep 1
-  done &
+if [ ! -f "$ADDON_HOME/config/mpd.conf" ]; then
+  cp $ADDON_DIR/config/mpd.conf $ADDON_HOME/config/mpd.conf
 fi
+
+if [ ! -f "$ADDON_SETTINGS" ]; then
+  cp $ADDON_DIR/settings-default.xml $ADDON_SETTINGS
+fi
+
+exec mpd --no-daemon $ADDON_HOME/config/mpd.conf > /dev/null 2>&1

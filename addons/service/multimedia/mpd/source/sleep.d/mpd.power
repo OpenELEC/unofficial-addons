@@ -22,38 +22,22 @@
 
 . /etc/profile
 
+SERVICE="service.multimedia.mpd"
 ADDON_HOME="$HOME/.xbmc/userdata/addon_data/service.multimedia.mpd"
 ADDON_SETTINGS="$ADDON_HOME/settings.xml"
 RESTART_ON_RESUME=`grep RESTART_ON_RESUME $ADDON_SETTINGS | awk '{print $3}' | sed -e "s,value=,," -e "s,\",,g"`
 
-LOCKFILE="/var/lock/mpd.sleep"
-
 if [ "$RESTART_ON_RESUME" == "true" ] ; then
   case "$1" in
-    hibernate|suspend)
-      if [ "$(pidof mpd)" ];then
-        progress "Shutting down mpd for suspending..."
-        mpd.stop
-        touch $LOCKFILE
+    pre)
+      if systemctl is-active "$SERVICE" &>/dev/null ; then
+        systemctl stop "$SERVICE"
       fi
       ;;
-
-    thaw|resume)
-      if [ -f "$LOCKFILE" ] ; then
-        progress "Restarting mpd for wakeup..."
-        mpd.stop
-        for seq in `seq 1 10` ; do
-          if [ ! "$(pidof mpd)" ];then
-            break
-          fi
-          usleep 500000
-        done
-        killall mpd &>/dev/null
-        rm -rf "$LOCKFILE"
-        mpd.start
+    post)
+      if systemctl is-enabled "$SERVICE" &>/dev/null ; then
+        systemctl start "$SERVICE"
       fi
-      ;;
-    *) exit $NA
       ;;
   esac
 fi
