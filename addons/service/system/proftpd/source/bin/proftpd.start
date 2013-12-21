@@ -24,18 +24,9 @@
 
 . /etc/profile
 
-ADDON_DIR="$HOME/.xbmc/addons/service.system.proftpd"
-ADDON_HOME="$HOME/.xbmc/userdata/addon_data/service.system.proftpd"
-
-mkdir -p $ADDON_HOME
-mkdir -p /var/config
+oe_setup_addon service.system.proftpd
 
 chmod a+x $ADDON_DIR/bin/*
-
-# copy default config files
-if [ ! -f "$ADDON_HOME/settings.xml" ]; then
-  cp $ADDON_DIR/settings.xml $ADDON_HOME
-fi
 
 if [ ! -f "$ADDON_HOME/proftpd.conf" ]; then
   cp $ADDON_DIR/etc/proftpd.conf $ADDON_HOME
@@ -44,14 +35,6 @@ fi
 if [ ! -f "$ADDON_HOME/openssl.cnf" ]; then
   cp $ADDON_DIR/etc/openssl.cnf $ADDON_HOME
 fi
-
-# Get user settings from settings.xml
-cat "$ADDON_DIR/settings.xml" | awk -F\" '{print $2"=\""$4"\""}' | sed '/^=/d' > /var/config/proftpd.conf.default
-cat "$ADDON_HOME/settings.xml" | awk -F\" '{print $2"=\""$4"\""}' | sed '/^=/d' > /var/config/proftpd.conf
-
-# Make settings.xml values available as variables
-. /var/config/proftpd.conf.default
-. /var/config/proftpd.conf
 
 [ -z "$Debuglevel" ] && Debuglevel=0
 
