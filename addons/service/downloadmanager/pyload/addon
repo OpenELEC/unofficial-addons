@@ -23,7 +23,7 @@
 . config/options $1
 
 mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
-  cp $BUILD/unrar/unrar $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $BUILD/unrar-*/unrar $ADDON_BUILD/$PKG_ADDON_ID/bin
 
 mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/pylib
   cp -R $BUILD/pycurl*/.install/usr/lib/python*/site-packages/* $ADDON_BUILD/$PKG_ADDON_ID/pylib

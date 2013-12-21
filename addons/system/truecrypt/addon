@@ -28,4 +28,4 @@ mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
 cp $PKG_BUILD/Main/truecrypt $ADDON_BUILD/$PKG_ADDON_ID/bin/
 cp $ROOT/$BUILD/util-linux-*/.$TARGET_NAME/losetup $ADDON_BUILD/$PKG_ADDON_ID/bin/
 cp $ROOT/$BUILD/ntfs-3g_ntfsprogs-*/ntfsprogs/mkntfs $ADDON_BUILD/$PKG_ADDON_ID/bin/
-cp $ROOT/$BUILD/LVM2.*/tools/dmsetup.static $ADDON_BUILD/$PKG_ADDON_ID/bin/dmsetup
+cp $ROOT/$BUILD/LVM2-*/tools/dmsetup.static $ADDON_BUILD/$PKG_ADDON_ID/bin/dmsetup

@@ -1,3 +1,6 @@
+[B]1.0.3[/B]
+- rebuild for addon api bump
+
 [B]1.0.2[/B]
 - rebuild
 

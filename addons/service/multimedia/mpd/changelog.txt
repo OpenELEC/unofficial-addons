@@ -1,6 +1,7 @@
-4.0.2
+4.1.0
 - convert to systemd service
 - update to mpd-0.18.5
+- rebuild for addon api bump
 
 4.0.1
 - rebuild

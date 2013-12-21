@@ -25,6 +25,7 @@
 cd $PKG_BUILD
 
 LIBS="-lncurses -ltinfo" \
+CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses" \
 ./configure --host=$TARGET_NAME \
             --build=$HOST_NAME \
             --with-libstatgrab \

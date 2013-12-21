@@ -25,6 +25,7 @@
 #strip_lto
 
 export LIBS="-lpthread -ltinfo"
+export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses"
 
 cd $PKG_BUILD
 

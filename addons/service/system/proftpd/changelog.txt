@@ -1,5 +1,6 @@
-4.0.2
+4.1.0
 - convert to systemd service
+- rebuild for addon api bump
 
 4.0.1
 - rebuild
