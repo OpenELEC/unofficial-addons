@@ -22,10 +22,8 @@
 
 . /etc/profile
 
-ADDON_DIR="$HOME/.xbmc/addons/service.proxy.polipo"
-ADDON_HOME="$HOME/.xbmc/userdata/addon_data/service.proxy.polipo"
+oe_setup_addon service.proxy.polipo
 
-mkdir -p $ADDON_HOME
 mkdir -p $ADDON_HOME/cache
 mkdir -p $ADDON_HOME/www
 
