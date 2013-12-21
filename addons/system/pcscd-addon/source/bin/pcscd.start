@@ -22,12 +22,8 @@
 
 . /etc/profile
 
-ADDON_DIR="$HOME/.xbmc/addons/service.system.pcscd-addon"
-ADDON_HOME="$HOME/.xbmc/userdata/addon_data/service.system.pcscd-addon"
+oe_setup_addon service.system.pcscd-addon
 
-ADDON_CONFIG_DIR="$ADDON_HOME/config"
-
-mkdir -p $ADDON_HOME
 mkdir -p $ADDON_HOME/config
 
 chmod a+x $ADDON_DIR/bin/*
@@ -36,4 +32,4 @@ if [ ! -f "$ADDON_HOME/config/reader.conf" ]; then
   cp $ADDON_DIR/config/reader.conf $ADDON_HOME/config/reader.conf
 fi
 
-exec pcscd.bin --foreground -c $ADDON_CONFIG_DIR/reader.conf
+exec pcscd.bin --foreground -c $ADDON_HOME/config/reader.conf
