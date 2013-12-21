@@ -24,5 +24,3 @@
 
 mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
   cp $PKG_BUILD/x11vnc/x11vnc $ADDON_BUILD/$PKG_ADDON_ID/bin
-
-  cp -PR $PKG_DIR/config/settings.xml $ADDON_BUILD/$PKG_ADDON_ID/settings-default.xml
