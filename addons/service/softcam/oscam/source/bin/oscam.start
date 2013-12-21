@@ -23,11 +23,8 @@
 
 . /etc/profile
 
-ADDON_DIR="$HOME/.xbmc/addons/service.softcam.oscam"
-ADDON_HOME="$HOME/.xbmc/userdata/addon_data/service.softcam.oscam"
-ADDON_SETTINGS="$ADDON_HOME/settings.xml"
+oe_setup_addon service.softcam.oscam
 
-mkdir -p $ADDON_HOME
 mkdir -p $ADDON_HOME/config
 mkdir -p $ADDON_HOME/log
 
@@ -43,22 +40,11 @@ touch $ADDON_HOME/config/oscam.srvid
 touch $ADDON_HOME/config/oscam.tiers
 touch $ADDON_HOME/config/oscam.user
 
-chmod a+x $ADDON_DIR/bin/*
-
-if [ ! -f "$ADDON_HOME/settings.xml" ]; then
-  cp $ADDON_DIR/settings-default.xml $ADDON_HOME/settings.xml
-fi
-
 if [ ! -f "$ADDON_HOME/config/oscam.conf" ]; then
   cp $ADDON_DIR/oscam-default.conf $ADDON_HOME/config/oscam.conf
 fi
 
-mkdir -p /var/config
-cat "$ADDON_DIR/settings-default.xml" | awk -F\" '{print $2"=\""$4"\""}' | sed '/^=/d' > /var/config/oscam.conf.default
-cat "$ADDON_SETTINGS" | awk -F\" '{print $2"=\""$4"\""}' | sed '/^=/d' > /var/config/oscam.conf
-
-. /var/config/oscam.conf.default
-. /var/config/oscam.conf
+chmod a+x $ADDON_DIR/bin/*
 
 # start userspace DVB driver/addon
 for driver_dvb in $(find /storage/.xbmc/addons/driver.dvb.*/bin/userspace-driver.sh -type f 2>/dev/null); do

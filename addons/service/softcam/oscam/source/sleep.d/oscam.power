@@ -22,10 +22,9 @@
 
 . /etc/profile
 
+oe_setup_addon service.softcam.oscam
+
 SERVICE="service.softcam.oscam.service"
-ADDON_HOME="$HOME/.xbmc/userdata/addon_data/service.softcam.oscam"
-ADDON_SETTINGS="$ADDON_HOME/settings.xml"
-RESTART_ON_RESUME=`grep RESTART_ON_RESUME $ADDON_SETTINGS | awk '{print $3}' | sed -e "s,value=,," -e "s,\",,g"`
 
 if [ "$RESTART_ON_RESUME" == "true" ] ; then
   case "$1" in
