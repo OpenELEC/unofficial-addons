@@ -29,10 +29,3 @@ require_eglibc $1
 mkdir -p $BUILD/$PKG_NAME-$PKG_VERSION
 mv $BUILD/${PKG_NAME}-oss-${PKG_VERSION} $BUILD/$PKG_NAME-$PKG_VERSION/lib
 mv $BUILD/${PKG_NAME}-bin-${PKG_VERSION} $BUILD/$PKG_NAME-$PKG_VERSION/bin
-
-echo "### Applying upstream patches ###"
-
-for patch in `ls $PKG_DIR/patches.upstream/*.patch`; do
-  cat $patch | patch -d \
-    `echo $BUILD/$PKG_NAME-$PKG_VERSION | cut -f1 -d\ ` -p1
-done
