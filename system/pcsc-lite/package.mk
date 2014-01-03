@@ -26,8 +26,8 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://pcsclite.alioth.debian.org/pcsclite.html"
 PKG_URL="https://alioth.debian.org/frs/download.php/3862/${PKG_NAME}-${PKG_VERSION}.tar.bz2"
-PKG_DEPENDS=""
-PKG_BUILD_DEPENDS="toolchain libusb"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain libusb"
 PKG_PRIORITY="optional"
 PKG_SECTION="service/system"
 PKG_SHORTDESC="Middleware to access a smart card using SCard API (PC/SC)"
@@ -36,3 +36,9 @@ PKG_IS_ADDON="yes"
 PKG_AUTORECONF="yes"
 
 PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
+
+PKG_CONFIGURE_OPTS_TARGET="--disable-shared \
+            --enable-static \
+            --disable-libudev \
+            --enable-libusb \
+            --enable-usbdropdir=/storage/.xbmc/addons/service.system.pcscd-addon/drivers"
