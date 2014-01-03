@@ -1,5 +1,3 @@
-#!/bin/sh
-
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
@@ -20,21 +18,27 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-. config/options $1
+PKG_NAME="libstatgrab"
+PKG_VERSION="0.17"
+PKG_REV="1"
+PKG_SITE="http://www.i-scream.org/libstatgrab/"
+PKG_URL="http://ftp.i-scream.org/pub/i-scream/libstatgrab/libstatgrab-$PKG_VERSION.tar.gz"
+PKG_BUILD_DEPENDS_TARGET="toolchain"
+PKG_PRIORITY=optional
+PKG_SECTION=libs
+PKG_SHORTDESC="provides cross platform access to statistics about the system on which it's run"
+PKG_LONGDESC="libstatgrab is a library that provides cross platform access to statistics about the system on which it's run. It's written in C and presents a selection of useful interfaces which can be used to access key system statistics. The current list of statistics includes CPU usage, memory utilisation, disk usage, process counts, network traffic, disk I/O, and more."
+PKG_IS_ADDON="no"
 
-cd $PKG_BUILD
+PKG_AUTORECONF="yes"
 
-ac_cv_func_malloc_0_nonnull=yes \
-./configure \
-       --host=$TARGET_NAME \
-       --build=$HOST_NAME \
+PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
+
+PKG_CONFIGURE_OPTS_TARGET="ac_cv_func_malloc_0_nonnull=yes \
        --enable-static \
        --disable-shared \
-       --prefix=/usr \
        --disable-saidar \
        --disable-examples \
        --disable-manpages \
        --disable-setuid-binaries \
-       --disable-setgid-binaries \
-
-$MAKEINSTALL
+       --disable-setgid-binaries"
