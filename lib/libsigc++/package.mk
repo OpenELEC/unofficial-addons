@@ -25,9 +25,15 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://libsigc.sourceforge.net"
 PKG_URL="http://ftp.gnome.org/pub/GNOME/sources/libsigc++/2.3/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_BUILD_DEPENDS="toolchain libtool pkg-config"
+PKG_BUILD_DEPENDS_TARGET="toolchain libtool pkg-config"
 PKG_PRIORITY="optional"
 PKG_SHORTDESC=""
 PKG_LONGDESC=""
+
 PKG_IS_ADDON="no"
+
 PKG_AUTORECONF="no"
+
+PKG_MAINTAINER=""
+
+PKG_CONFIGURE_OPTS_TARGET="--disable-documentation --with-gnu-ld"
