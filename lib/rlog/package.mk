@@ -25,8 +25,8 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://freecode.com/projects/rlog"
 PKG_URL="http://rlog.googlecode.com/files/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS=""
-PKG_BUID_DEPENDS="toolchain"
+PKG_DEPENDS_TARGET=""
+PKG_BUIID_DEPENDS="toolchain"
 PKG_SECTION="libs"
 PKG_PRIORITY="optional"
 PKG_SHORTDESC="flexible message logging facility"
@@ -37,3 +37,10 @@ PKG_IS_ADDON="no"
 PKG_AUTORECONF="yes"
 
 PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
+
+PKG_CONFIGURE_OPTS_TARGET="--disable-nls --disable-shared --enable-static"
+
+pre_build_target() {
+  mkdir -p $PKG_BUILD/.$TARGET_NAME
+  cp -RP $PKG_BUILD/* $PKG_BUILD/.$TARGET_NAME
+}
