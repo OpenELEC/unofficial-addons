@@ -25,12 +25,13 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://cppunit.sourceforge.net"
 PKG_URL="http://download.sourceforge.net/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS=""
-PKG_BUILD_DEPENDS="toolchain"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
 PKG_SHORTDESC=""
 PKG_LONGDESC=""
 
 PKG_IS_ADDON="no"
-
 PKG_AUTORECONF="no"
+
+PKG_MAINTAINER="Daniel Forsberg (daniel.forsberg1@gmail.com)"
