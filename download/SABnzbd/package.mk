@@ -25,8 +25,8 @@ PKG_ARCH="any"
 PKG_LICENSE="OSS"
 PKG_SITE="http://sabnzbd.org/"
 PKG_URL="$SOURCEFORGE_SRC/sabnzbdplus/sabnzbdplus/${PKG_VERSION}/${PKG_NAME}-${PKG_VERSION}-src.tar.gz"
-PKG_DEPENDS="Python Cheetah pyOpenSSL yenc unrar par2cmdline"
-PKG_BUILD_DEPENDS="toolchain Python Cheetah pyOpenSSL yenc unrar par2cmdline configobj"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain Python Cheetah pyOpenSSL yenc unrar par2cmdline configobj"
 PKG_PRIORITY="optional"
 PKG_SECTION="service/downloadmanager"
 PKG_SHORTDESC="SABnzbd makes Usenet as simple and streamlined as possible by automating everything we can."
@@ -37,3 +37,11 @@ PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="unofficial.addon.pro"
+
+make_target() {
+  : # nothing to do here
+}
+
+makeinstall_target() {
+  : # nothing to do here
+}
