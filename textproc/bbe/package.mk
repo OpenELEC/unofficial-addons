@@ -36,3 +36,8 @@ PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="vpeter4 (peter.vicman@gmail.com)"
+
+makeinstall_target() {
+  : # nothing to do here
+}
+

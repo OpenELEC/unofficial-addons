@@ -41,3 +41,7 @@ make_target() {
   make xdotool.static
   mv xdotool.static xdotool
 }
+
+makeinstall_target() {
+  : # nothing to do here
+}
