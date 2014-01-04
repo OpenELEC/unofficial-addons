@@ -1,8 +1,6 @@
-#!/bin/sh
-
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
-#      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
+#      Copyright (C) 2009-2013 Stephan Raue (stephan@openelec.tv)
 #
 #  This Program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -20,17 +18,28 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-. config/options $1
+PKG_NAME="LVM2"
+PKG_VERSION="2.02.98"
+PKG_REV="1"
+PKG_ARCH="any"
+PKG_LICENSE=""
+PKG_SITE="http://sources.redhat.com/lvm2/"
+PKG_URL="ftp://sources.redhat.com/pub/lvm2/${PKG_NAME}.${PKG_VERSION}.tgz"
+PKG_SOURCE_DIR="${PKG_NAME}.${PKG_VERSION}"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain"
+PKG_PRIORITY="optional"
+PKG_SECTION="system"
+PKG_SHORTDESC="lvm2: Logical Volume Management (Version 2)"
+PKG_LONGDESC="LVM includes all of the support for handling read/write operations on physical volumes (hard disks, RAID-Systems, magneto optical, etc., multiple devices (MD), see mdadd(8) or even loop devices, see losetup(8)), creating volume groups (kind of virtual disks) from one or more physical volumes and creating one or more logical volumes (kind of logical partitions) in volume groups. This 2nd version is based on device-mapper available in linux-2.6."
 
-cd $PKG_BUILD
+PKG_IS_ADDON="no"
+PKG_AUTORECONF="yes"
 
-ac_cv_func_malloc_0_nonnull=yes \
-ac_cv_func_realloc_0_nonnull=yes \
-./configure --host=$TARGET_NAME \
-            --build=$HOST_NAME \
-            --prefix=/usr \
-            --bindir=/usr/bin \
-            --sbindir=/usr/bin \
+PKG_MAINTAINER="vpeter4 (peter.vicman@gmail.com)"
+
+PKG_CONFIGURE_OPTS_TARGET="ac_cv_func_malloc_0_nonnull=yes \
+            ac_cv_func_realloc_0_nonnull=yes \
             --disable-lvm1_fallback \
             --enable-static_link \
             --disable-readline \
@@ -46,6 +55,4 @@ ac_cv_func_realloc_0_nonnull=yes \
             --enable-fsadm \
             --disable-dmeventd \
             --disable-selinux \
-            --disable-nls
-
-make
+            --disable-nls"
