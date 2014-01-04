@@ -26,8 +26,8 @@ PKG_ARCH="any"
 PKG_LICENSE="OSS"
 PKG_SITE="https://github.com/RuudBurger/CouchPotatoServer"
 PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS="Python SABnzbd"
-PKG_BUILD_DEPENDS="toolchain Python"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain Python"
 PKG_PRIORITY="optional"
 PKG_SECTION="service/downloadmanager"
 PKG_SHORTDESC="CouchPotatoServer: automated movie downloading."
@@ -38,3 +38,11 @@ PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="unofficial.addon.pro"
+
+make_target() {
+  : # nothing to do here
+}
+
+makeinstall_target() {
+  : # nothing to do here
+}
