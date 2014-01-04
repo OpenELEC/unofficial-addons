@@ -25,13 +25,16 @@ PKG_ARCH="any"
 PKG_LICENSE="OSS"
 PKG_SITE="http://www.X.org"
 PKG_URL="http://xorg.freedesktop.org/archive/individual/lib/$PKG_NAME-$PKG_VERSION.tar.bz2"
-PKG_DEPENDS="libXfixes libXrender libX11"
-PKG_BUILD_DEPENDS="toolchain libX11 libXfixes libXrender"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain libX11 libXfixes libXrender"
 PKG_PRIORITY="optional"
 PKG_SECTION="x11/lib"
 PKG_SHORTDESC="libXcursor: X Cursor Library"
 PKG_LONGDESC="X11 Cursor management library"
+
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="yes"
 
 PKG_MAINTAINER="vpeter4 (peter.vicman@gmail.com)"
+
+PKG_CONFIGURE_OPTS_TARGET="--disable-shared --enable-static"
