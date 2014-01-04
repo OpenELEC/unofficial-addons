@@ -1,5 +1,3 @@
-#!/bin/sh
-
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
@@ -20,9 +18,26 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-. config/options $1
+PKG_NAME="xdotool"
+PKG_VERSION="2.20110530.1"
+PKG_REV="1"
+PKG_ARCH=""
+PKG_LICENSE="GPL"
+PKG_SITE="http://www.semicomplete.com/projects/xdotool/"
+PKG_URL="http://semicomplete.googlecode.com/files/${PKG_NAME}-${PKG_VERSION}.tar.gz"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain libXtst libXinerama"
+PKG_PRIORITY="optional"
+PKG_SECTION="x11/app"
+PKG_SHORTDESC="This tool lets you simulate keyboard input and mouse activity, move and resize windows, etc.."
+PKG_LONGDESC="This tool lets you simulate keyboard input and mouse activity, move and resize windows, etc.."
 
-cd $PKG_BUILD
+PKG_IS_ADDON="no"
+PKG_AUTORECONF="no"
 
-make xdotool.static
-mv xdotool.static xdotool
+PKG_MAINTAINER="vpeter4 (peter.vicman@gmail.com)"
+
+make_target() {
+  make xdotool.static
+  mv xdotool.static xdotool
+}

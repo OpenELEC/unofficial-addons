@@ -1,0 +1,17 @@
+diff --git a/Makefile b/Makefile
+index 5b2b167..3f5854a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -73,11 +73,7 @@ pre-install:
+ 
+ .PHONY: post-install
+ post-install:
+-	@if [ "$$(uname)" = "Linux" ] ; then \
+-		echo "Running ldconfig to update library cache"; \
+-		ldconfig \
+-		  || echo "Failed running 'ldconfig'. Maybe you need to be root?"; \
+-	fi
++	echo "done"
+ 
+ 
+ .PHONY: installprog
