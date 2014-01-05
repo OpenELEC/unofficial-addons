@@ -25,8 +25,8 @@ PKG_ARCH="any"
 PKG_LICENSE="OSS"
 PKG_SITE="http://www.pps.univ-paris-diderot.fr/~jch/software/polipo/"
 PKG_URL="http://freehaven.net/~chrisd/polipo/${PKG_NAME}-${PKG_VERSION}.tar.gz"
-PKG_DEPENDS=""
-PKG_BUILD_DEPENDS="toolchain"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
 PKG_SECTION="service/proxy"
 PKG_SHORTDESC="Polipo - a caching web proxy"
@@ -39,3 +39,12 @@ PKG_ADDON_TYPE="xbmc.service"
 PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
+
+makeinstall_target() {
+  : # nop
+}
+
+addon() {
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $PKG_BUILD/polipo $ADDON_BUILD/$PKG_ADDON_ID/bin
+}
