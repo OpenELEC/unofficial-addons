@@ -25,8 +25,8 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://libtorrent.rakshasa.no"
 PKG_URL="http://libtorrent.rakshasa.no/downloads/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS="openssl curl ncurses zlib"
-PKG_BUILD_DEPENDS="toolchain openssl curl libtool pkg-config ncurses libtorrent zlib xmlrpc-c libsigc++"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain openssl curl libtool pkg-config ncurses libtorrent zlib xmlrpc-c libsigc++"
 PKG_PRIORITY="optional"
 PKG_SECTION="service/downloadmanager"
 PKG_SHORTDESC="rTorrent: a very fast, free BitTorrent client"
@@ -35,3 +35,15 @@ PKG_IS_ADDON="no"
 PKG_AUTORECONF="yes"
 
 PKG_MAINTAINER="Daniel Forsberg (daniel.forsberg1@gmail.com)"
+
+PKG_CONFIGURE_OPTS_TARGET="--disable-debug \
+            --with-xmlrpc-c=$SYSROOT_PREFIX/usr/bin/xmlrpc-c-config \
+            --with-gnu-ld"
+
+pre_configure_target() {
+  export LIBS="$LIBS -ltinfo"
+}
+
+makeinstall_target() {
+  : # nop
+}
