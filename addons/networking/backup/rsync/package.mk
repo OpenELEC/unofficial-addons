@@ -25,8 +25,8 @@ PKG_ARCH="any"
 PKG_LICENSE="OSS"
 PKG_SITE="http://www.samba.org/ftp/rsync/rsync.html"
 PKG_URL="ftp://rsync.samba.org/pub/rsync/src/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS=""
-PKG_BUILD_DEPENDS="toolchain"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
 PKG_SECTION="network/backup"
 PKG_SHORTDESC="rsync: A replacement for rcp that has many more features"
@@ -38,3 +38,16 @@ PKG_ADDON_TYPE="xbmc.python.script"
 PKG_AUTORECONF="yes"
 
 PKG_MAINTAINER="unofficial.addon.pro"
+
+PKG_CONFIGURE_OPTS_TARGET="--disable-acl-support \
+            --disable-xattr-support \
+            --with-included-popt"
+
+makeinstall_target() {
+  : # nop
+}
+
+addon() {
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $PKG_BUILD/.$TARGET_NAME/rsync $ADDON_BUILD/$PKG_ADDON_ID/bin
+}
