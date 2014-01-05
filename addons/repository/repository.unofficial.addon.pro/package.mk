@@ -25,8 +25,8 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://unofficial.addon.pro"
 PKG_URL=""
-PKG_DEPENDS=""
-PKG_BUILD_DEPENDS=""
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET=""
 PKG_PRIORITY="optional"
 PKG_SECTION=""
 PKG_SHORTDESC="Unfficial OpenELEC.tv Add-on Repository"
@@ -38,3 +38,19 @@ PKG_ADDON_TYPE="xbmc.addon.repository"
 PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="unofficial.addon.pro"
+
+make_target() {
+  $SED -e "s|@ADDON_VERSION@|$ADDON_VERSION|g" \
+     -e "s|@PROJECT@|$PROJECT|g" \
+     -e "s|@ARCH@|$ARCH|g" \
+  -i addon.xml
+}
+
+makeinstall_target() {
+  : # nop
+}
+
+addon() {
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID
+  cp -R $PKG_BUILD/* $ADDON_BUILD/$PKG_ADDON_ID
+}
