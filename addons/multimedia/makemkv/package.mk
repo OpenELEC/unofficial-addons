@@ -52,7 +52,7 @@ make_target() {
 }
 
 makeinstall_target() {
-  : $ nop
+  : # nop
 }
 
 addon() {
