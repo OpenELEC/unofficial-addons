@@ -49,7 +49,6 @@ PKG_CONFIGURE_OPTS_TARGET="--with-libstatgrab \
             --with-partitions"
 
 pre_configure_target() {
-  export LIBS="-lncurses -ltinfo"
   export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses"
 }
 

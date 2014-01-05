@@ -49,7 +49,6 @@ PKG_CONFIGURE_OPTS_TARGET="ac_cv_func_malloc_0_nonnull=yes \
             --with-gnu-ld"
 
 pre_configure_target() {
-  export LDFLAGS="$LDFLAGS -ltinfo"
   export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses"
 }
 

@@ -40,10 +40,6 @@ PKG_CONFIGURE_OPTS_TARGET="--disable-debug \
             --with-xmlrpc-c=$SYSROOT_PREFIX/usr/bin/xmlrpc-c-config \
             --with-gnu-ld"
 
-pre_configure_target() {
-  export LIBS="$LIBS -ltinfo"
-}
-
 makeinstall_target() {
   : # nop
 }

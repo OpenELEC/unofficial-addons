@@ -45,7 +45,6 @@ pre_build_target() {
 }
 
 pre_configure_target() {
-  export LIBS="-lpthread -ltinfo"
   export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses"
 }
 

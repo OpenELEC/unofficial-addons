@@ -42,8 +42,7 @@ PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
 PKG_CONFIGURE_OPTS_TARGET="--disable-pam --disable-locale --disable-telnet"
 
 pre_configure_target() {
-  LDFLAGS=`echo $LDFLAGS | sed -e "s|-Wl,--as-needed||"`
-  export LDFLAGS="$LDFLAGS -ltinfo"
+  export LDFLAGS=`echo $LDFLAGS | sed -e "s|-Wl,--as-needed||"`
 }
 
 makeinstall_target() {
