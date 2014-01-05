@@ -27,8 +27,8 @@ PKG_LICENSE="GPL"
 PKG_SITE="http://keytouch.sourceforge.net"
 PKG_URL="$SOURCEFORGE_SRC/keytouch/getscancodes-${PKG_VERSION}.tar.gz"
 PKG_SOURCE_DIR="$PKG_NAME"
-PKG_DEPENDS=""
-PKG_BUILD_DEPENDS="toolchain"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"
 PKG_SHORTDESC="Shows the scancode of the pressed or released key"
@@ -42,3 +42,11 @@ PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
 
+makeinstall_target() {
+  : # nop
+}
+
+addon() {
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp -P $PKG_BUILD/getscancodes $ADDON_BUILD/$PKG_ADDON_ID/bin/
+}
