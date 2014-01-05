@@ -25,8 +25,8 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://fuse.sourceforge.net/sshfs.html"
 PKG_URL="http://downloads.sourceforge.net/project/fuse/sshfs-fuse/$PKG_VERSION/sshfs-fuse-$PKG_VERSION.tar.gz"
-PKG_DEPENDS=""
-PKG_BUILD_DEPENDS="toolchain fuse glib"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain fuse glib"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"
 PKG_SHORTDESC="sshf-sfuse: a filesystem client based on the SSH File Transfer Protocol"
@@ -40,3 +40,11 @@ PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
 
+makeinstall_target() {
+  : # nop
+}
+
+addon() {
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $PKG_BUILD/.$TARGET_NAME/sshfs $ADDON_BUILD/$PKG_ADDON_ID/bin
+}
