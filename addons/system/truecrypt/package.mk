@@ -28,8 +28,8 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.truecrypt.org"
 PKG_URL="http://fossies.org/linux/misc/TrueCrypt-$PKG_VERSION-Source.tar.gz"
-PKG_DEPENDS=""
-PKG_BUILD_DEPENDS="toolchain fuse util-linux LVM2 wxWidgets ntfs-3g_ntfsprogs"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain fuse util-linux LVM2 wxWidgets ntfs-3g_ntfsprogs"
 PKG_PRIORITY="optional"
 PKG_SECTION="plugin/program"
 PKG_SHORTDESC="Mount TrueCrypt Files."
@@ -38,3 +38,63 @@ PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_AUTORECONF="no"
 PKG_MAINTAINER="vpeter4 (peter.vicman@gmail.com) and smory (smoradap@gmail.com)"
+
+pre_unpack() {
+  TC_PKG="`echo $PKG_URL | sed 's%.*/\(.*\)$%\1%' | sed 's|%20| |g'`"
+  SRC_ARCHIVE=$(readlink -f $SOURCES/$PKG_NAME/$TC_PKG)
+  cd $ROOT/$BUILD
+  tar xzf "$SRC_ARCHIVE"
+  mv ${PKG_NAME}-${PKG_VERSION}-source ${PKG_NAME}-${PKG_VERSION}
+  cd -
+}
+
+pre_configure_target() {
+  # wxWidgets fails to build with LTO
+  strip_lto
+}
+
+make_target() {
+  # TODO: what? fix this.
+  # use our strip
+  sed -i 's|strip $(APPNAME)|$(STRIP) $(APPNAME)|' Main/Main.make
+
+  WX_ROOT=$(get_build_dir wxWidgets)
+  WX_BUILD_DIR=$WX_ROOT/wxrelease
+
+  # enable environment WX_CONFIGURE_FLAGS
+  sed -i 's|WX_CONFIGURE_FLAGS :=|WX_CONFIGURE_FLAGS +=|' Makefile
+
+  # make wxWidgets library
+  if [ ! -d "$WX_BUILD_DIR" ]; then
+    WX_CONFIGURE_FLAGS="--host=$TARGET_NAME --build=$HOST_NAME" \
+    make wxbuild \
+         NOGUI=1 \
+         WX_ROOT=$WX_ROOT \
+         WX_BUILD_DIR=$WX_BUILD_DIR
+  fi
+
+  WX_LIBS=$($WX_BUILD_DIR/wx-config --libs)
+
+  # make truecrypt binary
+  make NOGUI=1 \
+     WXSTATIC=1 \
+     NOTEST=1 \
+     NOASM=1 \
+     PKCS11_INC=$PKG_DIR/pkcs11 \
+     WX_ROOT=$WX_ROOT \
+     WX_BUILD_DIR=$WX_BUILD_DIR \
+     WX_CONFIG=$WX_BUILD_DIR/wx-config \
+     WX_LIBS="$WX_LIBS -lrt"
+}
+
+makeinstall_target() {
+  : # nop
+}
+
+addon() {
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $PKG_BUILD/Main/truecrypt $ADDON_BUILD/$PKG_ADDON_ID/bin/
+  cp $(get_build_dir util-linux)/.$TARGET_NAME/losetup $ADDON_BUILD/$PKG_ADDON_ID/bin/
+  cp $(get_build_dir ntfs-3g_ntfsprogs)/.$TARGET_NAME/ntfsprogs/mkntfs $ADDON_BUILD/$PKG_ADDON_ID/bin/
+  cp $(get_build_dir LVM2)/.$TARGET_NAME/tools/dmsetup.static $ADDON_BUILD/$PKG_ADDON_ID/bin/dmsetup
+}
