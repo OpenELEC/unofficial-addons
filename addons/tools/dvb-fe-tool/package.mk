@@ -1,5 +1,3 @@
-#!/bin/sh
-
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
@@ -20,15 +18,29 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-. config/options $1
+PKG_NAME="dvb-fe-tool"
+PKG_VERSION="0.9.5"
+PKG_REV="0"
+PKG_ARCH="any"
+PKG_LICENSE="GPL"
+PKG_SITE="http://linuxtv.org/"
+PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.bz2"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain"
+PKG_PRIORITY="optional"
+PKG_SECTION="tools"
+PKG_SHORTDESC="dvb-fe-tool: Linux V4L2 and DVB API utilities and v4l libraries (libv4l)."
+PKG_LONGDESC="Linux V4L2 and DVB API utilities and v4l libraries (libv4l)."
+PKG_DISCLAIMER="this is an unofficial addon. please don't ask for support in openelec forum / irc channel"
 
-CWD=`pwd`
-cd $PKG_BUILD
+PKG_IS_ADDON="yes"
+PKG_ADDON_TYPE="xbmc.python.script"
 
-./configure --host=$TARGET_NAME \
-            --build=$HOST_NAME \
-            --prefix=/usr \
-            --disable-nls \
+PKG_AUTORECONF="yes"
+
+PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
+
+PKG_CONFIGURE_OPTS_TARGET="--disable-nls \
             --disable-rpath \
             --disable-libdvbv5 \
             --disable-libv4l \
@@ -36,10 +48,21 @@ cd $PKG_BUILD
             --disable-qv4l2 \
             --without-jpeg \
             --without-libiconv-prefix \
-            --without-libintl-prefix \
+            --without-libintl-prefix"
 
-cd $CWD/$PKG_BUILD/lib/libdvbv5
+make_target() {
+  cd $ROOT/$PKG_BUILD/.$TARGET_NAME/lib/libdvbv5
   make CFLAGS="$TARGET_CFLAGS"
 
-cd $CWD/$PKG_BUILD/utils/dvb
+  cd $ROOT/$PKG_BUILD/.$TARGET_NAME/utils/dvb
   make CFLAGS="$TARGET_CFLAGS"
+}
+
+makeinstall_target() {
+  : # nop
+}
+
+addon() {
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $PKG_BUILD/.$TARGET_NAME/utils/dvb/dvb-fe-tool $ADDON_BUILD/$PKG_ADDON_ID/bin
+}
