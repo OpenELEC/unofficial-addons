@@ -1,5 +1,3 @@
-#!/bin/sh
-
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2013 Dag Wieers (dag@wieers.com)
@@ -20,8 +18,34 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-. config/options $1
+PKG_NAME="hddtemp"
+PKG_VERSION="0.3-beta15"
+PKG_REV="0"
+PKG_ARCH="any"
+PKG_LICENSE="GPL"
+PKG_SITE="http://www.guzu.net/linux/hddtemp.php"
+PKG_URL="http://download.savannah.gnu.org/releases/hddtemp/$PKG_NAME-$PKG_VERSION.tar.bz2"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain"
+PKG_PRIORITY="optional"
+PKG_SECTION="debug/tools"
+PKG_SHORTDESC="hddtemp: tool that reports hard drive temperature"
+PKG_LONGDESC="hddtemp is a small utility (daemonizable) that gives you the temperature of your hard drive by reading S.M.A.R.T. informations (for drives that support this feature)."
 
-mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
-  cp -P $PKG_BUILD/src/hddtemp $ADDON_BUILD/$PKG_ADDON_ID/bin
+PKG_IS_ADDON="yes"
+PKG_ADDON_TYPE="xbmc.python.script"
 
+PKG_AUTORECONF="no"
+
+PKG_MAINTAINER="Dag Wieers (dag@wieers.com)"
+
+PKG_CONFIGURE_OPTS_TARGET="--with-db-path=/storage/.xbmc/addons/debug.tools.hddtemp/hddtemp.db"
+
+makeinstall_target() {
+  : # nop
+}
+
+addon() {
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp -P $PKG_BUILD/.$TARGET_NAME/src/hddtemp $ADDON_BUILD/$PKG_ADDON_ID/bin
+}
