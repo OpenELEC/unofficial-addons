@@ -1,5 +1,3 @@
-#!/bin/sh
-
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
@@ -21,12 +19,30 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-. config/options $1
+PKG_NAME="oscam"
+PKG_VERSION="9131"
+PKG_REV="0"
+PKG_ARCH="any"
+PKG_LICENSE="GPL"
+PKG_SITE="http://www.streamboard.tv/oscam/wiki"
+PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.bz2"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain pcsc-lite"
+PKG_PRIORITY="optional"
+PKG_SECTION="service/softcam"
+PKG_SHORTDESC="oscam: OSCam is Open Source Conditional Access Modul."
+PKG_LONGDESC="OSCam is Open Source Conditional Access Modul."
+PKG_DISCLAIMER="using oscam may be illegal in your country. if in doubt, do not install"
 
-cd $PKG_BUILD
-mkdir -p build && cd build
+PKG_IS_ADDON="yes"
+PKG_ADDON_TYPE="xbmc.service"
 
-cmake -DCMAKE_TOOLCHAIN_FILE=$CMAKE_CONF \
+PKG_AUTORECONF="no"
+
+PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
+
+configure_target() {
+  cmake -DCMAKE_TOOLCHAIN_FILE=$CMAKE_CONF \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DLIBUSBDIR=$SYSROOT_PREFIX/usr \
       -DWITH_SSL=0 \
@@ -38,5 +54,14 @@ cmake -DCMAKE_TOOLCHAIN_FILE=$CMAKE_CONF \
       -DOPTIONAL_INCLUDE_DIR=$SYSROOT_PREFIX/usr/include \
       -DSTATIC_LIBUSB=1 \
       ..
+}
 
-make
+makeinstall_target() {
+  : # nop
+}
+
+addon() {
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp -P $PKG_BUILD/.$TARGET_NAME/oscam $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp -P $PKG_BUILD/.$TARGET_NAME/utils/list_smargo $ADDON_BUILD/$PKG_ADDON_ID/bin
+}
