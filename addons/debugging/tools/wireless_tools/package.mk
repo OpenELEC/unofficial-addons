@@ -26,8 +26,8 @@ PKG_LICENSE="GPL"
 PKG_SITE="http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/Tools.html"
 PKG_URL="http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/$PKG_NAME.$PKG_VERSION.tar.gz"
 PKG_SOURCE_DIR="${PKG_NAME}.${PKG_VERSION}"
-PKG_DEPENDS=""
-PKG_BUILD_DEPENDS="toolchain"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
 PKG_SECTION="debug/tools"
 PKG_SHORTDESC="wireless-tools: tools allowing to manipulate the Wireless Extensions"
@@ -40,3 +40,25 @@ PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="Dag Wieers (dag@wieers.com)"
 
+pre_configure_Target() {
+  # wireless_tools fails to build on some systems with LTO enabled
+  strip_lto
+}
+
+make_target() {
+  make PREFIX=/usr CC="$CC" AR="$AR" \
+     CFLAGS="$CFLAGS" CPPFLAGS="$CPPFLAGS" iwmulticall
+}
+
+makeinstall_target() {
+  : # nop
+}
+
+addon() {
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp -P $PKG_BUILD/iwmulticall $ADDON_BUILD/$PKG_ADDON_ID/bin/iwconfig
+  cp -P $PKG_BUILD/iwmulticall $ADDON_BUILD/$PKG_ADDON_ID/bin/iwgetid
+  cp -P $PKG_BUILD/iwmulticall $ADDON_BUILD/$PKG_ADDON_ID/bin/iwlist
+  cp -P $PKG_BUILD/iwmulticall $ADDON_BUILD/$PKG_ADDON_ID/bin/iwspy
+  cp -P $PKG_BUILD/iwmulticall $ADDON_BUILD/$PKG_ADDON_ID/bin/iwpriv
+}
