@@ -1,5 +1,3 @@
-#!/bin/sh
-
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
@@ -20,7 +18,30 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-. config/options
+PKG_NAME="w_scan"
+PKG_VERSION="20121111"
+PKG_REV="0"
+PKG_ARCH="any"
+PKG_LICENSE="GPL"
+PKG_SITE="http://wirbel.htpc-forum.de/w_scan/index2.html"
+PKG_URL="http://wirbel.htpc-forum.de/w_scan/$PKG_NAME-$PKG_VERSION.tar.bz2"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain"
+PKG_PRIORITY="optional"
+PKG_SECTION="lib/multimedia"
+PKG_SHORTDESC="w_scan: eine kleine Anwendung zum Scannen von ATSC/DVB-C/S/T Transpondern/Bouquets nach Sendern und Erstellen einer VDR channels.conf."
+PKG_LONGDESC="w_scan ist eine kleine Anwendung zum Scannen von ATSC/DVB-C/S/T Transpondern/Bouquets nach Sendern und Erstellen einer VDR channels.conf."
+PKG_IS_ADDON="yes"
+PKG_ADDON_TYPE="xbmc.python.script"
+PKG_AUTORECONF="yes"
 
-mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
-  cp $PKG_BUILD/w_scan $ADDON_BUILD/$PKG_ADDON_ID/bin
+PKG_MAINTAINER="unofficial.addon.pro"
+
+makeinstall_target() {
+  : # nop
+}
+
+addon() {
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $PKG_BUILD/.$TARGET_NAME/w_scan $ADDON_BUILD/$PKG_ADDON_ID/bin
+}
