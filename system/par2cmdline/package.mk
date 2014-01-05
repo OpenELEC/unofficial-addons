@@ -1,5 +1,3 @@
-#!/bin/sh
-
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
@@ -20,7 +18,25 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-. config/options $1
+PKG_NAME="par2cmdline"
+PKG_VERSION="0.4"
+PKG_REV="1"
+PKG_ARCH="any"
+PKG_LICENSE="GPL"
+PKG_SITE="http://www.chuchusoft.com/par2_tbb/index.html"
+PKG_URL="$SOURCEFORGE_SRC/parchive/par2cmdline/$PKG_VERSION/$PKG_NAME-$PKG_VERSION.tar.gz"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain"
+PKG_PRIORITY="optional"
+PKG_SECTION="system"
+PKG_SHORTDESC="par2cmdline: a utility to create and repair data files using Reed Solomon coding."
+PKG_LONGDESC="This is a concurrent (multithreaded) version of par2cmdline, a utility to create and repair data files using Reed Solomon coding. par2 parity archives are commonly used on Usenet postings to allow corrupted postings to be repaired instead of needing the original poster to repost the corrupted file(s)."
+PKG_IS_ADDON="no"
 
-mkdir -p $INSTALL/usr/bin
-  cp -P $PKG_BUILD/par2 $INSTALL/usr/bin
+PKG_AUTORECONF="yes"
+
+PKG_MAINTAINER="unofficial.addon.pro"
+
+makeinstall_target() {
+  : # nop
+}
