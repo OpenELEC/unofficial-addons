@@ -26,8 +26,8 @@ PKG_LICENSE="GPL"
 PKG_SITE="http://mpd.wikia.com/wiki/Music_Player_Daemon_Wiki"
 PKG_URL="http://www.musicpd.org/download/${PKG_NAME}/${PKG_VERSION%.*}/${PKG_NAME}-${PKG_VERSION}.tar.xz"
 #PKG_URL="http://downloads.sourceforge.net/musicpd/$PKG_NAME-$PKG_VERSION.tar.bz2"
-PKG_DEPENDS=""
-PKG_BUILD_DEPENDS="toolchain glib libmad libogg flac faad2 curl alsa-lib yajl libid3tag"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain glib libmad libogg flac faad2 curl alsa-lib yajl libid3tag"
 PKG_PRIORITY="optional"
 PKG_SECTION="service.multimedia"
 PKG_SHORTDESC="Flexible, powerful, server-side application for playing music"
@@ -40,3 +40,62 @@ PKG_AUTORECONF="yes"
 PKG_DISCLAIMER="This may block your xbmc audio. It might also play no audio at all, if streamsilence is enabled and you try to use the very same device"
 
 PKG_MAINTAINER="Lukas Sabota (LTsmooth42@gmail.com)"
+
+pre_configure_target() {
+  export LDFLAGS="$LDFLAGS -ldl"
+}
+
+
+PKG_CONFIGURE_OPTS_TARGET="--enable-alsa \
+             --disable-roar \
+             --disable-ao \
+             --disable-audiofile \
+             --disable-bzip2 \
+             --disable-cdio-paranoia \
+             --enable-curl \
+             --disable-soup \
+             --disable-debug \
+             --disable-documentation \
+             --disable-ffado \
+             --disable-ffmpeg \
+             --disable-fluidsynth \
+             --disable-gme \
+             --disable-httpd-output \
+             --enable-id3 \
+             --disable-jack \
+             --disable-lastfm \
+             --disable-despotify \
+             --disable-soundcloud \
+             --disable-lame-encoder \
+             --disable-libwrap \
+             --disable-lsr \
+             --enable-mad \
+             --disable-mikmod\
+             --disable-mms \
+             --disable-modplug \
+             --disable-mpg123 \
+             --disable-mvp \
+             --disable-openal \
+             --disable-oss \
+             --disable-pipe-output \
+             --disable-pulse \
+             --disable-recorder-output \
+             --disable-sidplay \
+             --disable-shout \
+             --disable-sndfile \
+             --disable-solaris-output \
+             --disable-sqlite \
+             --disable-systemd-daemon \
+             --disable-test \
+             --disable-twolame-encoder \
+             --disable-zzip \
+             --with-zeroconf=no"
+
+makeinstall_target() {
+  : # nop
+}
+
+addon() {
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp -P $PKG_BUILD/.$TARGET_NAME/src/mpd $ADDON_BUILD/$PKG_ADDON_ID/bin
+}
