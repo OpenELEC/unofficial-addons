@@ -27,8 +27,8 @@ PKG_LICENSE="GPL"
 PKG_SITE="http://p7zip.sourceforge.net/"
 PKG_URL="http://downloads.sourceforge.net/project/p7zip/p7zip/${PKG_VERSION}/p7zip_${PKG_VERSION}_src_all.tar.bz2"
 PKG_SOURCE_DIR="${PKG_NAME}_${PKG_VERSION}"
-PKG_DEPENDS=""
-PKG_BUILD_DEPENDS="toolchain"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"
 PKG_SHORTDESC="p7zip is a port of 7za.exe for POSIX systems like Unix"
@@ -41,3 +41,19 @@ PKG_ADDON_TYPE="xbmc.python.script"
 PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
+
+make_target() {
+  make TARGET_CXX=$TARGET_CXX TARGET_CC=$TARGET_CC 7z 7za
+}
+
+makeinstall_target() {
+  : # nop
+}
+
+addon() {
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp -aP $PKG_BUILD/bin/7z.so $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp -aP $PKG_BUILD/bin/Codecs $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp -aP $PKG_BUILD/bin/7z $ADDON_BUILD/$PKG_ADDON_ID/bin/7z.bin
+  cp -aP $PKG_BUILD/bin/7za $ADDON_BUILD/$PKG_ADDON_ID/bin/7za.bin
+}
