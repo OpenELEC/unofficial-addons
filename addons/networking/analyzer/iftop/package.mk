@@ -25,8 +25,8 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://htop.sourceforge.net/"
 PKG_URL="http://www.ex-parrot.com/pdw/iftop/download/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS="ncurses"
-PKG_BUILD_DEPENDS="toolchain ncurses libpcap"
+PKG_DEPENDS_TARGET="ncurses"
+PKG_BUILD_DEPENDS_TARGET="toolchain ncurses libpcap"
 PKG_PRIORITY="optional"
 PKG_SECTION="network/analyzer"
 PKG_SHORTDESC="iftop: display bandwidth usage on an interface"
@@ -38,3 +38,22 @@ PKG_ADDON_TYPE="xbmc.python.script"
 PKG_AUTORECONF="yes"
 
 PKG_MAINTAINER="unofficial.addon.pro"
+
+pre_build_target() {
+  mkdir -p $PKG_BUILD/.$TARGET_NAME
+  cp -RP $PKG_BUILD/* $PKG_BUILD/.$TARGET_NAME
+}
+
+pre_configure_target() {
+  export LIBS="-lpthread -ltinfo"
+  export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses"
+}
+
+makeinstall_target() {
+  : # nop
+}
+
+addon() {
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $PKG_BUILD/.$TARGET_NAME/iftop $ADDON_BUILD/$PKG_ADDON_ID/bin
+}
