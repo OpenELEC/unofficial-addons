@@ -25,8 +25,8 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://ngrep.sourceforge.net/"
 PKG_URL="http://prdownloads.sourceforge.net/ngrep/ngrep-${PKG_VERSION}.tar.bz2"
-PKG_DEPENDS=""
-PKG_BUILD_DEPENDS="toolchain libpcap"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain libpcap"
 PKG_PRIORITY="optional"
 PKG_SECTION="network/analyzer"
 PKG_SHORTDESC="ngrep - network grep"
@@ -39,3 +39,19 @@ PKG_ADDON_TYPE="xbmc.python.script"
 PKG_AUTORECONF="yes"
 
 PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
+
+PKG_CONFIGURE_OPTS_TARGET="--with-pcap-includes=$SYSROOT_PREFIX/usr/include"
+
+pre_build_target() {
+  mkdir -p $PKG_BUILD/.$TARGET_NAME
+  cp -RP $PKG_BUILD/* $PKG_BUILD/.$TARGET_NAME
+}
+
+makeinstall_target() {
+  : # nop
+}
+
+addon() {
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $PKG_BUILD/.$TARGET_NAME/ngrep $ADDON_BUILD/$PKG_ADDON_ID/bin
+}
