@@ -24,8 +24,8 @@ PKG_VERSION="4.3.0"
 PKG_REV="0"
 PKG_SITE="http://www.tcpdump.org/"
 PKG_URL="http://www.tcpdump.org/release/tcpdump-${PKG_VERSION}.tar.gz"
-PKG_DEPENDS=""
-PKG_BUILD_DEPENDS="toolchain libpcap"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain libpcap"
 PKG_PRIORITY=optional
 PKG_SECTION="network/analyzer"
 PKG_SHORTDESC="powerful tool for network monitoring and data acquisition"
@@ -37,3 +37,25 @@ PKG_ADDON_TYPE="xbmc.python.script"
 PKG_AUTORECONF="yes"
 
 PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
+
+PKG_CONFIGURE_OPTS_TARGET="--with-pcap=linux --with-crypto=no --disable-ipv6"
+
+pre_configure_target() {
+  # When cross-compiling, configure can't set linux version
+  # forcing it
+  sed -i -e 's/ac_cv_linux_vers=unknown/ac_cv_linux_vers=2/' ../configure
+}
+
+pre_build_target() {
+  # discard native system includes
+  sed -i "s%-I/usr/include%%g" Makefile
+}
+
+makeinstall_target() {
+  : # nop
+}
+
+addon() {
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp -P $PKG_BUILD/.$TARGET_NAME/tcpdump $ADDON_BUILD/$PKG_ADDON_ID/bin
+}
