@@ -26,8 +26,8 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.linuxtv.org"
 PKG_URL="http://sources.openbricks.org/devel/dvb-apps-${PKG_VERSION}.tar.bz2"
-PKG_DEPENDS=""
-PKG_BUILD_DEPENDS="toolchain"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"
 PKG_SHORTDESC="Digitial Video Broadcasting (DVB) applications"
@@ -41,3 +41,26 @@ PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
 
+make_target() {
+  make -C lib
+  make -C util
+}
+
+makeinstall_target() {
+  : # nop
+}
+
+addon() {
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $PKG_BUILD/util/dvbdate/dvbdate $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $PKG_BUILD/util/dvbnet/dvbnet $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $PKG_BUILD/util/dvbscan/dvbscan $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $PKG_BUILD/util/dvbtraffic/dvbtraffic $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $PKG_BUILD/util/femon/femon $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $PKG_BUILD/util/scan/scan $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $PKG_BUILD/util/szap/azap $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $PKG_BUILD/util/szap/czap $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $PKG_BUILD/util/szap/szap $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $PKG_BUILD/util/szap/tzap $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $PKG_BUILD/util/zap/zap $ADDON_BUILD/$PKG_ADDON_ID/bin
+}
