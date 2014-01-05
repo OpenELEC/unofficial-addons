@@ -25,8 +25,8 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.arg0.net/encfs"
 PKG_URL="http://encfs.googlecode.com/files/$PKG_NAME-$PKG_VERSION.tgz"
-PKG_DEPENDS=""
-PKG_BUILD_DEPENDS="toolchain fuse boost openssl rlog"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain fuse boost openssl rlog"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"
 PKG_SHORTDESC="encfs: encrypted filesystem in user-space"
@@ -38,3 +38,26 @@ PKG_ADDON_TYPE="xbmc.python.script"
 PKG_AUTORECONF="yes"
 
 PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
+
+PKG_CONFIGURE_OPTS_TARGET="--with-sysroot=$SYSROOT_PREFIX \
+            --without-libiconv-prefix \
+            --without-libintl-prefix \
+            --with-boost=$SYSROOT_PREFIX/usr \
+            --with-boost-libdir=$SYSROOT_PREFIX/usr/lib"
+
+pre_build_target() {
+  mkdir -p $PKG_BUILD/.$TARGET_NAME
+  cp -RP $PKG_BUILD/* $PKG_BUILD/.$TARGET_NAME
+}
+
+makeinstall_target() {
+  : # nop
+}
+
+addon() {
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp -P $PKG_BUILD/.$TARGET_NAME/encfs/.libs/encfs $ADDON_BUILD/$PKG_ADDON_ID/bin/
+
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
+  cp $PKG_BUILD/.$TARGET_NAME/encfs/.libs/libencfs.so* $ADDON_BUILD/$PKG_ADDON_ID/lib
+}
