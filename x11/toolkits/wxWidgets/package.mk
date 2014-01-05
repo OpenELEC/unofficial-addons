@@ -1,5 +1,3 @@
-#!/bin/sh
-
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2009-2011 Stephan Raue (stephan@openelec.tv)
@@ -20,8 +18,34 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-. config/options $1
+PKG_NAME="wxWidgets"
+#	truecrypt 7.1a needs 2.8
+#	PKG_VERSION="2.9.4"
+PKG_VERSION="2.8.12"
+PKG_REV="1"
+PKG_ARCH="any"
+PKG_LICENSE="wxWindows Licence"
+PKG_SITE="http://www.wxwidgets.org/"
+PKG_URL="http://fossies.org/unix/misc/$PKG_NAME-$PKG_VERSION.tar.gz"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain"
+PKG_PRIORITY="optional"
+PKG_SECTION="x11/toolkits"
+PKG_SHORTDESC="A cross-platform GUI and tools library for GTK, MS Windows, and MacOS."
+PKG_LONGDESC="A cross-platform GUI and tools library for GTK, MS Windows, and MacOS."
 
-echo ""
-echo "  wxWidgets are build within truecrypt build package..."
-echo ""
+PKG_IS_ADDON="no"
+PKG_AUTORECONF="no"
+PKG_MAINTAINER="vpeter4 (peter.vicman@gmail.com)"
+
+configure_target() {
+  : # nop
+}
+
+make_target() {
+  : # nop
+}
+
+makeinstall_target() {
+  : # nop
+}
