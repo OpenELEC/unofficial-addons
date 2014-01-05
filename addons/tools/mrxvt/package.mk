@@ -25,8 +25,8 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://materm.sourceforge.net/"
 PKG_URL="$SOURCEFORGE_SRC/materm/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS=""
-PKG_BUILD_DEPENDS="toolchain libX11"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain libX11"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"
 PKG_SHORTDESC="mrxvt: Lightweight Xterm replacement"
@@ -38,3 +38,48 @@ PKG_ADDON_TYPE="xbmc.python.script"
 PKG_AUTORECONF="yes"
 
 PKG_MAINTAINER="unofficial.addon.pro"
+
+
+PKG_CONFIGURE_OPTS_TARGET="ac_cv_func_setpgrp_void=no \
+            --enable-minimal \
+            --disable-frills \
+            --enable-keepscrolling \
+            --disable-selectionscrolling \
+            --enable-mousewheel \
+            --disable-mouseslipwheel \
+            --enable-rxvt-scroll \
+            --disable-half-shadow \
+            --enable-lastlog \
+            --enable-sessionmgr \
+            --enable-linespace \
+            --enable-24bits \
+            --enable-256colors \
+            --enable-cursor-blink \
+            --enable-pointer-blank \
+            --disable-text-shadow \
+            --disable-menubar \
+            --disable-transparency \
+            --disable-tinting \
+            --disable-xrender \
+            --disable-xpm \
+            --disable-jpeg \
+            --disable-png \
+            --disable-xft \
+            --enable-ttygid \
+            --enable-backspace-key \
+            --enable-delete-key \
+            --disable-resources \
+            --disable-swapscreen \
+            --disable-use-fifo \
+            --disable-greek \
+            --disable-xim \
+            --disable-utempter"
+
+makeinstall_target() {
+  : # nop
+}
+
+addon() {
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp -P $PKG_BUILD/.$TARGET_NAME/src/mrxvt $ADDON_BUILD/$PKG_ADDON_ID/bin/
+}
