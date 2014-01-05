@@ -1,5 +1,3 @@
-#!/bin/sh
-
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
@@ -20,19 +18,23 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-. config/options $1
+PKG_NAME="libevent"
+PKG_VERSION="2.0.21-stable"
+PKG_REV="1"
+PKG_ARCH="any"
+PKG_LICENSE="BSD"
+PKG_SITE="http://libevent.org/"
+PKG_URL="https://github.com/downloads/libevent/libevent/$PKG_NAME-$PKG_VERSION.tar.gz"
+PKG_DEPENDS="openssl zlib"
+PKG_BUILD_DEPENDS="toolchain openssl zlib"
+PKG_PRIORITY="optional"
+PKG_SECTION="devel"
+PKG_SHORTDESC="libevent: A library for asynchronous event notification"
+PKG_LONGDESC="The libevent API provides a mechanism to execute a callback function when a specific event occurs on a file descriptor or after a timeout has been reached. It is meant to replace the asynchronous event loop found in event-driven network servers."
+PKG_IS_ADDON="no"
 
-cd $PKG_BUILD
-./configure --host=$TARGET_NAME \
-            --build=$HOST_NAME \
-            --prefix=/usr \
-            --exec-prefix=/usr \
-            --sysconfdir=/etc \
-            --datadir=/usr/share \
-            --disable-shared \
-            --enable-static \
-            --enable-openssl
+PKG_AUTORECONF="yes"
 
-make
+PKG_MAINTAINER="unofficial.addon.pro"
 
-$MAKEINSTALL
+PKG_CONFIGURE_OPTS_TARGET="--disable-shared --enable-static --enable-openssl"
