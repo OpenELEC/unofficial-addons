@@ -1,5 +1,3 @@
-#!/bin/sh
-
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
@@ -20,14 +18,34 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-. config/options $1
+PKG_NAME="mtpfs"
+PKG_VERSION="1.1"
+PKG_REV="0"
+PKG_ARCH="any"
+PKG_LICENSE="GPL"
+PKG_SITE="http://www.adebenham.com/mtpfs/"
+PKG_URL="http://www.adebenham.com/files/mtp/$PKG_NAME-$PKG_VERSION.tar.gz"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain fuse libmtp glib"
+PKG_PRIORITY="optional"
+PKG_SECTION="tools"
+PKG_SHORTDESC="MTPfs is a FUSE filesystem that supports reading and writing from any MTP device"
+PKG_LONGDESC="MTPfs is a FUSE filesystem that supports reading and writing from any MTP device"
 
-cd $PKG_BUILD
+PKG_IS_ADDON="yes"
+PKG_ADDON_TYPE="xbmc.python.script"
 
-./configure --host=$TARGET_NAME \
-            --build=$HOST_NAME \
-            --prefix=/usr \
-            --sysconfdir=/etc \
-            --disable-mad \
+PKG_AUTORECONF="yes"
 
-make
+PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
+
+PKG_CONFIGURE_OPTS_TARGET="--disable-mad"
+
+makeinstall_target() {
+  : # nop
+}
+
+addon() {
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp -P $PKG_BUILD/.$TARGET_NAME/mtpfs $ADDON_BUILD/$PKG_ADDON_ID/bin/
+}
