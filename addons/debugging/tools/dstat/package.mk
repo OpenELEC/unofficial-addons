@@ -1,5 +1,3 @@
-#!/bin/sh
-
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2013 Dag Wieers (dag@wieers.com)
@@ -20,10 +18,39 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-. config/options $1
+PKG_NAME="dstat"
+PKG_VERSION="0.7.2"
+PKG_REV="0"
+PKG_ARCH="any"
+PKG_LICENSE="GPL"
+PKG_SITE="http://dag.wieers.com/home-made/dstat/"
+PKG_URL="http://dag.wieers.com/home-made/dstat/$PKG_NAME-$PKG_VERSION.tar.bz2"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain"
+PKG_PRIORITY="optional"
+PKG_SECTION="debug/tools"
+PKG_SHORTDESC="dstat: versatile resource statistics tool"
+PKG_LONGDESC="Dstat is a versatile replacement for vmstat, iostat, netstat and ifstat. Dstat overcomes some of their limitations and adds some extra features, more counters and flexibility. Dstat is handy for monitoring systems during performance tuning tests, benchmarks or troubleshooting."
 
-mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+PKG_IS_ADDON="yes"
+PKG_ADDON_TYPE="xbmc.python.script"
+
+PKG_AUTORECONF="no"
+
+PKG_MAINTAINER="Dag Wieers (dag@wieers.com)"
+
+make_target() {
+  : # nop
+}
+
+makeinstall_target() {
+  : # nop
+}
+
+addon() {
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
   cp -P $PKG_BUILD/dstat $ADDON_BUILD/$PKG_ADDON_ID/bin
 
-mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/plugins
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/plugins
   cp $PKG_BUILD/plugins/dstat_*.py $ADDON_BUILD/$PKG_ADDON_ID/plugins
+}
