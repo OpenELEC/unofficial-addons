@@ -1,8 +1,6 @@
-#!/bin/sh
-
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
-#  	   Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
+#      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
 #      Copyright (C) 2013 Peter Smorada (smoradap@gmail.com)
 #
 #  This Program is free software; you can redistribute it and/or modify
@@ -21,8 +19,31 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-. config/options $1
+PKG_NAME="smartmontools"
+PKG_VERSION="6.2"
+PKG_CUSTOM_ADDON_VERSION="1.0.3"
+PKG_REV="0"
+PKG_ARCH="any"
+PKG_LICENSE="GPL"
+PKG_SITE="http://smartmontools.sourceforge.net"
+PKG_URL="http://download.sourceforge.net/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.gz"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain"
+PKG_PRIORITY="optional"
+PKG_SECTION="plugin/program"
+PKG_SHORTDESC="S.M.A.R.T. disk monitoring tool with XBMC gui."
+PKG_LONGDESC="S.M.A.R.T. disk monitoring tool with XBMC gui. This version is based on smartmontools v 6.2."
+PKG_IS_ADDON="yes"
+PKG_ADDON_TYPE="xbmc.python.script"
+PKG_AUTORECONF="yes"
+PKG_MAINTAINER="Peter Smorada (smoradap@gmail.com)"
 
-mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
-cp $PKG_BUILD/smartctl $ADDON_BUILD/$PKG_ADDON_ID/bin/smartctl
-cp $PKG_BUILD/smartd $ADDON_BUILD/$PKG_ADDON_ID/bin/smartd
+makeinstall_target() {
+  : # nop
+}
+
+addon() {
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $PKG_BUILD/.$TARGET_NAME/smartctl $ADDON_BUILD/$PKG_ADDON_ID/bin/smartctl
+  cp $PKG_BUILD/.$TARGET_NAME/smartd $ADDON_BUILD/$PKG_ADDON_ID/bin/smartd
+}
