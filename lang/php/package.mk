@@ -34,3 +34,50 @@ PKG_LONGDESC="PHP is a widely-used general-purpose scripting language that is es
 PKG_IS_ADDON="no"
 
 PKG_AUTORECONF="no"
+
+PKG_MAINTAINER="none"
+
+PKG_CONFIGURE_OPTS_TARGET="--disable-all \
+            --without-pear \
+            --with-config-file-path=/etc \
+            --localstatedir=/var \
+            --disable-cli \
+            --enable-cgi \
+            --enable-fastcgi \
+            --disable-sockets \
+            --disable-posix \
+            --disable-spl \
+            --disable-session \
+            --without-openssl \
+            --disable-libxml \
+            --disable-xml \
+            --disable-xmlreader \
+            --disable-xmlwriter \
+            --disable-simplexml \
+            --with-zlib=$SYSROOT_PREFIX/usr \
+            --disable-exif \
+            --disable-ftp \
+            --without-gettext \
+            --without-gmp \
+            --enable-json \
+            --without-readline \
+            --without-ncurses \
+            --disable-pcntl \
+            --disable-sysvmsg \
+            --disable-sysvsem \
+            --disable-sysvshm \
+            --disable-zip \
+            --disable-filter \
+            --disable-calendar \
+            --with-curl=$SYSROOT_PREFIX/usr \
+            --with-pcre-regex \
+            --without-sqlite \
+            --without-sqlite3 \
+            --enable-sqlite-utf8 \
+            --disable-pdo \
+            --without-pdo-sqlite \
+            --without-pdo-mysql"
+
+makeinstall_target() {
+  : # nop
+}
