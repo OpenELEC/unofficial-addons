@@ -26,8 +26,8 @@ PKG_LICENSE="OSS"
 PKG_SITE="http://www.makemkv.com/forum2/viewforum.php?f=3"
 PKG_URL="http://www.makemkv.com/download/${PKG_NAME}-oss-${PKG_VERSION}.tar.gz"
 PKG_URL="$PKG_URL http://www.makemkv.com/download/${PKG_NAME}-bin-${PKG_VERSION}.tar.gz"
-PKG_DEPENDS="openssl"
-PKG_BUILD_DEPENDS="toolchain openssl expat"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain openssl expat"
 PKG_PRIORITY="optional"
 PKG_SECTION="lib/multimedia"
 PKG_SHORTDESC="MakeMKV converts the video clips from proprietary (and usually encrypted) disc into a set of MKV files, preserving most information but not changing it in any way."
@@ -39,3 +39,31 @@ PKG_ADDON_TYPE="xbmc.python.script"
 PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="unofficial.addon.pro"
+
+post_unpack() {
+  mkdir -p $BUILD/$PKG_NAME-$PKG_VERSION
+  mv $BUILD/${PKG_NAME}-oss-${PKG_VERSION} $BUILD/$PKG_NAME-$PKG_VERSION/lib
+  mv $BUILD/${PKG_NAME}-bin-${PKG_VERSION} $BUILD/$PKG_NAME-$PKG_VERSION/bin
+}
+
+make_target() {
+  cd $ROOT/$PKG_BUILD/lib
+  make GCC=$CC -f makefile.linux
+}
+
+makeinstall_target() {
+  : $ nop
+}
+
+addon() {
+  MAKEMKV_ARCH=i386
+  [ "$TARGET_ARCH" = x86_64 ] && MAKEMKV_ARCH=amd64
+
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $PKG_BUILD/bin/bin/$MAKEMKV_ARCH/makemkvcon $ADDON_BUILD/$PKG_ADDON_ID/bin/makemkvcon.bin
+  chmod 755 $ADDON_BUILD/$PKG_ADDON_ID/bin/makemkvcon.bin
+
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
+  cp $PKG_BUILD/lib/out/libmakemkv.so.[0-9] $ADDON_BUILD/$PKG_ADDON_ID/lib
+  cp $PKG_BUILD/lib/out/libdriveio.so.[0-9] $ADDON_BUILD/$PKG_ADDON_ID/lib
+}
