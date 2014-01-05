@@ -25,8 +25,9 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://rutorrent.googlecode.com/"
 PKG_URL="http://dl.bintray.com/novik65/generic/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS=""
-PKG_BUILD_DEPENDS="toolchain"
+PKG_SOURCE_DIR="$PKG_NAME"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
 PKG_SHORTDESC=""
 PKG_LONGDESC=""
@@ -36,3 +37,24 @@ PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="Daniel Forsberg (daniel.forsberg1@gmail.com)"
+
+make_target() {
+  install_plugins="cpuload diskspace _getdir rss seedingtime data datadir erasedata scheduler extsearch httprpc ratio"
+
+  # install some useful plugins
+  for plugin in $install_plugins ;do
+    echo "Installing rutorrent plugin: $plugin-$PKG_VERSION..."
+    wget -q http://dl.bintray.com/novik65/generic/plugins/$plugin-$PKG_VERSION.tar.gz 
+    tar zxf $plugin-$PKG_VERSION.tar.gz -C plugins/
+    rm -f $plugin-$PKG_VERSION.tar.gz
+  done
+
+  echo "Installing rutorrent plugin: lbll-suite-0.8.1..."
+  wget -q http://rutorrent-tadd-labels.googlecode.com/files/lbll-suite_0.8.1.tar.gz
+  tar zxf lbll-suite_0.8.1.tar.gz -C plugins/
+  rm -f lbll-suite_0.8.1.tar.gz
+}
+
+makeinstall_target() {
+  : # nop
+}
