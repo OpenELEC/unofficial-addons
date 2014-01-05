@@ -1,5 +1,3 @@
-#!/bin/sh
-
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
@@ -21,10 +19,35 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-. config/options $1
+PKG_NAME="pcscd-addon"
+PKG_VERSION="4.1"
+PKG_REV="0"
+PKG_ARCH="any"
+PKG_LICENSE="GPL"
+PKG_SITE="http://www.openelec.tv"
+PKG_URL=""
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain pcsc-lite libusb ccid"
+PKG_PRIORITY="optional"
+PKG_SECTION="service/system"
+PKG_SHORTDESC="Middleware to access a smart card using SCard API (PC/SC)"
+PKG_LONGDESC="Middleware to access a smart card using SCard API (PC/SC)"
+PKG_IS_ADDON="yes"
+PKG_ADDON_TYPE="xbmc.service"
+PKG_AUTORECONF="no"
 
+PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
+
+make_target() {
+  : # nop
+}
+
+makeinstall_target() {
+  : # nop
+}
+
+addon() {
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin/
-
   cp -Pa $(get_build_dir pcsc-lite)/.install_pkg/usr/sbin/pcscd $ADDON_BUILD/$PKG_ADDON_ID/bin/pcscd.bin
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/drivers/serial
@@ -36,3 +59,4 @@
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config
   cp -Pa $PKG_DIR/config/* $ADDON_BUILD/$PKG_ADDON_ID/config/
+}
