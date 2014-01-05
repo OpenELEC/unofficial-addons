@@ -25,8 +25,8 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.gropp.org/?id=projects&sub=bwm-ng"
 PKG_URL="http://www.gropp.org/bwm-ng/bwm-ng-$PKG_VERSION.tar.gz"
-PKG_DEPENDS=""
-PKG_BUILD_DEPENDS="toolchain ncurses libstatgrab"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain ncurses libstatgrab"
 PKG_PRIORITY="optional"
 PKG_SECTION="network/analyzer"
 PKG_SHORTDESC="bwm-ng: small and simple console-based live network and disk io bandwidth monitor"
@@ -39,3 +39,25 @@ PKG_ADDON_TYPE="xbmc.python.script"
 PKG_AUTORECONF="yes"
 
 PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
+
+PKG_CONFIGURE_OPTS_TARGET="--with-libstatgrab \
+            --with-time \
+            --with-getifaddrs \
+            --with-sysctl \
+            --with-sysctldisk \
+            --with-procnetdev \
+            --with-partitions"
+
+pre_configure_target() {
+  export LIBS="-lncurses -ltinfo"
+  export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses"
+}
+
+makeinstall_target() {
+  : # nop
+}
+
+addon() {
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $PKG_BUILD/.$TARGET_NAME/src/bwm-ng $ADDON_BUILD/$PKG_ADDON_ID/bin
+}
