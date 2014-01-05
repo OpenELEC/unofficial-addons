@@ -20,7 +20,7 @@
 
 PKG_NAME="bwm-ng"
 PKG_VERSION="0.6"
-PKG_REV="0"
+PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.gropp.org/?id=projects&sub=bwm-ng"

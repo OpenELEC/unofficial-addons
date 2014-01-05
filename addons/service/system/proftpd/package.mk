@@ -20,7 +20,7 @@
 
 PKG_NAME="proftpd"
 PKG_VERSION="1.3.4d"
-PKG_REV="0"
+PKG_REV="1"
 PKG_ARCH="all"
 PKG_ARCH="any"
 PKG_LICENSE="OSS"
