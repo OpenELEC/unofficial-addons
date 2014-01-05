@@ -25,8 +25,8 @@ PKG_ARCH="any"
 PKG_LICENSE="OSS"
 PKG_SITE="http://www.openelec.tv"
 PKG_URL=""
-PKG_DEPENDS="Python"
-PKG_BUILD_DEPENDS="toolchain Python SABnzbd SickBeard Headphones CouchPotatoServer"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain Python SABnzbd SickBeard Headphones CouchPotatoServer"
 PKG_PRIORITY="optional"
 PKG_SECTION="service/downloadmanager"
 PKG_SHORTDESC="SABnzbd-Suite is a Metapackage which combines SABnzbd, SickBeard, Couchpotato and Headphones in one Addon"
@@ -38,3 +38,36 @@ PKG_ADDON_TYPE="xbmc.service"
 PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="unofficial.addon.pro"
+
+make_target() {
+  : # nop
+}
+
+makeinstall_target() {
+  : # nop
+
+}
+
+addon() {
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $(get_build_dir par2cmdline)/.$TARGET_NAME/par2 $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $(get_build_dir unrar)/unrar $ADDON_BUILD/$PKG_ADDON_ID/bin
+
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/pylib
+  cp -R $(get_build_dir Cheetah)/.install/usr/lib/python*/site-packages/* $ADDON_BUILD/$PKG_ADDON_ID/pylib
+  cp -R $(get_build_dir pyOpenSSL)/.install/usr/lib/python*/site-packages/* $ADDON_BUILD/$PKG_ADDON_ID/pylib
+  cp -R $(get_build_dir yenc)/.install/usr/lib/python*/site-packages/* $ADDON_BUILD/$PKG_ADDON_ID/pylib
+  cp -R $(get_build_dir configobj)/.install/usr/lib/python*/site-packages/* $ADDON_BUILD/$PKG_ADDON_ID/pylib
+
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/SABnzbd
+  cp -PR $(get_build_dir SABnzbd)/* $ADDON_BUILD/$PKG_ADDON_ID/SABnzbd
+
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/SickBeard
+  cp -PR $(get_build_dir SickBeard)/* $ADDON_BUILD/$PKG_ADDON_ID/SickBeard
+
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/CouchPotatoServer
+  cp -PR $(get_build_dir CouchPotatoServer)/* $ADDON_BUILD/$PKG_ADDON_ID/CouchPotatoServer
+
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/Headphones
+  cp -PR $(get_build_dir Headphones)/* $ADDON_BUILD/$PKG_ADDON_ID/Headphones
+}
