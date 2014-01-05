@@ -26,8 +26,8 @@ PKG_LICENSE="free"
 PKG_SITE="http://www.rarlab.com"
 PKG_URL="http://www.rarlab.com/rar/unrarsrc-$PKG_VERSION.tar.gz"
 PKG_SOURCE_DIR="${PKG_NAME}"
-PKG_DEPENDS=""
-PKG_BUILD_DEPENDS="toolchain"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
 PKG_SECTION="compress"
 PKG_SHORTDESC="unrar: Extract, test and view RAR archives"
@@ -37,3 +37,16 @@ PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="unofficial.addon.pro"
+
+make_target() {
+  make CXX="$TARGET_CXX" \
+     CXXFLAGS="$TARGET_CXXFLAGS" \
+     RANLIB="$TARGET_RANLIB" \
+     AR="$TARGET_AR" \
+     STRIP="$TARGET_STRIP" \
+     -f makefile.unix
+}
+
+makeinstall_target() {
+  : # nop
+}
