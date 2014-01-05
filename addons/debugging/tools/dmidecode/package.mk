@@ -25,8 +25,8 @@ PKG_ARCH="i386 x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.nongnu.org/dmidecode/"
 PKG_URL="http://download.savannah.gnu.org/releases/dmidecode/$PKG_NAME-$PKG_VERSION.tar.bz2"
-PKG_DEPENDS=""
-PKG_BUILD_DEPENDS="toolchain"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
 PKG_SECTION="debug/tools"
 PKG_SHORTDESC="dmidecode: report DMI information"
@@ -38,3 +38,23 @@ PKG_ADDON_TYPE="xbmc.python.script"
 PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="Dag Wieers (dag@wieers.com)"
+
+make_target() {
+  make PREFIX=/usr \
+     CC="$TARGET_CC" \
+     AR="$TARGET_AR" \
+     CFLAGS="$TARGET_CFLAGS" \
+     CPPFLAGS="$TARGET_CPPFLAGS"
+}
+
+makeinstall_target() {
+  : # nop
+}
+
+addon() {
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp -P $PKG_BUILD/biosdecode $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp -P $PKG_BUILD/dmidecode $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp -P $PKG_BUILD/ownership $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp -P $PKG_BUILD/vpddecode $ADDON_BUILD/$PKG_ADDON_ID/bin
+}
