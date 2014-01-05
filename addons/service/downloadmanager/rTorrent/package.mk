@@ -25,8 +25,8 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://libtorrent.rakshasa.no"
 PKG_URL=""
-PKG_DEPENDS="openssl curl ncurses zlib libtorrent xmlrpc-c rutorrent dtach miniupnpc rtorrent php"
-PKG_BUILD_DEPENDS="toolchain openssl curl libtool pkg-config ncurses libtorrent zlib xmlrpc-c dtach rutorrent miniupnpc rtorrent php"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain openssl curl libtool pkg-config ncurses libtorrent zlib xmlrpc-c dtach rutorrent miniupnpc rtorrent php"
 PKG_PRIORITY="optional"
 PKG_SECTION="service/downloadmanager"
 PKG_SHORTDESC="rTorrent: This is the free BitTorrent client rtorrent packed for OpenELEC"
@@ -38,3 +38,30 @@ PKG_ADDON_TYPE="xbmc.service"
 PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="Daniel Forsberg (daniel.forsberg1@gmail.com)"
+
+make_target() {
+  : # nop
+}
+
+makeinstall_target() {
+  : # nop
+}
+
+addon() {
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $(get_build_dir rtorrent)/.$TARGET_NAME/src/rtorrent $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $(get_build_dir dtach)/.$TARGET_NAME/dtach $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $(get_build_dir php)/.$TARGET_NAME/sapi/cgi/php-cgi $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $(get_build_dir miniupnpc)/upnpc-static $ADDON_BUILD/$PKG_ADDON_ID/bin/upnpc
+
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
+  cp $LIB_PREFIX/lib/libxmlrpc_util.so.[0-9] $ADDON_BUILD/$PKG_ADDON_ID/lib
+  cp $LIB_PREFIX/lib/libxmlrpc_server.so.[0-9] $ADDON_BUILD/$PKG_ADDON_ID/lib
+  cp $LIB_PREFIX/lib/libxmlrpc.so.[0-9] $ADDON_BUILD/$PKG_ADDON_ID/lib
+  cp $LIB_PREFIX/lib/libsigc*.so.[0-9] $ADDON_BUILD/$PKG_ADDON_ID/lib
+
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/rutorrent/
+  cp -r $(get_build_dir rutorrent)/* $ADDON_BUILD/$PKG_ADDON_ID/rutorrent/
+
+  cp $PKG_DIR/extra/rtorrent.default.rc $ADDON_BUILD/$PKG_ADDON_ID/rtorrent.default.rc
+}
