@@ -25,8 +25,8 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://libtorrent.rakshasa.no"
 PKG_URL="http://libtorrent.rakshasa.no/downloads/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS="openssl curl ncurses"
-PKG_BUILD_DEPENDS="toolchain openssl curl libtool pkg-config ncurses libsigc++"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain openssl curl libtool pkg-config ncurses libsigc++"
 PKG_PRIORITY="optional"
 PKG_SHORTDESC=""
 PKG_LONGDESC=""
@@ -35,3 +35,10 @@ PKG_IS_ADDON="no"
 PKG_AUTORECONF="yes"
 
 PKG_MAINTAINER="Daniel Forsberg (daniel.forsberg1@gmail.com)"
+
+PKG_CONFIGURE_OPTS_TARGET="--disable-shared \
+            --enable-static \
+            --enable-aligned \
+	    --disable-debug \
+	    --without-kqueue \
+	    --with-posix-fallocate"
