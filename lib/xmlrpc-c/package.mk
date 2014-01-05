@@ -1,6 +1,3 @@
-#!/bin/sh
-
-
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
@@ -21,28 +18,43 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-. config/options $1
+PKG_NAME="xmlrpc-c"
+PKG_VERSION="1.16.44"
+PKG_REV="2"
+PKG_ARCH="any"
+PKG_LICENSE="GPL"
+PKG_SITE="http://xmlrpc-c.sourceforge.net"
+PKG_URL="http://download.sourceforge.net/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tgz"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain openssl curl zlib libxml2 libsigc++"
+PKG_PRIORITY="optional"
+PKG_SHORTDESC=""
+PKG_LONGDESC=""
+PKG_IS_ADDON="no"
 
-cd $PKG_BUILD
+PKG_AUTORECONF="no"
 
-# fix curl includes
-sed -i -e '/curl\/types.h/d' lib/curl_transport/curlmulti.c
-sed -i -e '/curl\/types.h/d' lib/curl_transport/curltransaction.c
-sed -i -e '/curl\/types.h/d' lib/curl_transport/xmlrpc_curl_transport.c
+PKG_MAINTAINER="Daniel Forsberg (daniel.forsberg1@gmail.com)"
 
-./configure --host=$TARGET_NAME \
-            --build=$HOST_NAME \
-            --prefix=/usr \
-            --enable-libxml2-backend \
+PKG_CONFIGURE_OPTS_TARGET="--enable-libxml2-backend \
             --disable-nls \
-            --disable-static \
             --disable-cplusplus \
             --disable-libwww-client \
             --disable-wininet-client \
             --disable-abyss-server \
-            --disable-cgi-server
+            --disable-cgi-server"
 
-$MAKEINSTALL
+pre_build_target() {
+  # fix curl includes
+  sed -i -e '/curl\/types.h/d' $PKG_BUILD/lib/curl_transport/curlmulti.c
+  sed -i -e '/curl\/types.h/d' $PKG_BUILD/lib/curl_transport/curltransaction.c
+  sed -i -e '/curl\/types.h/d' $PKG_BUILD/lib/curl_transport/xmlrpc_curl_transport.c
 
-sed -i "s:/usr/include:$LIB_PREFIX/include:g" $SYSROOT_PREFIX/usr/bin/xmlrpc-c-config
-sed -i "s:/usr/lib:$LIB_PREFIX/lib:g" $SYSROOT_PREFIX/usr/bin/xmlrpc-c-config
+  mkdir -p $PKG_BUILD/.$TARGET_NAME
+  cp -RP $PKG_BUILD/* $PKG_BUILD/.$TARGET_NAME
+}
+
+post_makeinstall_target() {
+  sed -i "s:/usr/include:$LIB_PREFIX/include:g" $SYSROOT_PREFIX/usr/bin/xmlrpc-c-config
+  sed -i "s:/usr/lib:$LIB_PREFIX/lib:g" $SYSROOT_PREFIX/usr/bin/xmlrpc-c-config
+}
