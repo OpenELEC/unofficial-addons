@@ -26,13 +26,57 @@ PKG_ARCH="any"
 PKG_LICENSE="OSS"
 PKG_SITE="http://www.proftpd.org/"
 PKG_URL="ftp://ftp.proftpd.org/distrib/source/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS=""
-PKG_BUILD_DEPENDS="toolchain ncurses libcap whois pcre openssl"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain ncurses libcap whois pcre openssl"
 PKG_PRIORITY="optional"
 PKG_SECTION="service/system"
 PKG_SHORTDESC="Highly configurable GPL-licensed FTP server software"
 PKG_LONGDESC="Secure and configurable FTP server with SSL/TLS support"
+
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
 PKG_AUTORECONF="no"
+
 PKG_MAINTAINER="vpeter4 (peter.vicman@gmail.com)"
+
+ADDON_DIR="/storage/.xbmc/addons/service.system.proftpd"
+
+PKG_CONFIGURE_OPTS_TARGET="--enable-static \
+            --enable-openssl \
+            --with-modules=mod_tls \
+            --enable-nls \
+            --localedir=$ADDON_DIR/locale \
+            --enable-sendfile \
+            --enable-facl \
+            --enable-autoshadow \
+            --enable-ctrls \
+            --enable-ipv6 \
+            --enable-nls \
+            --enable-pcre \
+            --enable-largefile"
+
+pre_build_target() {
+  mkdir -p $PKG_BUILD/.$TARGET_NAME
+  cp -RP $PKG_BUILD/* $PKG_BUILD/.$TARGET_NAME
+}
+
+pre_configure_target() {
+  export CFLAGS="$CFLAGS -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -I$SYSROOT_PREFIX/usr/include/ncurses -I$ROOT/$PKG_BUILD/.$TARGET_NAME/include/"
+  export LDFLAGS="$LDFLAGS -L$ROOT/$PKG_BUILD/.$TARGET_NAME/lib"
+}
+
+makeinstall_target() {
+  : # nop
+}
+
+addon() {
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $PKG_BUILD/.$TARGET_NAME/proftpd   $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $PKG_BUILD/.$TARGET_NAME/ftpwho  $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $PKG_BUILD/.$TARGET_NAME/ftptop  $ADDON_BUILD/$PKG_ADDON_ID/bin
+
+  cp $BUILD/whois*/mkpasswd $ADDON_BUILD/$PKG_ADDON_ID/bin
+
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale
+  cp $PKG_BUILD/.$TARGET_NAME/locale/* $ADDON_BUILD/$PKG_ADDON_ID/locale
+}
