@@ -1,5 +1,3 @@
-#!/bin/sh
-
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2013 Dag Wieers (dag@wieers.com)
@@ -20,7 +18,40 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-. config/options $1
+PKG_NAME="cpuid"
+PKG_VERSION="20120601"
+PKG_REV="0"
+PKG_ARCH="i386 x86_64"
+PKG_LICENSE="GPL"
+PKG_SITE="http://www.etallen.com/cpuid.html"
+PKG_URL="http://www.etallen.com/cpuid/$PKG_NAME-$PKG_VERSION.src.tar.gz"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain"
+PKG_PRIORITY="optional"
+PKG_SECTION="debug/tools"
+PKG_SHORTDESC="cpuid: tool to dump x86 CPUID information"
+PKG_LONGDESC="cpuid dumps detailed information about the CPU(s) gathered from the CPUID instruction, and also determines the exact model of CPU(s). It supports Intel, AMD, and VIA CPUs, as well as older Transmeta, Cyrix, UMC, NexGen, Rise, and SiS CPUs."
 
-mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+PKG_IS_ADDON="yes"
+PKG_ADDON_TYPE="xbmc.python.script"
+
+PKG_AUTORECONF="no"
+
+PKG_MAINTAINER="Dag Wieers (dag@wieers.com)"
+
+make_target() {
+  make PREFIX=/usr \
+     CC="$TARGET_CC" \
+     AR="$TARGET_AR" \
+     CFLAGS="$TARGET_CFLAGS" \
+     CPPFLAGS="$TARGET_CPPFLAGS"
+}
+
+makeinstall_target() {
+  : # nop
+}
+
+addon() {
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
   cp -P $PKG_BUILD/cpuid $ADDON_BUILD/$PKG_ADDON_ID/bin
+}
