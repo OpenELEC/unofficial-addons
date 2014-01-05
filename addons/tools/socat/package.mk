@@ -1,8 +1,7 @@
-#!/bin/sh
-
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
+#      Copyright (C) 2011 Anthony Nash (nash.ant@gmail.com)
 #
 #  This Program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -20,16 +19,28 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-. config/options
+PKG_NAME="socat"
+PKG_VERSION="1.7.2.2"
+PKG_REV="0"
+PKG_ARCH="any"
+PKG_LICENSE="GPL2"
+PKG_SITE="http://www.dest-unreach.org/socat/"
+PKG_URL="http://www.dest-unreach.org/socat/download/${PKG_NAME}-${PKG_VERSION}.tar.gz"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain openssl"
+PKG_PRIORITY="optional"
+PKG_SECTION="tools"
+PKG_SHORTDESC="Multipurpose relay"
+PKG_LONGDESC="socat is a relay for bidirectional data transfer between two independent data channels"
 
-cd $PKG_BUILD
-./configure --host=$TARGET_NAME \
-            --build=$HOST_NAME \
-            --prefix=/usr \
-            --bindir=/usr/bin \
-            --sbindir=/usr/sbin \
-            --sysconfdir=/etc \
-            --disable-sctp \
+PKG_IS_ADDON="yes"
+PKG_ADDON_TYPE="xbmc.python.script"
+
+PKG_AUTORECONF="no"
+
+PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
+
+PKG_CONFIGURE_OPTS_TARGET="--disable-sctp \
             --disable-help \
             --disable-udp \
             --disable-socks4 \
@@ -38,6 +49,15 @@ cd $PKG_BUILD
             --disable-readline \
             --disable-tun \
             --disable-filan \
-            --disable-sycls \
+            --disable-sycls"
 
-make
+makeinstall_target() {
+  : # nop
+}
+
+addon() {
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $PKG_BUILD/.$TARGET_NAME/socat $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $PKG_BUILD/.$TARGET_NAME/procan $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $PKG_BUILD/.$TARGET_NAME/filan $ADDON_BUILD/$PKG_ADDON_ID/bin
+}
