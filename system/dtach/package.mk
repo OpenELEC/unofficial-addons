@@ -1,5 +1,3 @@
-#!/bin/sh
-
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
@@ -20,16 +18,27 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-. config/options $1
+PKG_NAME="dtach"
+PKG_VERSION="0.8"
+PKG_REV="1"
+PKG_ARCH="any"
+PKG_LICENSE="GPL"
+PKG_SITE="http://dtach.sourceforge.net"
+PKG_URL="http://download.sourceforge.net/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.gz"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain"
+PKG_PRIORITY="optional"
+PKG_SHORTDESC=""
+PKG_LONGDESC=""
 
-cd $PKG_BUILD
+PKG_IS_ADDON="no"
 
-./configure --host=$TARGET_NAME \
-            --build=$HOST_NAME \
-            --prefix=/usr \
-            --disable-nls \
-            --disable-static
+PKG_AUTORECONF="no"
 
-make V=1
+PKG_MAINTAINER="Daniel Forsberg (daniel.forsberg1@gmail.com)"
 
-cp dtach $SYSROOT_PREFIX/usr/bin/
+PKG_CONFIGURE_OPTS_TARGET="--disable-nls"
+
+makeinstall_target() {
+  : # nop
+}
