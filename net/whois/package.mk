@@ -1,5 +1,3 @@
-#!/bin/sh
-
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2009-2011 Stephan Raue (stephan@openelec.tv)
@@ -18,10 +16,29 @@
 #  along with OpenELEC.tv; see the file COPYING.  If not, write to
 #  the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
 #  http://www.gnu.org/copyleft/gpl.html
-################################################################################ 
+################################################################################
 
-. config/options $1
+PKG_NAME="whois"
+PKG_VERSION="5.0.26"
+PKG_REV="1"
+PKG_ARCH="any"
+PKG_LICENSE="GPL"
+PKG_SITE="http://ftp.debian.org/"
+PKG_URL="http://ftp.debian.org/debian/pool/main/w/whois/${PKG_NAME}_${PKG_VERSION}.tar.xz"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain"
+PKG_PRIORITY="optional"
+PKG_SECTION="system"
+PKG_SHORTDESC="whois is a client-side application which queries the whois directory service for information pertaining to a particular domain name."
+PKG_LONGDESC="whois is a client-side application which queries the whois directory service for information pertaining to a particular domain name."
+PKG_IS_ADDON="no"
+PKG_AUTORECONF="no"
+PKG_MAINTAINER="vpeter4 (peter.vicman@gmail.com)"
 
-cd $PKG_BUILD
+make_target() {
+  make mkpasswd
+}
 
-make mkpasswd
+makeinstall_target() {
+  : # nop
+}
