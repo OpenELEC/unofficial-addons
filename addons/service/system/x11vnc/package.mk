@@ -26,8 +26,8 @@ PKG_ARCH="any"
 PKG_LICENSE="OSS"
 PKG_SITE="http://www.karlrunge.com/x11vnc/"
 PKG_URL="http://downloads.sourceforge.net/project/libvncserver/x11vnc/${PKG_VERSION}/x11vnc-${PKG_VERSION}.tar.gz"
-PKG_DEPENDS=""
-PKG_BUILD_DEPENDS="toolchain libX11 libXext libXtst libjpeg-turbo"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain libX11 libXext libXtst libjpeg-turbo"
 PKG_PRIORITY="optional"
 PKG_SECTION="service/system"
 PKG_SHORTDESC="x11vnc allows one to view remotely and interact with real X displays"
@@ -38,3 +38,43 @@ PKG_ADDON_TYPE="xbmc.service"
 PKG_AUTORECONF="yes"
 
 PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
+
+PKG_CONFIGURE_OPTS_TARGET="--enable-static \
+      --with-x11vnc \
+      --with-x \
+      --without-xkeyboard \
+      --without-xinerama \
+      --without-xrandr \
+      --without-xfixes \
+      --without-xdamage \
+      --without-xtrap \
+      --without-xrecord \
+      --without-fbpm \
+      --without-dpms \
+      --without-v4l \
+      --without-fbdev \
+      --without-uinput \
+      --without-macosx-native \
+      --without-crypt \
+      --without-crypto \
+      --without-ssl \
+      --without-avahi \
+      --with-jpeg \
+      --without-libz \
+      --with-zlib \
+      --without-gnutls \
+      --without-client-tls"
+
+pre_build_target() {
+  mkdir -p $PKG_BUILD/.$TARGET_NAME
+  cp -RP $PKG_BUILD/* $PKG_BUILD/.$TARGET_NAME
+}
+
+makeinstall_target() {
+  : # nop
+}
+
+addon() {
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $PKG_BUILD/.$TARGET_NAME/x11vnc/x11vnc $ADDON_BUILD/$PKG_ADDON_ID/bin
+}
