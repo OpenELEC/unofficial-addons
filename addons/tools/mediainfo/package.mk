@@ -27,8 +27,8 @@ PKG_LICENSE="GPL"
 PKG_SITE="http://mediaarea.net/en/MediaInfo/Download/Source"
 PKG_URL="http://mediaarea.net/download/source/mediainfo/$PKG_VERSION/mediainfo_$PKG_VERSION.tar.bz2"
 PKG_SOURCE_DIR="MediaInfo"
-PKG_DEPENDS=""
-PKG_BUILD_DEPENDS="toolchain libmediainfo"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain libmediainfo"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"
 PKG_SHORTDESC="MediaInfo is a convenient unified display of the most relevant technical and tag data for video and audio files"
@@ -41,3 +41,23 @@ PKG_ADDON_TYPE="xbmc.python.script"
 PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
+
+make_target() {
+  cd Project/GNU/CLI
+  do_autoreconf
+  echo $PATH
+  ./configure \
+        --host=$TARGET_NAME \
+        --build=$HOST_NAME \
+        --prefix=/usr
+  make
+}
+
+makeinstall_target() {
+  : # nop
+}
+
+addon() {
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp -P $PKG_BUILD/Project/GNU/CLI/mediainfo $ADDON_BUILD/$PKG_ADDON_ID/bin/
+}
