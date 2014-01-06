@@ -46,6 +46,16 @@ pre_configure_target() {
   export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses"
 }
 
+make_target() {
+  make V=1 CC="$HOST_CC" \
+         CFLAGS="$HOST_CFLAGS" \
+         LDFLAGS="$HOST_LDFLAGS" \
+         LIBS="" \
+         AM_LDFLAGS="" \
+         -C src csstoh
+  make
+}
+
 makeinstall_target() {
   : # nop
 }
