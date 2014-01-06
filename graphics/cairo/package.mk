@@ -1,5 +1,3 @@
-#!/bin/sh
-
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
@@ -20,15 +18,26 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-. config/options $1
+PKG_NAME="cairo"
+PKG_VERSION="1.12.8"
+PKG_REV="1"
+PKG_ARCH="any"
+PKG_LICENSE="LGPL"
+PKG_SITE="http://cairographics.org/"
+PKG_URL="http://cairographics.org/releases/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TAARGET="toolchain zlib freetype fontconfig libpng pixman libXrender libX11 Mesa glu"
+PKG_PRIORITY="optional"
+PKG_SECTION="graphics"
+PKG_SHORTDESC="cairo: Multi-platform 2D graphics library"
+PKG_LONGDESC="Cairo is a vector graphics library with cross-device output support. Currently supported output targets include the X Window System and in-memory image buffers. PostScript and PDF file output is planned. Cairo is designed to produce identical output on all output media while taking advantage of display hardware acceleration when available."
+PKG_IS_ADDON="no"
 
-cd $PKG_BUILD
-./configure --host=$TARGET_NAME \
-            --build=$HOST_NAME \
-            --prefix=/usr \
-            --sysconfdir=/etc \
-            --localstatedir=/var \
-            --x-includes="$SYSROOT_PREFIX/usr/include" \
+PKG_AUTORECONF="no" # ToDo
+
+PKG_MAINTAINER="none"
+
+PKG_CONFIGURE_OPTS_TARGET="--x-includes="$SYSROOT_PREFIX/usr/include" \
             --x-libraries="$SYSROOT_PREFIX/usr/lib" \
             --disable-silent-rules \
             --enable-shared \
@@ -82,7 +91,4 @@ cd $PKG_BUILD
             --disable-symbol-lookup \
             --enable-some-floating-point \
             --with-gnu-ld \
-            --with-x
-
-make
-$MAKEINSTALL
+            --with-x"
