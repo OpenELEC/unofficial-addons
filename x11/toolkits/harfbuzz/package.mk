@@ -1,5 +1,3 @@
-#!/bin/sh
-
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
@@ -20,15 +18,20 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-. config/options $1
+PKG_NAME="harfbuzz"
+PKG_VERSION="0.9.11"
+PKG_REV="1"
+PKG_ARCH="any"
+PKG_LICENSE="GPL"
+PKG_SITE="http://www.freedesktop.org/wiki/Software/HarfBuzz"
+PKG_URL="http://www.freedesktop.org/software/harfbuzz/release/$PKG_NAME-$PKG_VERSION.tar.bz2"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain glib freetype cairo"
+PKG_PRIORITY="optional"
+PKG_SECTION="x11/toolkits"
+PKG_SHORTDESC="harfbuzz: an OpenType text shaping engine."
+PKG_LONGDESC="HarfBuzz is an OpenType text shaping engine."
+PKG_IS_ADDON="no"
+PKG_AUTORECONF="yes"
 
-cd $PKG_BUILD
-./configure --host=$TARGET_NAME \
-            --build=$HOST_NAME \
-            --prefix=/usr \
-            --sysconfdir=/etc \
-            --disable-static \
-            --enable-shared \
-
-make
-$MAKEINSTALL
+PKG_MAINTAINER="none"
