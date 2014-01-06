@@ -1,5 +1,3 @@
-#!/bin/sh
-
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
@@ -20,21 +18,30 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-. config/options $1
+PKG_NAME="gdk-pixbuf"
+PKG_VERSION="2.26.4"
+PKG_REV="1"
+PKG_ARCH="any"
+PKG_LICENSE="OSS"
+PKG_SITE="http://www.gtk.org/"
+PKG_URL="http://ftp.acc.umu.se/pub/gnome/sources/gdk-pixbuf/2.26/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain glib libjpeg-turbo libpng jasper"
+PKG_PRIORITY="optional"
+PKG_SECTION="x11/toolkits"
+PKG_SHORTDESC="gdk-pixbuf: a GNOME library for image loading and manipulation."
+PKG_LONGDESC="gdk-pixbuf (GdkPixbuf) is a GNOME library for image loading and manipulation. The GdkPixbuf documentation contains both the programmer's guide and the API reference."
+PKG_IS_ADDON="no"
+PKG_AUTORECONF="yes"
 
-GDK_BINARY_VERSION=`pkg-config gdk-pixbuf-2.0 --variable=gdk_pixbuf_binary_version`
-GDK_LIB_DIR="gdk-pixbuf-2.0/$GDK_BINARY_VERSION"
+PKG_MAINTAINER="none"
 
-mkdir -p $INSTALL/etc/gdk_pixbuf-2.0
-  cp $PKG_DIR/config/gdk-pixbuf.loaders $INSTALL/etc/gdk_pixbuf-2.0
-
-mkdir -p $INSTALL/usr/bin
-  cp $PKG_BUILD/gdk-pixbuf/.libs/gdk-pixbuf-query-loaders $INSTALL/usr/bin
-
-mkdir -p $INSTALL/usr/lib
-  cp -P $PKG_BUILD/contrib/gdk-pixbuf-xlib/.libs/libgdk_pixbuf_xlib*.so* $INSTALL/usr/lib
-    rm -rf $INSTALL/usr/lib/libgdk_pixbuf_xlib*.so*T
-  cp -P $PKG_BUILD/gdk-pixbuf/.libs/libgdk_pixbuf*.so* $INSTALL/usr/lib
-
-mkdir -p $INSTALL/usr/lib/$GDK_LIB_DIR/loaders
-  cp -P $PKG_BUILD/gdk-pixbuf/.libs/libpixbufloader*.so $INSTALL/usr/lib/$GDK_LIB_DIR/loaders
+PKG_CONFIGURE_OPTS_TARGET="gio_can_sniff=yes \
+            --disable-gtk-doc \
+            --disable-gtk-doc-html \
+            --disable-gtk-doc-pdf \
+            --disable-man \
+            --with-libpng \
+            --with-libjpeg \
+            --with-libtiff \
+            --with-libjasper"
