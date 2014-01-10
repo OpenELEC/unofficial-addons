@@ -20,7 +20,7 @@
 
 PKG_NAME="transmission"
 PKG_VERSION="2.82"
-PKG_REV="1"
+PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="OSS"
 PKG_SITE="http://www.transmissionbt.com/"
@@ -58,7 +58,7 @@ addon() {
   cp $PKG_BUILD/.$TARGET_NAME/daemon/transmission-remote $ADDON_BUILD/$PKG_ADDON_ID/bin
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/web
-  cp -R $PKG_BUILD/.$TARGET_NAME/web/* $ADDON_BUILD/$PKG_ADDON_ID/web
+  cp -R $PKG_BUILD/web/* $ADDON_BUILD/$PKG_ADDON_ID/web
   find $ADDON_BUILD/$PKG_ADDON_ID/web -name "Makefile*" -exec rm -rf {} ";"
   rm -rf $ADDON_BUILD/$PKG_ADDON_ID/web/LICENSE
 }
