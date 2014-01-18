@@ -27,7 +27,7 @@ PKG_SOURCE_DIR="${PKG_NAME}_beta"
 PKG_DEPENDS_TARGET=""
 PKG_BUILD_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
-PKG_SECTION="network"
+PKG_SECTION="tools"
 PKG_SHORTDESC="generic HID mapper"
 PKG_LONGDESC="generic HID mapper"
 
