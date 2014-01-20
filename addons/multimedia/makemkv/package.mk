@@ -21,7 +21,7 @@
 PKG_NAME="makemkv"
 PKG_VERSION="1.8.5"
 PKG_REV="0"
-PKG_ARCH="any"
+PKG_ARCH="i386 x86_64"
 PKG_LICENSE="OSS"
 PKG_SITE="http://www.makemkv.com/forum2/viewforum.php?f=3"
 PKG_URL="http://www.makemkv.com/download/${PKG_NAME}-oss-${PKG_VERSION}.tar.gz"

@@ -21,7 +21,7 @@
 PKG_NAME="SABnzbd-Suite"
 PKG_VERSION="4.1"
 PKG_REV="0"
-PKG_ARCH="any"
+PKG_ARCH="i386 x86_64"
 PKG_LICENSE="OSS"
 PKG_SITE="http://www.openelec.tv"
 PKG_URL=""
