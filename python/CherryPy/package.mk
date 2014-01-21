@@ -25,8 +25,8 @@ PKG_ARCH="any"
 PKG_LICENSE="BSD"
 PKG_SITE="http://cherrypy.org/"
 PKG_URL="http://download.cherrypy.org/cherrypy/3.2.2/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS="Python"
-PKG_BUILD_DEPENDS="toolchain Python distutilscross:host"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain Python distutilscross:host"
 PKG_PRIORITY="optional"
 PKG_SECTION="python/web"
 PKG_SHORTDESC="CherrPy: A Pythonic, object-orientated web framework"
@@ -36,3 +36,18 @@ PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="unofficial.addon.pro"
+
+make_target() {
+  : # nop
+}
+
+makeinstall_target() {
+  export PYTHONXCPREFIX="$SYSROOT_PREFIX/usr"
+  export LDFLAGS="$LDFLAGS -L$SYSROOT_PREFIX/usr/lib -L$SYSROOT_PREFIX/lib"
+
+  python setup.py build --cross-compile
+  python setup.py install --root=$INSTALL --prefix=/usr
+
+  rm -rf $INSTALL/usr/bin
+  find $INSTALL/usr/lib/python*/site-packages/  -name "*.py" -exec rm -rf {} ";"
+}
