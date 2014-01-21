@@ -25,8 +25,8 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL-2"
 PKG_SITE="http://pycurl.sourceforge.net/"
 PKG_URL="http://pycurl.sourceforge.net/download/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS="Python curl"
-PKG_BUILD_DEPENDS="toolchain Python distutilscross:host curl libgcrypt"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain Python distutilscross:host curl libgcrypt"
 PKG_PRIORITY="optional"
 PKG_SECTION="python/web"
 PKG_SHORTDESC="pycurl: a Python interface to libcurl"
@@ -35,3 +35,17 @@ PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="unofficial.addon.pro"
+
+make_target() {
+  : # nop
+}
+
+makeinstall_target() {
+  export PYTHONXCPREFIX="$SYSROOT_PREFIX/usr"
+  export LDFLAGS="$LDFLAGS -L$SYSROOT_PREFIX/usr/lib -L$SYSROOT_PREFIX/lib"
+
+  python setup.py build --cross-compile
+  python setup.py install -O0 --no-compile --prefix /usr --root $INSTALL
+
+  rm -rf $INSTALL/usr/bin
+}
