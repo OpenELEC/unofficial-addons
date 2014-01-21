@@ -25,8 +25,8 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://web.enlightenment.org/"
 PKG_URL="$SOURCEFORGE_SRC/enlightenment/${PKG_NAME}-${PKG_VERSION}.tar.bz2"
-PKG_DEPENDS=""
-PKG_BUILD_DEPENDS="toolchain libjpeg-turbo libpng tiff zlib bzip2 libX11 libXext"
+PKG_DEPENDS_TARGET=""
+PKG_BUILD_DEPENDS_TARGET="toolchain libjpeg-turbo libpng tiff zlib bzip2 libX11 libXext"
 PKG_PRIORITY="optional"
 PKG_SECTION="multimedia"
 PKG_SHORTDESC="Imlib2 is a graphics library."
@@ -35,3 +35,21 @@ PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="vpeter4 (peter.vicman@gmail.com)"
+
+case "$TARGET_ARCH" in
+  i386)
+    MMX_ARG="--enable-mmx --disable-amd64"
+    ;;
+  x86_64)
+    MMX_ARG="--enable-mmx --enable-amd64"
+    ;;
+  *)
+    MMX_ARG="--disable-mmx --disable-amd64"
+    ;;
+esac
+
+PKG_CONFIGURE_OPTS_TARGET="$MMX_ARG"
+
+pre_build_target() {
+  sed -i "s|#define SYS_LOADERS_PATH .*|#define SYS_LOADERS_PATH \"$VDR_ADDON_DIR/lib/imlib2\"|" $PKG_BUILD/src/lib/loaderpath.h
+}
