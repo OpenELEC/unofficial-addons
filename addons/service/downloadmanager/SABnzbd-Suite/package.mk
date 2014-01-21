@@ -54,10 +54,10 @@ addon() {
   cp $(get_build_dir unrar)/unrar $ADDON_BUILD/$PKG_ADDON_ID/bin
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/pylib
-  cp -R $(get_build_dir Cheetah)/.install/usr/lib/python*/site-packages/* $ADDON_BUILD/$PKG_ADDON_ID/pylib
-  cp -R $(get_build_dir pyOpenSSL)/.install/usr/lib/python*/site-packages/* $ADDON_BUILD/$PKG_ADDON_ID/pylib
-  cp -R $(get_build_dir yenc)/.install/usr/lib/python*/site-packages/* $ADDON_BUILD/$PKG_ADDON_ID/pylib
-  cp -R $(get_build_dir configobj)/.install/usr/lib/python*/site-packages/* $ADDON_BUILD/$PKG_ADDON_ID/pylib
+  cp -R $(get_build_dir Cheetah)/.install_pkg/usr/lib/python*/site-packages/* $ADDON_BUILD/$PKG_ADDON_ID/pylib
+  cp -R $(get_build_dir pyOpenSSL)/.install_pkg/usr/lib/python*/site-packages/* $ADDON_BUILD/$PKG_ADDON_ID/pylib
+  cp -R $(get_build_dir yenc)/.install_pkg/usr/lib/python*/site-packages/* $ADDON_BUILD/$PKG_ADDON_ID/pylib
+  cp -R $(get_build_dir configobj)/.install_pkg/usr/lib/python*/site-packages/* $ADDON_BUILD/$PKG_ADDON_ID/pylib
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/SABnzbd
   cp -PR $(get_build_dir SABnzbd)/* $ADDON_BUILD/$PKG_ADDON_ID/SABnzbd
