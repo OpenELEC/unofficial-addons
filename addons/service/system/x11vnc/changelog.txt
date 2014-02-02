@@ -1,3 +1,6 @@
+4.1.1
+- rebuild for x11 static libs
+
 4.1.0
 - convert to systemd service
 - rebuild for addon api bump
