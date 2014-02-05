@@ -20,8 +20,8 @@
 ################################################################################
 
 PKG_NAME="oscam"
-PKG_VERSION="9131"
-PKG_REV="0"
+PKG_VERSION="9501"
+PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.streamboard.tv/oscam/wiki"
@@ -47,7 +47,6 @@ configure_target() {
       -DWITH_SSL=0 \
       -DHAVE_LIBCRYPTO=0 \
       -DHAVE_DVBAPI=1 -DWITH_STAPI=0 \
-      -DMODULE_CAMD33=1 \
       -DWEBIF=1 \
       -DWITH_DEBUG=0 \
       -DOPTIONAL_INCLUDE_DIR=$SYSROOT_PREFIX/usr/include \
