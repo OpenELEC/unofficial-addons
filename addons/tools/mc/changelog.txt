@@ -1,2 +1,5 @@
+4.1.1
+- remove non-english help
+
 4.1.0
 - initial release

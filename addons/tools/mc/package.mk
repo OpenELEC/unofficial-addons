@@ -20,7 +20,7 @@
 
 PKG_NAME="mc"
 PKG_VERSION="4.8.11"
-PKG_REV="0"
+PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.midnight-commander.org"
@@ -63,6 +63,7 @@ PKG_CONFIGURE_OPTS_TARGET="--sysconfdir=/storage/.xbmc/addons/tools.mc/etc \
 
 post_makeinstall_target() {
   rm -rf $INSTALL/storage/.xbmc/addons/tools.mc/data/locale
+  rm -rf $INSTALL/storage/.xbmc/addons/tools.mc/data/mc/help/mc.hlp.*
 }
 
 addon() {
