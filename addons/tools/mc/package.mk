@@ -20,7 +20,7 @@
 
 PKG_NAME="mc"
 PKG_VERSION="4.8.11"
-PKG_REV="1"
+PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.midnight-commander.org"
@@ -28,9 +28,8 @@ PKG_URL="http://ftp.midnight-commander.org/${PKG_NAME}-${PKG_VERSION}.tar.xz"
 PKG_DEPENDS_TARGET="toolchain libtool:host gettext:host glib pcre ncurses"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"
-PKG_SHORTDESC="mrxvt: visual file manager"
+PKG_SHORTDESC="mc: visual file manager"
 PKG_LONGDESC="GNU Midnight Commander is a visual file manager, licensed under GNU General Public License and therefore qualifies as Free Software. It's a feature rich full-screen text mode application that allows you to copy, move and delete files and whole directory trees, search for files and run commands in the subshell. Internal viewer and editor are included"
-PKG_DISCLAIMER="using oscam may be illegal in your country. if in doubt, do not install"
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
@@ -57,9 +56,9 @@ PKG_CONFIGURE_OPTS_TARGET="--sysconfdir=/storage/.xbmc/addons/tools.mc/etc \
             --with-gnu-ld \
             --without-libiconv-prefix \
             --without-libintl-prefix \
-            --without-internal-edit \
+            --with-internal-edit \
             --without-diff-viewer \
-            --without-subshell"
+            --with-subshell"
 
 post_makeinstall_target() {
   rm -rf $INSTALL/storage/.xbmc/addons/tools.mc/data/locale
@@ -68,6 +67,6 @@ post_makeinstall_target() {
 
 addon() {
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
-  cp -Pa $PKG_BUILD/.install_pkg/usr/bin/mc $ADDON_BUILD/$PKG_ADDON_ID/bin/
+  cp -Pa $PKG_BUILD/.install_pkg/usr/bin/* $ADDON_BUILD/$PKG_ADDON_ID/bin/
   cp -Pa $PKG_BUILD/.install_pkg/storage/.xbmc/addons/tools.mc/* $ADDON_BUILD/$PKG_ADDON_ID
 }
