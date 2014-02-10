@@ -17,27 +17,3 @@
 #  the Free Software Foundation, 51 Franklin Street, Suite 500, Boston, MA 02110, USA.
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
-
-PKG_NAME="dtach"
-PKG_VERSION="0.8"
-PKG_REV="1"
-PKG_ARCH="any"
-PKG_LICENSE="GPL"
-PKG_SITE="http://dtach.sourceforge.net"
-PKG_URL="http://download.sourceforge.net/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain"
-PKG_PRIORITY="optional"
-PKG_SHORTDESC=""
-PKG_LONGDESC=""
-
-PKG_IS_ADDON="no"
-
-PKG_AUTORECONF="no"
-
-PKG_MAINTAINER="Daniel Forsberg (daniel.forsberg1@gmail.com)"
-
-PKG_CONFIGURE_OPTS_TARGET="--disable-nls"
-
-makeinstall_target() {
-  : # nop
-}
