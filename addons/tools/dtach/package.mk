@@ -28,8 +28,8 @@ PKG_URL="http://download.sourceforge.net/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.gz
 PKG_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"
-PKG_SHORTDESC=""
-PKG_LONGDESC=""
+PKG_SHORTDESC="dtach - A program that emulates the detach feature of screen"
+PKG_LONGDESC="dtach - A program that emulates the detach feature of screen"
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
@@ -37,6 +37,8 @@ PKG_ADDON_TYPE="xbmc.python.script"
 PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="Daniel Forsberg (daniel.forsberg1@gmail.com)"
+
+PKG_DISCLAIMER="this is an unofficial addon. please don't ask for support in openelec forum / irc channel"
 
 PKG_CONFIGURE_OPTS_TARGET="--disable-nls"
 
