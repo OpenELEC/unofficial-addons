@@ -1,3 +1,6 @@
+4.1.2
+- rebuild. unrar is now external
+
 4.1.1
 - rebuild for ncurses and curl/gnutls/ssl changes
 

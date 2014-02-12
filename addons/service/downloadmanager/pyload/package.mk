@@ -20,13 +20,13 @@
 
 PKG_NAME="pyload"
 PKG_VERSION="0.4.9"
-PKG_REV="1"
+PKG_REV="2"
 PKG_ARCH="i386 x86_64"
 PKG_LICENSE="OSS"
 PKG_SITE="http://pyload.org/"
 PKG_URL="http://download.pyload.org/$PKG_NAME-src-v$PKG_VERSION.zip"
 PKG_SOURCE_DIR="$PKG_NAME"
-PKG_DEPENDS_TARGET="toolchain Python pycurl pycrypto unrar"
+PKG_DEPENDS_TARGET="toolchain Python pycurl pycrypto"
 PKG_PRIORITY="optional"
 PKG_SECTION="service/downloadmanager"
 PKG_SHORTDESC="pyLoad is a fast, lightweight and full featured download manager"
@@ -34,6 +34,7 @@ PKG_LONGDESC="pyLoad is a fast, lightweight and full featured download manager f
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
+PKG_ADDON_REQUIRES="tools.unrar:0.0.0"
 
 PKG_AUTORECONF="no"
 
@@ -48,11 +49,8 @@ makeinstall_target() {
 }
 
 addon() {
-  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
-  cp $(get_build_dir unrar)/unrar $ADDON_BUILD/$PKG_ADDON_ID/bin
-
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/pylib
-  cp -R $(get_build_dir pycurl)/.install/usr/lib/python*/site-packages/* $ADDON_BUILD/$PKG_ADDON_ID/pylib
+  cp -R $(get_build_dir pycurl)/.install_pkg/usr/lib/python*/site-packages/* $ADDON_BUILD/$PKG_ADDON_ID/pylib
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/pyload
   cp -PR $PKG_BUILD/pyload/* $ADDON_BUILD/$PKG_ADDON_ID/pyload
