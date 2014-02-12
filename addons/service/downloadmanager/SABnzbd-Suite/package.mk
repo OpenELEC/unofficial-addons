@@ -20,7 +20,7 @@
 
 PKG_NAME="SABnzbd-Suite"
 PKG_VERSION="4.1"
-PKG_REV="0"
+PKG_REV="1"
 PKG_ARCH="i386 x86_64"
 PKG_LICENSE="OSS"
 PKG_SITE="http://www.openelec.tv"
@@ -33,6 +33,7 @@ PKG_LONGDESC="SABnzbd-Suite makes Usenet as simple and streamlined as possible b
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
+PKG_ADDON_REQUIRES="tools.unrar:0.0.0"
 
 PKG_AUTORECONF="no"
 
@@ -50,7 +51,6 @@ makeinstall_target() {
 addon() {
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
   cp $(get_build_dir par2cmdline)/.$TARGET_NAME/par2 $ADDON_BUILD/$PKG_ADDON_ID/bin
-  cp $(get_build_dir unrar)/unrar $ADDON_BUILD/$PKG_ADDON_ID/bin
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/pylib
   cp -R $(get_build_dir Cheetah)/.install_pkg/usr/lib/python*/site-packages/* $ADDON_BUILD/$PKG_ADDON_ID/pylib

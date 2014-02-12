@@ -1,3 +1,6 @@
+4.1.1
+- rebuild. unrar is now external
+
 4.1.0
 - rebuild for addon api bump
 
