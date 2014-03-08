@@ -159,7 +159,7 @@ if [ ! "$(pidof rtorrent)" ];then
 	if [ "$RUTORRENT_ENABLED" == "true" ];then
 		httpd -p $RUTORRENT_PORT -c $RUTORRENT_CONF >>$LOG_FILE
 		# Start plugins
-		$ADDON_DIR/bin/php $ADDON_DIR/rutorrent/php/initplugins.php >>$LOG_FILE
+		$ADDON_DIR/bin/php -c $ADDON_DIR/bin/php.ini $ADDON_DIR/rutorrent/php/initplugins.php >>$LOG_FILE
 	fi
     fi
     sleep 1 
