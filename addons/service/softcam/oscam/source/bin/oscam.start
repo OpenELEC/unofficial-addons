@@ -60,7 +60,7 @@ done
 # 0 does not make sense. should be 1 or more
 if [ "$WAIT_FOR_FEINIT" == "true" ] ; then
   while [ true ] ; do
-    if [ -e /dev/dvb/adapter$((NUM_ADAPTERS-1))/frontend* ] ; then
+    if [ -e /dev/dvb/adapter$((NUM_ADAPTERS-1))/frontend0 ] ; then
       break
     fi
     sleep 1
