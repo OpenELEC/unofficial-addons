@@ -33,15 +33,15 @@ PKG_LONGDESC="Netscape Portable Runtime (NSPR) provides a platform-neutral API f
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-PKG_MAINTAINER="Stefan Saraev (seo at freenode.net)"
+PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
 
 MAKEFLAGS=-j1
 
-if [ "`uname -m`" = "x86_64" ] ; then 
-  HOST_ENABLE_64BIT="--enable-64bit"
+if [ "$TARGET_ARCH" = "x86_64" ] ; then
+  TARGET_USE_64="--enable-64bit"
 fi
 
-PKG_CONFIGURE_OPTS_TARGET="--with-pthreads $ENABLE_64BIT"
+PKG_CONFIGURE_OPTS_TARGET="--with-pthreads $TARGET_USE_64"
 
 post_unpack() {
   mv $ROOT/$PKG_BUILD/nspr/* $ROOT/$PKG_BUILD
