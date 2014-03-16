@@ -66,4 +66,9 @@ PKG_CONFIGURE_OPTS_TARGET="ac_cv_func_posix_getpwuid_r=yes \
   jm_cv_func_working_re_compile_pattern=yes ac_use_included_regex=no \
   gl_cv_c_restrict=no ac_cv_path_GLIB_GENMARSHAL=/usr/bin/glib-genmarshal \
   ac_cv_prog_F77=no ac_cv_prog_CXX=no ac_cv_path_PKG_CONFIG="$ROOT/$TOOLCHAIN/bin/pkg-config" \
+            --enable-static --disable-shared \
             --disable-glibtest"
+
+pre_configure_target() {
+  export CFLAGS="$CFLAGS -fPIC"
+}
