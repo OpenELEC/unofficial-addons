@@ -1,3 +1,6 @@
+4.1.3
+- update to oscam-9574
+
 4.1.2
 - fix issues with "wait for frontend init". thanks @sraue
 
