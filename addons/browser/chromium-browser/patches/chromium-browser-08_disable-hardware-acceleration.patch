@@ -1,0 +1,43 @@
+From eda0f386f3d42e278cde480f2e187ef745d13294 Mon Sep 17 00:00:00 2001
+From: Stefan Saraev <stefan@saraev.ca>
+Date: Tue, 18 Mar 2014 01:14:14 +0200
+Subject: [PATCH] disable hardware acceleration
+
+---
+ src/chrome/browser/gpu/gpu_mode_manager.cc                | 2 +-
+ src/chrome/browser/resources/options/browser_options.html | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/chrome/browser/gpu/gpu_mode_manager.cc b/src/chrome/browser/gpu/gpu_mode_manager.cc
+index bb18baf..a041fad 100644
+--- a/src/chrome/browser/gpu/gpu_mode_manager.cc
++++ b/src/chrome/browser/gpu/gpu_mode_manager.cc
+@@ -34,7 +34,7 @@ void SetPreviousGpuModePref(bool enabled) {
+ // static
+ void GpuModeManager::RegisterPrefs(PrefRegistrySimple* registry) {
+   registry->RegisterBooleanPref(
+-      prefs::kHardwareAccelerationModeEnabled, true);
++      prefs::kHardwareAccelerationModeEnabled, false);
+   registry->RegisterBooleanPref(
+       prefs::kHardwareAccelerationModePrevious, true);
+ }
+diff --git a/src/chrome/browser/resources/options/browser_options.html b/src/chrome/browser/resources/options/browser_options.html
+index 027221f..f0f807a 100644
+--- a/src/chrome/browser/resources/options/browser_options.html
++++ b/src/chrome/browser/resources/options/browser_options.html
+@@ -707,10 +707,10 @@
+     <div class="checkbox">
+       <span class="controlled-setting-with-label">
+         <input id="gpu-mode-checkbox"
+-            pref="hardware_acceleration_mode.enabled" type="checkbox">
++            pref="hardware_acceleration_mode.enabled" type="checkbox" disabled>
+         <span>
+           <label for="gpu-mode-checkbox"
+-              i18n-content="gpuModeCheckbox">
++              i18n-content="gpuModeCheckbox" disabled>
+           </label>
+           <span id="gpu-mode-reset-restart"
+               i18n-values=".innerHTML:gpuModeResetRestart">
+-- 
+1.9.0
+

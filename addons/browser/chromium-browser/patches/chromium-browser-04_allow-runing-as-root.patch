@@ -1,0 +1,27 @@
+From b16c76a0125319250401f7062cc72202dca3bfe3 Mon Sep 17 00:00:00 2001
+From: Stefan Saraev <stefan@saraev.ca>
+Date: Fri, 14 Mar 2014 20:23:44 +0200
+Subject: [PATCH] allow runing as root
+
+---
+ src/chrome/browser/ui/gtk/chrome_browser_main_extra_parts_gtk.cc | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/src/chrome/browser/ui/gtk/chrome_browser_main_extra_parts_gtk.cc b/src/chrome/browser/ui/gtk/chrome_browser_main_extra_parts_gtk.cc
+index 8d7c88f..881f97f 100644
+--- a/src/chrome/browser/ui/gtk/chrome_browser_main_extra_parts_gtk.cc
++++ b/src/chrome/browser/ui/gtk/chrome_browser_main_extra_parts_gtk.cc
+@@ -19,9 +19,7 @@
+ ChromeBrowserMainExtraPartsGtk::ChromeBrowserMainExtraPartsGtk() {
+ }
+ 
+-void ChromeBrowserMainExtraPartsGtk::PreEarlyInitialization() {
+-  DetectRunningAsRoot();
+-}
++void ChromeBrowserMainExtraPartsGtk::PreEarlyInitialization() { }
+ 
+ 
+ void ChromeBrowserMainExtraPartsGtk::DetectRunningAsRoot() {
+-- 
+1.9.0
+

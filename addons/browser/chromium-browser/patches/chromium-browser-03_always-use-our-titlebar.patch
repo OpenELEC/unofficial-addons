@@ -1,0 +1,51 @@
+From aa7d5343d390c310196b00443481b878a6ae5cdd Mon Sep 17 00:00:00 2001
+From: Stefan Saraev <stefan@saraev.ca>
+Date: Wed, 19 Mar 2014 14:46:09 +0200
+Subject: [PATCH] always use our titlebar
+
+---
+ .../browser/resources/options/browser_options.html |    2 +-
+ src/chrome/browser/ui/gtk/browser_titlebar.cc      |    2 --
+ src/chrome/browser/ui/gtk/browser_window_gtk.cc    |    2 ++
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/chrome/browser/resources/options/browser_options.html b/src/chrome/browser/resources/options/browser_options.html
+index f0ee790..f0f807a 100644
+--- a/src/chrome/browser/resources/options/browser_options.html
++++ b/src/chrome/browser/resources/options/browser_options.html
+@@ -88,7 +88,7 @@
+     <div class="checkbox"><label>
+         <input id="show-window-decorations" type="checkbox"
+             pref="browser.custom_chrome_frame" metric="Options_CustomFrame"
+-            inverted_pref>
++            inverted_pref disabled>
+         <span i18n-content="showWindowDecorations"></span>
+     </label></div>
+ </if>
+diff --git a/src/chrome/browser/ui/gtk/browser_titlebar.cc b/src/chrome/browser/ui/gtk/browser_titlebar.cc
+index 0c62d39..70aac95 100644
+--- a/src/chrome/browser/ui/gtk/browser_titlebar.cc
++++ b/src/chrome/browser/ui/gtk/browser_titlebar.cc
+@@ -1034,6 +1034,4 @@ BrowserTitlebar::ContextMenuModel::ContextMenuModel(
+   AddSeparator(ui::NORMAL_SEPARATOR);
+   AddItemWithStringId(IDC_TASK_MANAGER, IDS_TASK_MANAGER);
+   AddSeparator(ui::NORMAL_SEPARATOR);
+-  AddCheckItemWithStringId(kShowWindowDecorationsCommand,
+-                           IDS_SHOW_WINDOW_DECORATIONS_MENU);
+ }
+diff --git a/src/chrome/browser/ui/gtk/browser_window_gtk.cc b/src/chrome/browser/ui/gtk/browser_window_gtk.cc
+index aee7620..af548c2 100644
+--- a/src/chrome/browser/ui/gtk/browser_window_gtk.cc
++++ b/src/chrome/browser/ui/gtk/browser_window_gtk.cc
+@@ -2386,6 +2386,8 @@ bool BrowserWindowGtk::GetCustomFramePrefDefault() {
+   // WM, but at least some of the WMs in the latter group don't set it.
+   // Instead, we default to using system decorations for all WMs and
+   // special-case the ones where the custom frame should be used.
++  return true;
++
+   ui::WindowManagerName wm_type = ui::GuessWindowManager();
+   return (wm_type == ui::WM_BLACKBOX ||
+           wm_type == ui::WM_COMPIZ ||
+-- 
+1.7.2.5
+

@@ -1,0 +1,40 @@
+From 4846152cd72c8576f656152e8d1831622b7f5944 Mon Sep 17 00:00:00 2001
+From: Stefan Saraev <stefan@saraev.ca>
+Date: Fri, 14 Mar 2014 15:00:36 +0200
+Subject: [PATCH 1/2] nss 3.15
+
+---
+ src/net/third_party/nss/ssl/bodge/secitem_array.c |    6 ++++++
+ 1 files changed, 6 insertions(+), 0 deletions(-)
+
+diff --git a/src/net/third_party/nss/ssl/bodge/secitem_array.c b/src/net/third_party/nss/ssl/bodge/secitem_array.c
+index ac80da8..62e5907 100644
+--- a/src/net/third_party/nss/ssl/bodge/secitem_array.c
++++ b/src/net/third_party/nss/ssl/bodge/secitem_array.c
+@@ -6,6 +6,7 @@
+  * Support routines for SECItemArray data structure.
+  */
+ 
++#include "nssutil.h"
+ #include "seccomon.h"
+ #include "secitem.h"
+ #include "secerr.h"
+@@ -13,10 +14,15 @@
+ 
+ typedef struct SECItemArrayStr SECItemArray;
+ 
++#define NSSUTIL_VERSION_NUM \
++    (NSSUTIL_VMAJOR * 10000 + NSSUTIL_VMINOR * 100 + NSSUTIL_VPATCH)
++#if NSSUTIL_VERSION_NUM < 31500
++// Added in NSS 3.15.
+ struct SECItemArrayStr {
+     SECItem *items;
+     unsigned int len;
+ };
++#endif
+ 
+ SECItemArray *
+ SECITEM_AllocArray(PLArenaPool *arena, SECItemArray *array, unsigned int len)
+-- 
+1.7.2.5
+

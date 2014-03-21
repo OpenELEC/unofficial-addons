@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+        <string id="1000">General</string>
+        <string id="1020">Chromium Configuration</string>
+        <string id="1021">Stop XBMC Player and Suspend AudioEngine</string>
+</strings>
