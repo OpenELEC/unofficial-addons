@@ -4,5 +4,6 @@
                 <setting label="1020" type="lsep"/>
                 <setting type="sep" />
                 <setting id="PAUSE_XBMC" type="bool" label="1021" default="true" />
+                <setting id="START_MAXIMIZED" type="bool" label="1022" default="true" />
     </category>
 </settings>

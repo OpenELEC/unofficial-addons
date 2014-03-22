@@ -46,11 +46,15 @@ def startChromium():
   subprocess.call('chmod 4755 ' + __path__ + '/chromium.sandbox', shell=True)
 
   try:
+    maximized_param = ""
+    if (__addon__.getSetting("START_MAXIMIZED") == "true"):
+      maximized_param = "--start-maximized"
     alsa_device = getAudiDevice()  
     alsa_param = ""
     if not alsa_device == None and not alsa_device == "":
       alsa_param = "--alsa-output-device=" + alsa_device
-    subprocess.call(__path__ + '/chromium ' + alsa_param, shell=True)
+    chrome_params = maximized_param + " " + alsa_param
+    subprocess.call(__path__ + '/chromium ' + chrome_params, shell=True)
   except:
     pass
 

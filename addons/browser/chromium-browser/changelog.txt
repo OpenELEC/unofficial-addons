@@ -1,2 +1,5 @@
+4.1.1
+- add option to always start maximized
+
 4.1.0
 - initial release
