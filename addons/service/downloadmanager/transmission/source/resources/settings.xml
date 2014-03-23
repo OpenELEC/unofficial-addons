@@ -16,7 +16,7 @@
 		<setting type="sep" />
 		<setting label="3110" type="lsep"/>
 		<setting id="TRANSMISSION_DL_DIR" type="folder" label="3121" value="" default="/storage/downloads" />
-		<setting id="TRANSMISSION_INC_DIR" type="folder" label="3122" value="" default="/storage/downloads/incoming" />
-		<setting id="TRANSMISSION_WATCH_DIR" type="folder" label="3123" value="" default="/storage/downloads/watch" />
+		<setting id="TRANSMISSION_WATCH_DIR" type="folder" label="3122" value="" default="/storage/downloads/watch" />
+		<setting id="TRANSMISSION_INC_DIR" type="folder" label="3123" value="" default="/storage/downloads/incoming" />
     </category>
 </settings>
