@@ -40,7 +40,7 @@ def resumeXbmc():
     xbmc.audioResume()
     xbmc.enableNavSounds(True)
 
-def startChromium():
+def startChromium(args):
   subprocess.call('chmod +x ' + __path__ + '/chromium', shell=True)
   subprocess.call('chmod +x ' + __path__ + '/chromium.bin', shell=True)
   subprocess.call('chmod 4755 ' + __path__ + '/chromium.sandbox', shell=True)
@@ -53,7 +53,7 @@ def startChromium():
     alsa_param = ""
     if not alsa_device == None and not alsa_device == "":
       alsa_param = "--alsa-output-device=" + alsa_device
-    chrome_params = maximized_param + " " + alsa_param
+    chrome_params = maximized_param + " " + alsa_param + " " + args
     subprocess.call(__path__ + '/chromium ' + chrome_params, shell=True)
   except:
     pass
@@ -93,5 +93,8 @@ if (not __addon__.getSetting("firstrun")):
 
 if not isRuning('chromium.bin'):
   pauseXbmc()
-  startChromium()
+  try:
+    args = sys.argv[1]
+  except: args = ""
+  startChromium(args)
   resumeXbmc()

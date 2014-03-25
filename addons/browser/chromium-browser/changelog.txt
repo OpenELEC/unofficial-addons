@@ -1,3 +1,10 @@
+4.1.2
+- allow hardware acceleration to be enabled in chrome://settings
+  * could be buggy. you are on your own if enabled.
+- allow to be started with arguments. example:
+  * from other addons: xbmc.Execbuitin(RunScript(browser.chromium-browser,[optional argumnents]))
+  * from shell scripts: xbmc-send -a "RunScript(browser.chromium-browser,--kiosk http://whatever))"
+
 4.1.1
 - add option to always start maximized
 
