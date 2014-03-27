@@ -21,16 +21,16 @@
 
 PKG_NAME="x11-utils"
 PKG_VERSION="1"
-PKG_REV="0"
+PKG_REV="1"
 PKG_ARCH="i386 x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://xorg.freedesktop.org/releases/individual/app/"
 PKG_URL=""
-PKG_DEPENDS_TARGET="toolchain xprop xwininfo"
+PKG_DEPENDS_TARGET="toolchain xprop xwininfo xdpyinfo xrdb"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"
 PKG_SHORTDESC="x11-utils"
-PKG_LONGDESC="xprop xwininfo"
+PKG_LONGDESC="xprop xwininfo xdpyinfo xrdb"
 PKG_DISCLAIMER="this is an unofficial addon. please don't ask for support in openelec forum / irc channel"
 
 PKG_IS_ADDON="yes"
@@ -52,4 +52,6 @@ addon() {
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
   cp -PR $(get_build_dir xprop)/.$TARGET_NAME/xprop $ADDON_BUILD/$PKG_ADDON_ID/bin/
   cp -PR $(get_build_dir xwininfo)/.$TARGET_NAME/xwininfo $ADDON_BUILD/$PKG_ADDON_ID/bin/
+  cp -PR $(get_build_dir xdpyinfo)/.$TARGET_NAME/xdpyinfo $ADDON_BUILD/$PKG_ADDON_ID/bin/
+  cp -PR $(get_build_dir xrdb)/.$TARGET_NAME/xrdb $ADDON_BUILD/$PKG_ADDON_ID/bin/
 }

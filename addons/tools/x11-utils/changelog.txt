@@ -1,2 +1,5 @@
+4.1.1
+- add xdpyinfo and xrdb
+
 4.1.0
 - initial release
