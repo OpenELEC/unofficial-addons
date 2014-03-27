@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="cairo"
-PKG_VERSION="1.12.8"
+PKG_VERSION="1.12.16"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="LGPL"
