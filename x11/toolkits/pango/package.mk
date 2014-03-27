@@ -19,12 +19,12 @@
 ################################################################################
 
 PKG_NAME="pango"
-PKG_VERSION="1.32.6"
+PKG_VERSION="1.36.3"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.pango.org/"
-PKG_URL="http://ftp.gnome.org/pub/gnome/sources/pango/1.32/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_URL="http://ftp.gnome.org/pub/gnome/sources/pango/1.36/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain glib cairo freetype fontconfig libX11 libXft harfbuzz"
 PKG_PRIORITY="optional"
 PKG_SECTION="x11/toolkits"
@@ -36,5 +36,7 @@ PKG_AUTORECONF="yes"
 PKG_MAINTAINER="none"
 
 PKG_CONFIGURE_OPTS_TARGET="--disable-doc-cross-references \
+            --disable-gtk-doc \
+            --disable-man \
             --enable-debug=no \
             --with-xft"

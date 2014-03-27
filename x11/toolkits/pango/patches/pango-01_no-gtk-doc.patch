@@ -1,0 +1,54 @@
+From cb3ea93e09dda65148c0600a29d494657f084f03 Mon Sep 17 00:00:00 2001
+From: Stefan Saraev <stefan@saraev.ca>
+Date: Thu, 27 Mar 2014 13:58:39 +0200
+Subject: [PATCH] no gtk doc
+
+---
+ Makefile.am  |    3 +--
+ configure.ac |    3 ---
+ 2 files changed, 1 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 9986f81..6015cf0 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,6 +1,6 @@
+ ## Process this file with automake to create Makefile.in.
+ 
+-SUBDIRS= pango modules pango-view examples docs tools tests build
++SUBDIRS= pango modules pango-view examples tools tests build
+ 
+ EXTRA_DIST = 			\
+ 	autogen.sh		\
+@@ -40,7 +40,6 @@ MAINTAINERCLEANFILES = \
+ 	$(srcdir)/INSTALL \
+ 	$(srcdir)/omf.make \
+ 	$(srcdir)/xmldocs.make \
+-	$(srcdir)/gtk-doc.make \
+ 	$(srcdir)/ChangeLog
+ 
+ ### ChangeLog generation
+diff --git a/configure.ac b/configure.ac
+index 705e988..d83e6d2 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -592,8 +592,6 @@ if $have_cairo ; then : ; else
+    fi
+ fi
+ 
+-GTK_DOC_CHECK([1.15], [--flavour no-tmpl])
+-
+ AC_ARG_ENABLE(man,
+               AC_HELP_STRING([--enable-man],
+                              [regenerate man pages from Docbook @<:@default=no@:>@]),
+@@ -946,7 +944,6 @@ modules/basic/Makefile
+ modules/indic/Makefile
+ modules/thai/Makefile
+ examples/Makefile
+-docs/Makefile
+ docs/version.xml
+ tools/Makefile
+ tests/Makefile
+-- 
+1.7.2.5
+
