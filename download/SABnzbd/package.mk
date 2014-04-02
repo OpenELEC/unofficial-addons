@@ -21,7 +21,7 @@
 PKG_NAME="SABnzbd"
 PKG_VERSION="0.7.11"
 PKG_REV="1"
-PKG_ARCH="any"
+PKG_ARCH="all"
 PKG_LICENSE="OSS"
 PKG_SITE="http://sabnzbd.org/"
 PKG_URL="$SOURCEFORGE_SRC/sabnzbdplus/sabnzbdplus/${PKG_VERSION}/${PKG_NAME}-${PKG_VERSION}-src.tar.gz"
