@@ -22,7 +22,7 @@
 PKG_NAME="CouchPotatoServer"
 PKG_VERSION="5c0d8a7"
 PKG_REV="1"
-PKG_ARCH="any"
+PKG_ARCH="all"
 PKG_LICENSE="OSS"
 PKG_SITE="https://github.com/RuudBurger/CouchPotatoServer"
 PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.xz"
