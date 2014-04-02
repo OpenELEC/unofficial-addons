@@ -22,7 +22,6 @@
 PKG_NAME="Headphones"
 PKG_VERSION="452cf15"
 PKG_REV="1"
-PKG_ARCH="any"
 PKG_LICENSE="OSS"
 PKG_SITE="http://github.com/rembo10/headphones"
 PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.xz"
