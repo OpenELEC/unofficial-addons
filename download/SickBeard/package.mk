@@ -22,7 +22,6 @@
 PKG_NAME="SickBeard"
 PKG_VERSION="fb37d33"
 PKG_REV="1"
-PKG_ARCH="any"
 PKG_LICENSE="OSS"
 PKG_SITE="https://github.com/midgetspy/Sick-Beard"
 PKG_URL="$DISTRO_SRC/${PKG_NAME}-${PKG_VERSION}.tar.xz"
