@@ -4,4 +4,6 @@
         <string id="1020">Chromium Configuration</string>
         <string id="1021">Stop XBMC Player and Suspend AudioEngine</string>
         <string id="1022">Always start maximized</string>
+        <string id="1023">Use custom audio device</string>
+        <string id="1024">- audio device</string>
 </strings>

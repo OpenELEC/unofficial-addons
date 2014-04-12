@@ -49,7 +49,10 @@ def startChromium(args):
     maximized_param = ""
     if (__addon__.getSetting("START_MAXIMIZED") == "true"):
       maximized_param = "--start-maximized"
-    alsa_device = getAudiDevice()  
+    if (__addon__.getSetting("USE_CUST_AUTIODEVICE") == "true"):
+      alsa_device = __addon__.getSetting("CUST_AUTIODEVICE_STR")
+    else:
+      alsa_device = getAudiDevice()
     alsa_param = ""
     if not alsa_device == None and not alsa_device == "":
       alsa_param = "--alsa-output-device=" + alsa_device
