@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+	<category label="30218">
+		<setting id="startDhcpd" type="bool" label="Start dhpcd at startup" default="false" />
+		<setting label="dhcpd.start script has to be configured!" visible="eq(-1,true)" type="lsep"/>
+        <setting id="startDhclient" type="bool" label="Start dhclient at startup" default="false" />
+		<setting id="dhclientInfaces" visible="eq(-1,true)" type="text" label="Interfaces used by dhclient (space as separator)" default="" />
+		<setting label="For advanced options configure dhclient.start script" visible="eq(-2,true)" type="lsep"/>
+		<setting label="and leave intrfaces field empty here." visible="eq(-3,true)" type="lsep"/>
+		<setting id="startDhcrelay" type="bool" label="Start dhcrelay at startup" default="false" />
+		<setting label="dhcrelay.start script has to be configured!" visible="eq(-1,true)" type="lsep"/>
+	</category>
+</settings>
