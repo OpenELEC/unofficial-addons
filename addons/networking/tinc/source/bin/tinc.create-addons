@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 #####################################################################
 # This program is part of the tinc addon for OpenELEC.
@@ -112,7 +112,7 @@ while read line; do
     elif [[ -n "$host" ]]; then
 
       if [[ "$variable" == "connectto" ]]; then
-        echo "$host $value $line"  >> $f_connectto
+        echo "$host $value $line"  >> "$f_connectto"
 
       elif [[ "$variable" == "device"              \
            || "$variable" == "connectto"           \

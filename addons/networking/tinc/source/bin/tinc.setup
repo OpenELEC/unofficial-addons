@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 #####################################################################
 # This program is part of the tinc addon for OpenELEC.
