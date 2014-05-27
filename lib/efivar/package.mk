@@ -21,7 +21,7 @@
 PKG_NAME="efivar"
 PKG_VERSION="0.10"
 PKG_REV="0"
-PKG_ARCH="i386 x86_64"
+PKG_ARCH="x86_64"
 PKG_LICENSE="LGPL"
 PKG_SITE="https://github.com/vathpela/efivar"
 PKG_URL="http://stbenz.de/openelec/$PKG_NAME-$PKG_VERSION.tar.gz"

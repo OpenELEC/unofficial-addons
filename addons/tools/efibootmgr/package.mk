@@ -21,7 +21,7 @@
 PKG_NAME="efibootmgr"
 PKG_VERSION="0.7.0"
 PKG_REV="0"
-PKG_ARCH="i386 x86_64"
+PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/vathpela/efibootmgr"
 PKG_URL="http://stbenz.de/openelec/$PKG_NAME-$PKG_VERSION.tar.gz"
