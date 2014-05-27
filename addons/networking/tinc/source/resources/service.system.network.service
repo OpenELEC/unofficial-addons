@@ -1,0 +1,12 @@
+[Unit]
+Description=%NETWORK%
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/bin/sh -c "exec sh /storage/.xbmc/addons/service.system.tinc/bin/tinc.addon /storage/.xbmc/addons/service.system.%NETWORK%/config/%NETWORK%"
+ExecStop=/bin/sh -c "exec sh /storage/.xbmc/addons/service.system.tinc/bin/tinc.addon /storage/.xbmc/addons/service.system.%NETWORK%/config/%NETWORK% -k"
+
+[Install]
+WantedBy=xbmc.target
+
