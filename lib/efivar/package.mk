@@ -37,7 +37,6 @@ PKG_AUTORECONF="no"
 PKG_MAINTAINER="Stefan Benz (benz.st@gmail.com)"
 
 make_host() {
-  strip_lto
   make -C src/ makeguids
 }
 
