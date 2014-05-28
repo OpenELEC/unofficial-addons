@@ -1,0 +1,234 @@
+#!/bin/sh
+
+#####################################################################
+# This program is part of the tinc addon for OpenELEC.
+# Copyright (C) 2014 Jean-Charles Andlauer
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with OpenELEC; if not, write to the Free Software Foundation,
+# Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#####################################################################
+
+. /etc/profile
+oe_setup_addon service.system.tinc
+
+if [[ -z $1 ]]; then
+  echo "Usage: $0 network"
+  exit 1
+fi
+
+network="$1"
+addon="service.system.$network"
+version="4.1"
+revision="1"
+
+d_resources="$ADDON_DIR/resources"
+r_addon="$d_resources/addon.xml"
+r_conf="$d_resources/vmneteg.conf"
+r_icon="$d_resources/icon.png"
+r_service="$d_resources/service.system.network.service"
+
+d_home="$ADDON_HOME"
+f_conf="$d_home/$network.conf"
+d_independent="$d_home/$network.hosts"
+d_keys="$d_home/$network.keys"
+d_network="$d_home/$network.addons"
+f_changelog="$d_network/changelog.txt"
+f_connectto="$d_network/.connectto"
+f_hosts="$d_network/.hosts"
+
+if ! [[ -f $f_conf ]]; then
+  echo "$(basename $0) expects configuration file $f_conf, e.g.:"
+  cat "$r_conf"
+  exit 1
+fi
+
+rm -rf "$d_network"
+mkdir -p "$d_network"
+> "$f_changelog"
+
+while read line; do
+
+  if [[ -n "$line" && "${line:0:1}" != "#" ]]; then
+    variable="$(echo ${line%%[ =]*} | tr '[:upper:]' '[:lower:]')"
+    value="${line#*= }"
+
+    if [[ "$variable" == "name" ]]; then
+      host="$value"
+
+      d_key="$d_keys/$host"
+      if [[ ! -d "$d_key" ]]; then
+        mkdir -p "$d_key"
+        tincd -c "$d_key" -K
+      fi
+
+      echo "$host" >> "$f_hosts"
+
+      d_addon="$d_network/$host/$addon"
+      mkdir -p "$d_addon"
+
+      sed                                     \
+        -e "s;%NETWORK%;$network;g"           \
+        -e "s;%HOST%;$host;g"                 \
+        -e "s;%VERSION%;$version.$revision;g" \
+        "$r_addon" > "$d_addon/addon.xml"
+
+      cp "$f_changelog" "$d_addon/changelog.txt"
+
+      > "$d_addon/default.py"
+
+      cp "$r_icon" "$d_addon"
+
+      d_tinc="$d_addon/config/$network"
+      mkdir -p "$d_tinc"
+
+      cp "$d_key/rsa_key.priv" "$d_tinc"
+
+      f_tinc="$d_tinc/tinc.conf"
+      echo "$line" > "$f_tinc"
+
+      d_hosts="$d_tinc/hosts"
+      mkdir -p "$d_hosts"
+
+      f_host="$d_hosts/$host"
+      cp "$d_key/rsa_key.pub" "$f_host"
+
+      d_systemd="$d_addon/system.d"
+      mkdir -p "$d_systemd"
+
+      sed -e "s;%NETWORK%;$network;g" \
+        "$r_service" > "$d_systemd/$addon.service"
+
+    elif [[ -n "$host" ]]; then
+
+      if [[ "$variable" == "connectto" ]]; then
+        echo "$host $value $line"  >> "$f_connectto"
+
+      elif [[ "$variable" == "device"              \
+           || "$variable" == "connectto"           \
+           || "$variable" == "decrementttl"        \
+           || "$variable" == "device"              \
+           || "$variable" == "devicetype"          \
+           || "$variable" == "directonly"          \
+           || "$variable" == "forwarding"          \
+           || "$variable" == "graphdumpfile"       \
+           || "$variable" == "hostnames"           \
+           || "$variable" == "iffonequeue"         \
+           || "$variable" == "interface"           \
+           || "$variable" == "keyexpire"           \
+           || "$variable" == "localdiscovery"      \
+           || "$variable" == "macxpire"            \
+           || "$variable" == "maxtimeout"          \
+           || "$variable" == "mode"                \
+           || "$variable" == "name"                \
+           || "$variable" == "pinginterval"        \
+           || "$variable" == "pingtimeout"         \
+           || "$variable" == "priorityinheritance" \
+           || "$variable" == "privatekey"          \
+           || "$variable" == "privatekeyfile"      \
+           || "$variable" == "processpriority"     \
+           || "$variable" == "proxy"               \
+           || "$variable" == "replaywindow"        \
+           || "$variable" == "strictsubnets"       \
+           || "$variable" == "tunnelserver"        \
+           || "$variable" == "udprcvbuf"           \
+           || "$variable" == "udpsndbuf"           \
+           ]]; then
+        echo "$line" >> "$f_tinc"
+
+      elif [[ "$variable" == "address"       \
+           || "$variable" == "cipher"        \
+           || "$variable" == "clampmss"      \
+           || "$variable" == "compression"   \
+           || "$variable" == "digest"        \
+           || "$variable" == "indirectdata"  \
+           || "$variable" == "maclength"     \
+           || "$variable" == "name"          \
+           || "$variable" == "pmtu"          \
+           || "$variable" == "pmtudiscovery" \
+           || "$variable" == "port"          \
+           || "$variable" == "publickey"     \
+           || "$variable" == "publickeyfile" \
+           || "$variable" == "subnet"        \
+           || "$variable" == "tcponly"       \
+           ]]; then
+        echo "$line" >> "$f_host"
+
+      elif [[ "$variable" == "host-down"   \
+           || "$variable" == "host-up"     \
+           || "$variable" == "subnet-down" \
+           || "$variable" == "subnet-up"   \
+           || "$variable" == "tinc-down"   \
+           || "$variable" == "tinc-up"     \
+           ]]; then
+        echo "$value" >> "$d_tinc/$variable"
+
+      else
+        echo "Warning: skipping unknown variable \"$variable\" for host \"$host\""
+
+      fi
+
+    elif [[ "$variable" == "changelog" ]]; then
+      echo "$value" >> "$f_changelog"
+
+    elif [[ "$variable" == "revision" ]]; then
+      revision="$value"
+
+    else
+      echo "Warning: skipping unknown variable \"$variable\" for network \"$network\""
+
+    fi
+
+  fi
+
+done < "$f_conf"
+
+while read client server line; do
+
+  if [[ "$client" != "$server" ]]; then
+
+    d_client="$d_network/$client/service.system.$network/config/$network"
+    d_server="$d_network/$server/service.system.$network/config/$network"
+
+    if [[ -f "$d_server/hosts/$server" ]]; then
+      echo "$line" >> "$d_client/tinc.conf"
+      cp "$d_client/hosts/$client" "$d_server/hosts"
+      cp "$d_server/hosts/$server" "$d_client/hosts"
+
+    elif [[ -f "$d_independent/$server" ]]; then
+      echo "$line" >> "$d_client/tinc.conf"
+      cp "$d_independent/$server" "$d_client/hosts"
+
+    else
+      echo "Warning: $f_server does not exist, ignoring \"$line\" for host \"$host\""
+
+    fi
+
+  else
+    echo "Skipping \"$line\" (himself) for host \"$host\""
+
+  fi
+
+done < "$f_connectto"
+
+rm "$f_connectto"
+
+while read host; do
+  d_host="$d_network/$host"
+  (cd "$d_host"; zip -qr "$addon-$version.$revision.zip" "$addon")
+done < "$f_hosts"
+
+rm "$f_hosts"
+
+echo "The following addons have been created for network \"$network\":"
+find "$d_network" -name '*.zip'| sort
