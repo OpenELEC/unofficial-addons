@@ -8,4 +8,4 @@ ExecStart=/bin/sh -c "exec sh /storage/.xbmc/addons/service.system.tinc/bin/tinc
 RemainAfterExit=yes
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=xbmc.target

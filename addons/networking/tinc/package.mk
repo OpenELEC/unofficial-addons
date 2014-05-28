@@ -24,15 +24,18 @@ PKG_ARCH="any"
 PKG_LICENSE="GPLv2"
 PKG_SITE="http://www.tinc-vpn.org/"
 PKG_URL="${PKG_SITE}/packages/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain"
+PKG_DEPENDS_TARGET="toolchain lzo"
 PKG_PRIORITY="optional"
 PKG_SECTION="service/system"
-PKG_MAINTAINER="Jean-Charles Andlauer (andlauer@gmail.com)"
 PKG_SHORTDESC="tinc Virtual Private Network Daemon"
 PKG_LONGDESC="tinc is a virtual private network (VPN) daemon that uses tunnelling and encryption to create a secure private network between hosts on the Internet. Because the VPN appears to the IP level network code as a normal network device, there is no need to adapt any existing software. This allows VPN sites to share information with each other over the Internet without exposing any information to others."
-PKG_DISCLAIMER="Prefer interfaces/networks whose names start with vmnet, vboxnet or virbr to avoid interference with connman."
+PKG_DISCLAIMER="This is an unofficial addon. Do therefore not expect support from OpenELEC forum and irc channel."
+
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
+
+PKG_MAINTAINER="Jean-Charles Andlauer (andlauer@gmail.com)"
+
 PKG_AUTORECONF="yes"
 PKG_CONFIGURE_OPTS_TARGET="--sysconfdir=/storage/.cache"
 

@@ -8,5 +8,5 @@ ExecStart=/bin/sh -c "exec sh /storage/.xbmc/addons/service.system.tinc/bin/tinc
 ExecStop=/bin/sh -c "exec sh /storage/.xbmc/addons/service.system.tinc/bin/tinc.addon /storage/.xbmc/addons/service.system.%NETWORK%/config/%NETWORK% -k"
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=xbmc.target
 
