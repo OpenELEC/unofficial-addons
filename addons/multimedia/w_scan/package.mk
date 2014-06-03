@@ -19,8 +19,8 @@
 ################################################################################
 
 PKG_NAME="w_scan"
-PKG_VERSION="20121111"
-PKG_REV="0"
+PKG_VERSION="20140118"
+PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://wirbel.htpc-forum.de/w_scan/index2.html"
