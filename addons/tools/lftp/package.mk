@@ -45,6 +45,11 @@ makeinstall_target() {
   : # nop
 }
 
+pre_configure_target() {
+  # fails to build with gcc 4.9 + lto
+  strip_lto
+}
+
 addon() {
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
   cp -P $PKG_BUILD/.$TARGET_NAME/src/lftp $ADDON_BUILD/$PKG_ADDON_ID/bin
