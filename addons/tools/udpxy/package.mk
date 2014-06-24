@@ -39,6 +39,11 @@ PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
 
+pre_configure_target() {
+  # fails to build with gcc 4.9 + lto
+  strip_lto
+}
+
 makeinstall_target() {
   : # nop
 }
