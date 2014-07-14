@@ -38,7 +38,8 @@ PKG_AUTORECONF="yes"
 
 PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
 
-PKG_CONFIGURE_OPTS_TARGET="--with-sysroot=$SYSROOT_PREFIX \
+PKG_CONFIGURE_OPTS_TARGET="ac_cv_path_POD2MAN=no \
+            --with-sysroot=$SYSROOT_PREFIX \
             --without-libiconv-prefix \
             --without-libintl-prefix \
             --with-boost=$SYSROOT_PREFIX/usr \

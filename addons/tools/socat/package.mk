@@ -19,8 +19,8 @@
 ################################################################################
 
 PKG_NAME="socat"
-PKG_VERSION="1.7.2.2"
-PKG_REV="0"
+PKG_VERSION="1.7.2.4"
+PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL2"
 PKG_SITE="http://www.dest-unreach.org/socat/"
@@ -48,6 +48,10 @@ PKG_CONFIGURE_OPTS_TARGET="--disable-sctp \
             --disable-tun \
             --disable-filan \
             --disable-sycls"
+
+pre_configure_target() {
+  ( cd ..; do_autoreconf --exclude=autoheader )
+}
 
 makeinstall_target() {
   : # nop
