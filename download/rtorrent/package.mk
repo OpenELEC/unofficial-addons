@@ -1,4 +1,4 @@
-################################################################################
+###############################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
 #
@@ -25,7 +25,7 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://libtorrent.rakshasa.no"
 PKG_URL="http://libtorrent.rakshasa.no/downloads/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain openssl curl libtool pkg-config ncurses libtorrent zlib xmlrpc-c libsigc++"
+PKG_DEPENDS_TARGET="toolchain libressl curl libtool pkg-config ncurses libtorrent zlib xmlrpc-c libsigc++"
 PKG_PRIORITY="optional"
 PKG_SECTION="service/downloadmanager"
 PKG_SHORTDESC="rTorrent: a very fast, free BitTorrent client"
