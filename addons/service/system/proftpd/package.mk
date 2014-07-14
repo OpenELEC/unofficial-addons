@@ -19,8 +19,8 @@
 ################################################################################
 
 PKG_NAME="proftpd"
-PKG_VERSION="1.3.4d"
-PKG_REV="3"
+PKG_VERSION="1.3.4e"
+PKG_REV="4"
 PKG_ARCH="all"
 PKG_ARCH="any"
 PKG_LICENSE="OSS"
