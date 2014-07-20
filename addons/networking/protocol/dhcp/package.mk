@@ -36,7 +36,7 @@ PKG_MAINTAINER="Peter Smorada (smoradap@gmail.com)"
 PKG_DISCLAIMER="this is an unofficial addon. please don't ask for support in openelec forum / irc channel"
 
 PKG_CONFIGURE_OPTS_TARGET="ac_cv_file__dev_random=yes \
-           --sysconfdir=/storage/.xbmc/userdata/addon_data/plugin.network.dhcp"
+                           --sysconfdir=/storage/.xbmc/userdata/addon_data/plugin.network.dhcp"
 
 pre_configure_target() {
   # dhcp fails to build in subdirs
@@ -46,7 +46,6 @@ pre_configure_target() {
   export CFLAGS="$CFLAGS -D_PATH_DHCLIENT_SCRIPT='\"/storage/.xbmc/addons/plugin.network.dhcp/bin/dhclient-script\"' \
     -D_PATH_DHCPD_CONF='\"/storage/.xbmc/userdata/addon_data/plugin.network.dhcp/dhcpd.conf\"'  \
     -D_PATH_DHCLIENT_CONF='\"/storage/.xbmc/userdata/addon_data/plugin.network.dhcp/dhclient.conf\"'"
-
 }
 
 addon() {
@@ -56,5 +55,3 @@ addon() {
   cp $PKG_BUILD/.install_pkg/usr/sbin/dhcrelay $ADDON_BUILD/$PKG_ADDON_ID/bin/
   cp $PKG_BUILD/.install_pkg/usr/bin/omshell $ADDON_BUILD/$PKG_ADDON_ID/bin/
 }
-
-
