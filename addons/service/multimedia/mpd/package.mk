@@ -19,13 +19,12 @@
 ################################################################################
 
 PKG_NAME="mpd"
-PKG_VERSION="0.18.5"
-PKG_REV="1"
+PKG_VERSION="0.18.11"
+PKG_REV="0"
 PKG_ARCH="i386 x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://mpd.wikia.com/wiki/Music_Player_Daemon_Wiki"
 PKG_URL="http://www.musicpd.org/download/${PKG_NAME}/${PKG_VERSION%.*}/${PKG_NAME}-${PKG_VERSION}.tar.xz"
-#PKG_URL="http://downloads.sourceforge.net/musicpd/$PKG_NAME-$PKG_VERSION.tar.bz2"
 PKG_DEPENDS_TARGET="toolchain glib libmad libogg flac faad2 curl alsa-lib yajl libid3tag"
 PKG_PRIORITY="optional"
 PKG_SECTION="service.multimedia"
