@@ -19,13 +19,13 @@
 ################################################################################
 
 PKG_NAME="pycurl"
-PKG_VERSION="7.19.0"
+PKG_VERSION="7.19.5"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL-2"
 PKG_SITE="http://pycurl.sourceforge.net/"
 PKG_URL="http://pycurl.sourceforge.net/download/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain Python distutilscross:host curl libgcrypt"
+PKG_DEPENDS_TARGET="toolchain Python distutilscross:host curl libressl"
 PKG_PRIORITY="optional"
 PKG_SECTION="python/web"
 PKG_SHORTDESC="pycurl: a Python interface to libcurl"
@@ -43,7 +43,7 @@ makeinstall_target() {
   export PYTHONXCPREFIX="$SYSROOT_PREFIX/usr"
   export LDFLAGS="$LDFLAGS -L$SYSROOT_PREFIX/usr/lib -L$SYSROOT_PREFIX/lib"
 
-  python setup.py build --cross-compile
+  python setup.py build --cross-compile --with-ssl
   python setup.py install -O0 --no-compile --prefix /usr --root $INSTALL
 
   rm -rf $INSTALL/usr/bin
