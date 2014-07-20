@@ -19,12 +19,12 @@
 ################################################################################
 
 PKG_NAME="dvb-apps"
-PKG_VERSION="20090201"
+PKG_VERSION="3d43b28"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.linuxtv.org"
-PKG_URL="http://sources.openbricks.org/devel/dvb-apps-${PKG_VERSION}.tar.bz2"
+PKG_URL="$DISTRO_SRC/dvb-apps-${PKG_VERSION}.tar.xz"
 PKG_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"
