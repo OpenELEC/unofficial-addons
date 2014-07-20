@@ -1,2 +1,5 @@
+4.3.0
+- rebuild for addon api bump
+
 4.1.0
 - initial release
