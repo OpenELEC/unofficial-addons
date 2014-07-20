@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="evtest"
-PKG_VERSION="1.30"
+PKG_VERSION="1.31"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -45,5 +45,4 @@ makeinstall_target() {
 addon() {
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
   cp -P $PKG_BUILD/.$TARGET_NAME/evtest $ADDON_BUILD/$PKG_ADDON_ID/bin
-  cp -P $PKG_BUILD/.$TARGET_NAME/evtest-capture $ADDON_BUILD/$PKG_ADDON_ID/bin
 }
