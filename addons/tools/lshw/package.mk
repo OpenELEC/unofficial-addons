@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="lshw"
-PKG_VERSION="B.02.16"
+PKG_VERSION="B.02.17"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
