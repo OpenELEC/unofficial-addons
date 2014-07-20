@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="tsdecrypt"
-PKG_VERSION="9.0"
+PKG_VERSION="10.0"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
