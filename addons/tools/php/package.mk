@@ -20,7 +20,7 @@
 
 PKG_NAME="php"
 PKG_VERSION="5.5.14"
-PKG_REV="1"
+PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="OpenSource"
 PKG_SITE="http://www.php.net"
