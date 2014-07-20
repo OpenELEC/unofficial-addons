@@ -19,12 +19,12 @@
 ################################################################################
 
 PKG_NAME="powertop"
-PKG_VERSION="2.2"
-PKG_REV="2"
+PKG_VERSION="2.6.1"
+PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://01.org/powertop/"
-PKG_URL="https://01.org/powertop/sites/default/files/downloads/$PKG_NAME-$PKG_VERSION.tar.gz"
+PKG_URL="https://01.org/sites/default/files/downloads/powertop/$PKG_NAME-$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain ncurses pciutils libnl"
 PKG_PRIORITY="optional"
 PKG_SECTION="debug/tools"
@@ -43,16 +43,6 @@ PKG_CONFIGURE_OPTS_TARGET="ac_cv_func_malloc_0_nonnull=yes ac_cv_func_realloc_0_
 pre_configure_target() {
   export CXXFLAGS="$CXXFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses"
   export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses"
-}
-
-make_target() {
-  make V=1 CC="$HOST_CC" \
-         CFLAGS="$HOST_CFLAGS" \
-         LDFLAGS="$HOST_LDFLAGS" \
-         LIBS="" \
-         AM_LDFLAGS="" \
-         -C src csstoh
-  make
 }
 
 makeinstall_target() {
