@@ -22,7 +22,7 @@
 
 PKG_NAME="truecrypt"
 PKG_VERSION="7.1a"
-PKG_CUSTOM_ADDON_VERSION="3.5.6"
+PKG_CUSTOM_ADDON_VERSION="3.5.7"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -95,5 +95,5 @@ addon() {
   cp $PKG_BUILD/Main/truecrypt $ADDON_BUILD/$PKG_ADDON_ID/bin/
   cp $(get_build_dir util-linux)/.$TARGET_NAME/losetup $ADDON_BUILD/$PKG_ADDON_ID/bin/
   cp $(get_build_dir ntfs-3g_ntfsprogs)/.$TARGET_NAME/ntfsprogs/mkntfs $ADDON_BUILD/$PKG_ADDON_ID/bin/
-  cp $(get_build_dir LVM2)/.$TARGET_NAME/tools/dmsetup.static $ADDON_BUILD/$PKG_ADDON_ID/bin/dmsetup
+  cp $(get_build_dir LVM2)/.$TARGET_NAME/tools/dmsetup $ADDON_BUILD/$PKG_ADDON_ID/bin/dmsetup
 }

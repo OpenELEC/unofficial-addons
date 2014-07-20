@@ -1,3 +1,7 @@
+[B]3.5.7[/B]
+ - rebuild for addon api bump
+ - update to LVM2.2.02.107
+
 [B]3.5.6[/B]
  - no changes. version bump only
 
