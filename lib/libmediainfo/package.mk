@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="libmediainfo"
-PKG_VERSION="0.7.64"
+PKG_VERSION="0.7.69"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
