@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="mesa-demos"
-PKG_VERSION="8.0.1"
+PKG_VERSION="8.2.0"
 PKG_REV="0"
 PKG_ARCH="i386 x86_64"
 PKG_LICENSE="OSS"
