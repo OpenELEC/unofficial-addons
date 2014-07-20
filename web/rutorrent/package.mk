@@ -37,6 +37,10 @@ PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="Daniel Forsberg (daniel.forsberg1@gmail.com)"
 
+pre_patch() {
+  chmod -R +w $ROOT/$BUILD/${PKG_NAME}-${PKG_VERSION}/*
+}
+
 make_target() {
   install_plugins="cpuload diskspace _getdir rss seedingtime data datadir erasedata scheduler extsearch httprpc ratio"
 
