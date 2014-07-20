@@ -20,7 +20,7 @@
 ################################################################################
 
 PKG_NAME="mediainfo"
-PKG_VERSION="0.7.64"
+PKG_VERSION="0.7.69"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
