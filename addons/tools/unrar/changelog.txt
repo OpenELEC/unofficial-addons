@@ -1,2 +1,6 @@
+4.3.0
+- rebuild for addon api bump
+- update to unrar-5.1.6
+
 4.1.1
 - initial release
