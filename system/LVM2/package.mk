@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="LVM2"
-PKG_VERSION="2.02.98"
+PKG_VERSION="2.02.107"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE=""
@@ -40,7 +40,7 @@ PKG_MAINTAINER="vpeter4 (peter.vicman@gmail.com)"
 PKG_CONFIGURE_OPTS_TARGET="ac_cv_func_malloc_0_nonnull=yes \
             ac_cv_func_realloc_0_nonnull=yes \
             --disable-lvm1_fallback \
-            --enable-static_link \
+            --disable-static_link \
             --disable-readline \
             --enable-realtime \
             --enable-debug \

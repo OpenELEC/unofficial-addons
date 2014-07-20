@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="i2c-tools"
-PKG_VERSION="3.1.0"
+PKG_VERSION="3.1.1"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -56,5 +56,4 @@ addon() {
   cp -P $PKG_BUILD/tools/i2cdump $ADDON_BUILD/$PKG_ADDON_ID/bin
   cp -P $PKG_BUILD/tools/i2cget $ADDON_BUILD/$PKG_ADDON_ID/bin
   cp -P $PKG_BUILD/tools/i2cset $ADDON_BUILD/$PKG_ADDON_ID/bin
-  cp -P $PKG_BUILD/stub/i2c-stub-from-dump $ADDON_BUILD/$PKG_ADDON_ID/bin
 }

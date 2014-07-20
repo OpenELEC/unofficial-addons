@@ -1,3 +1,8 @@
+4.3.0
+- rebuild for addon api bump
+- update to pcsc-lite-1.8.11
+- update to libccid-1.4.17
+
 4.1.0
 - convert to systemd service
 - rebuild for addon api bump

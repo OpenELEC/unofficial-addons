@@ -1,3 +1,7 @@
+4.3.0
+- rebuild for addon api bump
+- update to pycurl-7.19.5
+
 4.1.2
 - rebuild. unrar is now external
 

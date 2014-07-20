@@ -19,14 +19,13 @@
 ################################################################################
 
 PKG_NAME="acpica"
-PKG_VERSION="unix2-20130328"
+PKG_VERSION="unix-20140627"
 PKG_REV="0"
 PKG_ARCH="i386 x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.acpica.org/"
-PKG_URL="https://www.acpica.org/download/$PKG_NAME-$PKG_VERSION.tar.gz"
 PKG_URL="https://acpica.org/sites/acpica/files/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain flex bison:host"
+PKG_DEPENDS_TARGET="toolchain flex:host bison:host"
 PKG_PRIORITY="optional"
 PKG_SECTION="debug/tools"
 PKG_SHORTDESC="acpica: A set of tools to disassemble ACPI tables"
@@ -58,9 +57,6 @@ makeinstall_target() {
 }
 
 addon() {
-  [ "$TARGET_ARCH" = "i386" ] && ACPICA_BIN="bin32"
-  [ "$TARGET_ARCH" = "x86_64" ] && ACPICA_BIN="bin64"
-
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
-  cp -p $PKG_BUILD/generate/unix/$ACPICA_BIN/* $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp -p $PKG_BUILD/generate/unix/bin/* $ADDON_BUILD/$PKG_ADDON_ID/bin
 }

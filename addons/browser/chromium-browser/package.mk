@@ -20,7 +20,7 @@
 
 PKG_NAME="chromium-browser"
 PKG_VERSION="28.0.1500.52"
-PKG_REV="4"
+PKG_REV="0"
 PKG_ARCH="x86_64"
 PKG_LICENSE="Mixed"
 PKG_SITE="http://www.chromium.org/Home"

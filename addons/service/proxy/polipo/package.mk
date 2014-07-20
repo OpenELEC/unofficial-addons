@@ -19,12 +19,12 @@
 ################################################################################
 
 PKG_NAME="polipo"
-PKG_VERSION="20091115"
+PKG_VERSION="1.1.1"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="OSS"
 PKG_SITE="http://www.pps.univ-paris-diderot.fr/~jch/software/polipo/"
-PKG_URL="http://freehaven.net/~chrisd/polipo/${PKG_NAME}-${PKG_VERSION}.tar.gz"
+PKG_URL="http://www.pps.univ-paris-diderot.fr/~jch/software/files/polipo/${PKG_NAME}-${PKG_VERSION}.tar.gz"
 PKG_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
 PKG_SECTION="service/proxy"

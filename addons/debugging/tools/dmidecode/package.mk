@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="dmidecode"
-PKG_VERSION="2.11"
+PKG_VERSION="2.12"
 PKG_REV="0"
 PKG_ARCH="i386 x86_64"
 PKG_LICENSE="GPL"

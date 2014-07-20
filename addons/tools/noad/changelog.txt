@@ -1,3 +1,7 @@
+4.3.0
+- rebuild for addon api bump
+- update to noad-0.8.6
+
 4.1.1
 - rebuild for ffmpeg changes
 

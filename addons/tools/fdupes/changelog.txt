@@ -1,2 +1,6 @@
+4.3.0
+- rebuild for addon api bump
+- update to fdupes-1.51
+
 4.1.0
 - initial release

@@ -1,2 +1,6 @@
+4.3.0
+- rebuild for addon api bump
+- update to patch-2.7.1
+
 4.1.0
 - initial build

@@ -1,2 +1,6 @@
+[B]4.3.0[/B]
+- Addon bump
+
 [B]4.1.0[/B]
 Initial version based on ISC DHCP 4.1-ESV-R9
+

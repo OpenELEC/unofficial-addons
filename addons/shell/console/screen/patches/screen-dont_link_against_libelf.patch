@@ -1,0 +1,22 @@
+diff -Naur screen-4.2.1/configure screen-4.2.1.patch/configure
+--- screen-4.2.1/configure	2014-04-26 12:58:46.000000000 +0200
++++ screen-4.2.1.patch/configure	2014-07-20 09:29:38.524942070 +0200
+@@ -4155,7 +4155,6 @@
+ 
+ 
+ oldlibs="$LIBS"
+-LIBS="$LIBS -lelf"
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking SVR4..." >&5
+ $as_echo "$as_me: checking SVR4..." >&6;}
+ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+diff -Naur screen-4.2.1/configure.in screen-4.2.1.patch/configure.in
+--- screen-4.2.1/configure.in	2014-04-26 12:58:35.000000000 +0200
++++ screen-4.2.1.patch/configure.in	2014-07-20 09:29:27.383915098 +0200
+@@ -202,7 +202,6 @@
+ ], LIBS="$LIBS -lsocket -linet";seqptx=1)
+ 
+ oldlibs="$LIBS"
+-LIBS="$LIBS -lelf"
+ AC_CHECKING(SVR4)
+ AC_TRY_LINK([#include <utmpx.h>
+ ],,

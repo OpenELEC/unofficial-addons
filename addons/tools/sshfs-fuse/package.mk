@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="sshfs-fuse"
-PKG_VERSION="2.4"
+PKG_VERSION="2.5"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"

@@ -19,12 +19,12 @@
 ################################################################################
 
 PKG_NAME="noad"
-PKG_VERSION="0.8.5"
-PKG_REV="1"
+PKG_VERSION="0.8.6"
+PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://noad.net23.net/"
-PKG_URL="http://noad.net23.net/noad-0.8.5.tar.bz2"
+PKG_URL="http://noad.net23.net/$PKG_NAME-$PKG_VERSION.tar.bz2"
 PKG_DEPENDS_TARGET="ffmpeg libmpeg2"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"

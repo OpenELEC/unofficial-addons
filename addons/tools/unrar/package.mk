@@ -19,8 +19,8 @@
 ################################################################################
 
 PKG_NAME="unrar"
-PKG_VERSION="4.2.4"
-PKG_REV="1"
+PKG_VERSION="5.1.6"
+PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="free"
 PKG_SITE="http://www.rarlab.com"
@@ -46,7 +46,7 @@ make_target() {
      RANLIB="$TARGET_RANLIB" \
      AR="$TARGET_AR" \
      STRIP="$TARGET_STRIP" \
-     -f makefile.unix
+     -f makefile
 }
 
 makeinstall_target() {

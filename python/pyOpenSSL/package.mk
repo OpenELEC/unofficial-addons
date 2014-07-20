@@ -19,13 +19,13 @@
 ################################################################################
 
 PKG_NAME="pyOpenSSL"
-PKG_VERSION="0.11"
+PKG_VERSION="0.14"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="LGPL"
-PKG_SITE="https://launchpad.net/pyopenssl"
-PKG_URL="http://launchpad.net/pyopenssl/main/$PKG_VERSION/+download/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain Python distutilscross:host openssl"
+PKG_SITE="https://pypi.python.org/pypi/pyOpenSSL"
+PKG_URL="https://pypi.python.org/packages/source/p/pyOpenSSL/$PKG_NAME-$PKG_VERSION.tar.gz"
+PKG_DEPENDS_TARGET="toolchain Python distutilscross:host libressl"
 PKG_PRIORITY="optional"
 PKG_SECTION="python/security"
 PKG_SHORTDESC="pyOpenSSL: Python interface to the OpenSSL library"

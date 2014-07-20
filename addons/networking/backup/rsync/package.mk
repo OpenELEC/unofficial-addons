@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="rsync"
-PKG_VERSION="3.0.9"
+PKG_VERSION="3.1.1"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="OSS"
