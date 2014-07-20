@@ -19,8 +19,8 @@
 ################################################################################
 
 PKG_NAME="screen"
-PKG_VERSION="4.0.3"
-PKG_REV="1"
+PKG_VERSION="4.2.1"
+PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.gnu.org/software/screen/"
@@ -38,10 +38,18 @@ PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
 
-PKG_CONFIGURE_OPTS_TARGET="--disable-pam --disable-locale --disable-telnet"
+PKG_CONFIGURE_OPTS_TARGET="ac_cv_header_utempter_h=no \
+                           --disable-pam \
+                           --disable-use-locale \
+                           --disable-telnet \
+                           --disable-socket-dir"
 
 pre_configure_target() {
   export LDFLAGS=`echo $LDFLAGS | sed -e "s|-Wl,--as-needed||"`
+
+# screen fails to build in subdirs
+  cd $ROOT/$PKG_BUILD
+    rm -rf .$TARGET_NAME
 }
 
 makeinstall_target() {
@@ -50,5 +58,5 @@ makeinstall_target() {
 
 addon() {
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
-  cp -P $PKG_BUILD/.$TARGET_NAME/screen $ADDON_BUILD/$PKG_ADDON_ID/bin/screen
+  cp -P $PKG_BUILD/screen $ADDON_BUILD/$PKG_ADDON_ID/bin/screen
 }
