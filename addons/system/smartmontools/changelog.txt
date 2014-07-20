@@ -1,3 +1,6 @@
+[B]1.0.5[/B]
+- rebuild for addon api bump
+
 [B]1.0.4[/B]
 - no changes, version bump
 
