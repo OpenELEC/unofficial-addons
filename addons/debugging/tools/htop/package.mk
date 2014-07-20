@@ -19,12 +19,12 @@
 ################################################################################
 
 PKG_NAME="htop"
-PKG_VERSION="1.0.2"
-PKG_REV="1"
+PKG_VERSION="1.0.3"
+PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://htop.sourceforge.net/"
-PKG_URL="$SOURCEFORGE_SRC/$PKG_NAME/$PKG_NAME/$PKG_VERSION/$PKG_NAME-$PKG_VERSION.tar.gz"
+PKG_URL="http://hisham.hm/htop/releases/$PKG_VERSION/$PKG_NAME-$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain ncurses"
 PKG_PRIORITY="optional"
 PKG_SECTION="debug/tools"
