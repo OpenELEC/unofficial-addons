@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="makemkv"
-PKG_VERSION="1.8.5"
+PKG_VERSION="1.8.11"
 PKG_REV="0"
 PKG_ARCH="i386 x86_64"
 PKG_LICENSE="OSS"
@@ -39,15 +39,21 @@ PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="unofficial.addon.pro"
 
+PKG_CONFIGURE_OPTS_TARGET="--disable-gui --enable-noec"
+
 post_unpack() {
   mkdir -p $BUILD/$PKG_NAME-$PKG_VERSION
-  mv $BUILD/${PKG_NAME}-oss-${PKG_VERSION} $BUILD/$PKG_NAME-$PKG_VERSION/lib
-  mv $BUILD/${PKG_NAME}-bin-${PKG_VERSION} $BUILD/$PKG_NAME-$PKG_VERSION/bin
+    mv $BUILD/${PKG_NAME}-oss-${PKG_VERSION}/* $BUILD/$PKG_NAME-$PKG_VERSION
+    rm -rf $BUILD/${PKG_NAME}-oss-${PKG_VERSION}
+  mkdir -p $BUILD/$PKG_NAME-$PKG_VERSION/bin
+    mv $BUILD/${PKG_NAME}-bin-${PKG_VERSION}/* $BUILD/$PKG_NAME-$PKG_VERSION/bin
+    rm -rf $BUILD/${PKG_NAME}-bin-${PKG_VERSION}
 }
 
-make_target() {
-  cd $ROOT/$PKG_BUILD/lib
-  make GCC=$CC -f makefile.linux
+pre_configure_target() {
+# makemkv fails to build in subdirs
+  cd $ROOT/$PKG_BUILD
+    rm -rf .$TARGET_NAME
 }
 
 makeinstall_target() {
@@ -63,6 +69,7 @@ addon() {
   chmod 755 $ADDON_BUILD/$PKG_ADDON_ID/bin/makemkvcon.bin
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
-  cp $PKG_BUILD/lib/out/libmakemkv.so.[0-9] $ADDON_BUILD/$PKG_ADDON_ID/lib
-  cp $PKG_BUILD/lib/out/libdriveio.so.[0-9] $ADDON_BUILD/$PKG_ADDON_ID/lib
+  cp $PKG_BUILD/out/libmakemkv.so.[0-9] $ADDON_BUILD/$PKG_ADDON_ID/lib
+  cp $PKG_BUILD/out/libdriveio.so.[0-9] $ADDON_BUILD/$PKG_ADDON_ID/lib
+  cp $PKG_BUILD/out/libmmbd.so.[0-9] $ADDON_BUILD/$PKG_ADDON_ID/lib
 }
