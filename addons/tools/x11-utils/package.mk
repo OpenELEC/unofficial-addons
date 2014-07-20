@@ -20,7 +20,7 @@
 
 PKG_NAME="x11-utils"
 PKG_VERSION="1"
-PKG_REV="1"
+PKG_REV="0"
 PKG_ARCH="i386 x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://xorg.freedesktop.org/releases/individual/app/"
