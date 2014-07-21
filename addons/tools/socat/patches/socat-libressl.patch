@@ -1,0 +1,48 @@
+From ff194b3bed52a858801584aeb3c1ef06f4b47712 Mon Sep 17 00:00:00 2001
+From: Stefan Saraev <stefan@saraev.ca>
+Date: Mon, 21 Jul 2014 12:34:08 +0300
+Subject: [PATCH] libressl
+
+---
+ xio-openssl.c |   18 ------------------
+ 1 files changed, 0 insertions(+), 18 deletions(-)
+
+diff --git a/xio-openssl.c b/xio-openssl.c
+index 66d9c7d..b119b91 100644
+--- a/xio-openssl.c
++++ b/xio-openssl.c
+@@ -139,20 +139,6 @@ int xio_reset_fips_mode(void) {
+ 
+ static void openssl_conn_loginfo(SSL *ssl) {
+    Notice1("SSL connection using %s", SSL_get_cipher(ssl));
+-
+-#if OPENSSL_VERSION_NUMBER >= 0x00908000L
+-   {
+-      const COMP_METHOD *comp, *expansion;
+-
+-      comp = sycSSL_get_current_compression(ssl);
+-      expansion = sycSSL_get_current_expansion(ssl);
+-
+-      Notice1("SSL connection compression \"%s\"",
+-              comp?sycSSL_COMP_get_name(comp):"none");
+-      Notice1("SSL connection expansion \"%s\"",
+-              expansion?sycSSL_COMP_get_name(expansion):"none");
+-   }
+-#endif
+ }
+ 
+ /* the open function for OpenSSL client */
+@@ -796,10 +782,6 @@ int
+       }
+    }
+ 
+-   if (opt_egd) {
+-      sycRAND_egd(opt_egd);
+-   }
+-
+    if (opt_pseudo) {
+       long int randdata;
+       /* initialize libc random from actual microseconds */
+-- 
+1.7.2.5
+
