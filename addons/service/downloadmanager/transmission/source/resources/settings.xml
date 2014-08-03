@@ -21,6 +21,6 @@
 		<setting type="sep" />
 		<setting label="4110" type="lsep"/>
 		<setting id="TRANSMISSION_ENABLE_CUSTOM_CONFIG" type="bool" label="4121" value="" default="false" />
-		<setting id="TRANSMISSION_PATH_CUSTOM_CONFIG" type="folder" label="4122" value="" default="/storage/" />
+		<setting id="TRANSMISSION_PATH_CUSTOM_CONFIG" type="folder" label="4122" value="" default="/storage/.cache/transmission" />
     </category>
 </settings>
