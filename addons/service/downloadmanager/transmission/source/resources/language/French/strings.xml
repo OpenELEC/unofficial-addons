@@ -10,4 +10,8 @@
 	<string id="2010">Préférences réseau</string>
 	<string id="2021">Adresses IP autorisées (séparées par des virgules)</string>
 
+	<string id="4110">Configuration personnalisée</string>
+	<string id="4121">Activer configuration personnalisée</string>
+	<string id="4122">Dossier de configuration personnalisée</string>
+
 </strings>

@@ -13,4 +13,8 @@
 	<string id="3110">Diğer</string>
 	<string id="3121">İndirme Dizini</string>
 
+	<string id="4110">Custom Configuration</string>
+	<string id="4121">Özel yapılandırma Enable</string>
+	<string id="4122">Özel konfigürasyon klasörü</string>
+
 </strings>
