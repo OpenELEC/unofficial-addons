@@ -10,4 +10,7 @@
 	<string id="2010">Nettverksinstillinger</string>
 	<string id="2021">Tilatte IP addresser (komma-avgrenser)</string>
 
+	<string id="4110"> Custom Konfigurasjon </ string>
+	<string id="4121"> Aktiver tilpasset konfigurasjon </ string>
+	<string id="4122"> mappe Custom konfigurasjon </ string>
 </strings>

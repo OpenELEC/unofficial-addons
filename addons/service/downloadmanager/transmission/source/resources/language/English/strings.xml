@@ -15,4 +15,8 @@
 	<string id="3122">Watch Directory</string>
 	<string id="3123">Incoming (incomplete) Directory</string>
 
+	<string id="4110">Custom Configuration</string>
+	<string id="4121">Enable custom configuration</string>
+	<string id="4122">Custom configuration folder</string>
+
 </strings>

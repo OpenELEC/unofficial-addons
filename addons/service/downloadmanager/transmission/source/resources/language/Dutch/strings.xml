@@ -14,4 +14,8 @@
 	<string id="3121">Downloadmap</string>
 	<string id="3122">Volgmap</string>
 	<string id="3123">Inkomende (onvoltooide) Downloadmap</string>
+
+	<string id="4110">Benutzerdefinierte Konfiguration</string>
+	<string id="4121">Aktivieren Sie benutzerdefinierte Konfiguration</string>
+	<string id="4122">Individuelle Konfigurationsordner</string>
 </strings>

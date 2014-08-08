@@ -6,4 +6,6 @@
     <setting id="TRANSMISSION_DL_DIR" value="/storage/downloads" />
     <setting id="TRANSMISSION_INC_DIR" value="/storage/downloads/incoming" />
     <setting id="TRANSMISSION_WATCH_DIR" value="/storage/downloads/watch" />
+	<setting id="TRANSMISSION_ENABLE_CUSTOM_CONFIG" value="false" />
+<setting id="TRANSMISSION_PATH_CUSTOM_CONFIG" value="/storage/.cache/transmission" />
 </settings>
