@@ -21,7 +21,7 @@
 PKG_NAME="maraschino"
 PKG_VERSION="1681187"
 PKG_REV="0"
-PKG_ARCH="i386 x86_64"
+PKG_ARCH="none" # broken. dont build
 PKG_LICENSE="OSS"
 PKG_SITE="http://www.maraschinoproject.com/"
 PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.xz"
