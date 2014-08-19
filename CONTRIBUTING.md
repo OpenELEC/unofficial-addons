@@ -58,6 +58,3 @@ Please follow this process; it's the best way to get your work included in the p
 
 - [Open a Pull Request](https://help.github.com/articles/using-pull-requests) with a
     clear title and description.
-
-[Forum]: http://openelec.tv/forum
-[webchat]: http://openelec.tv/support/chat
