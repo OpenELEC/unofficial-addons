@@ -20,12 +20,12 @@
 
 PKG_NAME="chromium-browser"
 PKG_VERSION="28.0.1500.52"
-PKG_REV="0"
+PKG_REV="1"
 PKG_ARCH="x86_64"
 PKG_LICENSE="Mixed"
 PKG_SITE="http://www.chromium.org/Home"
 PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain gtk+ pciutils dbus libXcomposite libXcursor libXtst libXScrnSaver alsa-lib bzip2 yasm nss"
+PKG_DEPENDS_TARGET="toolchain gtk+ pciutils dbus libXcomposite libXcursor libXtst alsa-lib bzip2 yasm nss"
 PKG_PRIORITY="optional"
 PKG_SECTION="browser"
 PKG_SHORTDESC="Chromium Browser"
@@ -56,6 +56,7 @@ make_target() {
   fi
 
   unset CFLAGS LDFLAGS LD
+  export LDFLAGS="-Wl,--as-needed"
   export CXXFLAGS="-fno-ipa-cp"
 
   # configure....

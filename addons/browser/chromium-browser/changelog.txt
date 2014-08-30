@@ -1,3 +1,6 @@
+4.3.1
+- rebuild for static libffi
+
 4.3.0
 - rebuild for addon api bump
 

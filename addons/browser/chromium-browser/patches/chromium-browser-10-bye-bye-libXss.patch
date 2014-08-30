@@ -1,0 +1,104 @@
+From 690e7a17328ba8140afa923587c18c39b6aafc95 Mon Sep 17 00:00:00 2001
+From: Stefan Saraev <stefan@saraev.ca>
+Date: Sat, 30 Aug 2014 22:02:56 +0300
+Subject: [PATCH] bye bye libXss
+
+---
+ src/chrome/browser/idle_query_x11.cc |   24 +-----------------------
+ src/chrome/chrome_browser.gypi       |    1 -
+ src/chrome/chrome_browser_ui.gypi    |    1 -
+ src/chrome/chrome_common.gypi        |    1 -
+ 4 files changed, 1 insertions(+), 26 deletions(-)
+
+diff --git a/src/chrome/browser/idle_query_x11.cc b/src/chrome/browser/idle_query_x11.cc
+index da81e36..3a2bba6 100644
+--- a/src/chrome/browser/idle_query_x11.cc
++++ b/src/chrome/browser/idle_query_x11.cc
+@@ -4,7 +4,6 @@
+ 
+ #include "chrome/browser/idle_query_x11.h"
+ 
+-#include <X11/extensions/scrnsaver.h>
+ #include "ui/base/x/x11_util.h"
+ 
+ namespace chrome {
+@@ -12,22 +11,10 @@ namespace chrome {
+ class IdleData {
+  public:
+   IdleData() {
+-    int event_base;
+-    int error_base;
+-    if (XScreenSaverQueryExtension(ui::GetXDisplay(), &event_base,
+-                                   &error_base)) {
+-      mit_info = XScreenSaverAllocInfo();
+-    } else {
+-      mit_info = NULL;
+-    }
+   }
+ 
+   ~IdleData() {
+-    if (mit_info)
+-      XFree(mit_info);
+   }
+-
+-  XScreenSaverInfo *mit_info;
+ };
+ 
+ IdleQueryX11::IdleQueryX11() : idle_data_(new IdleData()) {}
+@@ -35,16 +22,7 @@ IdleQueryX11::IdleQueryX11() : idle_data_(new IdleData()) {}
+ IdleQueryX11::~IdleQueryX11() {}
+ 
+ int IdleQueryX11::IdleTime() {
+-  if (!idle_data_->mit_info)
+-    return 0;
+-
+-  if (XScreenSaverQueryInfo(ui::GetXDisplay(),
+-                            RootWindow(ui::GetXDisplay(), 0),
+-                            idle_data_->mit_info)) {
+-    return (idle_data_->mit_info->idle) / 1000;
+-  } else {
+-    return 0;
+-  }
++  return 0;
+ }
+ 
+ }  // namespace chrome
+diff --git a/src/chrome/chrome_browser.gypi b/src/chrome/chrome_browser.gypi
+index ea5553a..74ea20f 100644
+--- a/src/chrome/chrome_browser.gypi
++++ b/src/chrome/chrome_browser.gypi
+@@ -2585,7 +2585,6 @@
+         ['os_posix == 1 and OS != "mac" and OS != "ios" and OS != "android"', {
+           'link_settings': {
+             'libraries': [
+-              '-lXss',
+             ],
+           },
+         }],
+diff --git a/src/chrome/chrome_browser_ui.gypi b/src/chrome/chrome_browser_ui.gypi
+index 6d6c34d..91226d6 100644
+--- a/src/chrome/chrome_browser_ui.gypi
++++ b/src/chrome/chrome_browser_ui.gypi
+@@ -2579,7 +2579,6 @@
+         ['os_posix == 1 and OS != "mac" and OS != "ios" and OS != "android"', {
+           'link_settings': {
+             'libraries': [
+-              '-lXss',
+             ],
+           },
+         }],
+diff --git a/src/chrome/chrome_common.gypi b/src/chrome/chrome_common.gypi
+index 1b50b43..32e6390 100644
+--- a/src/chrome/chrome_common.gypi
++++ b/src/chrome/chrome_common.gypi
+@@ -525,7 +525,6 @@
+             'libraries': [
+               '-lX11',
+               '-lXrender',
+-              '-lXss',
+               '-lXext',
+             ],
+           },
+-- 
+1.7.2.5
+
