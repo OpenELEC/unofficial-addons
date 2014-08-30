@@ -1,0 +1,224 @@
+diff --git a/atk/Makefile.am b/atk/Makefile.am
+index 1532bdf..72c80a0 100644
+--- a/atk/Makefile.am
++++ b/atk/Makefile.am
+@@ -105,51 +105,7 @@ libatkinclude_HEADERS =		\
+ 
+ # ---------- Handle built sources ----------
+ 
+-BUILT_SOURCES = atkmarshal.h atkmarshal.c atk-enum-types.h atk-enum-types.c
+-
+-atkmarshal.h: stamp-atkmarshal.h
+-	@true
+-stamp-atkmarshal.h: @REBUILD@ atkmarshal.list
+-	$(AM_V_GEN) $(GLIB_GENMARSHAL) --prefix=atk_marshal $(srcdir)/atkmarshal.list --header >> xgen-gmh \
+-	&& (cmp -s xgen-gmh atkmarshal.h || cp xgen-gmh atkmarshal.h) \
+-	&& rm -f xgen-gmh xgen-gmh~					\
+-	&& echo timestamp > $(@F)
+-
+-atkmarshal.c: stamp-atkmarshal.c
+-	@true
+-stamp-atkmarshal.c: @REBUILD@ atkmarshal.list
+-	$(AM_V_GEN) $(GLIB_GENMARSHAL) --prefix=atk_marshal $(srcdir)/atkmarshal.list --body >> xgen-gmc \
+-	&& (cmp -s xgen-gmc atkmarshal.c || cp xgen-gmc atkmarshal.c) \
+-	&& rm -f xgen-gmc xgen-gmc~					\
+-	&& echo timestamp > $(@F)
+-
+-atk-enum-types.h: s-enum-types-h
+-	@true
+-s-enum-types-h: @REBUILD@ $(atk_headers) Makefile
+-	$(AM_V_GEN) ( cd $(srcdir) && $(GLIB_MKENUMS) \
+-			--fhead "#if defined(ATK_DISABLE_SINGLE_INCLUDES) && !defined (__ATK_H_INSIDE__) && !defined (ATK_COMPILATION)\n#error \"Only <atk/atk.h> can be included directly.\"\n#endif\n\n#ifndef __ATK_ENUM_TYPES_H__\n#define __ATK_ENUM_TYPES_H__\n\n#include <glib-object.h>\n\nG_BEGIN_DECLS\n" \
+-			--fprod "/* enumerations from \"@filename@\" */\n" \
+-			--vhead "GType @enum_name@_get_type (void);\n#define ATK_TYPE_@ENUMSHORT@ (@enum_name@_get_type())\n"         \
+-			--ftail "G_END_DECLS\n\n#endif /* __ATK_ENUM_TYPES_H__ */" \
+-		$(atk_headers) ) > tmp-atk-enum-types.h \
+-	&& (cmp -s tmp-atk-enum-types.h atk-enum-types.h || cp tmp-atk-enum-types.h atk-enum-types.h ) \
+-	&& rm -f tmp-atk-enum-types.h \
+-	&& echo timestamp > $(@F)
+-
+-atk-enum-types.c: s-enum-types-c
+-	@true
+-s-enum-types-c: @REBUILD@ $(atk_headers) Makefile
+-	$(AM_V_GEN) ( cd $(srcdir) && $(GLIB_MKENUMS) \
+-			--fhead "#include <atk.h>" \
+-			--fprod "\n/* enumerations from \"@filename@\" */" \
+-			--vhead "GType\n@enum_name@_get_type (void)\n{\n  static GType etype = 0;\n  if (etype == 0) {\n    static const G@Type@Value values[] = {"     \
+-			--vprod "      { @VALUENAME@, \"@VALUENAME@\", \"@valuenick@\" }," \
+-			--vtail "      { 0, NULL, NULL }\n    };\n    etype = g_@type@_register_static (\"@EnumName@\", values);\n  }\n  return etype;\n}\n" \
+-		$(atk_headers) ) > tmp-atk-enum-types.c \
+-	&& (cmp -s tmp-atk-enum-types.c atk-enum-types.c || cp tmp-atk-enum-types.c atk-enum-types.c ) \
+-	&& rm -f tmp-atk-enum-types.c \
+-	&& echo timestamp > $(@F)
+-
++BUILT_SOURCES = atk-enum-types.h atk-enum-types.c
+ 
+ if HAVE_INTROSPECTION
+ introspection_sources = \
+diff --git a/atk/atkobject.c b/atk/atkobject.c
+index 4817e16..8f57137 100755
+--- a/atk/atkobject.c
++++ b/atk/atkobject.c
+@@ -30,7 +30,6 @@
+ #endif
+ 
+ #include "atk.h"
+-#include "atkmarshal.h"
+ #include "atk-enum-types.h"
+ #include "atkintl.h"
+ 
+@@ -650,16 +649,6 @@ atk_object_class_init (AtkObjectClass *klass)
+                   g_cclosure_marshal_VOID__POINTER,
+                   G_TYPE_NONE, 1,
+                   G_TYPE_POINTER);
+-  atk_object_signals[STATE_CHANGE] =
+-    g_signal_new ("state_change",
+-                  G_TYPE_FROM_CLASS (klass),
+-                  G_SIGNAL_RUN_LAST | G_SIGNAL_DETAILED,
+-                  G_STRUCT_OFFSET (AtkObjectClass, state_change),
+-                  (GSignalAccumulator) NULL, NULL,
+-                  atk_marshal_VOID__STRING_BOOLEAN,
+-                  G_TYPE_NONE, 2,
+-                  G_TYPE_STRING,
+-                  G_TYPE_BOOLEAN);
+   atk_object_signals[VISIBLE_DATA_CHANGED] =
+     g_signal_new ("visible_data_changed",
+                   G_TYPE_FROM_CLASS (klass),
+diff --git a/atk/atktable.c b/atk/atktable.c
+index 891109b..a59d159 100755
+--- a/atk/atktable.c
++++ b/atk/atktable.c
+@@ -18,7 +18,6 @@
+  */
+ 
+ #include "atktable.h"
+-#include "atkmarshal.h"
+ 
+ enum {
+   ROW_INSERTED,
+@@ -63,42 +62,6 @@ atk_table_base_init (gpointer *g_class)
+   
+   if (!initialized)
+     {
+-      atk_table_signals[ROW_INSERTED] =
+-	g_signal_new ("row_inserted",
+-		      ATK_TYPE_TABLE,
+-		      G_SIGNAL_RUN_LAST,
+-		      G_STRUCT_OFFSET (AtkTableIface, row_inserted),
+-		      (GSignalAccumulator) NULL, NULL,
+-		      atk_marshal_VOID__INT_INT,
+-		      G_TYPE_NONE,
+-		      2, G_TYPE_INT, G_TYPE_INT);
+-      atk_table_signals[COLUMN_INSERTED] =
+-	g_signal_new ("column_inserted",
+-		      ATK_TYPE_TABLE,
+-		      G_SIGNAL_RUN_LAST,
+-		      G_STRUCT_OFFSET (AtkTableIface, column_inserted),
+-		      (GSignalAccumulator) NULL, NULL,
+-		      atk_marshal_VOID__INT_INT,
+-		      G_TYPE_NONE,
+-		      2, G_TYPE_INT, G_TYPE_INT);
+-      atk_table_signals[ROW_DELETED] =
+-	g_signal_new ("row_deleted",
+-		      ATK_TYPE_TABLE,
+-		      G_SIGNAL_RUN_LAST,
+-		      G_STRUCT_OFFSET (AtkTableIface, row_deleted),
+-		      (GSignalAccumulator) NULL, NULL,
+-		      atk_marshal_VOID__INT_INT,
+-		      G_TYPE_NONE,
+-		      2, G_TYPE_INT, G_TYPE_INT);
+-      atk_table_signals[COLUMN_DELETED] =
+-	g_signal_new ("column_deleted",
+-		      ATK_TYPE_TABLE,
+-		      G_SIGNAL_RUN_LAST,
+-		      G_STRUCT_OFFSET (AtkTableIface, column_deleted),
+-		      (GSignalAccumulator) NULL, NULL,
+-		      atk_marshal_VOID__INT_INT,
+-		      G_TYPE_NONE,
+-		      2, G_TYPE_INT, G_TYPE_INT);
+       atk_table_signals[ROW_REORDERED] =
+ 	g_signal_new ("row_reordered",
+ 		      ATK_TYPE_TABLE,
+diff --git a/atk/atktext.c b/atk/atktext.c
+index 086dd18..901c72d 100755
+--- a/atk/atktext.c
++++ b/atk/atktext.c
+@@ -18,7 +18,6 @@
+  */
+ 
+ #include "atktext.h"
+-#include "atkmarshal.h"
+ #include "atk-enum-types.h"
+ 
+ #include <string.h>
+@@ -162,46 +161,6 @@ atk_text_base_init (AtkTextIface *class)
+       class->get_range_extents = atk_text_real_get_range_extents; 
+       class->get_bounded_ranges = atk_text_real_get_bounded_ranges; 
+ 
+-      atk_text_signals[TEXT_CHANGED] =
+-	g_signal_new ("text_changed",
+-		      ATK_TYPE_TEXT,
+-		      G_SIGNAL_RUN_LAST | G_SIGNAL_DETAILED,
+-		      G_STRUCT_OFFSET (AtkTextIface, text_changed), 
+-		      (GSignalAccumulator) NULL, NULL,
+-		      atk_marshal_VOID__INT_INT,
+-		      G_TYPE_NONE,
+-		      2, G_TYPE_INT, G_TYPE_INT);
+-
+-      atk_text_signals[TEXT_INSERT] =
+-	g_signal_new ("text_insert",
+-		      ATK_TYPE_TEXT,
+-		      G_SIGNAL_RUN_LAST | G_SIGNAL_DETAILED,
+-		      0,
+-		      (GSignalAccumulator) NULL, NULL,
+-		      atk_marshal_VOID__INT_INT_STRING,
+-		      G_TYPE_NONE,
+-		      3, G_TYPE_INT, G_TYPE_INT, G_TYPE_STRING);
+-
+-      atk_text_signals[TEXT_REMOVE] =
+-	g_signal_new ("text_remove",
+-		      ATK_TYPE_TEXT,
+-		      G_SIGNAL_RUN_LAST | G_SIGNAL_DETAILED,
+-		      0,
+-		      (GSignalAccumulator) NULL, NULL,
+-		      atk_marshal_VOID__INT_INT_STRING,
+-		      G_TYPE_NONE,
+-		      3, G_TYPE_INT, G_TYPE_INT, G_TYPE_STRING);
+-
+-      atk_text_signals[TEXT_UPDATE] =
+-	g_signal_new ("text_update",
+-		      ATK_TYPE_TEXT,
+-		      G_SIGNAL_RUN_LAST | G_SIGNAL_DETAILED,
+-		      0,
+-		      (GSignalAccumulator) NULL, NULL,
+-		      atk_marshal_VOID__INT_INT_INT_STRING,
+-		      G_TYPE_NONE,
+-		      4, G_TYPE_INT, G_TYPE_INT, G_TYPE_INT, G_TYPE_STRING);
+-
+       atk_text_signals[TEXT_CARET_MOVED] =
+ 	g_signal_new ("text_caret_moved",
+ 		      ATK_TYPE_TEXT,
+diff --git a/atk/atkutil.c b/atk/atkutil.c
+index fc0f3c4..aa4e1eb 100755
+--- a/atk/atkutil.c
++++ b/atk/atkutil.c
+@@ -18,7 +18,6 @@
+  */
+ 
+ #include "atkutil.h"
+-#include "atkmarshal.c"
+ #include "config.h"
+ 
+ static void atk_util_class_init (AtkUtilClass *klass);
+diff --git a/atk/atkwindow.c b/atk/atkwindow.c
+index 60f2e8c..d22abda 100644
+--- a/atk/atkwindow.c
++++ b/atk/atkwindow.c
+@@ -18,7 +18,6 @@
+  */
+ 
+ #include "atkwindow.h"
+-#include "atkmarshal.h"
+ 
+ enum {
+   ACTIVATE,
