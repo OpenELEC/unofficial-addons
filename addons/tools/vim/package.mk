@@ -18,6 +18,7 @@
 
 PKG_NAME="vim"
 PKG_VERSION="7.4"
+#ADDON_VERSION="1.0-$PKG_VERSION"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="VIM"
@@ -37,12 +38,28 @@ PKG_AUTORECONF="no"
 PKG_MAINTAINER="unofficial.addon.pro"
 PKG_SOURCE_DIR="vim74"
 
+PKG_CONFIGURE_OPTS_TARGET="vim_cv_toupper_broken=no \
+                           vim_cv_terminfo=yes \
+                           vim_cv_tty_group=world \
+                           vim_cv_tty_mode=0620 \
+                           vim_cv_getcwd_broken=no \
+                           vim_cv_stat_ignores_slash=yes \
+                           vim_cv_memmove_handles_overlap=yes \
+                           ac_cv_sizeof_int=4 \
+                           ac_cv_small_wchar_t=no \
+                           --with-tlib=ncurses \
+                           --enable-gui=no \
+                           --without-x"
+
 makeinstall_target() {
   : # nothing to do here
 }
 
 addon() {
-  #mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
-  #cp -P $PKG_BUILD/.$TARGET_NAME/strace $ADDON_BUILD/$PKG_ADDON_ID/bin
-  :
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp -P $PKG_BUILD/src/vim $ADDON_BUILD/$PKG_ADDON_ID/bin
+}
+
+pre_configure_target() {
+  cd $ROOT/$PKG_BUILD
 }
