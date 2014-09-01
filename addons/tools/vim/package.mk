@@ -23,7 +23,7 @@ PKG_ARCH="any"
 PKG_LICENSE="VIM"
 PKG_SITE="http://www.vim.org/"
 PKG_URL="http://ftp.vim.org/pub/vim/unix/vim-$PKG_VERSION.tar.bz2"
-PKG_DEPENDS_TARGET="toolchain"
+PKG_DEPENDS_TARGET="toolchain ncurses"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"
 PKG_SHORTDESC="vim: VI IMproved"
@@ -34,7 +34,7 @@ PKG_ADDON_TYPE="xbmc.python.script"
 
 PKG_AUTORECONF="no"
 
-PKG_MAINTAINER="unofficial.addon.pro"
+PKG_MAINTAINER="Adam Michel (elfurbe)"
 PKG_SOURCE_DIR="vim74"
 
 PKG_CONFIGURE_OPTS_TARGET="vim_cv_toupper_broken=no \
