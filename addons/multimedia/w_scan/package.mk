@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="w_scan"
-PKG_VERSION="20140118"
+PKG_VERSION="20140727"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
