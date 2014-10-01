@@ -44,7 +44,8 @@ pre_build_target() {
 }
 
 pre_configure_target() {
-  export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses"
+  export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses -I$SYSROOT_PREFIX/usr/include/pcap"
+  export LIBS="-lpcap -lnl-3 -lnl-genl-3"
 }
 
 makeinstall_target() {
