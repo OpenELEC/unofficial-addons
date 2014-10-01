@@ -1,2 +1,5 @@
+4.3.1
+- rebuild
+
 4.3.0
 - Initial Release, vim-7.4
