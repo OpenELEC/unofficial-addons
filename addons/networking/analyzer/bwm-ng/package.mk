@@ -20,7 +20,7 @@
 
 PKG_NAME="bwm-ng"
 PKG_VERSION="0.6"
-PKG_REV="0"
+PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.gropp.org/?id=projects&sub=bwm-ng"
@@ -46,6 +46,10 @@ PKG_CONFIGURE_OPTS_TARGET="--with-libstatgrab \
             --with-sysctldisk \
             --with-procnetdev \
             --with-partitions"
+
+post_unpack() {
+  $SED "s:<curses.h>:<ncurses.h>:g" $PKG_BUILD/src/defines.h
+}
 
 pre_configure_target() {
   export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses"
