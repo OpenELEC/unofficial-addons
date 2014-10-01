@@ -35,9 +35,13 @@ PKG_AUTORECONF="yes"
 
 PKG_MAINTAINER="Daniel Forsberg (daniel.forsberg1@gmail.com)"
 
-PKG_CONFIGURE_OPTS_TARGET="--disable-debug \
+PKG_CONFIGURE_OPTS_TARGET="ax_cv_header_ncurses_curses_h=yes --disable-debug \
             --with-xmlrpc-c=$SYSROOT_PREFIX/usr/bin/xmlrpc-c-config \
             --with-gnu-ld"
+
+post_unpack() {
+  $SED "s:<ncurses/curses.h>:<ncurses/ncurses.h>:g" $PKG_BUILD/src/display/attributes.h
+}
 
 makeinstall_target() {
   : # nop
