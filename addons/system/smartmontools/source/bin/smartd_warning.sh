@@ -19,7 +19,7 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-script="/storage/.xbmc/addons/plugin.program.smartmontools/default.py"
+script="/storage/.kodi/addons/plugin.program.smartmontools/default.py"
 params=",,index=99"
 
 xbmc-send --action="RunScript($script$params)"

@@ -18,7 +18,7 @@
 set -e
 
 VERSION="6.2"
-datadir="/storage/.xbmc/userdata/addon_data/plugin.program.smartmontools"
+datadir="/storage/.kodi/userdata/addon_data/plugin.program.smartmontools"
 drivedbdir="$datadir"
 
 # drivedb.h update branch
@@ -26,10 +26,10 @@ BRANCH="RELEASE_6_2_DRIVEDB"
 
 # Default drivedb location
 DEST="$drivedbdir/drivedb.h"
-defalutdriverdb="/storage/.xbmc/addons/plugin.program.smartmontools/resources/default/drivedb.h"
+defalutdriverdb="/storage/.kodi/addons/plugin.program.smartmontools/resources/default/drivedb.h"
 
 # Smartctl used for syntax check
-SMARTCTL="/storage/.xbmc/addons/plugin.program.smartmontools/bin/smartctl"
+SMARTCTL="/storage/.kodi/addons/plugin.program.smartmontools/bin/smartctl"
 
 # Download URL for sourceforge code browser
 SRCEXPR='http://sourceforge.net/p/smartmontools/code/HEAD/tree/$location/smartmontools/drivedb.h?format=raw'

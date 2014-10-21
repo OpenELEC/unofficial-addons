@@ -19,11 +19,11 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-db="/storage/.xbmc/userdata/addon_data/plugin.program.smartmontools/drivedb.h"
-defaultDb="/storage/.xbmc/addons/plugin.program.smartmontools/resources/default/drivedb.h"
-config="/storage/.xbmc/userdata/addon_data/plugin.program.smartmontools/smartd.conf"
-defaultConfig="/storage/.xbmc/addons/plugin.program.smartmontools/resources/default/smartd.conf"
-exec_dir="/storage/.xbmc/addons/plugin.program.smartmontools/bin"
+db="/storage/.kodi/userdata/addon_data/plugin.program.smartmontools/drivedb.h"
+defaultDb="/storage/.kodi/addons/plugin.program.smartmontools/resources/default/drivedb.h"
+config="/storage/.kodi/userdata/addon_data/plugin.program.smartmontools/smartd.conf"
+defaultConfig="/storage/.kodi/addons/plugin.program.smartmontools/resources/default/smartd.conf"
+exec_dir="/storage/.kodi/addons/plugin.program.smartmontools/bin"
 smartd="smartd"
 SMARTD_BIN="$exec_dir/$smartd"
 warning_exec="$exec_dir/smartd_warning.sh"

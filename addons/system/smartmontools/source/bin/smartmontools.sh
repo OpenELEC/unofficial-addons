@@ -19,7 +19,7 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-script="/storage/.xbmc/addons/plugin.program.smartmontools/default.py"
+script="/storage/.kodi/addons/plugin.program.smartmontools/default.py"
 
 # prints name of the disk and device with which it is connected
 # format of print: name of disk|disk id from /dev/disk/by-id|device

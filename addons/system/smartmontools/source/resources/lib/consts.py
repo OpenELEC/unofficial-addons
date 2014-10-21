@@ -34,7 +34,7 @@ settingDBupdateInterval = "dbUpdateInterval";
 settingSmardPoupus = "showPopups"
 settingSmartdStartupPopup = "showSmartdStartUpPopup";
 
-binFolder = "/storage/.xbmc/addons/plugin.program.smartmontools/bin/";
+binFolder = "/storage/.kodi/addons/plugin.program.smartmontools/bin/";
 smartdScript = binFolder + "smartd-daemon";
 script = binFolder + "smartmontools.sh";
 updateScript = binFolder + "update-smart-drivedb";
@@ -53,11 +53,11 @@ interfaceSata = "sata";
 
 dialogHeader = "smartmontools";
 
-fileDB = "/storage/.xbmc/userdata/addon_data/plugin.program.smartmontools/drivedb.h";
-fileDBDefault = "/storage/.xbmc/addons/plugin.program.smartmontools/resources/default/drivedb.h";
-fileDaemonConfig = "/storage/.xbmc/userdata/addon_data/plugin.program.smartmontools/smartd.conf";
+fileDB = "/storage/.kodi/userdata/addon_data/plugin.program.smartmontools/drivedb.h";
+fileDBDefault = "/storage/.kodi/addons/plugin.program.smartmontools/resources/default/drivedb.h";
+fileDaemonConfig = "/storage/.kodi/userdata/addon_data/plugin.program.smartmontools/smartd.conf";
 # fileDaemonConfigLink = "/storage/.config/smartd.conf"
-fileDaemonConfigDefault = "/storage/.xbmc/addons/plugin.program.smartmontools/resources/default/smartd.conf"
+fileDaemonConfigDefault = "/storage/.kodi/addons/plugin.program.smartmontools/resources/default/smartd.conf"
 fileSystemLog = "/var/log/messages";
 
 commandDBPart = "--drivedb=" + fileDB;
