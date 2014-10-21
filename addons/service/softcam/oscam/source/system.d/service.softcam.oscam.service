@@ -3,7 +3,7 @@ Description=OScam
 After=graphical.target
 
 [Service]
-ExecStart=/bin/sh -c "exec sh /storage/.xbmc/addons/service.softcam.oscam/bin/oscam.start"
+ExecStart=/bin/sh -c "exec sh /storage/.kodi/addons/service.softcam.oscam/bin/oscam.start"
 TimeoutStopSec=1
 Restart=always
 RestartSec=2
