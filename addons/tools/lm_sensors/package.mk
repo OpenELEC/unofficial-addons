@@ -18,7 +18,7 @@
 
 PKG_NAME="lm_sensors"
 PKG_VERSION="3.3.4"
-PKG_REV="0"
+PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://secure.netroedge.com/~lm78/"
@@ -35,7 +35,7 @@ PKG_DISCLAIMER="this is an unofficial addon. please don't ask for support in ope
 
 PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
 
-# TODO: PKG_MAKE_OPTS_TARGET + ETCDIR=/storage/.xbmc/addons/tools.lm_sensors/data if one wants sensor3.conf..
+# TODO: PKG_MAKE_OPTS_TARGET + ETCDIR=/storage/.kodi/addons/tools.lm_sensors/data if one wants sensor3.conf..
 PKG_MAKE_OPTS_TARGET="PREFIX=/usr CC=$TARGET_CC AR=$TARGET_AR"
 PKG_MAKEINSTALL_OPTS_TARGET="PREFIX=/usr"
 
