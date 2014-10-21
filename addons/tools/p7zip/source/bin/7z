@@ -1,3 +1,3 @@
 #!/bin/sh
-exec /storage/.xbmc/addons/tools.p7zip/bin/7z.bin "$@"
+exec /storage/.kodi/addons/tools.p7zip/bin/7z.bin "$@"
 
