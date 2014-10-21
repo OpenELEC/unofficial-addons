@@ -57,7 +57,7 @@ from configobj import ConfigObj
 if sabNzbdLaunch:
     # SABnzbd addresses and api key
     sabNzbdAddress    = '127.0.0.1:8081'
-    sabNzbdConfigFile = '/storage/.xbmc/userdata/addon_data/service.downloadmanager.SABnzbd-Suite/sabnzbd.ini'
+    sabNzbdConfigFile = '/storage/.kodi/userdata/addon_data/service.downloadmanager.SABnzbd-Suite/sabnzbd.ini'
     sabConfiguration  = ConfigObj(sabNzbdConfigFile)
     sabNzbdApiKey     = sabConfiguration['misc']['api_key']
     sabNzbdUser       = sabConfiguration['misc']['username']

@@ -68,12 +68,12 @@ pAddonHome            = os.path.expanduser('~/.xbmc/userdata/addon_data/service.
 # settings
 pDefaultSuiteSettings = os.path.join(pAddon, 'settings-default.xml')
 pSuiteSettings        = os.path.join(pAddonHome, 'settings.xml')
-pXbmcSettings         = '/storage/.xbmc/userdata/guisettings.xml'
+pXbmcSettings         = '/storage/.kodi/userdata/guisettings.xml'
 pSabNzbdSettings      = os.path.join(pAddonHome, 'sabnzbd.ini')
 pSickBeardSettings    = os.path.join(pAddonHome, 'sickbeard.ini')
 pCouchPotatoServerSettings  = os.path.join(pAddonHome, 'couchpotatoserver.ini')
 pHeadphonesSettings   = os.path.join(pAddonHome, 'headphones.ini')
-pTransmission_Addon_Settings  ='/storage/.xbmc/userdata/addon_data/service.downloadmanager.transmission/settings.xml'
+pTransmission_Addon_Settings  ='/storage/.kodi/userdata/addon_data/service.downloadmanager.transmission/settings.xml'
 
 # directories
 pSabNzbdComplete      = '/storage/downloads'

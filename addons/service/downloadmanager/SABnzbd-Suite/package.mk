@@ -20,8 +20,11 @@
 
 PKG_NAME="SABnzbd-Suite"
 PKG_VERSION="4.3"
-PKG_REV="0"
-PKG_ARCH="i386 x86_64"
+PKG_REV="1"
+# PKG_ARCH="i386 x86_64"
+# DO NOT build. remove at Jan 1 2015 if noone steps as maintainer 
+# TODO for the new maintainer: fix ssl, convert python deps to xbmc "module" addons
+PKG_ARCH="none"
 PKG_LICENSE="OSS"
 PKG_SITE="http://www.openelec.tv"
 PKG_URL=""
