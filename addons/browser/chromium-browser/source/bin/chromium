@@ -18,16 +18,16 @@
 ################################################################################
 
 # make sure we use "own" gtk/pango/nss/etc
-export LD_LIBRARY_PATH=/storage/.xbmc/addons/browser.chromium-browser/lib
+export LD_LIBRARY_PATH=/storage/.kodi/addons/browser.chromium-browser/lib
 
 # configure pango/pixbuf
-export PANGO_RC_FILE=/storage/.xbmc/addons/browser.chromium-browser/config/pangorc
-export GDK_PIXBUF_MODULE_FILE=/storage/.xbmc/addons/browser.chromium-browser/config/pixbuf.loaders.cache
+export PANGO_RC_FILE=/storage/.kodi/addons/browser.chromium-browser/config/pangorc
+export GDK_PIXBUF_MODULE_FILE=/storage/.kodi/addons/browser.chromium-browser/config/pixbuf.loaders.cache
 
 # font rendering in gtk widgets is brokeen with nvidia blob. use our Xdefaults
-export XENVIRONMENT=/storage/.xbmc/addons/browser.chromium-browser/config/Xdefaults
+export XENVIRONMENT=/storage/.kodi/addons/browser.chromium-browser/config/Xdefaults
 
 # start chromium
-exec /storage/.xbmc/addons/browser.chromium-browser/bin/chromium.bin \
-  --user-data-dir=/storage/.xbmc/userdata/addon_data/browser.chromium-browser/profile \
+exec /storage/.kodi/addons/browser.chromium-browser/bin/chromium.bin \
+  --user-data-dir=/storage/.kodi/userdata/addon_data/browser.chromium-browser/profile \
   $@

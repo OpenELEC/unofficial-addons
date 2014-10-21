@@ -70,7 +70,7 @@ def isRuning(pname):
 
 def getAudiDevice():
   try:
-    dom = parse("/storage/.xbmc/userdata/guisettings.xml")
+    dom = parse("/storage/.kodi/userdata/guisettings.xml")
     audiooutput=dom.getElementsByTagName('audiooutput')
     for node in audiooutput:
       dev = node.getElementsByTagName('audiodevice')[0].childNodes[0].nodeValue

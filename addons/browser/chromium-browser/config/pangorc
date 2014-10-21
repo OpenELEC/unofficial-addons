@@ -4,7 +4,7 @@
 #
 
 [Pango]
-ModuleFiles = /storage/.xbmc/addons/browser.chromium-browser/config/pango.modules
+ModuleFiles = /storage/.kodi/addons/browser.chromium-browser/config/pango.modules
 
 [PangoX]
 AliasFiles = storage/.xbmc/addons/browser.chromium-browser/config/pangx.aliases

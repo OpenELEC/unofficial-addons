@@ -20,7 +20,7 @@
 
 PKG_NAME="chromium-browser"
 PKG_VERSION="28.0.1500.52"
-PKG_REV="1"
+PKG_REV="2"
 PKG_ARCH="x86_64"
 PKG_LICENSE="Mixed"
 PKG_SITE="http://www.chromium.org/Home"
@@ -65,7 +65,7 @@ make_target() {
   export GYP_DEFINES="fastbuild=2 \
     $CHROMIUM_ARCH \
     disable_sse2=1 \
-    linux_sandbox_path=/storage/.xbmc/addons/browser.chromium-browser/bin/chromium.sandbox \
+    linux_sandbox_path=/storage/.kodi/addons/browser.chromium-browser/bin/chromium.sandbox \
     linux_breakpad=0 \
     linux_strip_binary=1 \
     linux_use_gold_binary=0 \
