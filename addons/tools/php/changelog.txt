@@ -1,5 +1,5 @@
-4.3.0
-- rebuild for addon api bump
+4.3.1
+- update to kodi
 
 4.1.1
 - update to php-5.5.14

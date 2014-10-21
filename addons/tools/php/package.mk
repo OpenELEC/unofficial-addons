@@ -39,7 +39,7 @@ PKG_AUTORECONF="no"
 
 PKG_CONFIGURE_OPTS_TARGET="--disable-all \
                            --without-pear \
-                           --with-config-file-path=/storage/.xbmc/userdata/addon_data/tools.php/etc \
+                           --with-config-file-path=/storage/.kodi/userdata/addon_data/tools.php/etc \
                            --localstatedir=/var \
                            --disable-cli \
                            --enable-cgi \
