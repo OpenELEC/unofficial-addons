@@ -1,8 +1,8 @@
-PHP_CGI="/storage/.xbmc/addons/tools.php/bin/php-cgi"
+PHP_CGI="/storage/.kodi/addons/tools.php/bin/php-cgi"
 
 # hack: make php/dtach executable to save reboot on update
 chmod a+x $PHP_CGI
-chmod a+x /storage/.xbmc/addons/tools.dtach/bin/dtach
+chmod a+x /storage/.kodi/addons/tools.dtach/bin/dtach
 
 # rutorrent needs php in path
 if [ ! `which php` ]; then
