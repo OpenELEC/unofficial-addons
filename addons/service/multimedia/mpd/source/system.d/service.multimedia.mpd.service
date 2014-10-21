@@ -3,7 +3,7 @@ Description=mpd
 After=graphical.target
 
 [Service]
-ExecStart=/bin/sh -c "exec sh /storage/.xbmc/addons/service.multimedia.mpd/bin/mpd.start"
+ExecStart=/bin/sh -c "exec sh /storage/.kodi/addons/service.multimedia.mpd/bin/mpd.start"
 TimeoutStopSec=1
 Restart=always
 RestartSec=2
