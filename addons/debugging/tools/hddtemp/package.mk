@@ -20,7 +20,7 @@
 
 PKG_NAME="hddtemp"
 PKG_VERSION="0.3-beta15"
-PKG_REV="0"
+PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.guzu.net/linux/hddtemp.php"
@@ -38,7 +38,7 @@ PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="Dag Wieers (dag@wieers.com)"
 
-PKG_CONFIGURE_OPTS_TARGET="--with-db-path=/storage/.xbmc/addons/debug.tools.hddtemp/hddtemp.db"
+PKG_CONFIGURE_OPTS_TARGET="--with-db-path=/storage/.kodi/addons/debug.tools.hddtemp/hddtemp.db"
 
 makeinstall_target() {
   : # nop
