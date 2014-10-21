@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <settings>
 	<category label="30218">
-		<setting id="truecrypt" type="file" source="files" label="TrueCrypt script" default="/storage/.xbmc/addons/plugin.program.truecrypt/bin/truecrypt.sh" />
+		<setting id="truecrypt" type="file" source="files" label="TrueCrypt script" default="/storage/.kodi/addons/plugin.program.truecrypt/bin/truecrypt.sh" />
 		<setting id="createFolders" type="bool" label="50076" default="true" />
 		<setting label="50111" visible="true" type="lsep"/>
         <setting id="riskyActions" type="bool" label="50074" default="true" />
@@ -9,7 +9,7 @@
         <setting id="performMountChecks" type="bool" label="50075" default="true" />
         <setting label="50119" visible="true" type="lsep"/>
         <setting id="altShellScript" type="bool" label="50117" default="false" />
-        <setting id="truecryptAlt" type="file" source="files" label="50118" visible="eq(-1,true)" default="/storage/.xbmc/addons/plugin.program.truecrypt/bin/truecrypt.sh" />
+        <setting id="truecryptAlt" type="file" source="files" label="50118" visible="eq(-1,true)" default="/storage/.kodi/addons/plugin.program.truecrypt/bin/truecrypt.sh" />
 	</category>
 	<category label="50169">
 		<setting id="dontStoreAnything" type="bool" label="50166" default="false" />

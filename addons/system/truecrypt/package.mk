@@ -22,8 +22,8 @@
 
 PKG_NAME="truecrypt"
 PKG_VERSION="7.1a"
-PKG_CUSTOM_ADDON_VERSION="3.5.7"
-PKG_REV="0"
+PKG_CUSTOM_ADDON_VERSION="3.5.8"
+PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.truecrypt.org"
