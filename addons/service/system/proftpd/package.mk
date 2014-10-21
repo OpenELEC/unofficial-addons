@@ -20,7 +20,7 @@
 
 PKG_NAME="proftpd"
 PKG_VERSION="1.3.4e"
-PKG_REV="1"
+PKG_REV="2"
 PKG_ARCH="all"
 PKG_ARCH="any"
 PKG_LICENSE="OSS"
@@ -38,7 +38,7 @@ PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="vpeter4 (peter.vicman@gmail.com)"
 
-ADDON_DIR="/storage/.xbmc/addons/service.system.proftpd"
+ADDON_DIR="/storage/.kodi/addons/service.system.proftpd"
 
 PKG_CONFIGURE_OPTS_TARGET="--enable-static \
             --enable-openssl \

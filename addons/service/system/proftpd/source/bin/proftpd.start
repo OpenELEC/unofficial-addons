@@ -24,7 +24,7 @@
 
 . /etc/profile
 
-mkdir -p "/storage/.xbmc/userdata/addon_data/service.system.proftpd"
+mkdir -p "/storage/.kodi/userdata/addon_data/service.system.proftpd"
 oe_setup_addon service.system.proftpd
 
 chmod a+x $ADDON_DIR/bin/*

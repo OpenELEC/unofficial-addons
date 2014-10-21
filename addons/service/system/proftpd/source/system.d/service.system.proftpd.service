@@ -3,7 +3,7 @@ Description=ProFTPD
 After=graphical.target
 
 [Service]
-ExecStart=/bin/sh -c "exec sh /storage/.xbmc/addons/service.system.proftpd/bin/proftpd.start"
+ExecStart=/bin/sh -c "exec sh /storage/.kodi/addons/service.system.proftpd/bin/proftpd.start"
 TimeoutStopSec=1
 Restart=always
 RestartSec=2
