@@ -20,7 +20,7 @@
 
 PKG_NAME="makemkv"
 PKG_VERSION="1.8.11"
-PKG_REV="0"
+PKG_REV="1"
 PKG_ARCH="i386 x86_64"
 PKG_LICENSE="OSS"
 PKG_SITE="http://www.makemkv.com/forum2/viewforum.php?f=3"
