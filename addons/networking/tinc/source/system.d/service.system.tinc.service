@@ -4,7 +4,7 @@ After=local-fs.target
 
 [Service]
 Type=oneshot
-ExecStart=/bin/sh -c "exec sh /storage/.xbmc/addons/service.system.tinc/bin/tinc.setup"
+ExecStart=/bin/sh -c "exec sh /storage/.kodi/addons/service.system.tinc/bin/tinc.setup"
 RemainAfterExit=yes
 
 [Install]
