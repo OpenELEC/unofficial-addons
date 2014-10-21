@@ -20,7 +20,7 @@
 
 PKG_NAME="mc"
 PKG_VERSION="4.8.12"
-PKG_REV="1"
+PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.midnight-commander.org"
@@ -41,9 +41,9 @@ PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
 export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses"
 export LDFLAGS=`echo $LDFLAGS | sed -e "s|-Wl,--as-needed||"`
 
-PKG_CONFIGURE_OPTS_TARGET="--sysconfdir=/storage/.xbmc/addons/tools.mc/etc \
-            --datadir=/storage/.xbmc/addons/tools.mc/data \
-            --libdir=/storage/.xbmc/addons/tools.mc/mclib \
+PKG_CONFIGURE_OPTS_TARGET="--sysconfdir=/storage/.kodi/addons/tools.mc/etc \
+            --datadir=/storage/.kodi/addons/tools.mc/data \
+            --libdir=/storage/.kodi/addons/tools.mc/mclib \
             --disable-mclib \
             --disable-aspell \
             --disable-vfs \
@@ -61,12 +61,12 @@ PKG_CONFIGURE_OPTS_TARGET="--sysconfdir=/storage/.xbmc/addons/tools.mc/etc \
             --with-subshell"
 
 post_makeinstall_target() {
-  rm -rf $INSTALL/storage/.xbmc/addons/tools.mc/data/locale
-  rm -rf $INSTALL/storage/.xbmc/addons/tools.mc/data/mc/help/mc.hlp.*
+  rm -rf $INSTALL/storage/.kodi/addons/tools.mc/data/locale
+  rm -rf $INSTALL/storage/.kodi/addons/tools.mc/data/mc/help/mc.hlp.*
 }
 
 addon() {
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
   cp -Pa $PKG_BUILD/.install_pkg/usr/bin/* $ADDON_BUILD/$PKG_ADDON_ID/bin/
-  cp -Pa $PKG_BUILD/.install_pkg/storage/.xbmc/addons/tools.mc/* $ADDON_BUILD/$PKG_ADDON_ID
+  cp -Pa $PKG_BUILD/.install_pkg/storage/.kodi/addons/tools.mc/* $ADDON_BUILD/$PKG_ADDON_ID
 }
