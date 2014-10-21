@@ -1,3 +1,6 @@
+[B]4.3.1[/B]
+- update to kodi
+
 [B]4.3.0[/B]
 - Addon bump
 

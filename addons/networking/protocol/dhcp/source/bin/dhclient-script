@@ -15,7 +15,7 @@
 # The alias handling in here probably still sucks. -mdz
 
 
-workDir="/storage/.xbmc/userdata/addon_data/plugin.network.dhcp/"
+workDir="/storage/.kodi/userdata/addon_data/plugin.network.dhcp/"
 workDir1="/var/cache/"
 
 # update /etc/resolv.conf based on received values

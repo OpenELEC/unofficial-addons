@@ -19,7 +19,7 @@
 
 PKG_NAME="dhcp"
 PKG_VERSION="4.1-ESV-R9"
-PKG_REV="0"
+PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://www.isc.org/"
@@ -36,16 +36,16 @@ PKG_MAINTAINER="Peter Smorada (smoradap@gmail.com)"
 PKG_DISCLAIMER="this is an unofficial addon. please don't ask for support in openelec forum / irc channel"
 
 PKG_CONFIGURE_OPTS_TARGET="ac_cv_file__dev_random=yes \
-                           --sysconfdir=/storage/.xbmc/userdata/addon_data/plugin.network.dhcp"
+                           --sysconfdir=/storage/.kodi/userdata/addon_data/plugin.network.dhcp"
 
 pre_configure_target() {
   # dhcp fails to build in subdirs
   cd $ROOT/$PKG_BUILD
   rm -rf .$TARGET_NAME
 
-  export CFLAGS="$CFLAGS -D_PATH_DHCLIENT_SCRIPT='\"/storage/.xbmc/addons/plugin.network.dhcp/bin/dhclient-script\"' \
-    -D_PATH_DHCPD_CONF='\"/storage/.xbmc/userdata/addon_data/plugin.network.dhcp/dhcpd.conf\"'  \
-    -D_PATH_DHCLIENT_CONF='\"/storage/.xbmc/userdata/addon_data/plugin.network.dhcp/dhclient.conf\"'"
+  export CFLAGS="$CFLAGS -D_PATH_DHCLIENT_SCRIPT='\"/storage/.kodi/addons/plugin.network.dhcp/bin/dhclient-script\"' \
+    -D_PATH_DHCPD_CONF='\"/storage/.kodi/userdata/addon_data/plugin.network.dhcp/dhcpd.conf\"'  \
+    -D_PATH_DHCLIENT_CONF='\"/storage/.kodi/userdata/addon_data/plugin.network.dhcp/dhclient.conf\"'"
 }
 
 addon() {
