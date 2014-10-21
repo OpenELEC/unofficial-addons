@@ -3,7 +3,7 @@ Description=PCSC lite
 After=graphical.target
 
 [Service]
-ExecStart=/bin/sh -c "exec sh /storage/.xbmc/addons/service.system.pcscd-addon/bin/pcscd.start"
+ExecStart=/bin/sh -c "exec sh /storage/.kodi/addons/service.system.pcscd-addon/bin/pcscd.start"
 TimeoutStopSec=1
 Restart=always
 RestartSec=2

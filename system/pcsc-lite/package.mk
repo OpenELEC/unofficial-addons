@@ -21,7 +21,7 @@
 
 PKG_NAME="pcsc-lite"
 PKG_VERSION="1.8.11"
-PKG_REV="1"
+PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://pcsclite.alioth.debian.org/pcsclite.html"
@@ -40,4 +40,4 @@ PKG_CONFIGURE_OPTS_TARGET="--disable-shared \
             --enable-static \
             --disable-libudev \
             --enable-libusb \
-            --enable-usbdropdir=/storage/.xbmc/addons/service.system.pcscd-addon/drivers"
+            --enable-usbdropdir=/storage/.kodi/addons/service.system.pcscd-addon/drivers"
