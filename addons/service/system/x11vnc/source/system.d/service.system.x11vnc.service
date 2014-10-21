@@ -3,7 +3,7 @@ Description=x11vnc
 After=graphical.target
 
 [Service]
-ExecStart=/bin/sh -c "exec sh /storage/.xbmc/addons/service.system.x11vnc/bin/x11vnc.start"
+ExecStart=/bin/sh -c "exec sh /storage/.kodi/addons/service.system.x11vnc/bin/x11vnc.start"
 TimeoutStopSec=1
 Restart=always
 RestartSec=2
