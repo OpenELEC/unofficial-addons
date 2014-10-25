@@ -21,7 +21,7 @@
 PKG_NAME="mtpfs"
 PKG_VERSION="1.1"
 PKG_REV="0"
-PKG_ARCH="any"
+PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.adebenham.com/mtpfs/"
 PKG_URL="http://www.adebenham.com/files/mtp/$PKG_NAME-$PKG_VERSION.tar.gz"

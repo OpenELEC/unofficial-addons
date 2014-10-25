@@ -21,7 +21,7 @@
 PKG_NAME="dvb-fe-tool"
 PKG_VERSION="0.9.5"
 PKG_REV="0"
-PKG_ARCH="any"
+PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://linuxtv.org/"
 PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.bz2"

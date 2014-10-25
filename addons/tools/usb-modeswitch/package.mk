@@ -21,7 +21,7 @@
 PKG_NAME="usb-modeswitch"
 PKG_VERSION="2.2.0"
 PKG_REV="0"
-PKG_ARCH="any"
+PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.draisberghof.de/usb_modeswitch/"
 PKG_URL="http://www.draisberghof.de/usb_modeswitch/${PKG_NAME}-${PKG_VERSION}.tar.bz2"

@@ -21,7 +21,7 @@
 PKG_NAME="ltrace"
 PKG_VERSION="0.7.3"
 PKG_REV="0"
-PKG_ARCH="any"
+PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://ltrace.org/"
 PKG_URL="ftp://orff.orchestra.cse.unsw.edu.au/pub/gentoo/distfiles/$PKG_NAME-$PKG_VERSION.tar.bz2"

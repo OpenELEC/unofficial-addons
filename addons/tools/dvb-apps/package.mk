@@ -21,7 +21,7 @@
 PKG_NAME="dvb-apps"
 PKG_VERSION="3d43b28"
 PKG_REV="0"
-PKG_ARCH="any"
+PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.linuxtv.org"
 PKG_URL="$DISTRO_SRC/dvb-apps-${PKG_VERSION}.tar.xz"

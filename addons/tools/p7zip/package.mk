@@ -21,7 +21,7 @@
 PKG_NAME="p7zip"
 PKG_VERSION="9.20.1"
 PKG_REV="1"
-PKG_ARCH="any"
+PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://p7zip.sourceforge.net/"
 PKG_URL="http://downloads.sourceforge.net/project/p7zip/p7zip/${PKG_VERSION}/p7zip_${PKG_VERSION}_src_all.tar.bz2"

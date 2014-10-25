@@ -19,7 +19,7 @@
 PKG_NAME="hid_mapper"
 PKG_VERSION="0"
 PKG_REV="0"
-PKG_ARCH="any"
+PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE=""
 PKG_URL="http://www.coldsource.net/hid_mapper.tar.gz"

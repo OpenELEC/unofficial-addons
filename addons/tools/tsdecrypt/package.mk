@@ -21,7 +21,7 @@
 PKG_NAME="tsdecrypt"
 PKG_VERSION="10.0"
 PKG_REV="0"
-PKG_ARCH="any"
+PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://georgi.unixsol.org/programs/tsdecrypt"
 PKG_URL="http://georgi.unixsol.org/programs/tsdecrypt/${PKG_NAME}-${PKG_VERSION}.tar.bz2"

@@ -21,7 +21,7 @@
 PKG_NAME="tstools"
 PKG_VERSION="1.11"
 PKG_REV="0"
-PKG_ARCH="any"
+PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://tstools.berlios.de/"
 PKG_URL="$SOURCEFORGE_SRC/project/tstools.berlios/tstools-1_11.tgz"

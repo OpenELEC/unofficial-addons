@@ -21,7 +21,7 @@
 PKG_NAME="encfs"
 PKG_VERSION="1.7.4"
 PKG_REV="0"
-PKG_ARCH="any"
+PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.arg0.net/encfs"
 PKG_URL="http://encfs.googlecode.com/files/$PKG_NAME-$PKG_VERSION.tgz"

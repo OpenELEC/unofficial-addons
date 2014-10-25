@@ -21,7 +21,7 @@
 PKG_NAME="socat"
 PKG_VERSION="1.7.2.4"
 PKG_REV="0"
-PKG_ARCH="any"
+PKG_ARCH="x86_64"
 PKG_LICENSE="GPL2"
 PKG_SITE="http://www.dest-unreach.org/socat/"
 PKG_URL="http://www.dest-unreach.org/socat/download/${PKG_NAME}-${PKG_VERSION}.tar.gz"
