@@ -18,7 +18,7 @@
 
 PKG_NAME="iw"
 PKG_VERSION="3.15"
-PKG_REV="0"
+PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="PUBLIC_DOMAIN"
 PKG_SITE="http://wireless.kernel.org/en/users/Documentation/iw"
@@ -34,7 +34,7 @@ PKG_AUTORECONF="no"
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 
-PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
+PKG_MAINTAINER="unofficial.addon.pro"
 
 PKG_DISCLAIMER="this is an unofficial addon. please don't ask for support in openelec forum / irc channel"
 

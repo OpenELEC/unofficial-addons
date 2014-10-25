@@ -20,7 +20,7 @@
 
 PKG_NAME="screen"
 PKG_VERSION="4.2.1"
-PKG_REV="1"
+PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.gnu.org/software/screen/"
@@ -36,7 +36,7 @@ PKG_ADDON_TYPE="xbmc.python.script"
 
 PKG_AUTORECONF="no"
 
-PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
+PKG_MAINTAINER="unofficial.addon.pro"
 
 PKG_CONFIGURE_OPTS_TARGET="ac_cv_header_utempter_h=no \
                            --disable-pam \

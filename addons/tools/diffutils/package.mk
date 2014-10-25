@@ -20,7 +20,7 @@
 
 PKG_NAME="diffutils"
 PKG_VERSION="3.3"
-PKG_REV="0"
+PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.gnu.org/software/diffutils/"
@@ -36,7 +36,7 @@ PKG_ADDON_TYPE="xbmc.python.script"
 
 PKG_AUTORECONF="yes"
 
-PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
+PKG_MAINTAINER="unofficial.addon.pro"
 
 PKG_CONFIGURE_OPTS_TARGET="--disable-nls \
         --without-libsigsegv-prefix \

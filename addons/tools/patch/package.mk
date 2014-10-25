@@ -20,7 +20,7 @@
 
 PKG_NAME="patch"
 PKG_VERSION="2.7.1"
-PKG_REV="0"
+PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://savannah.gnu.org/projects/patch/"
@@ -36,7 +36,7 @@ PKG_ADDON_TYPE="xbmc.python.script"
 
 PKG_AUTORECONF="yes"
 
-PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
+PKG_MAINTAINER="unofficial.addon.pro"
 
 PKG_CONFIGURE_OPTS_TARGET="--disable-xattr"
 
