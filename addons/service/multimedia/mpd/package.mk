@@ -21,7 +21,7 @@
 PKG_NAME="mpd"
 PKG_VERSION="0.18.11"
 PKG_REV="1"
-PKG_ARCH="i386 x86_64"
+PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://mpd.wikia.com/wiki/Music_Player_Daemon_Wiki"
 PKG_URL="http://www.musicpd.org/download/${PKG_NAME}/${PKG_VERSION%.*}/${PKG_NAME}-${PKG_VERSION}.tar.xz"
@@ -40,7 +40,7 @@ PKG_DISCLAIMER="This may block your xbmc audio. It might also play no audio at a
 PKG_MAINTAINER="Lukas Sabota (LTsmooth42@gmail.com)"
 
 pre_configure_target() {
-  export LDFLAGS="$LDFLAGS -ldl"
+  export LDFLAGS="$LDFLAGS -ldl -logg"
 }
 
 
