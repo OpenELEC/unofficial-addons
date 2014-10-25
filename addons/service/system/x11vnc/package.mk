@@ -20,8 +20,8 @@
 
 PKG_NAME="x11vnc"
 PKG_VERSION="0.9.13"
-PKG_REV="1"
-PKG_ARCH="i386 x86_64"
+PKG_REV="2"
+PKG_ARCH="x86_64"
 PKG_LICENSE="OSS"
 PKG_SITE="http://www.karlrunge.com/x11vnc/"
 PKG_URL="http://downloads.sourceforge.net/project/libvncserver/x11vnc/${PKG_VERSION}/x11vnc-${PKG_VERSION}.tar.gz"
