@@ -62,8 +62,8 @@ def loadWebInterface(url,user,pwd):
 # ------------------------------------------------------
 
 # addon
-pAddon                = os.path.expanduser('~/.xbmc/addons/service.downloadmanager.SABnzbd-Suite')
-pAddonHome            = os.path.expanduser('~/.xbmc/userdata/addon_data/service.downloadmanager.SABnzbd-Suite')
+pAddon                = os.path.expanduser('~/.kodi/addons/service.downloadmanager.SABnzbd-Suite')
+pAddonHome            = os.path.expanduser('~/.kodi/userdata/addon_data/service.downloadmanager.SABnzbd-Suite')
 
 # settings
 pDefaultSuiteSettings = os.path.join(pAddon, 'settings-default.xml')

@@ -27,8 +27,8 @@
 
 . /etc/profile
 
-ADDON_DIR="$HOME/.xbmc/addons/service.downloadmanager.rTorrent"
-ADDON_HOME="$HOME/.xbmc/userdata/addon_data/service.downloadmanager.rTorrent"
+ADDON_DIR="$HOME/.kodi/addons/service.downloadmanager.rTorrent"
+ADDON_HOME="$HOME/.kodi/userdata/addon_data/service.downloadmanager.rTorrent"
 ADDON_SETTINGS="$ADDON_HOME/settings.xml"
 
 RTORRENT_RC="$ADDON_HOME/rtorrent.rc"

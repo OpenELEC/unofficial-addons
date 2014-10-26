@@ -22,8 +22,8 @@
 # In case on modification to the script please redirect command output to stderr (>&2)
 # otherwise you risk mallfunction of certain features of the python part.
 
-ADDON_DIR="$HOME/.xbmc/addons/plugin.program.truecrypt"
-ADDON_HOME="$HOME/.xbmc/userdata/addon_data/plugin.program.truecrypt"
+ADDON_DIR="$HOME/.kodi/addons/plugin.program.truecrypt"
+ADDON_HOME="$HOME/.kodi/userdata/addon_data/plugin.program.truecrypt"
 
 # Function adds addon exec directory to the PATH if necessary. This method is
 # run at start up of XBMC

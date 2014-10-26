@@ -21,8 +21,8 @@
 ################################################################################
 
 # Addon settings
-  ADDON_DIR="$HOME/.xbmc/addons/service.downloadmanager.pyload"
-  ADDON_HOME="$HOME/.xbmc/userdata/addon_data/service.downloadmanager.pyload"
+  ADDON_DIR="$HOME/.kodi/addons/service.downloadmanager.pyload"
+  ADDON_HOME="$HOME/.kodi/userdata/addon_data/service.downloadmanager.pyload"
 
   export PYTHONPATH="$PYTHONPATH:$ADDON_DIR/pylib"
 
