@@ -92,7 +92,7 @@ if [ "$RTORRENT_UPNP" == "true" -o "$RUTORRENT_UPNP" == "true" -a "$RUTORRENT_AU
 	LAN_IP=$(upnpc -s |grep "LAN ip" |awk -F: '{print $2}')
 	EXT_IP=$(upnpc -s |awk -F= '/ExternalIPAddress =/ {print $2}' |grep -Eo [0-9]+.[0-9]+.[0-9]+.[0-9]+.)
 	if [ -z $EXT_IP ];then
-		xbmc-send -a "Notification(rTorrent UPNP Failed,your router does not support UPNP port mapping or it is not enabled,20000)"
+		kodi-send -a "Notification(rTorrent UPNP Failed,your router does not support UPNP port mapping or it is not enabled,20000)"
 		UPNP_OK="false"
 	else
 		UPNP_OK="true"

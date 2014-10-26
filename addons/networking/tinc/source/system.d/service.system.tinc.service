@@ -8,4 +8,4 @@ ExecStart=/bin/sh -c "exec sh /storage/.kodi/addons/service.system.tinc/bin/tinc
 RemainAfterExit=yes
 
 [Install]
-WantedBy=xbmc.target
+WantedBy=kodi.target

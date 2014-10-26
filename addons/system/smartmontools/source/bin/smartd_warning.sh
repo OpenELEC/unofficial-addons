@@ -22,4 +22,4 @@
 script="/storage/.kodi/addons/plugin.program.smartmontools/default.py"
 params=",,index=99"
 
-xbmc-send --action="RunScript($script$params)"
+kodi-send --action="RunScript($script$params)"

@@ -73,5 +73,5 @@ if [ "$STORE" ] ;then
 fi
 
 # Notify xbmc user
-xbmc-send -a "Notification(rTorrent - Download Completed,$NAME,10000)"
+kodi-send -a "Notification(rTorrent - Download Completed,$NAME,10000)"
 
