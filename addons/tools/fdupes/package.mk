@@ -20,7 +20,7 @@
 
 PKG_NAME="fdupes"
 PKG_VERSION="1.51"
-PKG_REV="0"
+PKG_REV="1"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://premium.caribe.net/~adrian2/fdupes.html"

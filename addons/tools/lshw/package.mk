@@ -20,7 +20,7 @@
 
 PKG_NAME="lshw"
 PKG_VERSION="B.02.17"
-PKG_REV="0"
+PKG_REV="1"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://ezix.org/project/wiki/HardwareLiSter"

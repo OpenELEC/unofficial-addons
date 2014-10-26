@@ -20,7 +20,7 @@
 
 PKG_NAME="ltrace"
 PKG_VERSION="0.7.3"
-PKG_REV="0"
+PKG_REV="1"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://ltrace.org/"

@@ -20,7 +20,7 @@
 
 PKG_NAME="mc"
 PKG_VERSION="4.8.12"
-PKG_REV="2"
+PKG_REV="3"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.midnight-commander.org"

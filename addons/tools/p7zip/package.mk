@@ -20,7 +20,7 @@
 
 PKG_NAME="p7zip"
 PKG_VERSION="9.20.1"
-PKG_REV="1"
+PKG_REV="2"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://p7zip.sourceforge.net/"

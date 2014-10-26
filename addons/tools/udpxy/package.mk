@@ -20,7 +20,7 @@
 
 PKG_NAME="udpxy"
 PKG_VERSION="1.0.23-0"
-PKG_REV="0"
+PKG_REV="1"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.openelec.tv"
