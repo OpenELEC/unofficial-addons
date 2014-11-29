@@ -20,7 +20,7 @@
 
 PKG_NAME="ngrep"
 PKG_VERSION="1.45"
-PKG_REV="1"
+PKG_REV="2"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://ngrep.sourceforge.net/"
@@ -39,7 +39,7 @@ PKG_AUTORECONF="yes"
 
 PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
 
-PKG_CONFIGURE_OPTS_TARGET="--with-pcap-includes=$SYSROOT_PREFIX/usr/include"
+PKG_CONFIGURE_OPTS_TARGET="--with-pcap-includes=$SYSROOT_PREFIX/usr/include --disable-dropprivs"
 
 pre_build_target() {
   mkdir -p $PKG_BUILD/.$TARGET_NAME
