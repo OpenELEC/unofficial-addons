@@ -20,8 +20,8 @@
 
 PKG_NAME="tcpdump"
 PKG_VERSION="4.6.1"
-PKG_ARCH="any"
-PKG_REV="1"
+PKG_ARCH="x86_64"
+PKG_REV="2"
 PKG_SITE="http://www.tcpdump.org/"
 PKG_URL="http://www.tcpdump.org/release/tcpdump-${PKG_VERSION}.tar.gz"
 PKG_DEPENDS_TARGET="toolchain libpcap"
@@ -35,7 +35,7 @@ PKG_ADDON_TYPE="xbmc.python.script"
 
 PKG_AUTORECONF="yes"
 
-PKG_MAINTAINER="unofficial.addon.pro"
+PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
 
 PKG_CONFIGURE_OPTS_TARGET="--with-pcap=linux --with-crypto=no --disable-ipv6"
 
