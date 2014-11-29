@@ -23,7 +23,7 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.tcpdump.org/"
 PKG_URL="http://www.tcpdump.org/release/libpcap-${PKG_VERSION}.tar.gz"
-PKG_DEPENDS_TARGET="toolchain libusb libnl"
+PKG_DEPENDS_TARGET="toolchain libusb"
 PKG_PRIORITY="optional"
 PKG_SECTION="devel"
 PKG_SHORTDESC="system interface for user-level packet capture"
@@ -40,14 +40,14 @@ PKG_CONFIGURE_OPTS_TARGET="LIBS=-lpthread \
                            --with-pcap=linux \
                            --disable-bluetooth \
                            --disable-can \
+                           --without-libnl \
+                           --disable-dbus \
                            --disable-canusb"
 
 pre_configure_target() {
 # When cross-compiling, configure can't set linux version
 # forcing it
   sed -i -e 's/ac_cv_linux_vers=unknown/ac_cv_linux_vers=2/' ../configure
-
-  export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/libnl3"
 }
 
 post_makeinstall_target() {
