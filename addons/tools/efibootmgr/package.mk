@@ -42,7 +42,7 @@ PKG_MAINTAINER="Stefan Benz (benz.st@gmail.com)"
 pre_make_target() {
   strip_lto
   export EXTRA_CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include"
-  export LDFLAGS="$LDFLAGS -L$SYSROOT_PREFIX/usr/lib"
+  export LDFLAGS="$LDFLAGS -L$SYSROOT_PREFIX/usr/lib -ludev"
 }
 
 makeinstall_target() {
