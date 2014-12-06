@@ -20,7 +20,7 @@
 
 PKG_NAME="mpd"
 PKG_VERSION="0.18.11"
-PKG_REV="1"
+PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://mpd.wikia.com/wiki/Music_Player_Daemon_Wiki"
