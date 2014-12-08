@@ -1,3 +1,6 @@
+[B]3.5.9[/B]
+ - rebuild
+
 [B]3.5.8[/B]
  - update to kodi
 
