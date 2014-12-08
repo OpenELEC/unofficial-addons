@@ -226,7 +226,7 @@ def showSmartdLog():
     showTextWindow(consts.logSmartdHeader, text);
     
 def showXbmcLogEntries():
-    logFile = xbmc.translatePath("special://logpath") + "xbmc.log";
+    logFile = xbmc.translatePath("special://logpath") + "kodi.log";
     #text = sutils.readFileAsStringShell(logFile);
     #text = sutils.readFileAsStringAndFilterShell(logFile, consts.dialogHeader);
     text = sutils.readFileAsString(logFile);
