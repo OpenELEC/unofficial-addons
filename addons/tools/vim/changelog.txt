@@ -1,3 +1,5 @@
+4.3.2
+- Changed to follow Debian for more up to date releases.
 4.3.1
 - rebuild
 

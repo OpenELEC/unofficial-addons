@@ -17,12 +17,12 @@
 ################################################################################
 
 PKG_NAME="vim"
-PKG_VERSION="7.4"
-PKG_REV="1"
+PKG_VERSION="7.4.488"
+PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="VIM"
 PKG_SITE="http://www.vim.org/"
-PKG_URL="http://ftp.vim.org/pub/vim/unix/vim-$PKG_VERSION.tar.bz2"
+PKG_URL="http://ftp.debian.org/debian/pool/main/v/vim/vim_$PKG_VERSION.orig.tar.gz"
 PKG_DEPENDS_TARGET="toolchain ncurses"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"
@@ -35,7 +35,6 @@ PKG_ADDON_TYPE="xbmc.python.script"
 PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="Adam Michel (elfurbe)"
-PKG_SOURCE_DIR="vim74"
 
 PKG_CONFIGURE_OPTS_TARGET="vim_cv_toupper_broken=no \
                            vim_cv_terminfo=yes \
@@ -46,8 +45,9 @@ PKG_CONFIGURE_OPTS_TARGET="vim_cv_toupper_broken=no \
                            vim_cv_memmove_handles_overlap=yes \
                            ac_cv_sizeof_int=4 \
                            ac_cv_small_wchar_t=no \
-                           --with-tlib=ncurses \
                            --enable-gui=no \
+                           --with-compiledby=OpenELEC\
+                           --with-tlib=ncurses \
                            --without-x"
 
 makeinstall_target() {
