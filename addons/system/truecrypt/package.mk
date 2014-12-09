@@ -33,9 +33,13 @@ PKG_PRIORITY="optional"
 PKG_SECTION="plugin/program"
 PKG_SHORTDESC="Mount TrueCrypt Files."
 PKG_LONGDESC="Manage Truecrypt files within XBMC. Up to 10 containers are supported. It's possible to mount, unmount, format, delete and create new files."
+
+PKG_AUTORECONF="no"
+
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
-PKG_AUTORECONF="no"
+PKG_ADDON_NAME="TrueCrypt"
+
 PKG_MAINTAINER="vpeter4 (peter.vicman@gmail.com) and smory (smoradap@gmail.com)"
 
 pre_unpack() {
