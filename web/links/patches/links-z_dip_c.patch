@@ -1,0 +1,11 @@
+--- links-2.8/dip.c-orig	2014-09-21 18:24:45.276611045 -0400
++++ links-2.8.patch/dip.c	2014-09-21 18:24:54.728610864 -0400
+@@ -1274,7 +1274,7 @@
+ 			if (!x_slow_fpu || !(a & 0xff)) {
+ 				last_val = (unsigned short)(65535*fd_pow((float_double)a*inv_65535,rg)+0.5);
+ #if !SIZEOF_UNSIGNED_SHORT || SIZEOF_UNSIGNED_SHORT > 2
+-				if (last_val >= 0xffff) *last_val = 0xffff;
++				if (last_val >= 0xffff) last_val = 0xffff;
+ #endif /* #if SIZEOF_UNSIGNED_SHORT > 2 */
+ 			}
+ 			*ptr_16 = last_val;
