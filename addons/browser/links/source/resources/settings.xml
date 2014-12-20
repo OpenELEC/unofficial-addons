@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+  <!-- General -->
+  <category id="general" label="32000">
+    <setting id="homepage" type="text" label="32001" default="https://duckduckgo.com/" />
+  </category>
+</settings>

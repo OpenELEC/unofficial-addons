@@ -1,0 +1,26 @@
+# XBMC Media Center language file
+# Addon Name: Links-Browser
+# Addon id: browser.links
+# Addon version: 1.0.2
+# Addon Provider: AntiPrism.ca
+
+msgctxt "Addon Summary"
+msgid "Links Web Browser"
+msgstr "Links Web Browser"
+
+msgctxt "Addon Description"
+msgid "Links Web Browser for OpenELEC"
+msgstr "Links Web Browser for OpenELEC"
+
+msgctxt "#32000"
+msgid "General"
+msgstr "General"
+
+msgctxt "#32001"
+msgid "Home Page"
+msgstr "Home Page"
+
+msgctxt "#32002"
+msgid "Cannot execute Links binary"
+msgstr "Cannot execute Links binary"
+
