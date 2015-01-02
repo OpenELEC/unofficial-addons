@@ -1,3 +1,6 @@
+[B]4.3.0[/B]
+- rebuild
+
 [B]1.0.6[/B]
 - update to kodi
 
