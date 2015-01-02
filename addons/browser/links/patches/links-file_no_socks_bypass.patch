@@ -1,0 +1,21 @@
+--- links-2.8/url.c	2014-08-29 23:10:34.939697530 -0400
++++ links-2.8-patched/url.c	2002-04-04 05:30:55.617327683 -0500
+@@ -17,7 +17,7 @@ static const struct {
+ 	int bypasses_socks;
+ } protocols[]= {
+ 		{"data", 0, data_func, NULL,		1, 0, 0, 0, 0},
+-		{"file", 0, file_func, NULL,		1, 1, 0, 0, 1},
++		{"file", 0, file_func, NULL,		1, 1, 0, 0, 0},
+ 		{"https", 443, https_func, NULL,	0, 1, 1, 1, 0},
+ 		{"http", 80, http_func, NULL,		0, 1, 1, 1, 0},
+ 		{"proxy", 3128, proxy_func, NULL,	0, 1, 1, 1, 0},
+@@ -30,7 +30,8 @@ static const struct {
+ 		{"telnet", 0, NULL, telnet_func,	0, 0, 0, 0, 1},
+ 		{"tn3270", 0, NULL, tn3270_func,	0, 0, 0, 0, 1},
+ 		{"mms", 0, NULL, mms_func,		1, 0, 1, 0, 1},
+-		{"magnet", 0, NULL, magnet_func,	1, 0, 0, 0, 1},
++		{"magnet", 0, NULL, magnet_func,	1, 0, 0, 0, 0},
++		{"maggot", 0, NULL, magnet_func,	1, 1, 0, 0, 0},
+ #ifdef JS
+ 		{"javascript", 0, NULL, javascript_func,1, 0, 0, 0, 0},
+ #endif

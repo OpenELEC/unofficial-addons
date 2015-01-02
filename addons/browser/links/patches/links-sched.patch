@@ -1,0 +1,11 @@
+--- links-2.8/sched.c	2014-09-04 00:21:16.255892007 -0400
++++ links-2.8-patched/sched.c	2014-09-04 00:22:40.659889717 -0400
+@@ -411,7 +411,7 @@ static void run_connection(struct connec
+ 
+ 	safe_strncpy(c->socks_proxy, proxies.socks_proxy, sizeof c->socks_proxy);
+ 
+-	if (proxies.only_proxies && casecmp(c->url, cast_uchar "proxy://", 8) && casecmp(c->url, cast_uchar "data:", 5) && (!*c->socks_proxy || url_bypasses_socks(c->url))) {
++	if (proxies.only_proxies && casecmp(c->url, cast_uchar "proxy://", 8) && casecmp(c->url, cast_uchar "data:", 5) && casecmp(c->url, cast_uchar "file:", 5) && (!*c->socks_proxy || url_bypasses_socks(c->url))) {
+ 		setcstate(c, S_NO_PROXY);
+ 		del_connection(c);
+ 		return;

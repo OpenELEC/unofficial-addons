@@ -1,0 +1,13 @@
+--- links-2.8/session.c	2014-08-28 22:16:29.482132236 -0400
++++ links-2.8-patched/session.c	2014-08-31 00:50:04.157188860 -0400
+@@ -2394,8 +2394,8 @@ static void type_query(struct session *s
+ 	}
+ 	m1 = stracpy(ct);
+ 	if (!a) {
+-		if (!anonymous) msg_box(ses->term, getml(m1, NULL), TEXT_(T_UNKNOWN_TYPE), AL_CENTER | AL_EXTD_TEXT, TEXT_(T_CONTENT_TYPE_IS), cast_uchar " ", m1, cast_uchar ".\n", TEXT_(T_DO_YOU_WANT_TO_SAVE_OR_DISLPAY_THIS_FILE), NULL, ses, 3, TEXT_(T_SAVE), tp_save, B_ENTER, TEXT_(T_DISPLAY), tp_display, 0, TEXT_(T_CANCEL), tp_cancel, B_ESC);
+-		else msg_box(ses->term, getml(m1, NULL), TEXT_(T_UNKNOWN_TYPE), AL_CENTER | AL_EXTD_TEXT, TEXT_(T_CONTENT_TYPE_IS), cast_uchar " ", m1, cast_uchar ".\n", TEXT_(T_DO_YOU_WANT_TO_SAVE_OR_DISLPAY_THIS_FILE), NULL, ses, 2, TEXT_(T_DISPLAY), tp_display, B_ENTER, TEXT_(T_CANCEL), tp_cancel, B_ESC);
++		if (!anonymous) msg_box(ses->term, getml(m1, NULL), TEXT_(T_UNKNOWN_TYPE), AL_CENTER | AL_EXTD_TEXT, TEXT_(T_CONTENT_TYPE_IS), cast_uchar " ", m1, cast_uchar ".\n", TEXT_(T_DO_YOU_WANT_TO_SAVE_OR_DISLPAY_THIS_FILE), NULL, ses, 3, TEXT_(T_SAVE), tp_save, B_ENTER, TEXT_(T_DISPLAY), tp_save, 0, TEXT_(T_CANCEL), tp_cancel, B_ESC);
++		else msg_box(ses->term, getml(m1, NULL), TEXT_(T_UNKNOWN_TYPE), AL_CENTER | AL_EXTD_TEXT, TEXT_(T_CONTENT_TYPE_IS), cast_uchar " ", m1, cast_uchar ".\n", TEXT_(T_DO_YOU_WANT_TO_SAVE_OR_DISLPAY_THIS_FILE), NULL, ses, 2, TEXT_(T_DISPLAY), tp_save, B_ENTER, TEXT_(T_CANCEL), tp_cancel, B_ESC);
+ 	} else {
+ 		m2 = stracpy(a[0].label ? a[0].label : (unsigned char *)"");
+ 		if (!anonymous) msg_box(ses->term, getml(m1, m2, NULL), TEXT_(T_WHAT_TO_DO), AL_CENTER | AL_EXTD_TEXT, TEXT_(T_CONTENT_TYPE_IS), cast_uchar " ", m1, cast_uchar ".\n", TEXT_(T_DO_YOU_WANT_TO_OPEN_FILE_WITH), cast_uchar " ", m2, cast_uchar ", ", TEXT_(T_SAVE_IT_OR_DISPLAY_IT), NULL, ses, 4, TEXT_(T_OPEN), tp_open, B_ENTER, TEXT_(T_SAVE), tp_save, 0, TEXT_(T_DISPLAY), tp_display, 0, TEXT_(T_CANCEL), tp_cancel, B_ESC);

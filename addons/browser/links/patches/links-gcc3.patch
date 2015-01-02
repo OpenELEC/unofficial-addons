@@ -1,0 +1,12 @@
+--- a/configure	2014-12-31 15:40:26.622104501 -0500
++++ b/configure	2014-12-31 15:41:23.538102957 -0500
+@@ -2,6 +2,9 @@
+ LANG=
+ LC_ALL=
+ 
++am__fastdepCXX_TRUE='#'
++am__fastdepCXX_FALSE=
++
+ # Guess values for system-dependent variables and create Makefiles.
+ # Generated automatically using autoconf version 2.13 
+ # Copyright (C) 1992, 93, 94, 95, 96 Free Software Foundation, Inc.
