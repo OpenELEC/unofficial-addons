@@ -20,7 +20,7 @@
 
 PKG_NAME="pyload"
 PKG_VERSION="0.4.9"
-PKG_REV="1"
+PKG_REV="2"
 PKG_ARCH="i386 x86_64"
 PKG_LICENSE="OSS"
 PKG_SITE="http://pyload.org/"
