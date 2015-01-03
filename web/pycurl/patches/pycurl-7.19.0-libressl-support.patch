@@ -1,0 +1,25 @@
+From 23a9a0693c5460a7e4018cc411caef8fc6ddb0fa Mon Sep 17 00:00:00 2001
+From: Your Name <you@example.com>
+Date: Sat, 3 Jan 2015 16:42:52 +0200
+Subject: [PATCH] libressl support
+
+---
+ src/module.c |    2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/module.c b/src/module.c
+index be00f2a..dcddc54 100644
+--- a/src/module.c
++++ b/src/module.c
+@@ -299,6 +299,8 @@ initpycurl(void)
+         runtime_ssl_lib = "none/other";
+     } else if (!strncmp(vi->ssl_version, "OpenSSL/", 8)) {
+         runtime_ssl_lib = "openssl";
++    } else if (!strncmp(vi->ssl_version, "LibreSSL/", 9)) {
++        runtime_ssl_lib = "openssl";
+     } else if (!strncmp(vi->ssl_version, "GnuTLS/", 7)) {
+         runtime_ssl_lib = "gnutls";
+     } else if (!strncmp(vi->ssl_version, "NSS/", 4)) {
+-- 
+1.7.10.4
+
