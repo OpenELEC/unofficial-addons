@@ -17,3 +17,7 @@
 #  the Free Software Foundation, 51 Franklin Street, Suite 500, Boston, MA 02110, USA.
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
+import xbmcgui
+
+dialog = xbmcgui.Dialog()
+dialog.ok('', 'This is a console-only addon')

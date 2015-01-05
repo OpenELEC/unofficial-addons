@@ -15,3 +15,7 @@
 #  You should have received a copy of the GNU General Public License
 #  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
+import xbmcgui
+
+dialog = xbmcgui.Dialog()
+dialog.ok('', 'This is a console-only addon')
