@@ -1,0 +1,11 @@
+system default@dyndns.org
+  ssl
+  username yxxx
+  password xyxx
+  alias yyy
+  alias zzz
+
+system default@no-ip.com
+  username xxyx
+  password xxxy
+  alias yyy

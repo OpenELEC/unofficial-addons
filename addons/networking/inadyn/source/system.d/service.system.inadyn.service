@@ -1,0 +1,10 @@
+[Unit]
+Description=inadyn
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/bin/sh -c "exec sh /storage/.kodi/addons/service.system.inadyn/bin/inadyn.start"
+
+[Install]
+WantedBy=kodi.target
