@@ -3,6 +3,7 @@ Description=Transmission BT Client
 After=graphical.target
 
 [Service]
+Type=idle
 ExecStart=/bin/sh -c "exec sh /storage/.kodi/addons/service.downloadmanager.transmission/bin/transmission.start"
 TimeoutStopSec=1
 Restart=always
