@@ -40,8 +40,9 @@ PKG_AUTORECONF="yes"
 PKG_CONFIGURE_OPTS_TARGET="--enable-openssl" # --sysconfdir is ineffective
 
 pre_configure_target() {
-  # Workaround to ensure inadyn's include directory is found
+  # inadyn fails to build in subdirs
   cd $ROOT/$PKG_BUILD
+  rm -rf .$TARGET_NAME
 }
 
 makeinstall_target() {
