@@ -1,6 +1,7 @@
 [Unit]
 Description=inadyn
 After=network-online.service
+Requires=network-online.service
 
 [Service]
 Type=forking
