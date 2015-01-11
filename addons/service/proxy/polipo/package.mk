@@ -21,7 +21,7 @@
 PKG_NAME="polipo"
 PKG_VERSION="1.1.1"
 PKG_REV="2"
-PKG_ARCH="x86_64"
+PKG_ARCH="any"
 PKG_LICENSE="OSS"
 PKG_SITE="http://www.pps.univ-paris-diderot.fr/~jch/software/polipo/"
 PKG_URL="http://www.pps.univ-paris-diderot.fr/~jch/software/files/polipo/${PKG_NAME}-${PKG_VERSION}.tar.gz"
