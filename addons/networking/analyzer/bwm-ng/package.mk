@@ -21,7 +21,7 @@
 PKG_NAME="bwm-ng"
 PKG_VERSION="0.6"
 PKG_REV="2"
-PKG_ARCH="x86_64"
+PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.gropp.org/?id=projects&sub=bwm-ng"
 PKG_URL="http://www.gropp.org/bwm-ng/bwm-ng-$PKG_VERSION.tar.gz"
