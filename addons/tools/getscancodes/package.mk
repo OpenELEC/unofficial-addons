@@ -21,7 +21,7 @@
 PKG_NAME="getscancodes"
 PKG_VERSION="1.0"
 PKG_REV="1"
-PKG_ARCH="x86_64"
+PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://keytouch.sourceforge.net"
 PKG_URL="$SOURCEFORGE_SRC/keytouch/getscancodes-${PKG_VERSION}.tar.gz"
