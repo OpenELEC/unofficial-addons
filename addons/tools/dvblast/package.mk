@@ -21,7 +21,7 @@
 PKG_NAME="dvblast"
 PKG_VERSION="2.2"
 PKG_REV="1"
-PKG_ARCH="x86_64"
+PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.videolan.org"
 PKG_URL="http://downloads.videolan.org/pub/videolan/dvblast/${PKG_VERSION}/dvblast-${PKG_VERSION}.tar.bz2"
