@@ -18,7 +18,7 @@
 
 PKG_NAME="tvheadend"
 PKG_VERSION="3.9.2427"
-PKG_REV="8"
+PKG_REV="9"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.tvheadend.org"
@@ -36,9 +36,12 @@ pre_build_target() {
   mkdir -p $PKG_BUILD/.$TARGET_NAME
   cp -RP $PKG_BUILD/* $PKG_BUILD/.$TARGET_NAME
   export CROSS_COMPILE=$TARGET_PREFIX
-  # meh imx6..
   if [ "$TARGET_ARCH" == "arm" ] ; then
-    export CFLAGS="$CFLAGS -mno-unaligned-access"
+    PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET libdvbcsa"
+    DVBCSA="--enable-dvbcsa"
+  else
+    # TODO force dvbcsa on all projects
+    DVBCSA="--disable-dvbcsa"
   fi
 }
 
@@ -56,6 +59,7 @@ configure_target() {
             --disable-uriparser \
             --enable-tvhcsa \
             --enable-bundle \
+            $DVBCSA \
             --disable-dbus_1 \
             --python=$ROOT/$TOOLCHAIN/bin/python
 }
