@@ -32,12 +32,16 @@ PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
 PKG_AUTORECONF="no"
 
+if [ "$TARGET_ARCH" == "arm" ] ; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET libdvbcsa"
+fi
+
+
 pre_build_target() {
   mkdir -p $PKG_BUILD/.$TARGET_NAME
   cp -RP $PKG_BUILD/* $PKG_BUILD/.$TARGET_NAME
   export CROSS_COMPILE=$TARGET_PREFIX
   if [ "$TARGET_ARCH" == "arm" ] ; then
-    PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET libdvbcsa"
     DVBCSA="--enable-dvbcsa"
   else
     # TODO force dvbcsa on all projects
