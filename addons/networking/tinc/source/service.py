@@ -18,13 +18,9 @@
 import subprocess
 import xbmcgui
 
-networks = []
+dialog = xbmcgui.Dialog()
 for network in subprocess.check_output(['tinc', 'network']).splitlines():
   if subprocess.call(['tinc', '-n', network, 'pid']):
-    state = ' (down)'
-  else:
-    state = ' (up)'
-  networks.append(network + state)
-dialog = xbmcgui.Dialog()
-dialog.select('tinc networks', networks)
+    dialog.notification('tinc', 'Starting network: ' + network)
+    subprocess.call(['tinc', '-n', network, 'start'])
 del dialog
