@@ -1,5 +1,4 @@
     tinc for OpenELEC
-    tinc for OpenELEC
     Version 1.0 2015-02-04
     Anton Voyl (awiouy@gmail.com)
 
