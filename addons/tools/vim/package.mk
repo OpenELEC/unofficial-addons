@@ -18,7 +18,7 @@
 
 PKG_NAME="vim"
 PKG_VERSION="7.4"
-PKG_REV="1"
+PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="VIM"
 PKG_SITE="http://www.vim.org/"
@@ -48,6 +48,7 @@ PKG_CONFIGURE_OPTS_TARGET="vim_cv_toupper_broken=no \
                            ac_cv_small_wchar_t=no \
                            --with-tlib=ncurses \
                            --enable-gui=no \
+                           --prefix=/storage/.kodi/addons/tools.vim/ \
                            --without-x"
 
 makeinstall_target() {
@@ -57,6 +58,17 @@ makeinstall_target() {
 addon() {
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
   cp -P $PKG_BUILD/src/vim $ADDON_BUILD/$PKG_ADDON_ID/bin
+
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/share/vim
+  cp -RP $PKG_BUILD/runtime/syntax $ADDON_BUILD/$PKG_ADDON_ID/share/vim/
+  cp -RP $PKG_BUILD/runtime/plugin $ADDON_BUILD/$PKG_ADDON_ID/share/vim/
+  cp -RP $PKG_BUILD/runtime/indent $ADDON_BUILD/$PKG_ADDON_ID/share/vim/
+  cp -RP $PKG_BUILD/runtime/colors $ADDON_BUILD/$PKG_ADDON_ID/share/vim/
+  cp -RP $PKG_BUILD/runtime/autoload $ADDON_BUILD/$PKG_ADDON_ID/share/vim/
+  cp -P $PKG_BUILD/runtime/indent.vim $ADDON_BUILD/$PKG_ADDON_ID/share/vim/
+  cp -P $PKG_BUILD/runtime/indoff.vim $ADDON_BUILD/$PKG_ADDON_ID/share/vim/
+  cp -P $PKG_BUILD/runtime/menu.vim $ADDON_BUILD/$PKG_ADDON_ID/share/vim/
+  cp -P $PKG_BUILD/runtime/filetype.vim $ADDON_BUILD/$PKG_ADDON_ID/share/vim/
 }
 
 pre_configure_target() {
