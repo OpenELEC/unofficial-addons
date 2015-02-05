@@ -1,4 +1,5 @@
     tinc for OpenELEC
+    tinc for OpenELEC
     Version 1.0 2015-02-04
     Anton Voyl (awiouy@gmail.com)
 
@@ -14,10 +15,11 @@
     The name of the tinc network will be "Peanuts". Within tinc network
     "Peanuts", the first system is a node, whose name will be "Linus".
 
+    tinc newtwork "Peanuts" will operate in switch mode. Node "Linus" will
+    listen on port 6550.
+
     The IP address of node "Linus" will be 172.16.1.1. The netmask of tinc
     network "Peanuts" will be 255.255.255.0.
-
-    Node "Linus" will listen on port 6550.
 
     If node "Linus" is behind a firewall, the firewall is configured to forward
     packets on port 6550 to the first system.
@@ -30,6 +32,7 @@
 
     Connect to the first system with SSH and enter the following commands:
     tinc -n Peanuts init Linus
+    tinc -n Peanuts set mode switch
     tinc -n Peanuts set port 6500
     tinc -n Peanuts set address linus.ddns.net
     echo ifconfig \$INTERFACE 172.16.1.1 netmask 255.255.255.0 \
