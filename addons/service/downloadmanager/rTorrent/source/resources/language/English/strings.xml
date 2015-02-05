@@ -4,7 +4,6 @@
 	<!-- rTorrent -->
 	<string id="1000">rTorrent Service</string>
 	<string id="1001">rTorrent Service Settings</string>
-	<string id="1002">Enable Service:</string>
 	<string id="1003">Port Range:</string>
 	<string id="1004">Download Rate (kb/s):</string>
 	<string id="1005">Upload Rate (kb/s):</string>

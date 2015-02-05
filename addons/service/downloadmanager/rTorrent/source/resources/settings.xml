@@ -5,12 +5,11 @@
     <category label="1000">
 		<setting label="1001" type="lsep"/>
 		<setting type="sep" />
-		<setting id="RTORRENT_ENABLED" type="bool" label="1002" default="false"/>
-		<setting id="RTORRENT_PORTS" type="text" label="1003" enable="eq(-1,true)" default="6895-6895"/>
-		<setting id="RTORRENT_UPNP" type="bool" label="1006" enable="eq(-2,true)" default="false"/>
-		<setting id="RTORRENT_DOWN_RATE" type="text" label="1004" enable="eq(-3,true)" default="1024"/>
-		<setting id="RTORRENT_UP_RATE" type="text" label="1005" enable="eq(-4,true)" default="50"/>
-		<setting id="RTORRENT_UPDATE_ON_COMPLETE" type="bool" label="1007" enable="eq(-5,true)" default="false"/>
+		<setting id="RTORRENT_PORTS" type="text" label="1003" default="6895-6895"/>
+		<setting id="RTORRENT_UPNP" type="bool" label="1006" default="false"/>
+		<setting id="RTORRENT_DOWN_RATE" type="text" label="1004" default="1024"/>
+		<setting id="RTORRENT_UP_RATE" type="text" label="1005" default="50"/>
+		<setting id="RTORRENT_UPDATE_ON_COMPLETE" type="bool" label="1007" default="false"/>
     </category>
     
     <!-- rTorrent Watch Settings -->

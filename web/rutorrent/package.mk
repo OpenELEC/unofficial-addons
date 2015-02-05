@@ -35,7 +35,7 @@ PKG_IS_ADDON="no"
 
 PKG_AUTORECONF="no"
 
-PKG_MAINTAINER="Daniel Forsberg (daniel.forsberg1@gmail.com)"
+PKG_MAINTAINER="Daniel Forsberg (jenkins101)"
 
 pre_patch() {
   chmod -R +w $ROOT/$BUILD/${PKG_NAME}-${PKG_VERSION}/*

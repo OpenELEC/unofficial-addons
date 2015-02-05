@@ -33,4 +33,4 @@ PKG_LONGDESC=""
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-PKG_MAINTAINER="Daniel Forsberg (daniel.forsberg1@gmail.com)"
+PKG_MAINTAINER="Daniel Forsberg (jenkins101)"

@@ -36,7 +36,7 @@ PKG_ADDON_TYPE="xbmc.python.script"
 
 PKG_AUTORECONF="no"
 
-PKG_MAINTAINER="Daniel Forsberg (daniel.forsberg1@gmail.com)"
+PKG_MAINTAINER="Daniel Forsberg (jenkins101)"
 
 PKG_DISCLAIMER="this is an unofficial addon. please don't ask for support in openelec forum / irc channel"
 
