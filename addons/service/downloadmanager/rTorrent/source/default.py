@@ -17,25 +17,3 @@
 #  the Free Software Foundation, 51 Franklin Street, Suite 500, Boston, MA 02110, USA.
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
-
-import os, xbmcaddon, xbmc, subprocess
-from time import sleep
-
-__scriptname__ = "rTorrent - Torrent Client"
-__author__     = "Jenkinz"
-__url__        = "http://www.openelec.tv"
-__settings__   = xbmcaddon.Addon()
-__cwd__        = __settings__.getAddonInfo('path')
-__start__      = xbmc.translatePath( os.path.join( __cwd__, 'bin', "rtorrent.start") )
-__stop__       = xbmc.translatePath( os.path.join( __cwd__, 'bin', "rtorrent.stop") )
-
-#make binary files executable in addon bin folder
-subprocess.Popen("chmod -R +x " + __cwd__ + "/bin/*" , shell=True, close_fds=True)
-
-subprocess.Popen(__start__, shell=True, close_fds=True)
-
-while (not xbmc.abortRequested):
-    sleep(0.500)
-
-subprocess.Popen(__stop__, shell=True, close_fds=True)
-

@@ -1,5 +1,4 @@
 #!/bin/sh
-
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
@@ -27,9 +26,7 @@
 
 . /etc/profile
 
-ADDON_DIR="$HOME/.kodi/addons/service.downloadmanager.rTorrent"
-ADDON_HOME="$HOME/.kodi/userdata/addon_data/service.downloadmanager.rTorrent"
-ADDON_SETTINGS="$ADDON_HOME/settings.xml"
+oe_setup_addon service.downloadmanager.rTorrent
 
 RTORRENT_RC="$ADDON_HOME/rtorrent.rc"
 RTORRENT_SESSION="$ADDON_HOME/session"
@@ -40,11 +37,8 @@ RTORRENT_ARG="-n -o import=$RTORRENT_RC -s $RTORRENT_SESSION"
 RUTORRENT_CONF="$ADDON_DIR/rutorrent-httpd.conf"
 RUTORRENT_CONF_DIR="$ADDON_HOME/rutorrent"
 
-LOCKDIR="/var/lock/"
-LOCKFILE="rtorrent.disabled"
-LOG_FILE="$ADDON_HOME/service.log"
+LOG_FILE="$ADDON_HOME/rtorrent.log"
 
-[ -d $ADDON_HOME ] || mkdir -p $ADDON_HOME
 [ -d $RTORRENT_SESSION ] || mkdir -p $RTORRENT_SESSION
 [ -d $RUTORRENT_CONF_DIR ] || mkdir -p $RUTORRENT_CONF_DIR
 [ -d $RUTORRENT_CONF_DIR/torrents ] || mkdir -p $RUTORRENT_CONF_DIR/torrents
@@ -57,35 +51,18 @@ if [ -f $ADDON_DIR/firstrun ];then
 	[ -f "$RTORRENT_RC" ] && mv "$RTORRENT_RC" "$RTORRENT_RC.old"
 fi
 
-if [ ! -f "$ADDON_SETTINGS" ]; then
-  cp $ADDON_DIR/settings-default.xml $ADDON_SETTINGS
-fi
-
-uname -m |grep -q -i arm
-if [ $? -eq 0 ];then
-  grep -q -i "RPi ARM" $ADDON_DIR/rtorrent.default.rc
-  [ $? -gt 0 ] && echo "# RPi ARM Tunning
-max_peers = 10
-max_uploads_global = 5
-max_downloads_global = 5
-max_memory_usage = 128M" >> $ADDON_DIR/rtorrent.default.rc
-fi
-
-if [ ! -f "$RTORRENT_RC" ]; then
+if [ ! -f "$RTORRENT_RC" ];then
   cp $ADDON_DIR/rtorrent.default.rc $RTORRENT_RC
 fi
 
-[ -d /var/config ] || mkdir -p /var/config
-cat "$ADDON_SETTINGS" | awk -F\" '{print $2"=\""$4"\""}' | sed '/^=/d' > /var/config/rtorrent.conf
-
-. /var/config/rtorrent.conf
-
-# Please dont auto start on install
-if [ "$RTORRENT_ENABLED" == "false" ];then
-	exit 0
-fi
-
 RTORRENT_ARG="$RTORRENT_ARG -p $RTORRENT_PORTS -o download_rate=$RTORRENT_DOWN_RATE -o upload_rate=$RTORRENT_UP_RATE"
+
+# Logging
+if [ "$DEBUG" == "yes" ];then
+	RTORRENT_ARG="$RTORRENT_ARG -O log.open_file=\"rtorrent\","$LOG_FILE" -O log.add_output=\"debug\",\"rtorrent\""
+else
+	RTORRENT_ARG="$RTORRENT_ARG -O log.open_file=\"rtorrent\","$LOG_FILE" -O log.add_output=\"info\",\"rtorrent\""
+fi
 
 # Check upnp support if upnp enabled.
 if [ "$RTORRENT_UPNP" == "true" -o "$RUTORRENT_UPNP" == "true" -a "$RUTORRENT_AUTH" == "true" ];then
@@ -134,36 +111,24 @@ if [ "$RTORRENT_UPDATE_ON_COMPLETE" == "true" ];then
 	RTORRENT_ARG="$RTORRENT_ARG -O system.method.set_key=event.download.finished,update_on_complete,\"execute=xbmc-libup.sh\""
 fi
 
-if [ ! "$(pidof rtorrent)" ];then
-  [ -f "$LOCKDIR/$LOCKFILE" ] && rm -f "$LOCKDIR/$LOCKFILE"
-  while [ true ] ; do
-    # FIX: Broken addon uninstaller does not stop the addon
-    if [ ! -d "$ADDON_DIR/bin" ];then
-        killall rtorrent
-        if [ "$RUTORRENT_ENABLED" == "true" ];then
-           RUTORRENT_PID=$(ps |grep "http[d] -p $RUTORRENT_PORT"|awk '{print $1}')
-           kill $RUTORRENT_PID
-        fi
-        break
-    fi
-    if [ -f "$LOCKDIR/$LOCKFILE" ] ; then
-      break
-    fi 
-    
-    # Start
-    if [ ! "$(pidof rtorrent)" ];then
-        [ -f $RTORRENT_LOCKFILE ] && rm -f $RTORRENT_LOCKFILE
-        dtach -n $RTORRENT_DTACH_FILE rtorrent $RTORRENT_ARG &>$LOG_FILE
-    fi
-    if [ ! "$(ps |grep "http[d] -p $RUTORRENT_PORT")" ];then
-	if [ "$RUTORRENT_ENABLED" == "true" ];then
-		httpd -p $RUTORRENT_PORT -c $RUTORRENT_CONF >>$LOG_FILE
-		# Start plugins
-		$ADDON_DIR/bin/php -c $ADDON_DIR/bin/php.ini $ADDON_DIR/rutorrent/php/initplugins.php >>$LOG_FILE
+while [ true ];do
+	# Start
+	if [ ! "$(pidof rtorrent)" ];then
+		[ -f $RTORRENT_LOCKFILE ] && rm -f $RTORRENT_LOCKFILE
+		dtach -n $RTORRENT_DTACH_FILE rtorrent $RTORRENT_ARG
+		echo "Started rTorrent: $?"
 	fi
-    fi
-    sleep 1 
-  done &
-fi
+	if [ ! "$(ps |grep "http[d] -p $RUTORRENT_PORT")" ];then
+		if [ "$RUTORRENT_ENABLED" == "true" ];then
+			httpd -p $RUTORRENT_PORT -c $RUTORRENT_CONF
+			echo "Started ruTorrent: $?"
+			# Start plugins
+			sleep 10
+			$ADDON_DIR/bin/php -c $ADDON_DIR/bin/php.ini $ADDON_DIR/rutorrent/php/initplugins.php
+			echo "Started ruTorrent plugins: $?"
+		fi
+	fi
+	sleep 1
+done &
 
 # vim:ts=4:sw=4

@@ -20,7 +20,7 @@
 
 PKG_NAME="rTorrent"
 PKG_VERSION="4.3"
-PKG_REV="2"
+PKG_REV="3"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://libtorrent.rakshasa.no"
@@ -37,7 +37,7 @@ PKG_ADDON_REQUIRES="tools.php:0.0.0 tools.dtach:0.0.0"
 
 PKG_AUTORECONF="no"
 
-PKG_MAINTAINER="Daniel Forsberg (daniel.forsberg1@gmail.com)"
+PKG_MAINTAINER="Daniel Forsberg (jenkins101)"
 
 make_target() {
   : # nop
@@ -60,6 +60,4 @@ addon() {
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/rutorrent/
   cp -r $(get_build_dir rutorrent)/* $ADDON_BUILD/$PKG_ADDON_ID/rutorrent/
-
-  cp $PKG_DIR/extra/rtorrent.default.rc $ADDON_BUILD/$PKG_ADDON_ID/rtorrent.default.rc
 }

@@ -3,6 +3,13 @@
 # Seting useful umask
 system.umask.set=0002
 
+# Enable File Prioritize feature
+file.prioritize_toc.set=1
+
+# List of files it is applied to (assuming the above is set), applied to first
+# and last chunk repectively. The matching is done when a download is inserted.
+file.prioritize_toc.first.set = {*.avi,*.mp4,*.mkv}
+
 # This will set rtorrent/scgi to listen on localhost, port 5000.
 scgi_port = localhost:5000
 

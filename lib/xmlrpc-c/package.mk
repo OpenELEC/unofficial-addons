@@ -33,7 +33,7 @@ PKG_IS_ADDON="no"
 
 PKG_AUTORECONF="no"
 
-PKG_MAINTAINER="Daniel Forsberg (daniel.forsberg1@gmail.com)"
+PKG_MAINTAINER="Daniel Forsberg (jenkins101)"
 
 PKG_CONFIGURE_OPTS_TARGET="--enable-libxml2-backend \
             --disable-nls \
