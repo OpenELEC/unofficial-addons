@@ -1,3 +1,12 @@
+4.3.2
+- added default vimrc /storage/.kodi/addons/tools.vim/share/vim/vimrc
+- added and enabled syntax highlighting 
+- added colors
+- added autoindent
+- added autoload
+- added plugins
+- changed install prefix to /storage/.kodi/addons/tools.vim
+
 4.3.1
 - rebuild
 
