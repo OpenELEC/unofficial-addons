@@ -20,7 +20,7 @@
 ################################################################################
 
 PKG_NAME="oscam"
-PKG_VERSION="10209"
+PKG_VERSION="10442"
 PKG_REV="3"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -51,6 +51,7 @@ configure_target() {
       -DWITH_DEBUG=0 \
       -DOPTIONAL_INCLUDE_DIR=$SYSROOT_PREFIX/usr/include \
       -DSTATIC_LIBUSB=1 \
+      -DCLOCKFIX=0 \
       ..
 }
 
