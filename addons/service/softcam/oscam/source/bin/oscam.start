@@ -46,6 +46,10 @@ fi
 
 chmod a+x $ADDON_DIR/bin/*
 
+if [ "$WAIT_FOR_NET" == "true" ] ; then
+  cm-online $WAIT_FOR_NET_TIME
+fi
+
 # start userspace DVB driver/addon
 for driver_dvb in $(find /storage/.kodi/addons/driver.dvb.*/bin/userspace-driver.sh -type f 2>/dev/null); do
   driver_dvb_name=$(echo $driver_dvb | awk 'BEGIN {FS="/"} {printf("%s", $5)}')
