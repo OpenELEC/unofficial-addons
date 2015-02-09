@@ -35,6 +35,10 @@ TIMESHIFT_DIR="$ADDON_HOME/cache/timeshift"
 
 chmod a+x $ADDON_DIR/bin/*
 
+if [ "$WAIT_FOR_NET" == "true" ] ; then
+  cm-online $WAIT_FOR_NET_TIME
+fi
+
 if [ ! -f "$XMLTV_SETTINGS_FILE" ]; then
   mkdir -p $XMLTV_SETTINGS_DIR
   if [ -f $ADDON_DIR/xmltv-config ]; then

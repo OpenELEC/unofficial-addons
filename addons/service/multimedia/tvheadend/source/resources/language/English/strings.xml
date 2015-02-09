@@ -14,5 +14,7 @@
 	<string id="1022">Wait for frontend initialization</string>
 	<string id="1023">Number of adapters to wait for</string>
 	<string id="1024">Preload capmt_ca.so library</string>
+	<string id="1025">Wait for network</string>
+	<string id="1026">time (s)</string>
 
 </strings>

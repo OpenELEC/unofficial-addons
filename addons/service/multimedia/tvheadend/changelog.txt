@@ -1,3 +1,6 @@
+4.3.10
+- add option to wait for network (when using network tuner)
+
 4.3.9
  - switch to dvbcsa on arm
 
