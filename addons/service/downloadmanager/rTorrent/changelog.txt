@@ -1,3 +1,6 @@
+4.3.4
+- fixed complete.sh that broke after systemd service move.
+
 4.3.3
 - enable fist segment loading for *.avi,*.mp4,*.mkv files. makes them play at once.
 - added better logging.

@@ -20,7 +20,7 @@
 
 PKG_NAME="rTorrent"
 PKG_VERSION="4.3"
-PKG_REV="3"
+PKG_REV="4"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://libtorrent.rakshasa.no"
