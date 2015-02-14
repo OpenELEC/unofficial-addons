@@ -1,13 +1,9 @@
 #!/bin/sh
 #
 
-config=/var/config/rtorrent.conf
-
-if [ ! -f $config ];then
-   echo "Could not find config file $config"
-   echo "exiting..."
-   exit 1
-fi
+# Load config.
+. /etc/profile
+oe_setup_addon service.downloadmanager.rTorrent
 
 if [ "$#" -lt 1 ] 
 then
@@ -15,9 +11,6 @@ then
    echo "Exiting..."
    exit 1
 fi
-
-# Load config.
-. $config
 
 # Load vars.
 HASH=$1
