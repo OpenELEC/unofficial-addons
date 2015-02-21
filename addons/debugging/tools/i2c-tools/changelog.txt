@@ -1,3 +1,6 @@
+4.3.1
+- added python smbus library
+
 4.3.0
 - rebuild for addon api bump
 - update to i2c-tools-3.1.1

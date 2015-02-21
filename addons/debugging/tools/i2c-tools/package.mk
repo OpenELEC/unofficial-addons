@@ -20,12 +20,12 @@
 
 PKG_NAME="i2c-tools"
 PKG_VERSION="3.1.1"
-PKG_REV="0"
+PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.lm-sensors.org/wiki/I2CTools"
 PKG_URL="http://dl.lm-sensors.org/i2c-tools/releases/$PKG_NAME-$PKG_VERSION.tar.bz2"
-PKG_DEPENDS_TARGET="toolchain"
+PKG_DEPENDS_TARGET="toolchain Python distutilscross:host"
 PKG_PRIORITY="optional"
 PKG_SECTION="debug/tools"
 PKG_SHORTDESC="i2c-tools: bus probing tool, eeprom decoding/programming and SMBus python interface"
@@ -38,12 +38,17 @@ PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="Dag Wieers (dag@wieers.com)"
 
+pre_make_target() {
+  export PYTHONXCPREFIX="$SYSROOT_PREFIX/usr"
+  export LDSHARED="$CC -shared"
+}
+
 make_target() {
-  make PREFIX=/usr \
-     CC="$TARGET_CC" \
-     AR="$TARGET_AR" \
-     CFLAGS="$TARGET_CFLAGS" \
-     CPPFLAGS="$TARGET_CPPFLAGS"
+  make  EXTRA="py-smbus" \
+        CC="$TARGET_CC" \
+        AR="$TARGET_AR" \
+        CFLAGS="$TARGET_CFLAGS" \
+        CPPFLAGS="$TARGET_CPPFLAGS -I${SYSROOT_PREFIX}/usr/include/python2.7"
 }
 
 makeinstall_target() {
@@ -56,4 +61,7 @@ addon() {
   cp -P $PKG_BUILD/tools/i2cdump $ADDON_BUILD/$PKG_ADDON_ID/bin
   cp -P $PKG_BUILD/tools/i2cget $ADDON_BUILD/$PKG_ADDON_ID/bin
   cp -P $PKG_BUILD/tools/i2cset $ADDON_BUILD/$PKG_ADDON_ID/bin
+
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
+  cp -P $PKG_BUILD/py-smbus/build/lib.linux-*/smbus.so $ADDON_BUILD/$PKG_ADDON_ID/lib
 }
