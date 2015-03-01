@@ -20,8 +20,8 @@
 
 PKG_NAME="mc"
 PKG_VERSION="4.8.12"
-PKG_REV="3"
-PKG_ARCH="x86_64"
+PKG_REV="4"
+PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.midnight-commander.org"
 PKG_URL="http://ftp.midnight-commander.org/${PKG_NAME}-${PKG_VERSION}.tar.xz"
