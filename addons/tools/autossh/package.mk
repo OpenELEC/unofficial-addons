@@ -35,6 +35,7 @@ PKG_LONGDESC="SSH tool to keep alive tunnels"
 PKG_DISCLAIMER="this is an unofficial addon. please don't ask for support in openelec forum / irc channel"
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
+PKG_ADDON_PROVIDES=""
 PKG_AUTORECONF="yes"
 
 PKG_MAINTAINER="none"

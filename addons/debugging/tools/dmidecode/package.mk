@@ -33,6 +33,7 @@ PKG_LONGDESC="Dmidecode reports information about your system's hardware as desc
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
+PKG_ADDON_PROVIDES=""
 
 PKG_AUTORECONF="no"
 

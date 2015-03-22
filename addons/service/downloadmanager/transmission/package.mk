@@ -33,6 +33,7 @@ PKG_LONGDESC="transmission is a fast, easy and free BitTorrent client"
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
+PKG_ADDON_PROVIDES=""
 
 PKG_AUTORECONF="yes"
 

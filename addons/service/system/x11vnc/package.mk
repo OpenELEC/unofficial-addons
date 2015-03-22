@@ -32,6 +32,7 @@ PKG_SHORTDESC="x11vnc allows one to view remotely and interact with real X displ
 PKG_LONGDESC="x11vnc allows one to view remotely and interact with real X displays"
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
+PKG_ADDON_PROVIDES=""
 
 PKG_AUTORECONF="yes"
 

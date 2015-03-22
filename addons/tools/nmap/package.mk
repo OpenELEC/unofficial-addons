@@ -34,6 +34,7 @@ PKG_LONGDESC="Free Security Scanned for Network"
 PKG_DISCLAIMER="this is an unofficial addon. please don't ask for support in openelec forum / irc channel"
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
+PKG_ADDON_PROVIDES=""
 PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="none"

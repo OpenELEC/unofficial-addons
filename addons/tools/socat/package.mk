@@ -33,6 +33,7 @@ PKG_LONGDESC="socat is a relay for bidirectional data transfer between two indep
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
+PKG_ADDON_PROVIDES=""
 
 PKG_AUTORECONF="no"
 

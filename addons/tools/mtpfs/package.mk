@@ -33,6 +33,7 @@ PKG_LONGDESC="MTPfs is a FUSE filesystem that supports reading and writing from 
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
+PKG_ADDON_PROVIDES=""
 
 PKG_AUTORECONF="yes"
 

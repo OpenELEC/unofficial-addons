@@ -33,6 +33,7 @@ PKG_LONGDESC="GNU Midnight Commander is a visual file manager, licensed under GN
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
+PKG_ADDON_PROVIDES=""
 
 PKG_AUTORECONF="yes"
 

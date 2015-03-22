@@ -31,6 +31,7 @@ PKG_LONGDESC="lm_sensors is a package to get data from the SMB (System Managemen
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
+PKG_ADDON_PROVIDES=""
 PKG_DISCLAIMER="this is an unofficial addon. please don't ask for support in openelec forum / irc channel"
 
 PKG_MAINTAINER="unofficial.addon.pro"

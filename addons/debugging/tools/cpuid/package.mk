@@ -33,6 +33,7 @@ PKG_LONGDESC="cpuid dumps detailed information about the CPU(s) gathered from th
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
+PKG_ADDON_PROVIDES=""
 
 PKG_AUTORECONF="no"
 
