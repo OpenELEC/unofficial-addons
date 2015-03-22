@@ -33,6 +33,7 @@ PKG_SHORTDESC="S.M.A.R.T. disk monitoring tool with XBMC gui."
 PKG_LONGDESC="S.M.A.R.T. disk monitoring tool with XBMC gui. This version is based on smartmontools v 6.2."
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
+PKG_ADDON_PROVIDES=""
 PKG_AUTORECONF="yes"
 PKG_MAINTAINER="Peter Smorada (smoradap@gmail.com)"
 

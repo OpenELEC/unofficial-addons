@@ -33,6 +33,7 @@ PKG_LONGDESC="Mesa 3D demos - installed are the well known glxinfo and glxgears.
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
+PKG_ADDON_PROVIDES=""
 
 PKG_AUTORECONF="yes"
 

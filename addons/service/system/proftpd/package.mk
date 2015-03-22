@@ -34,6 +34,7 @@ PKG_LONGDESC="Secure and configurable FTP server with SSL/TLS support"
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
+PKG_ADDON_PROVIDES=""
 PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="vpeter4 (peter.vicman@gmail.com)"

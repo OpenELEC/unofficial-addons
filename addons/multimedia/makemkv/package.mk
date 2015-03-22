@@ -34,6 +34,7 @@ PKG_LONGDESC="MakeMKV can instantly stream decrypted video without intermediate 
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
+PKG_ADDON_PROVIDES=""
 
 PKG_AUTORECONF="no"
 

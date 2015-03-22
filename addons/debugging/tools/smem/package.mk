@@ -33,6 +33,7 @@ PKG_LONGDESC="smem is a tool that can give numerous reports on memory usage on L
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
+PKG_ADDON_PROVIDES=""
 
 PKG_AUTORECONF="no"
 

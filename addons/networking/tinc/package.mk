@@ -30,8 +30,10 @@ PKG_LONGDESC="tinc is a virtual private network (VPN) daemon that uses tunnellin
 PKG_AUTORECONF="yes"
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
+PKG_ADDON_PROVIDES=""
 PKG_MAINTAINER="Anton Voyl (awiouy@gmail.com)"
 PKG_DISCLAIMER="This is an unofficial addon. Please don't ask for support in openelec forum or irc channel."
+
 PKG_CONFIGURE_OPTS_TARGET="--disable-curses --disable-readline \
                            --disable-curses \
                            --sysconfdir=/storage/.cache"

@@ -32,6 +32,7 @@ PKG_LONGDESC="This program allows you to dump the traffic on a network. tcpdump 
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
+PKG_ADDON_PROVIDES=""
 
 PKG_AUTORECONF="yes"
 

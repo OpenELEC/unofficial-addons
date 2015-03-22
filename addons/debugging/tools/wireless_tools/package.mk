@@ -34,6 +34,7 @@ PKG_LONGDESC="The Wireless Tools (WT) is a set of tools allowing to manipulate t
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
+PKG_ADDON_PROVIDES=""
 
 PKG_AUTORECONF="no"
 
