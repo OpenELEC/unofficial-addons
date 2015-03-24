@@ -1,5 +1,5 @@
 4.3.1
-- update to php-5.6.7
+- update to kodi
 
 4.1.1
 - update to php-5.5.14
