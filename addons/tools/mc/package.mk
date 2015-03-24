@@ -19,8 +19,8 @@
 ################################################################################
 
 PKG_NAME="mc"
-PKG_VERSION="4.8.12"
-PKG_REV="4"
+PKG_VERSION="4.8.14"
+PKG_REV="5"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.midnight-commander.org"
