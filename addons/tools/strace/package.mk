@@ -17,8 +17,8 @@
 ################################################################################
 
 PKG_NAME="strace"
-PKG_VERSION="4.8"
-PKG_REV="0"
+PKG_VERSION="4.10"
+PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="BSD"
 PKG_SITE="http://sourceforge.net/projects/strace/"
