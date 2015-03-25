@@ -1,0 +1,17 @@
+diff -Naur handbrake-7000.orig/contrib/ffmpeg/module.defs handbrake-7000/contrib/ffmpeg/module.defs
+--- handbrake-7000.orig/contrib/ffmpeg/module.defs	2015-03-24 15:34:50.416065787 -0700
++++ handbrake-7000/contrib/ffmpeg/module.defs	2015-03-24 15:36:04.238139676 -0700
+@@ -78,7 +78,12 @@
+         --enable-cross-compile --cross-prefix=$(BUILD.cross.prefix)
+     FFMPEG.GCC.args.extra += -fno-common
+ else
+-    FFMPEG.CONFIGURE.extra += --enable-pthreads
++    FFMPEG.CONFIGURE.extra += \
++        --enable-pthreads \
++        --arch=$(BUILD.machine) \
++        --enable-cross-compile \
++        --cross-prefix=$(BUILD.cross.prefix) \
++        --target-os="linux"
+ endif
+ 
+ ifneq (none,$(FFMPEG.GCC.g))

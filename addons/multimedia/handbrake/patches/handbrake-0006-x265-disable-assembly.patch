@@ -1,0 +1,12 @@
+diff -Naur handbrake-7000.orig/contrib/x265/module.defs handbrake-7000/contrib/x265/module.defs
+--- handbrake-7000.orig/contrib/x265/module.defs	2015-03-24 21:51:17.371243679 -0700
++++ handbrake-7000/contrib/x265/module.defs	2015-03-24 21:51:43.843964481 -0700
+@@ -9,7 +9,7 @@
+ X265.CONFIGURE.deps        =
+ X265.CONFIGURE.static      =
+ X265.CONFIGURE.shared      = -DENABLE_SHARED=OFF
+-X265.CONFIGURE.extra       = -DENABLE_CLI=OFF -DHIGH_BIT_DEPTH=OFF
++X265.CONFIGURE.extra       = -DENABLE_CLI=OFF -DHIGH_BIT_DEPTH=OFF -DENABLE_ASSEMBLY=OFF
+ 
+ ifneq (none,$(X265.GCC.g))
+     X265.CONFIGURE.extra += -DCMAKE_BUILD_TYPE=Debug
