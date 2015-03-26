@@ -1,0 +1,13 @@
+diff -Naur handbrake-7000.orig/contrib/libvpx/module.defs handbrake-7000/contrib/libvpx/module.defs
+--- handbrake-7000.orig/contrib/libvpx/module.defs	2015-03-24 12:31:06.975588983 -0700
++++ handbrake-7000/contrib/libvpx/module.defs	2015-03-24 12:31:46.328161445 -0700
+@@ -19,7 +19,7 @@
+ endif
+ 
+ ifeq (1-i686,$(BUILD.cross)-$(BUILD.machine))
+-    LIBVPX.CONFIGURE.extra += --target=x86-win32-gcc
++    LIBVPX.CONFIGURE.extra += --target=generic-gnu
+ else ifeq (1-x86_64,$(BUILD.cross)-$(BUILD.machine))
+-    LIBVPX.CONFIGURE.extra += --target=x86_64-win64-gcc
++    LIBVPX.CONFIGURE.extra += --target=generic-gnu
+ endif

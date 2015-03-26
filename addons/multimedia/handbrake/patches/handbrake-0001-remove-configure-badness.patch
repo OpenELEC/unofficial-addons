@@ -1,0 +1,25 @@
+diff -Naur handbrake-7000.orig/make/configure.py handbrake-7000/make/configure.py
+--- handbrake-7000.orig/make/configure.py	2015-03-24 12:02:36.356652393 -0700
++++ handbrake-7000/make/configure.py	2015-03-24 12:03:22.594099224 -0700
+@@ -488,8 +488,6 @@
+         if options.cross:
+             if self.match( '*mingw*' ):
+                 self.systemf = 'MinGW'
+-            elif self.systemf:
+-                self.systemf[0] = self.systemf[0].upper()
+             self.title = '%s %s' % (build.systemf,self.machine)
+         else:
+             self.title = '%s %s' % (build.systemf,arch.mode.mode)
+@@ -1470,12 +1468,6 @@
+         else:
+             targets.append( arg )
+ 
+-    ## re-run tools with cross-compilation needs
+-    if options.cross:
+-        for tool in ( Tools.ar, Tools.gcc, Tools.ranlib, Tools.strip ):
+-            tool.__init__( tool.var, '%s-%s' % (options.cross,tool.name), **tool.kwargs )
+-            tool.run()
+-
+     ## run delayed actions
+     for action in Action.actions:
+         action.run()

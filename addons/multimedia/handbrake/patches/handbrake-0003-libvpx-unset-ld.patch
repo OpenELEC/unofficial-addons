@@ -1,0 +1,11 @@
+diff -Naur handbrake-7000.orig/contrib/libvpx/module.defs handbrake-7000/contrib/libvpx/module.defs
+--- handbrake-7000.orig/contrib/libvpx/module.defs	2015-03-24 13:31:49.023448639 -0700
++++ handbrake-7000/contrib/libvpx/module.defs	2015-03-24 13:32:21.573893251 -0700
+@@ -3,6 +3,7 @@
+ 
+ LIBVPX.FETCH.url = http://download.handbrake.fr/contrib/libvpx-v1.3.0.tar.bz2
+ 
++LIBVPX.CONFIGURE.env.LD    = LD=""
+ LIBVPX.CONFIGURE.args.host =
+ LIBVPX.CONFIGURE.deps  =
+ LIBVPX.CONFIGURE.extra =  \
