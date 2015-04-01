@@ -1,0 +1,13 @@
+[Unit]
+Description=dispmanx_vnc
+After=graphical.target
+
+[Service]
+ExecStart=/bin/sh -C "/storage/.kodi/addons/service.system.dispmanx_vnc/bin/dispmanx_vncserver.start"
+TimeoutStopSec=1
+Restart=always
+RestartSec=2
+StartLimitInterval=0
+
+[Install]
+WantedBy=kodi.target
