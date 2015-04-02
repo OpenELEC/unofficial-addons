@@ -1,3 +1,6 @@
+4.3.12
+- update to tvheadend-3.9.2675
+
 4.3.11
 - update to tvheadend-3.9.2496
 
