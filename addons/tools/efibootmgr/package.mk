@@ -20,7 +20,7 @@
 
 PKG_NAME="efibootmgr"
 PKG_VERSION="0.7.0"
-PKG_REV="0"
+PKG_REV="2"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/vathpela/efibootmgr"

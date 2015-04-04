@@ -22,7 +22,7 @@
 
 PKG_NAME="truecrypt"
 PKG_VERSION="7.1a"
-PKG_REV="0"
+PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.truecrypt.org"

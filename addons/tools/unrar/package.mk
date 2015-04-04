@@ -20,7 +20,7 @@
 
 PKG_NAME="unrar"
 PKG_VERSION="5.1.6"
-PKG_REV="0"
+PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="free"
 PKG_SITE="http://www.rarlab.com"

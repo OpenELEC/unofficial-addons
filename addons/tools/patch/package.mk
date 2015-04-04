@@ -20,7 +20,7 @@
 
 PKG_NAME="patch"
 PKG_VERSION="2.7.1"
-PKG_REV="2"
+PKG_REV="4"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://savannah.gnu.org/projects/patch/"

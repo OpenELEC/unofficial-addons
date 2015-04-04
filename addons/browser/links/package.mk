@@ -19,7 +19,7 @@
 
 PKG_NAME="links"
 PKG_VERSION="2.8"
-PKG_REV="1"
+PKG_REV="3"
 PKG_ARCH="i386 x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://links.twibright.com/"

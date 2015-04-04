@@ -19,7 +19,7 @@
 
 PKG_NAME="openvpn"
 PKG_VERSION="2.3.5"
-PKG_REV="0"
+PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://openvpn.net"

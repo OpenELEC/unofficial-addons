@@ -20,7 +20,7 @@
 
 PKG_NAME="mesa-demos"
 PKG_VERSION="8.2.0"
-PKG_REV="0"
+PKG_REV="2"
 PKG_ARCH="i386 x86_64"
 PKG_LICENSE="OSS"
 PKG_SITE="http://www.mesa3d.org/"

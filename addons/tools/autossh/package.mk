@@ -22,7 +22,7 @@
 
 PKG_NAME="autossh"
 PKG_VERSION="1.4c"
-PKG_REV="0"
+PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.harding.motd.ca/"

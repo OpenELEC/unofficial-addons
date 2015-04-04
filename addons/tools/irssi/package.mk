@@ -20,7 +20,7 @@
 
 PKG_NAME="irssi"
 PKG_VERSION="0.8.17"
-PKG_REV="0"
+PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.irssi.org/"

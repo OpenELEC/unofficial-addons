@@ -20,7 +20,7 @@
 
 PKG_NAME="mumudvb"
 PKG_VERSION="1.7.2"
-PKG_REV="0"
+PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.mumudvb.net/"

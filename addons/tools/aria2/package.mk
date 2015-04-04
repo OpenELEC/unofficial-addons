@@ -18,7 +18,7 @@
 
 PKG_NAME="aria2"
 PKG_VERSION="1.18.8"
-PKG_REV="0"
+PKG_REV="2"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://aria2.sourceforge.net/"

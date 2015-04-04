@@ -20,8 +20,8 @@
 
 PKG_NAME="tcpdump"
 PKG_VERSION="4.6.1"
+PKG_REV="4"
 PKG_ARCH="any"
-PKG_REV="2"
 PKG_SITE="http://www.tcpdump.org/"
 PKG_URL="http://www.tcpdump.org/release/tcpdump-${PKG_VERSION}.tar.gz"
 PKG_DEPENDS_TARGET="toolchain libpcap"

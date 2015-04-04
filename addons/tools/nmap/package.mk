@@ -21,7 +21,7 @@
 
 PKG_NAME="nmap"
 PKG_VERSION="6.46"
-PKG_REV="0"
+PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://nmap.org/"

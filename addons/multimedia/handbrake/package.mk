@@ -1,4 +1,3 @@
-
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
@@ -21,7 +20,7 @@
 
 PKG_NAME="handbrake"
 PKG_VERSION="b79c968"
-PKG_REV="0"
+PKG_REV="3"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="https://handbrake.fr/"

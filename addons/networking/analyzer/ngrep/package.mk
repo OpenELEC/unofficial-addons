@@ -20,7 +20,7 @@
 
 PKG_NAME="ngrep"
 PKG_VERSION="1.45"
-PKG_REV="2"
+PKG_REV="4"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://ngrep.sourceforge.net/"

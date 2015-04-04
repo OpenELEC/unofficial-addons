@@ -19,7 +19,7 @@
 
 PKG_NAME="dhcp"
 PKG_VERSION="4.1-ESV-R9"
-PKG_REV="1"
+PKG_REV="3"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://www.isc.org/"

@@ -20,7 +20,7 @@
 
 PKG_NAME="acpica"
 PKG_VERSION="unix-20140627"
-PKG_REV="0"
+PKG_REV="2"
 PKG_ARCH="i386 x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.acpica.org/"

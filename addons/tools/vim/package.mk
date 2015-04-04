@@ -18,7 +18,7 @@
 
 PKG_NAME="vim"
 PKG_VERSION="7.4"
-PKG_REV="2"
+PKG_REV="4"
 PKG_ARCH="any"
 PKG_LICENSE="VIM"
 PKG_SITE="http://www.vim.org/"

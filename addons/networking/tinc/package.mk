@@ -15,9 +15,10 @@
 # You should have received a copy of the GNU General Public License
 # along with OpenELEC. If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
+
 PKG_NAME="tinc"
 PKG_VERSION="1.1pre11"
-PKG_REV="3"
+PKG_REV="5"
 PKG_ARCH="any"
 PKG_LICENSE="GPLv2"
 PKG_SITE="http://www.tinc-vpn.org/"

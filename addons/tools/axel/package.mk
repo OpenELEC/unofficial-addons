@@ -18,7 +18,7 @@
 
 PKG_NAME="axel"
 PKG_VERSION="2.4"
-PKG_REV="0"
+PKG_REV="2"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://freecode.com/projects/axel"

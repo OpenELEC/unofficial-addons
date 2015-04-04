@@ -20,7 +20,7 @@
 
 PKG_NAME="sshfs-fuse"
 PKG_VERSION="2.5"
-PKG_REV="1"
+PKG_REV="3"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://fuse.sourceforge.net/sshfs.html"

@@ -20,7 +20,7 @@
 
 PKG_NAME="tstools"
 PKG_VERSION="1.11"
-PKG_REV="1"
+PKG_REV="3"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://tstools.berlios.de/"

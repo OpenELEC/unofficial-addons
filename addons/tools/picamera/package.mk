@@ -18,7 +18,7 @@
 
 PKG_NAME="picamera"
 PKG_VERSION="1.9"
-PKG_REV="0"
+PKG_REV="2"
 PKG_ARCH="arm"
 PKG_LICENSE="BSD"
 PKG_SITE="http://sourceforge.net/p/raspberry-gpio-python/"

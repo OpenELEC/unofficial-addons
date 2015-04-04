@@ -18,7 +18,7 @@
 
 PKG_NAME="file"
 PKG_VERSION="5.19"
-PKG_REV="0"
+PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="BSD"
 PKG_SITE="http://www.darwinsys.com/file/"
