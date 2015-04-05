@@ -41,14 +41,7 @@ PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="Lukas Rusak (lrusak at irc.freenode.net)"
 
-pre_build_target() {
-  mkdir -p $ROOT/$PKG_BUILD/.$TARGET_NAME
-    cp -RP $ROOT/$PKG_BUILD/* $ROOT/$PKG_BUILD/.$TARGET_NAME
-}
-
 make_target() {  
-  cd $ROOT/$PKG_BUILD/.$TARGET_NAME
-  
   $CC $CFLAGS main.c -o dispmanx_vncserver -DHAVE_LIBBCM_HOST \
                                            -DUSE_EXTERNAL_LIBBCM_HOST \
                                            -DUSE_VCHIQ_ARM \
@@ -81,5 +74,5 @@ makeinstall_target() {
 
 addon() {
   mkdir -p $ROOT/$ADDON_BUILD/$PKG_ADDON_ID/bin
-    cp -p $ROOT/$PKG_BUILD/.$TARGET_NAME/dispmanx_vncserver $ROOT/$ADDON_BUILD/$PKG_ADDON_ID/bin
+    cp -p $ROOT/$PKG_BUILD/dispmanx_vncserver $ROOT/$ADDON_BUILD/$PKG_ADDON_ID/bin
 }
