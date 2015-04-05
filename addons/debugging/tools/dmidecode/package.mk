@@ -21,7 +21,7 @@
 PKG_NAME="dmidecode"
 PKG_VERSION="2.12"
 PKG_REV="2"
-PKG_ARCH="i386 x86_64"
+PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.nongnu.org/dmidecode/"
 PKG_URL="http://download.savannah.gnu.org/releases/dmidecode/$PKG_NAME-$PKG_VERSION.tar.bz2"

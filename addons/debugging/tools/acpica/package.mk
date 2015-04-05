@@ -21,7 +21,7 @@
 PKG_NAME="acpica"
 PKG_VERSION="unix-20140627"
 PKG_REV="2"
-PKG_ARCH="i386 x86_64"
+PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.acpica.org/"
 PKG_URL="https://acpica.org/sites/acpica/files/$PKG_NAME-$PKG_VERSION.tar.gz"
@@ -39,8 +39,7 @@ PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="Dag Wieers (dag@wieers.com)"
 
-[ "$TARGET_ARCH" = "i386" ] && ACPICA_BITS="32"
-[ "$TARGET_ARCH" = "x86_64" ] && ACPICA_BITS="64"
+ACPICA_BITS="64"
 
 make_target() {
   make PREFIX=/usr \

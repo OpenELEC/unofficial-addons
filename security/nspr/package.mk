@@ -21,7 +21,7 @@
 PKG_NAME="nspr"
 PKG_VERSION="4.10.4"
 PKG_REV="1"
-PKG_ARCH="i386 x86_64"
+PKG_ARCH="x86_64"
 PKG_LICENSE="Mozilla Public License"
 PKG_SITE="http://www.linuxfromscratch.org/blfs/view/svn/general/nspr.html"
 PKG_URL="http://ftp.mozilla.org/pub/mozilla.org/nspr/releases/v$PKG_VERSION/src/$PKG_NAME-$PKG_VERSION.tar.gz"

@@ -49,13 +49,6 @@ PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
 make_target() {
   cd $ROOT/$PKG_BUILD/src
 
-  if [ "$TARGET_ARCH" = "x86_64" ] ; then
-    CHROMIUM_ARCH="target_arch=x64"
-  fi
-  if [ "$TARGET_ARCH" = "i386" ] ; then
-    CHROMIUM_ARCH="target_arch=ia32"
-  fi
-
   unset CFLAGS LDFLAGS LD
   export LDFLAGS="-Wl,--as-needed"
   export CXXFLAGS="-fno-ipa-cp"
@@ -64,7 +57,7 @@ make_target() {
   export GYP_PARAMS=
   export GYP_GENERATORS='make'
   export GYP_DEFINES="fastbuild=2 \
-    $CHROMIUM_ARCH \
+    target_arch=x64 \
     disable_sse2=1 \
     linux_sandbox_path=/storage/.kodi/addons/browser.chromium-browser/bin/chromium.sandbox \
     linux_breakpad=0 \
