@@ -1,0 +1,12 @@
+diff --git a/Makefile.am b/Makefile.am
+index 4a2edc6..38b912a 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -2,7 +2,7 @@
+ 
+ AUTOMAKE_OPTIONS = foreign
+ 
+-SUBDIRS = tools support utils linux-nfs tests systemd
++SUBDIRS = support utils linux-nfs tests systemd
+ 
+ MAINTAINERCLEANFILES = Makefile.in
