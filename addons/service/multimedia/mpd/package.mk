@@ -19,13 +19,13 @@
 ################################################################################
 
 PKG_NAME="mpd"
-PKG_VERSION="0.18.11"
+PKG_VERSION="0.18.12"
 PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://mpd.wikia.com/wiki/Music_Player_Daemon_Wiki"
 PKG_URL="http://www.musicpd.org/download/${PKG_NAME}/${PKG_VERSION%.*}/${PKG_NAME}-${PKG_VERSION}.tar.xz"
-PKG_DEPENDS_TARGET="toolchain glib libmad libogg flac faad2 curl alsa-lib yajl libid3tag"
+PKG_DEPENDS_TARGET="toolchain glib ffmpeg libmad libogg flac faad2 curl alsa-lib yajl libid3tag"
 PKG_PRIORITY="optional"
 PKG_SECTION="service.multimedia"
 PKG_SHORTDESC="Flexible, powerful, server-side application for playing music"
@@ -56,7 +56,7 @@ PKG_CONFIGURE_OPTS_TARGET="--enable-alsa \
              --disable-debug \
              --disable-documentation \
              --disable-ffado \
-             --disable-ffmpeg \
+             --enable-ffmpeg \
              --disable-fluidsynth \
              --disable-gme \
              --disable-httpd-output \
