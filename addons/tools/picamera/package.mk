@@ -56,10 +56,10 @@ addon() {
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib/
     cp -rP $PKG_BUILD/picamera $ADDON_BUILD/$PKG_ADDON_ID/lib/picamera
 
-
+  BCM2835_DIR="$(get_build_dir bcm2835-driver)"
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin/
-    cp -P $BUILD/bcm2835-driver-*/$FLOAT/opt/vc/bin/raspistill $ADDON_BUILD/$PKG_ADDON_ID/bin
-    cp -P $BUILD/bcm2835-driver-*/$FLOAT/opt/vc/bin/raspiyuv $ADDON_BUILD/$PKG_ADDON_ID/bin
-    cp -P $BUILD/bcm2835-driver-*/$FLOAT/opt/vc/bin/raspivid $ADDON_BUILD/$PKG_ADDON_ID/bin
-    cp -P $BUILD/bcm2835-driver-*/$FLOAT/opt/vc/bin/raspividyuv $ADDON_BUILD/$PKG_ADDON_ID/bin
+    cp -P $BCM2835_DIR/$FLOAT/opt/vc/bin/raspistill $ADDON_BUILD/$PKG_ADDON_ID/bin
+    cp -P $BCM2835_DIR/$FLOAT/opt/vc/bin/raspiyuv $ADDON_BUILD/$PKG_ADDON_ID/bin
+    cp -P $BCM2835_DIR/$FLOAT/opt/vc/bin/raspivid $ADDON_BUILD/$PKG_ADDON_ID/bin
+    cp -P $BCM2835_DIR/$FLOAT/opt/vc/bin/raspividyuv $ADDON_BUILD/$PKG_ADDON_ID/bin
 }
