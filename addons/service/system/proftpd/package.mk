@@ -36,6 +36,7 @@ PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
 PKG_ADDON_PROVIDES=""
 PKG_AUTORECONF="no"
+PKG_ADDON_REPOVERSION="4.3"
 
 PKG_MAINTAINER="vpeter4 (peter.vicman@gmail.com)"
 

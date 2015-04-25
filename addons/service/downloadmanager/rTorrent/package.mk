@@ -35,6 +35,7 @@ PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
 PKG_ADDON_PROVIDES=""
 PKG_ADDON_REQUIRES="tools.php:0.0.0 tools.dtach:0.0.0"
+PKG_ADDON_REPOVERSION="4.3"
 
 PKG_AUTORECONF="no"
 

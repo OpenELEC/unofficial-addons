@@ -34,6 +34,7 @@ PKG_LONGDESC="Mrxvt (previously named as materm) is a lightweight and powerful m
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES="executable"
+PKG_ADDON_REPOVERSION="4.3"
 
 PKG_AUTORECONF="yes"
 

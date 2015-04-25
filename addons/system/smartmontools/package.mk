@@ -34,6 +34,7 @@ PKG_LONGDESC="S.M.A.R.T. disk monitoring tool with XBMC gui. This version is bas
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
+PKG_ADDON_REPOVERSION="4.3"
 PKG_AUTORECONF="yes"
 PKG_MAINTAINER="Peter Smorada (smoradap@gmail.com)"
 

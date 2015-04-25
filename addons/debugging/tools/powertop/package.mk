@@ -34,6 +34,7 @@ PKG_LONGDESC="PowerTOP is a Linux tool to diagnose issues with power consumption
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
+PKG_ADDON_REPOVERSION="4.3"
 
 PKG_AUTORECONF="yes"
 

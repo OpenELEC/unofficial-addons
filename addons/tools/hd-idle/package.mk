@@ -36,6 +36,7 @@ PKG_AUTORECONF="no"
 
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
+PKG_ADDON_REPOVERSION="4.3"
 
 PKG_MAINTAINER="unofficial.addon.pro"
 

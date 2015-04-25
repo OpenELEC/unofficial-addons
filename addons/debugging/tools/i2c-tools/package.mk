@@ -34,6 +34,7 @@ PKG_LONGDESC="The i2c-tools package contains a heterogeneous set of I2C tools fo
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
+PKG_ADDON_REPOVERSION="4.3"
 
 PKG_AUTORECONF="no"
 

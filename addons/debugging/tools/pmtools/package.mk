@@ -35,6 +35,7 @@ PKG_LONGDESC="The pmtools package contains tools to debug ACPI DSDT tables"
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
+PKG_ADDON_REPOVERSION="4.3"
 
 PKG_AUTORECONF="no"
 

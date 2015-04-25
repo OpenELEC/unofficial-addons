@@ -34,6 +34,7 @@ PKG_LONGDESC="Rsync uses an own 'rsync' algorithm which provides a very fast met
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
+PKG_ADDON_REPOVERSION="4.3"
 
 PKG_AUTORECONF="yes"
 

@@ -34,6 +34,7 @@ PKG_LONGDESC="GNU Diffutils is a package of several programs related to finding 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
+PKG_ADDON_REPOVERSION="4.3"
 
 PKG_AUTORECONF="yes"
 

@@ -33,6 +33,7 @@ PKG_LONGDESC="w_scan ist eine kleine Anwendung zum Scannen von ATSC/DVB-C/S/T Tr
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
+PKG_ADDON_REPOVERSION="4.3"
 PKG_AUTORECONF="yes"
 
 PKG_MAINTAINER="unofficial.addon.pro"

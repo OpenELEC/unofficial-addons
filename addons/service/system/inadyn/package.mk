@@ -34,6 +34,7 @@ PKG_DISCLAIMER="This is an unofficial addon. Do therefore not expect support fro
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
 PKG_ADDON_PROVIDES=""
+PKG_ADDON_REPOVERSION="4.3"
 
 PKG_MAINTAINER="Anton Voyl (awiouy@gmail.com)"
 

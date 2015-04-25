@@ -34,6 +34,7 @@ PKG_LONGDESC="Iperf was developed by NLANR/DAST as a modern alternative for meas
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
+PKG_ADDON_REPOVERSION="4.3"
 
 PKG_AUTORECONF="yes"
 

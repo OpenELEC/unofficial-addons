@@ -32,6 +32,7 @@ PKG_AUTORECONF="yes"
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
+PKG_ADDON_REPOVERSION="4.3"
 PKG_MAINTAINER="Anton Voyl (awiouy@gmail.com)"
 PKG_DISCLAIMER="This is an unofficial addon. Please don't ask for support in openelec forum or irc channel."
 

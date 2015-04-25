@@ -34,6 +34,8 @@ PKG_LONGDESC="PHP is a widely-used general-purpose scripting language that is es
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
+PKG_ADDON_REPOVERSION="4.3"
+
 PKG_MAINTAINER="none"
 
 PKG_AUTORECONF="no"
