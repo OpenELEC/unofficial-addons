@@ -1,3 +1,6 @@
+4.3.3
+- support for .mpc and .ape files by adding dependency for ffmpeg
+
 4.3.2
 - rebuild
 
