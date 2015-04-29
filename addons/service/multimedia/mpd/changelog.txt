@@ -1,3 +1,6 @@
+6.0.0
+- rebuild for OE 6
+
 4.3.3
 - support for .mpc and .ape files by adding dependency for ffmpeg
 

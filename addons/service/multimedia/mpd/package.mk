@@ -20,7 +20,7 @@
 
 PKG_NAME="mpd"
 PKG_VERSION="0.18.12"
-PKG_REV="3"
+PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://mpd.wikia.com/wiki/Music_Player_Daemon_Wiki"
@@ -33,7 +33,7 @@ PKG_LONGDESC="Flexible, powerful, server-side application for playing music"
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="4.3"
+PKG_ADDON_REPOVERSION="6.0"
 
 PKG_AUTORECONF="yes"
 
