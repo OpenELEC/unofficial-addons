@@ -20,7 +20,7 @@
 
 PKG_NAME="encfs"
 PKG_VERSION="1.7.4"
-PKG_REV="3"
+PKG_REV="0"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.arg0.net/encfs"
@@ -34,7 +34,7 @@ PKG_LONGDESC="EncFS provides an encrypted filesystem in user-space. It runs with
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="4.3"
+PKG_ADDON_REPOVERSION="6.0"
 
 PKG_AUTORECONF="yes"
 
