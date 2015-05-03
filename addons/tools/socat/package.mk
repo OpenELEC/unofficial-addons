@@ -20,7 +20,7 @@
 
 PKG_NAME="socat"
 PKG_VERSION="1.7.2.4"
-PKG_REV="5"
+PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL2"
 PKG_SITE="http://www.dest-unreach.org/socat/"
@@ -34,7 +34,7 @@ PKG_LONGDESC="socat is a relay for bidirectional data transfer between two indep
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="4.3"
+PKG_ADDON_REPOVERSION="6.0"
 
 PKG_AUTORECONF="no"
 
