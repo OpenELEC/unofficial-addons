@@ -18,7 +18,7 @@
 
 PKG_NAME="tinc"
 PKG_VERSION="1.1pre11"
-PKG_REV="5"
+PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPLv2"
 PKG_SITE="http://www.tinc-vpn.org/"
@@ -32,7 +32,7 @@ PKG_AUTORECONF="yes"
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="4.3"
+PKG_ADDON_REPOVERSION="6.0"
 PKG_MAINTAINER="Anton Voyl (awiouy@gmail.com)"
 PKG_DISCLAIMER="This is an unofficial addon. Please don't ask for support in openelec forum or irc channel."
 
