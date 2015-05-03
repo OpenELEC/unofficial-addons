@@ -19,7 +19,7 @@
 
 PKG_NAME="inadyn"
 PKG_VERSION="1.99.12"
-PKG_REV="2"
+PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPLv2"
 PKG_SITE="http://troglobit.com/inadyn.html"
@@ -34,7 +34,7 @@ PKG_DISCLAIMER="This is an unofficial addon. Do therefore not expect support fro
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="4.3"
+PKG_ADDON_REPOVERSION="6.0"
 
 PKG_MAINTAINER="Anton Voyl (awiouy@gmail.com)"
 
