@@ -20,7 +20,7 @@
 
 PKG_NAME="proftpd"
 PKG_VERSION="1.3.4e"
-PKG_REV="2"
+PKG_REV="0"
 PKG_ARCH="all"
 PKG_ARCH="any"
 PKG_LICENSE="OSS"
@@ -36,7 +36,7 @@ PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
 PKG_ADDON_PROVIDES=""
 PKG_AUTORECONF="no"
-PKG_ADDON_REPOVERSION="4.3"
+PKG_ADDON_REPOVERSION="6.0"
 
 PKG_MAINTAINER="vpeter4 (peter.vicman@gmail.com)"
 
