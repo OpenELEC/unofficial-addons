@@ -19,8 +19,8 @@
 ################################################################################
 
 PKG_NAME="makemkv"
-PKG_VERSION="1.9.0"
-PKG_REV="4"
+PKG_VERSION="1.9.2"
+PKG_REV="0"
 PKG_ARCH="x86_64"
 PKG_LICENSE="OSS"
 PKG_SITE="http://www.makemkv.com/forum2/viewforum.php?f=3"
@@ -35,7 +35,7 @@ PKG_LONGDESC="MakeMKV can instantly stream decrypted video without intermediate 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="4.3"
+PKG_ADDON_REPOVERSION="6.0"
 
 PKG_AUTORECONF="no"
 
