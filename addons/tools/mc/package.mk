@@ -40,9 +40,6 @@ PKG_AUTORECONF="yes"
 
 PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
 
-export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses"
-export LDFLAGS=`echo $LDFLAGS | sed -e "s|-Wl,--as-needed||"`
-
 PKG_CONFIGURE_OPTS_TARGET="--sysconfdir=/storage/.kodi/addons/tools.mc/etc \
             --datadir=/storage/.kodi/addons/tools.mc/data \
             --libdir=/storage/.kodi/addons/tools.mc/mclib \
@@ -61,6 +58,11 @@ PKG_CONFIGURE_OPTS_TARGET="--sysconfdir=/storage/.kodi/addons/tools.mc/etc \
             --with-internal-edit \
             --without-diff-viewer \
             --with-subshell"
+
+pre_configure_target() {
+  export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses"
+  export LDFLAGS=`echo $LDFLAGS | sed -e "s|-Wl,--as-needed||"`
+}
 
 post_makeinstall_target() {
   rm -rf $INSTALL/storage/.kodi/addons/tools.mc/data/locale
