@@ -28,8 +28,16 @@ PKG_PRIORITY="optional"
 PKG_SECTION="tools"
 PKG_SHORTDESC="XMLStarlet is a command-line XML utility which allows the modification and validation of XML documents"
 PKG_LONGDESC="XMLStarlet is a command line XML toolkit which can be used to transform,query, validate, and edit XML documents and files using  simple set of shellcommands in similar way it is done for plain text files  using grep/sed/awk/tr/diff/patch."
+
 PKG_IS_ADDON="yes"
+PKG_ADDON_TYPE="xbmc.python.script"
+PKG_ADDON_PROVIDES=""
+PKG_ADDON_REPOVERSION="6.0"
+
 PKG_AUTORECONF="yes"
+
+PKG_MAINTAINER="James White"
+
 
 PKG_CONFIGURE_OPTS_TARGET="ac_cv_func_malloc_0_nonnull=yes \
                            ac_cv_func_realloc_0_nonnull=yes \
@@ -38,14 +46,6 @@ PKG_CONFIGURE_OPTS_TARGET="ac_cv_func_malloc_0_nonnull=yes \
                            --with-libxml-libs-prefix=$SYSROOT_PREFIX/usr/lib \
                            --with-libxslt-include-prefix=$SYSROOT_PREFIX/usr/include \
                            --with-libxslt-libs-prefix=$SYSROOT_PREFIX/usr/lib"
-
-PKG_IS_ADDON="yes"
-PKG_ADDON_TYPE="xbmc.python.script"
-PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="6.0"
-PKG_AUTORECONF="yes"
-PKG_MAINTAINER="James White"
-
 makeinstall_target() {
 	: # nop
 }

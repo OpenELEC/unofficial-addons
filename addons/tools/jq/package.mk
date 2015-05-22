@@ -28,15 +28,17 @@ PKG_PRIORITY="optional"
 PKG_SECTION="tools"
 PKG_SHORTDESC="jq is a command-line JSON processor"
 PKG_LONGDESC="jq is like sed for JSON data – you can use it to slice and filter and map and transform structured data with the same ease that sed, awk, grep and friends let you play with text."
-PKG_CONFIGURE_OPTS_TARGET="--disable-shared \ 
-				--enable-static"
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
 PKG_ADDON_REPOVERSION="6.0"
+
 PKG_AUTORECONF="yes"
+
 PKG_MAINTAINER="James White"
+
+PKG_CONFIGURE_OPTS_TARGET="--disable-shared --enable-static"
 
 makeinstall_target() {
 	: # nop
