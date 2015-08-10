@@ -11,10 +11,10 @@ diff --git a/Makefile b/Makefile
 index ddcc47e..0087a6c 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -28,7 +28,7 @@ PROG    := $(BUILDDIR)/tvheadend
- #
- 
- CFLAGS  += -g -O2 -Wunused-result
+@@ -32,7 +32,7 @@
+ ifeq ($(CONFIG_W_UNUSED_RESULT),yes)
+ CFLAGS  += -Wunused-result
+ endif
 -CFLAGS  += -Wall -Werror -Wwrite-strings -Wno-deprecated-declarations
 +CFLAGS  += -Wall -Wwrite-strings -Wno-deprecated-declarations
  CFLAGS  += -Wmissing-prototypes
