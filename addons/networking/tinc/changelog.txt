@@ -1,3 +1,12 @@
+6.0.0
+- rebuild for OE6
+
+4.3.5
+- rebuild
+
+4.3.3
+- rebuild without curses
+
 4.3.2
 - Bumped tinc to 1.1pre11
 

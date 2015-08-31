@@ -1,5 +1,7 @@
 <settings>
     <setting id="RESTART_ON_RESUME" value="false" />
+    <setting id="WAIT_FOR_NET" value="false" />
+    <setting id="WAIT_FOR_NET_TIME" value="1" />
     <setting id="WAIT_FOR_FEINIT" value="false" />
     <setting id="NUM_ADAPTERS" value="1" />
 </settings>

@@ -20,8 +20,8 @@
 
 PKG_NAME="tcpdump"
 PKG_VERSION="4.6.1"
+PKG_REV="4"
 PKG_ARCH="any"
-PKG_REV="2"
 PKG_SITE="http://www.tcpdump.org/"
 PKG_URL="http://www.tcpdump.org/release/tcpdump-${PKG_VERSION}.tar.gz"
 PKG_DEPENDS_TARGET="toolchain libpcap"
@@ -32,6 +32,8 @@ PKG_LONGDESC="This program allows you to dump the traffic on a network. tcpdump 
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
+PKG_ADDON_PROVIDES=""
+PKG_ADDON_REPOVERSION="4.3"
 
 PKG_AUTORECONF="yes"
 

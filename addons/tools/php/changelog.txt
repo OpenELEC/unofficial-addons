@@ -1,5 +1,11 @@
+6.0.0
+- rebuild for OE6
+
+4.3.3
+- rebuild
+
 4.3.1
-- update to kodi
+- update to php-5.5.23
 
 4.1.1
 - update to php-5.5.14

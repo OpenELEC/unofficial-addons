@@ -20,7 +20,7 @@
 
 PKG_NAME="iftop"
 PKG_VERSION="1.0pre4"
-PKG_REV="1"
+PKG_REV="3"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://htop.sourceforge.net/"
@@ -33,6 +33,8 @@ PKG_LONGDESC="iftop does for network usage what top(1) does for CPU usage. It li
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
+PKG_ADDON_PROVIDES=""
+PKG_ADDON_REPOVERSION="4.3"
 
 PKG_AUTORECONF="yes"
 

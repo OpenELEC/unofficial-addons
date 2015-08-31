@@ -19,8 +19,8 @@
 ################################################################################
 
 PKG_NAME="lftp"
-PKG_VERSION="4.6.1"
-PKG_REV="1"
+PKG_VERSION="4.6.2"
+PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://lftp.yar.ru/"
@@ -34,6 +34,8 @@ PKG_DISCLAIMER="this is an unofficial addon. please don't ask for support in ope
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
+PKG_ADDON_PROVIDES=""
+PKG_ADDON_REPOVERSION="6.0"
 
 PKG_AUTORECONF="yes"
 

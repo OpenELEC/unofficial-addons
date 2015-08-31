@@ -19,12 +19,12 @@
 ################################################################################
 
 PKG_NAME="libevent"
-PKG_VERSION="2.0.21-stable"
+PKG_VERSION="2.0.22-stable"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="BSD"
 PKG_SITE="http://libevent.org/"
-PKG_URL="https://github.com/downloads/libevent/libevent/$PKG_NAME-$PKG_VERSION.tar.gz"
+PKG_URL="https://sourceforge.net/projects/levent/files/libevent/libevent-2.0/$PKG_NAME-$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain libressl zlib"
 PKG_PRIORITY="optional"
 PKG_SECTION="devel"
@@ -37,3 +37,7 @@ PKG_AUTORECONF="yes"
 PKG_MAINTAINER="unofficial.addon.pro"
 
 PKG_CONFIGURE_OPTS_TARGET="--disable-shared --enable-static --enable-openssl"
+
+post_makeinstall_target() {
+  rm -r $INSTALL
+}

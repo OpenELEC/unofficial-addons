@@ -20,8 +20,8 @@
 
 PKG_NAME="dmidecode"
 PKG_VERSION="2.12"
-PKG_REV="0"
-PKG_ARCH="i386 x86_64"
+PKG_REV="2"
+PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.nongnu.org/dmidecode/"
 PKG_URL="http://download.savannah.gnu.org/releases/dmidecode/$PKG_NAME-$PKG_VERSION.tar.bz2"
@@ -33,6 +33,8 @@ PKG_LONGDESC="Dmidecode reports information about your system's hardware as desc
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
+PKG_ADDON_PROVIDES=""
+PKG_ADDON_REPOVERSION="4.3"
 
 PKG_AUTORECONF="no"
 

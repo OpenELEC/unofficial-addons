@@ -21,7 +21,7 @@
 
 PKG_NAME="nmap"
 PKG_VERSION="6.46"
-PKG_REV="0"
+PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://nmap.org/"
@@ -34,7 +34,9 @@ PKG_LONGDESC="Free Security Scanned for Network"
 PKG_DISCLAIMER="this is an unofficial addon. please don't ask for support in openelec forum / irc channel"
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
+PKG_ADDON_PROVIDES=""
 PKG_AUTORECONF="no"
+PKG_ADDON_REPOVERSION="4.3"
 
 PKG_MAINTAINER="none"
 

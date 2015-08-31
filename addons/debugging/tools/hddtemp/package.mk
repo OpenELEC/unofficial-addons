@@ -20,7 +20,7 @@
 
 PKG_NAME="hddtemp"
 PKG_VERSION="0.3-beta15"
-PKG_REV="1"
+PKG_REV="3"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.guzu.net/linux/hddtemp.php"
@@ -33,6 +33,8 @@ PKG_LONGDESC="hddtemp is a small utility (daemonizable) that gives you the tempe
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
+PKG_ADDON_PROVIDES=""
+PKG_ADDON_REPOVERSION="4.3"
 
 PKG_AUTORECONF="no"
 

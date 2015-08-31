@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="php"
-PKG_VERSION="5.5.14"
+PKG_VERSION="5.5.23"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="OpenSource"
@@ -33,6 +33,9 @@ PKG_LONGDESC="PHP is a widely-used general-purpose scripting language that is es
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
+PKG_ADDON_PROVIDES=""
+PKG_ADDON_REPOVERSION="6.0"
+
 PKG_MAINTAINER="none"
 
 PKG_AUTORECONF="no"

@@ -18,7 +18,7 @@
 ################################################################################
 
 PKG_NAME="openvpn"
-PKG_VERSION="2.3.5"
+PKG_VERSION="2.3.6"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -34,6 +34,8 @@ PKG_AUTORECONF="yes"
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
+PKG_ADDON_PROVIDES=""
+PKG_ADDON_REPOVERSION="6.0"
 PKG_DISCLAIMER="this is an unofficial addon. please don't ask for support in openelec forum / irc channel"
 
 PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"

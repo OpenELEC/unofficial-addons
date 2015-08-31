@@ -1,0 +1,38 @@
+diff -Naur handbrake-7000.orig/make/include/main.defs handbrake-7000/make/include/main.defs
+--- handbrake-7000.orig/make/include/main.defs	2015-03-24 15:03:02.242524032 -0700
++++ handbrake-7000/make/include/main.defs	2015-03-24 15:03:39.998031359 -0700
+@@ -39,28 +39,12 @@
+ endif
+ endif
+ 
+-ifneq (,$(filter $(BUILD.system),darwin cygwin mingw))
+-    MODULES += contrib/fontconfig
+-    MODULES += contrib/freetype
+-    MODULES += contrib/fribidi
+-    MODULES += contrib/libxml2
+-    MODULES += contrib/libass
+-    MODULES += contrib/libogg
+-    MODULES += contrib/libvorbis
+-    MODULES += contrib/libtheora
+-    MODULES += contrib/libsamplerate
+-    MODULES += contrib/lame
+-    MODULES += contrib/x264
+-    MODULES += contrib/jansson
+-endif
+-
+-ifeq (1,$(FEATURE.fdk_aac))
+-    MODULES += contrib/fdk-aac
+-endif
+-
+-ifeq (1,$(FEATURE.x265))
+-    MODULES += contrib/x265
+-endif
++MODULES += contrib/libtheora
++MODULES += contrib/libsamplerate
++MODULES += contrib/x264
++MODULES += contrib/jansson
++MODULES += contrib/fdk-aac
++MODULES += contrib/x265
+ 
+ MODULES += contrib/ffmpeg
+ MODULES += contrib/libvpx

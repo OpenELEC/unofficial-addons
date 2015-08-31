@@ -20,7 +20,7 @@
 
 PKG_NAME="dtach"
 PKG_VERSION="0.8"
-PKG_REV="0"
+PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://dtach.sourceforge.net"
@@ -33,6 +33,8 @@ PKG_LONGDESC="dtach - A program that emulates the detach feature of screen"
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
+PKG_ADDON_PROVIDES=""
+PKG_ADDON_REPOVERSION="4.3"
 
 PKG_AUTORECONF="no"
 

@@ -20,8 +20,8 @@
 ################################################################################
 
 PKG_NAME="oscam"
-PKG_VERSION="10209"
-PKG_REV="3"
+PKG_VERSION="10607"
+PKG_REV="6"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.streamboard.tv/oscam/wiki"
@@ -35,6 +35,8 @@ PKG_DISCLAIMER="using oscam may be illegal in your country. if in doubt, do not 
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
+PKG_ADDON_PROVIDES=""
+PKG_ADDON_REPOVERSION="4.3"
 
 PKG_AUTORECONF="no"
 
@@ -51,6 +53,7 @@ configure_target() {
       -DWITH_DEBUG=0 \
       -DOPTIONAL_INCLUDE_DIR=$SYSROOT_PREFIX/usr/include \
       -DSTATIC_LIBUSB=1 \
+      -DCLOCKFIX=0 \
       ..
 }
 

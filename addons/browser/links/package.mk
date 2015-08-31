@@ -19,8 +19,8 @@
 
 PKG_NAME="links"
 PKG_VERSION="2.8"
-PKG_REV="1"
-PKG_ARCH="i386 x86_64"
+PKG_REV="0"
+PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://links.twibright.com/"
 PKG_URL="http://links.twibright.com/download/$PKG_NAME-$PKG_VERSION.tar.gz"
@@ -33,6 +33,8 @@ PKG_MAINTAINER="AntiPrism.ca (antiprism@antiprism.ca)"
 PKG_DISCLAIMER="this is an unofficial addon. please don't ask for support in openelec forum / irc channel"
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
+PKG_ADDON_PROVIDES=""
+PKG_ADDON_REPOVERSION="6.0"
 PKG_AUTORECONF="no"
 
 PKG_CONFIGURE_OPTS_TARGET="--x-includes=$SYSROOT_PREFIX/usr/include/X11/ \

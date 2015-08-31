@@ -20,7 +20,7 @@
 
 PKG_NAME="rTorrent"
 PKG_VERSION="4.3"
-PKG_REV="3"
+PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://libtorrent.rakshasa.no"
@@ -33,7 +33,9 @@ PKG_LONGDESC="rTorrent BitTorrent client can handel multipel watch dirs and post
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
+PKG_ADDON_PROVIDES=""
 PKG_ADDON_REQUIRES="tools.php:0.0.0 tools.dtach:0.0.0"
+PKG_ADDON_REPOVERSION="6.0"
 
 PKG_AUTORECONF="no"
 

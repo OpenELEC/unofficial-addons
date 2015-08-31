@@ -20,7 +20,7 @@
 
 PKG_NAME="dvb-fe-tool"
 PKG_VERSION="0.9.5"
-PKG_REV="1"
+PKG_REV="3"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://linuxtv.org/"
@@ -34,6 +34,8 @@ PKG_DISCLAIMER="this is an unofficial addon. please don't ask for support in ope
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
+PKG_ADDON_PROVIDES=""
+PKG_ADDON_REPOVERSION="4.3"
 
 PKG_AUTORECONF="yes"
 

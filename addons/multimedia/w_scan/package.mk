@@ -20,7 +20,7 @@
 
 PKG_NAME="w_scan"
 PKG_VERSION="20141122"
-PKG_REV="2"
+PKG_REV="4"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://wirbel.htpc-forum.de/w_scan/index2.html"
@@ -32,6 +32,8 @@ PKG_SHORTDESC="w_scan: eine kleine Anwendung zum Scannen von ATSC/DVB-C/S/T Tran
 PKG_LONGDESC="w_scan ist eine kleine Anwendung zum Scannen von ATSC/DVB-C/S/T Transpondern/Bouquets nach Sendern und Erstellen einer VDR channels.conf."
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
+PKG_ADDON_PROVIDES=""
+PKG_ADDON_REPOVERSION="4.3"
 PKG_AUTORECONF="yes"
 
 PKG_MAINTAINER="unofficial.addon.pro"

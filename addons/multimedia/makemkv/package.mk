@@ -19,9 +19,9 @@
 ################################################################################
 
 PKG_NAME="makemkv"
-PKG_VERSION="1.9.0"
-PKG_REV="2"
-PKG_ARCH="i386 x86_64"
+PKG_VERSION="1.9.2"
+PKG_REV="0"
+PKG_ARCH="x86_64"
 PKG_LICENSE="OSS"
 PKG_SITE="http://www.makemkv.com/forum2/viewforum.php?f=3"
 PKG_URL="http://www.makemkv.com/download/${PKG_NAME}-oss-${PKG_VERSION}.tar.gz"
@@ -34,6 +34,8 @@ PKG_LONGDESC="MakeMKV can instantly stream decrypted video without intermediate 
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
+PKG_ADDON_PROVIDES=""
+PKG_ADDON_REPOVERSION="6.0"
 
 PKG_AUTORECONF="no"
 
@@ -61,8 +63,7 @@ makeinstall_target() {
 }
 
 addon() {
-  MAKEMKV_ARCH=i386
-  [ "$TARGET_ARCH" = x86_64 ] && MAKEMKV_ARCH=amd64
+  MAKEMKV_ARCH=amd64
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
   cp $PKG_BUILD/bin/bin/$MAKEMKV_ARCH/makemkvcon $ADDON_BUILD/$PKG_ADDON_ID/bin/makemkvcon.bin

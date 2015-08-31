@@ -1,3 +1,10 @@
+6.0.0
+- update to lftp-4.6.2
+- rebuild for OE6
+
+4.3.3
+- rebuild
+
 4.3.1
 - update to lftp-4.6.1
 

@@ -15,9 +15,10 @@
 # You should have received a copy of the GNU General Public License
 # along with OpenELEC. If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
+
 PKG_NAME="tinc"
 PKG_VERSION="1.1pre11"
-PKG_REV="2"
+PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPLv2"
 PKG_SITE="http://www.tinc-vpn.org/"
@@ -30,16 +31,25 @@ PKG_LONGDESC="tinc is a virtual private network (VPN) daemon that uses tunnellin
 PKG_AUTORECONF="yes"
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
+PKG_ADDON_PROVIDES=""
+PKG_ADDON_REPOVERSION="6.0"
 PKG_MAINTAINER="Anton Voyl (awiouy@gmail.com)"
 PKG_DISCLAIMER="This is an unofficial addon. Please don't ask for support in openelec forum or irc channel."
-PKG_CONFIGURE_OPTS_TARGET="--with-curses-include=$SYSROOT_PREFIX/usr/include/ncurses \
+
+PKG_CONFIGURE_OPTS_TARGET="--disable-curses --disable-readline \
+                           --disable-curses \
                            --sysconfdir=/storage/.cache"
+
 pre_configure_target() {
+  # tinc fails to build in subdirs
   cd $ROOT/$PKG_BUILD
+  rm -rf .$TARGET_NAME
 }
+
 makeinstall_target() {
   :
 }
+
 addon() {
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
   cp $PKG_BUILD/src/tinc \

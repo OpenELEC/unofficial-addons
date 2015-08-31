@@ -1,6 +1,6 @@
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
-#      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
+#      Copyright (C) 2009-2015 Stephan Raue (stephan@openelec.tv)
 #
 #  This Program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -19,8 +19,8 @@
 ################################################################################
 
 PKG_NAME="proftpd"
-PKG_VERSION="1.3.4e"
-PKG_REV="2"
+PKG_VERSION="1.3.5a"
+PKG_REV="1"
 PKG_ARCH="all"
 PKG_ARCH="any"
 PKG_LICENSE="OSS"
@@ -31,11 +31,11 @@ PKG_PRIORITY="optional"
 PKG_SECTION="service/system"
 PKG_SHORTDESC="Highly configurable GPL-licensed FTP server software"
 PKG_LONGDESC="Secure and configurable FTP server with SSL/TLS support"
-
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
+PKG_ADDON_PROVIDES=""
 PKG_AUTORECONF="no"
-
+PKG_ADDON_REPOVERSION="6.0"
 PKG_MAINTAINER="vpeter4 (peter.vicman@gmail.com)"
 
 ADDON_DIR="/storage/.kodi/addons/service.system.proftpd"

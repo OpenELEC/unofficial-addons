@@ -18,7 +18,7 @@
 
 PKG_NAME="hid_mapper"
 PKG_VERSION="0"
-PKG_REV="2"
+PKG_REV="4"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE=""
@@ -32,6 +32,8 @@ PKG_LONGDESC="generic HID mapper"
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
+PKG_ADDON_PROVIDES=""
+PKG_ADDON_REPOVERSION="4.3"
 
 PKG_AUTORECONF="no"
 

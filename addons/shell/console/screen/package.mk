@@ -20,7 +20,7 @@
 
 PKG_NAME="screen"
 PKG_VERSION="4.2.1"
-PKG_REV="2"
+PKG_REV="4"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.gnu.org/software/screen/"
@@ -33,6 +33,8 @@ PKG_LONGDESC="screen is a terminal multiplexor that runs several separate "scree
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
+PKG_ADDON_PROVIDES=""
+PKG_ADDON_REPOVERSION="4.3"
 
 PKG_AUTORECONF="no"
 

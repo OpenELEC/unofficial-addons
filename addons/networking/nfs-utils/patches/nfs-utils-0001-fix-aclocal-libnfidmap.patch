@@ -1,0 +1,16 @@
+diff -Naur nfs-utils-1.3.2.orig/aclocal/libnfsidmap.m4 nfs-utils-1.3.2/aclocal/libnfsidmap.m4
+--- nfs-utils-1.3.2.orig/aclocal/libnfsidmap.m4	2015-04-12 10:52:20.603678213 -0700
++++ nfs-utils-1.3.2/aclocal/libnfsidmap.m4	2015-04-12 10:52:42.593994541 -0700
+@@ -2,9 +2,9 @@
+ dnl
+ AC_DEFUN([AC_LIBNFSIDMAP], [
+ 
+-  dnl Check for libnfsidmap, but do not add -lnfsidmap to LIBS
+-  AC_CHECK_LIB([nfsidmap], [nfs4_init_name_mapping], [LIBNFSIDMAP=-lnfsidmap],
+-               [AC_MSG_ERROR([libnfsidmap not found.])])
++#  dnl Check for libnfsidmap, but do not add -lnfsidmap to LIBS
++#  AC_CHECK_LIB([nfsidmap], [nfs4_init_name_mapping], [LIBNFSIDMAP=-lnfsidmap],
++#               [AC_MSG_ERROR([libnfsidmap not found.])])
+ 
+   AC_CHECK_HEADERS([nfsidmap.h], ,
+                    [AC_MSG_ERROR([libnfsidmap headers not found.])])

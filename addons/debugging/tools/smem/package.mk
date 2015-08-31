@@ -20,7 +20,7 @@
 
 PKG_NAME="smem"
 PKG_VERSION="1.4"
-PKG_REV="0"
+PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.selenic.com/smem/"
@@ -33,6 +33,8 @@ PKG_LONGDESC="smem is a tool that can give numerous reports on memory usage on L
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
+PKG_ADDON_PROVIDES=""
+PKG_ADDON_REPOVERSION="4.3"
 
 PKG_AUTORECONF="no"
 

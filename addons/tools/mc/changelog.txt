@@ -1,3 +1,12 @@
+4.3.7
+- rebuild
+
+4.3.5
+- update to mc-4.8.14
+
+4.3.4
+- rebuild
+
 4.3.3
 - rebuild
 

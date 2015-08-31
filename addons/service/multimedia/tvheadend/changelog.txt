@@ -1,3 +1,24 @@
+6.0.1
+- update to tvheadend-4.0.3
+
+6.0.0
+- rebuild for OE6
+
+4.3.14
+- update to tvheadend-3.9.2765
+
+4.3.13
+- update to tvheadend-3.9.2690
+
+4.3.12
+- update to tvheadend-3.9.2675
+
+4.3.11
+- update to tvheadend-3.9.2496
+
+4.3.10
+- add option to wait for network (when using network tuner)
+
 4.3.9
  - switch to dvbcsa on arm
 

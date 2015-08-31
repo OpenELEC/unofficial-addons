@@ -1,0 +1,24 @@
+diff -Naur libnfsidmap-0.25.orig/Makefile.am libnfsidmap-0.25/Makefile.am
+--- libnfsidmap-0.25.orig/Makefile.am	2015-04-12 17:43:21.484981132 -0700
++++ libnfsidmap-0.25/Makefile.am	2015-04-12 17:44:40.238928293 -0700
+@@ -25,7 +25,7 @@
+ #  <age> 	The number of previous additional interfaces supported
+ #  		by this library.
+ 
+-libnfsidmap_la_SOURCES = libnfsidmap.c cfg.c strlcpy.c cfg.h nfsidmap_internal.h queue.h
++libnfsidmap_la_SOURCES = libnfsidmap.c strlcpy.c nfsidmap_internal.h queue.h
+ libnfsidmap_la_LDFLAGS = -version-info 3:0:3
+ libnfsidmap_la_LIBADD = -ldl
+ 
+diff -Naur libnfsidmap-0.25.orig/Makefile.in libnfsidmap-0.25/Makefile.in
+--- libnfsidmap-0.25.orig/Makefile.in	2015-04-12 17:43:21.481981176 -0700
++++ libnfsidmap-0.25/Makefile.in	2015-04-12 17:45:03.434213176 -0700
+@@ -282,7 +282,7 @@
+ #		when <current> is updated.)
+ #  <age> 	The number of previous additional interfaces supported
+ #  		by this library.
+-libnfsidmap_la_SOURCES = libnfsidmap.c cfg.c strlcpy.c cfg.h nfsidmap_internal.h queue.h
++libnfsidmap_la_SOURCES = libnfsidmap.c strlcpy.c nfsidmap_internal.h queue.h
+ libnfsidmap_la_LDFLAGS = -version-info 3:0:3
+ libnfsidmap_la_LIBADD = -ldl
+ nsswitch_la_SOURCES = nss.c

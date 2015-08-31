@@ -36,9 +36,6 @@ PKG_AUTORECONF="no"
 PKG_MAINTAINER="vpeter4 (peter.vicman@gmail.com)"
 
 case "$TARGET_ARCH" in
-  i386)
-    MMX_ARG="--enable-mmx --disable-amd64"
-    ;;
   x86_64)
     MMX_ARG="--enable-mmx --enable-amd64"
     ;;

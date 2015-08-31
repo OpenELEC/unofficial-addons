@@ -21,7 +21,7 @@
 PKG_NAME="nss"
 PKG_VERSION="3.15.5"
 PKG_REV="1"
-PKG_ARCH="i386 x86_64"
+PKG_ARCH="x86_64"
 PKG_LICENSE="Mozilla Public License"
 PKG_SITE="http://ftp.mozilla.org/"
 PKG_URL="http://ftp.mozilla.org/pub/mozilla.org/security/nss/releases/NSS_3_15_5_RTM/src/$PKG_NAME-$PKG_VERSION.tar.gz"

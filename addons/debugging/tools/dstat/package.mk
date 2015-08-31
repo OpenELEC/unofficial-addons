@@ -20,7 +20,7 @@
 
 PKG_NAME="dstat"
 PKG_VERSION="0.7.2"
-PKG_REV="0"
+PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://dag.wieers.com/home-made/dstat/"
@@ -33,6 +33,8 @@ PKG_LONGDESC="Dstat is a versatile replacement for vmstat, iostat, netstat and i
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
+PKG_ADDON_PROVIDES=""
+PKG_ADDON_REPOVERSION="4.3"
 
 PKG_AUTORECONF="no"
 
