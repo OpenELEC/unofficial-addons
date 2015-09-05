@@ -1,3 +1,6 @@
+4.3.5
+- rebuild with updated libmtp
+
 4.3.4
 - rebuild
 
