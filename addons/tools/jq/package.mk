@@ -17,12 +17,12 @@
 ################################################################################
 
 PKG_NAME="jq"
-PKG_VERSION="1.4"
-PKG_REV="0"
+PKG_VERSION="1.5"
+PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="MIT"
 PKG_SITE="http://stedolan.github.io/jq/"
-PKG_URL="http://stedolan.github.io/jq/download/source/$PKG_NAME-$PKG_VERSION.tar.gz"
+PKG_URL="http://github.com/stedolan/jq/releases/download/$PKG_NAME-$PKG_VERSION/$PKG_NAME-$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"
@@ -38,7 +38,9 @@ PKG_AUTORECONF="yes"
 
 PKG_MAINTAINER="James White"
 
-PKG_CONFIGURE_OPTS_TARGET="--disable-shared --enable-static"
+PKG_CONFIGURE_OPTS_TARGET="--disable-shared \ 
+                           --enable-static \
+                           --disable-maintainer-mode"
 
 makeinstall_target() {
 	: # nop
