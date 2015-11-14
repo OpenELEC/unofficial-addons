@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="gtk+"
-PKG_VERSION="2.24.23"
+PKG_VERSION="2.24.28"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="OSS"
