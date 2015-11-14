@@ -20,7 +20,7 @@
 
 PKG_NAME="mtpfs"
 PKG_VERSION="1.1"
-PKG_REV="4"
+PKG_REV="5"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.adebenham.com/mtpfs/"
