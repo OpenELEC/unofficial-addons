@@ -20,7 +20,7 @@
 
 PKG_NAME="chromium-browser"
 PKG_VERSION="28.0.1500.52"
-PKG_REV="2"
+PKG_REV="1"
 PKG_ARCH="x86_64"
 PKG_LICENSE="Mixed"
 PKG_SITE="http://www.chromium.org/Home"
@@ -35,7 +35,7 @@ PKG_DISCLAIMER="this is an unofficial addon. please don't ask for support in ope
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES="executable"
-PKG_ADDON_REPOVERSION="4.3"
+PKG_ADDON_REPOVERSION="6.0"
 
 PKG_AUTORECONF="no"
 
@@ -136,10 +136,6 @@ addon() {
 
   # gdk-pixbuf
   cp -PL $(get_build_dir gdk-pixbuf)/.install_pkg/usr/lib/libgdk_pixbuf-2.0.so.0 $ADDON_BUILD/$PKG_ADDON_ID/lib
-
-  # pango modules
-  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/pango-modules
-  cp -PL $(get_build_dir pango)/.install_pkg/usr/lib/pango/1.8.0/modules/* $ADDON_BUILD/$PKG_ADDON_ID/pango-modules
 
   # pixbuf loaders
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/gdk-pixbuf-modules
