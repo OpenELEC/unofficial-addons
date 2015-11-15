@@ -19,8 +19,8 @@
 ################################################################################
 
 PKG_NAME="evtest"
-PKG_VERSION="1.31"
-PKG_REV="2"
+PKG_VERSION="1.33"
+PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://cgit.freedesktop.org/evtest/"
@@ -34,7 +34,7 @@ PKG_LONGDESC="evtest is a simple tool for input event debugging."
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="4.3"
+PKG_ADDON_REPOVERSION="6.0"
 
 PKG_AUTORECONF="yes"
 
