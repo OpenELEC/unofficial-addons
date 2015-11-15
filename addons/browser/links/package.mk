@@ -18,8 +18,8 @@
 ################################################################################
 
 PKG_NAME="links"
-PKG_VERSION="2.8"
-PKG_REV="0"
+PKG_VERSION="2.12"
+PKG_REV="1"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://links.twibright.com/"
