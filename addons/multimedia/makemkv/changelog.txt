@@ -1,3 +1,6 @@
+6.0.1
+- update to makemkv-1.9.7
+
 6.0.0
 - update to makemkv-1.9.2
 - rebuild for OE6

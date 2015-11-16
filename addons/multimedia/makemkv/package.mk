@@ -19,8 +19,8 @@
 ################################################################################
 
 PKG_NAME="makemkv"
-PKG_VERSION="1.9.2"
-PKG_REV="0"
+PKG_VERSION="1.9.7"
+PKG_REV="1"
 PKG_ARCH="x86_64"
 PKG_LICENSE="OSS"
 PKG_SITE="http://www.makemkv.com/forum2/viewforum.php?f=3"
