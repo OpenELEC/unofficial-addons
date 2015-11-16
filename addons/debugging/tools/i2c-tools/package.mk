@@ -19,8 +19,8 @@
 ################################################################################
 
 PKG_NAME="i2c-tools"
-PKG_VERSION="3.1.1"
-PKG_REV="3"
+PKG_VERSION="3.1.2"
+PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.lm-sensors.org/wiki/I2CTools"
@@ -34,7 +34,7 @@ PKG_LONGDESC="The i2c-tools package contains a heterogeneous set of I2C tools fo
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="4.3"
+PKG_ADDON_REPOVERSION="6.0"
 
 PKG_AUTORECONF="no"
 
