@@ -47,9 +47,12 @@ if [ "$STORE" ] ;then
    if [ "$RTORRENT_SORT_SERIES" == "true" ];then
       echo $NAME |grep -qi s[0-9][0-9]e[0-9][0-9]
       if [ "$?" -eq "0" ];then
-          DIR=${NAME%[e,E][0-9]*}
-          DIR=${DIR/ /.}
-          DIR=$(echo $DIR |tr '[A-Z]' '[a-z]')
+          SEASON=$(echo $NAME | egrep -oi "s[0-9][0-9]") # grep season from name
+          DIR=${NAME%[s,S][0-9]*} # Trim string to get show name
+          DIR=${DIR// /.} # replace all spaces with dots
+          DIR=$(echo $DIR | sed -e 's/\.*$//') # Trim trailing dots
+          DIR="$DIR/$SEASON" # Add season as sub directory
+          DIR=$(echo $DIR |tr '[A-Z]' '[a-z]') # to lowercase
           STORE="$STORE/$DIR"
       fi
    fi
