@@ -18,7 +18,7 @@
 
 PKG_NAME="RPi.GPIO"
 PKG_VERSION="0.5.11"
-PKG_REV="2"
+PKG_REV="0"
 PKG_ARCH="arm"
 PKG_LICENSE="MIT"
 PKG_SITE="http://sourceforge.net/p/raspberry-gpio-python/"
@@ -34,7 +34,7 @@ PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.module"
 PKG_ADDON_PROVIDES=""
 PKG_ADDON_PROJECTS="RPi RPi2"
-PKG_ADDON_REPOVERSION="4.3"
+PKG_ADDON_REPOVERSION="6.0"
 
 PKG_AUTORECONF="no"
 
