@@ -1,0 +1,4 @@
+<settings>
+    <setting id="STREAMDISC_PORT" value="8080" />
+    <setting id="STREAMDISC_DEVICE" value="/dev/sr0" />
+</settings>

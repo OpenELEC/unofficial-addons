@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+
+   <!-- STREAMDISC-SERVER -->
+    <category label="1000">
+		<setting id="STREAMDISC_PORT" type="number" label="1001" default="8080"/>
+		<setting id="STREAMDISC_DEVICE" type="text" label="1002" default="/dev/sr0"/>
+    </category>
+
+</settings>
