@@ -1,0 +1,13 @@
+[Unit]
+Description=Streamdisc Service
+After=graphical.target
+
+[Service]
+ExecStart=/storage/.kodi/addons/service.multimedia.streamdisc/bin/streamdisc.start
+TimeoutStopSec=2
+Restart=always
+RestartSec=2
+StartLimitInterval=0
+
+[Install]
+WantedBy=kodi.target
