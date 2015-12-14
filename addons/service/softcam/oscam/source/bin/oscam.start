@@ -28,23 +28,18 @@ oe_setup_addon service.softcam.oscam
 mkdir -p $ADDON_HOME/config
 mkdir -p $ADDON_HOME/log
 
-touch $ADDON_HOME/config/oscam.ac
-touch $ADDON_HOME/config/oscam.cert
-touch $ADDON_HOME/config/oscam.dvbapi
-touch $ADDON_HOME/config/oscam.guess
-touch $ADDON_HOME/config/oscam.ird
-touch $ADDON_HOME/config/oscam.provid
-touch $ADDON_HOME/config/oscam.server
-touch $ADDON_HOME/config/oscam.services
-touch $ADDON_HOME/config/oscam.srvid
-touch $ADDON_HOME/config/oscam.tiers
-touch $ADDON_HOME/config/oscam.user
+for config_name in \
+  oscam.ac oscam.cert oscam.dvbapi oscam.guess oscam.ird oscam.provid \
+  oscam.server oscam.services oscam.srvid oscam.tiers oscam.user
+do
+  [ ! -f $ADDON_HOME/config/$config_name ] && touch $ADDON_HOME/config/$config_name
+done
 
 if [ ! -f "$ADDON_HOME/config/oscam.conf" ]; then
   cp $ADDON_DIR/oscam-default.conf $ADDON_HOME/config/oscam.conf
 fi
 
-chmod a+x $ADDON_DIR/bin/*
+find $ADDON_DIR/bin -maxdepth 1 -type f ! -perm 0755 -exec chmod 0755 \{\} \;
 
 if [ "$WAIT_FOR_NET" == "true" ] ; then
   cm-online $WAIT_FOR_NET_TIME
@@ -68,3 +63,4 @@ if [ "$WAIT_FOR_FEINIT" == "true" ] ; then
 fi
 
 exec oscam -c $ADDON_HOME/config > /dev/null 2>&1
+
