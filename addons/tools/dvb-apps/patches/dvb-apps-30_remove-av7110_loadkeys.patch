@@ -1,0 +1,12 @@
+diff -Naur a/util/Makefile b/util/Makefile
+--- a/util/Makefile     2014-03-21 20:26:36.000000000 +0100
++++ b/util/Makefile     2015-12-18 18:35:28.849372471 +0100
+@@ -4,7 +4,6 @@
+
+ all clean install:
+        $(MAKE) -C atsc_epg $@
+-       $(MAKE) -C av7110_loadkeys $@
+        $(MAKE) -C dib3000-watch $@
+        $(MAKE) -C dst-utils $@
+        $(MAKE) -C dvbdate $@
+
