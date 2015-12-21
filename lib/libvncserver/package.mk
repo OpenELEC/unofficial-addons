@@ -46,4 +46,8 @@ PKG_CONFIGURE_OPTS_TARGET="--disable-shared \
                            --enable-static \
                            --with-sysroot=$SYSROOT_PREFIX \
                            --with-jpeg \
-                           --with-png"
+                           --with-png \
+                           --without-sdl \
+                           --without-gcrypt \
+                           --without-client-gcrypt \
+                           --without-gnutls"
