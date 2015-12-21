@@ -1,3 +1,6 @@
+6.0.1
+- Better path for completed tvshows
+
 6.0.0
 - rebuild for OE6
 
