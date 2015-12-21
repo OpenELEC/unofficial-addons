@@ -42,6 +42,10 @@ PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
 
 PKG_CONFIGURE_OPTS_TARGET="--disable-mad"
 
+pre_configure_target() {
+  export LIBS="-lusb-1.0 -ludev"
+}
+
 makeinstall_target() {
   : # nop
 }
