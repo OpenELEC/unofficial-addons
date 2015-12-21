@@ -20,7 +20,7 @@
 
 PKG_NAME="mesa-demos"
 PKG_VERSION="8.3.0"
-PKG_REV="2"
+PKG_REV="0"
 PKG_ARCH="x86_64"
 PKG_LICENSE="OSS"
 PKG_SITE="http://www.mesa3d.org/"
@@ -34,7 +34,7 @@ PKG_LONGDESC="Mesa 3D demos - installed are the well known glxinfo and glxgears.
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="4.3"
+PKG_ADDON_REPOVERSION="6.0"
 
 PKG_AUTORECONF="yes"
 

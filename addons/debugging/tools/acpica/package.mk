@@ -20,7 +20,7 @@
 
 PKG_NAME="acpica"
 PKG_VERSION="unix-20140627"
-PKG_REV="2"
+PKG_REV="0"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.acpica.org/"
@@ -34,7 +34,7 @@ PKG_LONGDESC="acpica is a set of tools from Intel to disassemble ACPI tables."
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="4.3"
+PKG_ADDON_REPOVERSION="6.0"
 
 PKG_AUTORECONF="no"
 

@@ -18,7 +18,7 @@
 
 PKG_NAME="lm_sensors"
 PKG_VERSION="3.3.4"
-PKG_REV="4"
+PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://secure.netroedge.com/~lm78/"
@@ -32,7 +32,7 @@ PKG_LONGDESC="lm_sensors is a package to get data from the SMB (System Managemen
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="4.3"
+PKG_ADDON_REPOVERSION="6.0"
 PKG_DISCLAIMER="this is an unofficial addon. please don't ask for support in openelec forum / irc channel"
 
 PKG_MAINTAINER="unofficial.addon.pro"

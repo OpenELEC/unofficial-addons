@@ -20,7 +20,7 @@
 
 PKG_NAME="iperf"
 PKG_VERSION="2.0.5"
-PKG_REV="2"
+PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="OSS"
 PKG_SITE="http://sourceforge.net/projects/iperf/"
@@ -34,7 +34,7 @@ PKG_LONGDESC="Iperf was developed by NLANR/DAST as a modern alternative for meas
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="4.3"
+PKG_ADDON_REPOVERSION="6.0"
 
 PKG_AUTORECONF="yes"
 

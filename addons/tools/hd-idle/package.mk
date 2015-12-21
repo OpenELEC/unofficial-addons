@@ -19,7 +19,7 @@
 
 PKG_NAME="hd-idle"
 PKG_VERSION="1.04"
-PKG_REV="3"
+PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://hd-idle.sourceforge.net/"
@@ -36,7 +36,7 @@ PKG_AUTORECONF="no"
 
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="4.3"
+PKG_ADDON_REPOVERSION="6.0"
 
 PKG_MAINTAINER="unofficial.addon.pro"
 

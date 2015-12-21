@@ -18,7 +18,7 @@
 
 PKG_NAME="picamera"
 PKG_VERSION="1.9"
-PKG_REV="2"
+PKG_REV="0"
 PKG_ARCH="arm"
 PKG_LICENSE="BSD"
 PKG_SITE="http://sourceforge.net/p/raspberry-gpio-python/"
@@ -34,7 +34,7 @@ PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.module"
 PKG_ADDON_PROVIDES=""
 PKG_ADDON_PROJECTS="RPi RPi2"
-PKG_ADDON_REPOVERSION="4.3"
+PKG_ADDON_REPOVERSION="6.0"
 
 PKG_AUTORECONF="no"
 
