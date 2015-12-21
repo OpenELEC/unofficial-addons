@@ -20,7 +20,7 @@
 
 PKG_NAME="sshfs-fuse"
 PKG_VERSION="2.5"
-PKG_REV="3"
+PKG_REV="0"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://fuse.sourceforge.net/sshfs.html"
@@ -35,7 +35,7 @@ PKG_DISCLAIMER="this is an unofficial addon. please don't ask for support in ope
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="4.3"
+PKG_ADDON_REPOVERSION="6.0"
 
 PKG_AUTORECONF="no"
 

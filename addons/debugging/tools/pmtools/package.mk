@@ -20,7 +20,7 @@
 
 PKG_NAME="pmtools"
 PKG_VERSION="20110323"
-PKG_REV="2"
+PKG_REV="0"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="https://lesswatts.org/projects/acpi/utilities.php"
@@ -35,7 +35,7 @@ PKG_LONGDESC="The pmtools package contains tools to debug ACPI DSDT tables"
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="4.3"
+PKG_ADDON_REPOVERSION="6.0"
 
 PKG_AUTORECONF="no"
 

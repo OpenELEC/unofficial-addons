@@ -20,7 +20,7 @@
 
 PKG_NAME="rsync"
 PKG_VERSION="3.1.1"
-PKG_REV="2"
+PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="OSS"
 PKG_SITE="http://www.samba.org/ftp/rsync/rsync.html"
@@ -34,7 +34,7 @@ PKG_LONGDESC="Rsync uses an own 'rsync' algorithm which provides a very fast met
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="4.3"
+PKG_ADDON_REPOVERSION="6.0"
 
 PKG_AUTORECONF="yes"
 

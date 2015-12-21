@@ -19,7 +19,7 @@
 
 PKG_NAME="dhcp"
 PKG_VERSION="4.1-ESV-R9"
-PKG_REV="3"
+PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://www.isc.org/"
@@ -32,7 +32,7 @@ PKG_LONGDESC="ISC DHCP is open source software that implements the Dynamic Host 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="4.3"
+PKG_ADDON_REPOVERSION="6.0"
 PKG_AUTORECONF="yes"
 PKG_MAINTAINER="Peter Smorada (smoradap@gmail.com)"
 PKG_DISCLAIMER="this is an unofficial addon. please don't ask for support in openelec forum / irc channel"

@@ -20,7 +20,7 @@
 
 PKG_NAME="x11vnc"
 PKG_VERSION="0.9.13"
-PKG_REV="2"
+PKG_REV="0"
 PKG_ARCH="x86_64"
 PKG_LICENSE="OSS"
 PKG_SITE="http://www.karlrunge.com/x11vnc/"
@@ -33,7 +33,7 @@ PKG_LONGDESC="x11vnc allows one to view remotely and interact with real X displa
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="4.3"
+PKG_ADDON_REPOVERSION="6.0"
 
 PKG_AUTORECONF="yes"
 
