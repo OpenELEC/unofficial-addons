@@ -17,12 +17,12 @@
 ################################################################################
 
 PKG_NAME="tvheadend"
-PKG_VERSION="4.0.7"
-PKG_REV="2"
+PKG_VERSION="4.0.8"
+PKG_REV="3"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.tvheadend.org"
-PKG_URL="$DISTRO_SRC/${PKG_NAME}-${PKG_VERSION}.tar.xz"
+PKG_URL="https://github.com/tvheadend/tvheadend/archive/v${PKG_VERSION}.tar.gz"
 PKG_DEPENDS_TARGET="toolchain libressl curl Python:host"
 PKG_PRIORITY="optional"
 PKG_SECTION="service/multimedia"
@@ -38,6 +38,13 @@ if [ "$TARGET_ARCH" == "arm" ] ; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET libdvbcsa"
 fi
 
+unpack() {
+  tar xzf "$SOURCES/$PKG_NAME/v${PKG_VERSION}.tar.gz" -C $BUILD
+}
+
+post_unpack() {
+  sed -e 's/VER="0.0.0~unknown"/VER="'$PKG_VERSION' ~ OpenELEC Tvh-addon v'$PKG_ADDON_REPOVERSION'.'$PKG_REV'"/g' -i $PKG_BUILD/support/version
+}
 
 pre_build_target() {
   mkdir -p $PKG_BUILD/.$TARGET_NAME
