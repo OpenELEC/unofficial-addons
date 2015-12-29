@@ -17,12 +17,12 @@
 ################################################################################
 
 PKG_NAME="vim"
-PKG_VERSION="7.4"
+PKG_VERSION="7.4.979"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="VIM"
 PKG_SITE="http://www.vim.org/"
-PKG_URL="http://ftp.vim.org/pub/vim/unix/vim-$PKG_VERSION.tar.bz2"
+PKG_URL="https://github.com/vim/vim/archive/v$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain ncurses"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"
@@ -37,7 +37,6 @@ PKG_ADDON_REPOVERSION="6.0"
 PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="Adam Michel (elfurbe)"
-PKG_SOURCE_DIR="vim74"
 
 PKG_CONFIGURE_OPTS_TARGET="vim_cv_toupper_broken=no \
                            vim_cv_terminfo=yes \
@@ -48,10 +47,16 @@ PKG_CONFIGURE_OPTS_TARGET="vim_cv_toupper_broken=no \
                            vim_cv_memmove_handles_overlap=yes \
                            ac_cv_sizeof_int=4 \
                            ac_cv_small_wchar_t=no \
-                           --with-tlib=ncurses \
-                           --enable-gui=no \
                            --prefix=/storage/.kodi/addons/tools.vim/ \
+                           --enable-gui=no \
+                           --with-compiledby=OpenELEC \
+                           --with-features=huge \
+                           --with-tlib=ncurses \
                            --without-x"
+
+unpack() {
+  tar xf $ROOT/$SOURCES/vim/v$PKG_VERSION.tar.gz -C $ROOT/$BUILD
+}
 
 makeinstall_target() {
   : # nothing to do here

@@ -1,5 +1,11 @@
+6.0.1
+- Changed source to Github archive (official)
+- Enable huge feature set
+- Vim 7.4.979
+
 6.0.0
 - rebuild for OpenELEC-6.0
+
 4.3.4
 - rebuild
 
