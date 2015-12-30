@@ -21,7 +21,7 @@
 
 PKG_NAME="oscam"
 PKG_VERSION="10607"
-PKG_REV="0"
+PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.streamboard.tv/oscam/wiki"
