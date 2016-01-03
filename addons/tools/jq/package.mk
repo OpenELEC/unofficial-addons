@@ -18,7 +18,7 @@
 
 PKG_NAME="jq"
 PKG_VERSION="1.5"
-PKG_REV="1"
+PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="MIT"
 PKG_SITE="http://stedolan.github.io/jq/"
@@ -32,7 +32,7 @@ PKG_LONGDESC="jq is like sed for JSON data – you can use it to slice and filte
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="6.0"
+PKG_ADDON_REPOVERSION="7.0"
 
 PKG_AUTORECONF="yes"
 

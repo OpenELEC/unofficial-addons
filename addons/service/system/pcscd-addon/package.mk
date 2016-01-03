@@ -34,7 +34,7 @@ PKG_LONGDESC="Middleware to access a smart card using SCard API (PC/SC)"
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="6.0"
+PKG_ADDON_REPOVERSION="7.0"
 PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"

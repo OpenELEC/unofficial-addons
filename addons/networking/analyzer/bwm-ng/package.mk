@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="bwm-ng"
-PKG_VERSION="0.6"
+PKG_VERSION="0.6.1"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -35,7 +35,7 @@ PKG_DISCLAIMER="this is an unofficial addon. please don't ask for support in ope
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="6.0"
+PKG_ADDON_REPOVERSION="7.0"
 
 PKG_AUTORECONF="yes"
 
