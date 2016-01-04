@@ -1,18 +1,15 @@
-# Contributing Guide Lines
+# Contributing Guidelines
 
-Here is some guide lines for how you should add your addons to the un-official addons repo for OpenELEC.
-
-
-### Pull Requests
+Here are some guidelines for submitting add-on pull requests to the unofficial addon repo.
 
 - **Create topic branches**. Don't ask us to pull from your master branch.
 
-- **One pull request per feature**. If you want to do more than one thing, send
+- **One pull request per feature**. If you want to do more than one thing. Send
   multiple pull requests.
 
 - **Send coherent history**. Make sure each individual commit in your pull
   request is meaningful. If you had to make multiple intermediate commits while
-  developing, please squash them before sending them to us.
+  developing please squash them before sending them to us.
 
 Please follow this process; it's the best way to get your work included in the project:
 
@@ -45,10 +42,9 @@ Please follow this process; it's the best way to get your work included in the p
    git checkout -b <topic-branch-name>
    ```
 
-- Commit your changes in logical chunks. or your pull request is unlikely
-   be merged into the main project. Use git's
+- Commit your changes in logical chunks or your pull request is unlikely to be merged into the main project. Use git's
    [interactive rebase](https://help.github.com/articles/interactive-rebase)
-   feature to tidy up your commits before making them public.
+   feature to tidy-up your commits before making them public.
 
 - Push your topic branch up to your fork:
 
@@ -56,5 +52,4 @@ Please follow this process; it's the best way to get your work included in the p
    git push origin <topic-branch-name>
    ```
 
-- [Open a Pull Request](https://help.github.com/articles/using-pull-requests) with a
-    clear title and description.
+- [Open a Pull Request](https://help.github.com/articles/using-pull-requests) with a clear title and description.
