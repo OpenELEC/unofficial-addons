@@ -21,7 +21,7 @@
 
 PKG_NAME="oscam"
 PKG_VERSION="10607"
-PKG_REV="1"
+PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.streamboard.tv/oscam/wiki"
@@ -36,7 +36,7 @@ PKG_DISCLAIMER="using oscam may be illegal in your country. if in doubt, do not 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="6.0"
+PKG_ADDON_REPOVERSION="7.0"
 
 PKG_AUTORECONF="no"
 

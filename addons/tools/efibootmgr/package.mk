@@ -35,7 +35,7 @@ PKG_DISCLAIMER="this is an unofficial addon. please don't ask for support in ope
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="6.0"
+PKG_ADDON_REPOVERSION="7.0"
 
 PKG_AUTORECONF="no"
 
@@ -43,7 +43,7 @@ PKG_MAINTAINER="Stefan Benz (benz.st@gmail.com)"
 
 pre_make_target() {
   strip_lto
-  export EXTRA_CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include"
+  export EXTRA_CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include -fgnu89-inline"
   export LDFLAGS="$LDFLAGS -L$SYSROOT_PREFIX/usr/lib -ludev"
 }
 

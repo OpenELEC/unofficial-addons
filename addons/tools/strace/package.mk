@@ -32,7 +32,7 @@ PKG_LONGDESC="In the simplest case strace runs the specified command until it ex
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="6.0"
+PKG_ADDON_REPOVERSION="7.0"
 
 PKG_AUTORECONF="yes"
 

@@ -34,7 +34,7 @@ PKG_LONGDESC="iftop does for network usage what top(1) does for CPU usage. It li
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="6.0"
+PKG_ADDON_REPOVERSION="7.0"
 
 PKG_AUTORECONF="yes"
 

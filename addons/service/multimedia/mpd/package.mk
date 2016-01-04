@@ -33,7 +33,7 @@ PKG_LONGDESC="Flexible, powerful, server-side application for playing music"
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="6.0"
+PKG_ADDON_REPOVERSION="7.0"
 
 PKG_AUTORECONF="yes"
 

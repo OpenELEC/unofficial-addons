@@ -32,7 +32,7 @@ PKG_LONGDESC="Vim is a highly configurable text editor built to enable efficient
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="6.0"
+PKG_ADDON_REPOVERSION="7.0"
 
 PKG_AUTORECONF="no"
 

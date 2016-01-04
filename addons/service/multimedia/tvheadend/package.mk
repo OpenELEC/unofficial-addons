@@ -18,7 +18,7 @@
 
 PKG_NAME="tvheadend"
 PKG_VERSION="4.0.8"
-PKG_REV="3"
+PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.tvheadend.org"
@@ -32,7 +32,7 @@ PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
 PKG_ADDON_PROVIDES=""
 PKG_AUTORECONF="no"
-PKG_ADDON_REPOVERSION="6.0"
+PKG_ADDON_REPOVERSION="7.0"
 
 if [ "$TARGET_ARCH" == "arm" ] ; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET libdvbcsa"

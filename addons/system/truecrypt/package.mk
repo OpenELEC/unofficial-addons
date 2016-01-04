@@ -39,7 +39,7 @@ PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
 PKG_ADDON_NAME="TrueCrypt"
-PKG_ADDON_REPOVERSION="6.0"
+PKG_ADDON_REPOVERSION="7.0"
 
 PKG_MAINTAINER="vpeter4 (peter.vicman@gmail.com) and smory (smoradap@gmail.com)"
 
