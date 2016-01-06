@@ -19,12 +19,12 @@
 ################################################################################
 
 PKG_NAME="iperf"
-PKG_VERSION="2.0.5"
-PKG_REV="0"
+PKG_VERSION="3.1"
+PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="OSS"
-PKG_SITE="http://sourceforge.net/projects/iperf/"
-PKG_URL="$SOURCEFORGE_SRC/iperf/files/$PKG_NAME-$PKG_VERSION.tar.gz"
+PKG_SITE="https://iperf.fr/"
+PKG_URL="https://iperf.fr/download/iperf_3.1/$PKG_NAME-$PKG_VERSION-source.tar.gz"
 PKG_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
 PKG_SECTION="network/testing"
@@ -40,9 +40,7 @@ PKG_AUTORECONF="yes"
 
 PKG_MAINTAINER="unofficial.addon.pro"
 
-PKG_CONFIGURE_OPTS_TARGET="ac_cv_func_malloc_0_nonnull=yes \
-            --disable-acl-support \
-            --disable-xattr-support"
+PKG_CONFIGURE_OPTS_TARGET="--enable-static --disable-shared"
 
 makeinstall_target() {
   : # nop
@@ -50,5 +48,6 @@ makeinstall_target() {
 
 addon() {
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
-  cp $PKG_BUILD/.$TARGET_NAME/src/iperf $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp $PKG_BUILD/.$TARGET_NAME/src/iperf3 $ADDON_BUILD/$PKG_ADDON_ID/bin
+  ln -s iperf3 $ADDON_BUILD/$PKG_ADDON_ID/bin/iperf
 }
