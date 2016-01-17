@@ -1,5 +1,9 @@
+7.0.1
+- add HTTP streaming support generaly and MP3 streaming support by adding dependency for lame
+
 7.0.0
 - rebuild for OpenELEC-7.0
+
 6.0.0
 - rebuild for OE 6
 
