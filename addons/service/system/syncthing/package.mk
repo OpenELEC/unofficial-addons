@@ -1,6 +1,6 @@
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
-#      Copyright (C) 2016 Anton Voyl (awiouy@gmail.com)
+#      Copyright (C) 2016 Anton Voyl (awiouy at gmail dot com)
 #
 #  OpenELEC is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -17,8 +17,8 @@
 ################################################################################
 
 PKG_NAME="syncthing"
-PKG_VERSION="0.12.12"
-PKG_REV="0"
+PKG_VERSION="0.12.15"
+PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="MPLv2"
 PKG_SITE="https://syncthing.net/"
@@ -29,7 +29,7 @@ PKG_SECTION="service/system"
 PKG_SHORTDESC="Open Source Continuous File Synchronization"
 PKG_LONGDESC="Syncthing replaces proprietary sync and cloud services with something open, trustworthy and decentralized. Your data is your data alone and you deserve to choose where it is stored, if it is shared with some third party and how it's transmitted over the Internet."
 PKG_DISCLAIMER="This is a community addon. Please don't ask for support in openelec forum or irc channel."
-PKG_MAINTAINER="Anton Voyl (awiouy@gmail.com)"
+PKG_MAINTAINER="Anton Voyl (awiouy at gmail dot com)"
 PKG_ADDON_REPOVERSION="6.0"
 
 PKG_IS_ADDON="yes"

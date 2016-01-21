@@ -1,2 +1,7 @@
+6.0.1
+- Upgrade to version 0.12.15
+- Skip default folder creation on new install
+- Enable setting of GUI address
+
 6.0.0
 - Initial release for version 0.12.12

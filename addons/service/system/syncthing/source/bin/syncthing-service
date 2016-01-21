@@ -2,7 +2,7 @@
 
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
-#      Copyright (C) 2016 Anton Voyl (awiouy@gmail.com)
+#      Copyright (C) 2016 Anton Voyl (awiouy at gmail dot com)
 #
 #  OpenELEC is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -23,9 +23,9 @@ oe_setup_addon service.system.syncthing
 
 chmod +x $ADDON_DIR/bin/*
 
-syncthing -home=$ADDON_HOME           \
-          -gui-address="0.0.0.0:8384" \
-          -logflags=0                 \
-          -no-browser                 \
-          -no-restart
+STNODEFAULTFOLDER="y" syncthing -home=$ADDON_HOME           \
+                                -gui-address="$gui_address" \
+                                -logflags=0                 \
+                                -no-browser                 \
+                                -no-restart
 
