@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+
+	<!-- HTS TVHEADEND -->
+	<string id="1000">General Settings</string>
+	<string id="1001">Port</string>
+	<string id="1002">Device file</string>
+
+
+</strings>
