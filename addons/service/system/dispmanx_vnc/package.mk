@@ -20,13 +20,13 @@
 
 PKG_NAME="dispmanx_vnc"
 PKG_ADDON_NAME="Raspberry Pi VNC"
-PKG_VERSION="a061e0a"
-PKG_REV="0"
+PKG_VERSION="78e6673"
+PKG_REV="1"
 PKG_ARCH="arm"
 PKG_LICENSE="OSS"
-PKG_SITE="https://github.com/hanzelpeter/dispmanx_vnc"
+PKG_SITE="https://github.com/patrikolausson/dispmanx_vnc"
 PKG_URL="$DISTRO_SRC/${PKG_NAME}-${PKG_VERSION}.tar.xz"
-PKG_DEPENDS_TARGET="toolchain libvncserver bcm2835-driver"
+PKG_DEPENDS_TARGET="toolchain libvncserver bcm2835-driver libconfig"
 PKG_PRIORITY="optional"
 PKG_SECTION="service/system"
 PKG_SHORTDESC="VNC Server for Raspberry PI using dispmanx"
@@ -43,31 +43,8 @@ PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="Lukas Rusak (lrusak at irc.freenode.net)"
 
-make_target() {  
-  $CC $CFLAGS main.c -o dispmanx_vncserver -DHAVE_LIBBCM_HOST \
-                                           -DUSE_EXTERNAL_LIBBCM_HOST \
-                                           -DUSE_VCHIQ_ARM \
-                                           $LDFLAGS \
-                                           -I$SYSROOT_PREFIX/include \
-                                           -I$SYSROOT_PREFIX/usr/include \
-                                           -I$SYSROOT_PREFIX/usr/include/interface/vcos/pthreads \
-                                           -I$SYSROOT_PREFIX/usr/include/interface/vmcs_host \
-                                           -I$SYSROOT_PREFIX/usr/include/interface/vmcs_host/linux \
-                                           -L$SYSROOT_PREFIX/usr/lib \
-                                           -L$SYSROOT_PREFIX/lib \
-                                           -lGLESv2 \
-                                           -lEGL \
-                                           -lopenmaxil \
-                                           -lbcm_host \
-                                           -lvcos \
-                                           -lvchiq_arm \
-                                           -lpthread \
-                                           -lrt \
-                                           -lz \
-                                           -lssl -lcrypto \
-                                           -lresolv \
-                                           -lvncserver \
-                                           -ljpeg -lpng16
+pre_make_target() {
+  export SYSROOT_PREFIX
 }
 
 makeinstall_target() {
@@ -75,6 +52,9 @@ makeinstall_target() {
 }
 
 addon() {
-  mkdir -p $ROOT/$ADDON_BUILD/$PKG_ADDON_ID/bin
-    cp -p $ROOT/$PKG_BUILD/dispmanx_vncserver $ROOT/$ADDON_BUILD/$PKG_ADDON_ID/bin
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+    cp -p $PKG_BUILD/dispmanx_vncserver $ADDON_BUILD/$PKG_ADDON_ID/bin
+
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/config
+    cp $PKG_DIR/source/config/dispmanx_vncserver.conf $ADDON_BUILD/$PKG_ADDON_ID/config/
 }
