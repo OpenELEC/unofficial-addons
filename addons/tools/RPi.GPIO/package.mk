@@ -17,8 +17,8 @@
 ################################################################################
 
 PKG_NAME="RPi.GPIO"
-PKG_VERSION="0.5.11"
-PKG_REV="0"
+PKG_VERSION="0.6.1"
+PKG_REV="1"
 PKG_ARCH="arm"
 PKG_LICENSE="MIT"
 PKG_SITE="http://sourceforge.net/p/raspberry-gpio-python/"
