@@ -1,9 +1,10 @@
 [Unit]
 Description=dispmanx_vnc
-After=graphical.target
+After=kodi.service
 
 [Service]
-ExecStart=/storage/.kodi/addons/service.system.dispmanx_vnc/bin/dispmanx_vncserver
+ExecStartPre=-/storage/.kodi/addons/service.system.dispmanx_vnc/bin/dispmanx_vncserver-config
+ExecStart=/bin/sh -c "/bin/sleep 10 && /storage/.kodi/addons/service.system.dispmanx_vnc/bin/dispmanx_vncserver --config-file=/storage/.kodi/userdata/addon_data/service.system.dispmanx_vnc/dispmanx_vncserver.conf"
 TimeoutStopSec=1
 Restart=always
 RestartSec=2
