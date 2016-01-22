@@ -21,7 +21,7 @@
 
 echo "getting sources..."
   if [ ! -d dispmanx_vnc.git ]; then
-    git clone https://github.com/DavidVentura/dispmanx_vnc.git dispmanx_vnc.git
+    git clone https://github.com/patrikolausson/dispmanx_vnc.git dispmanx_vnc.git
   fi
 
   cd dispmanx_vnc.git
