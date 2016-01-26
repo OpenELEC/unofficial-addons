@@ -25,8 +25,10 @@
 ADDON_DIR="$HOME/.kodi/addons/plugin.program.truecrypt"
 ADDON_HOME="$HOME/.kodi/userdata/addon_data/plugin.program.truecrypt"
 
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$ADDON_DIR/lib"
+
 # Function adds addon exec directory to the PATH if necessary. This method is
-# run at start up of XBMC
+# run at start up of KODI
 addToPath(){
 	echo $PATH | grep -q $ADDON_DIR/bin
 	if [ "$?" != "0" ]; then
@@ -676,7 +678,7 @@ createkeyfile(){
 
 showinfo() {
 	echo "This script is primarily meant to be excecuted by an addon"
-	echo "from OpenElec's XBMC interface (plugin.program.truecrypt)."
+	echo "from OpenElec's KODI interface (plugin.program.truecrypt)."
 	echo
 	echo "Usage:" 
 	echo "mount TRUECRYPT_FILE/PARTION MOUNT_POINT PASSWORD [KEY_FILES]"

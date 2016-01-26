@@ -22,7 +22,7 @@
 
 PKG_NAME="truecrypt"
 PKG_VERSION="7.1a"
-PKG_REV="0"
+PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.truecrypt.org"
@@ -99,7 +99,10 @@ addon() {
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
   cp $PKG_BUILD/Main/truecrypt $ADDON_BUILD/$PKG_ADDON_ID/bin/
   # TODO remove. losetup is now in openelec
-  cp $(get_build_dir util-linux)/.install_pkg/usr/sbin/losetup $ADDON_BUILD/$PKG_ADDON_ID/bin/
+  #cp $(get_build_dir util-linux)/.install_pkg/usr/sbin/losetup $ADDON_BUILD/$PKG_ADDON_ID/bin/
   cp $(get_build_dir ntfs-3g_ntfsprogs)/.$TARGET_NAME/ntfsprogs/mkntfs $ADDON_BUILD/$PKG_ADDON_ID/bin/
-  cp $(get_build_dir LVM2)/.$TARGET_NAME/tools/dmsetup $ADDON_BUILD/$PKG_ADDON_ID/bin/dmsetup
+  cp $(get_build_dir LVM2)/.install_pkg/usr/sbin/dmsetup $ADDON_BUILD/$PKG_ADDON_ID/bin/dmsetup
+
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
+  cp $(get_build_dir LVM2)/.install_pkg/usr/lib/libdevmapper.so.1.02 $ADDON_BUILD/$PKG_ADDON_ID/lib
 }
