@@ -1,4 +1,3 @@
-#!/bin/sh
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
 #      Copyright (C) 2009-2014 Stephan Raue (stephan@openelec.tv)
@@ -17,17 +16,33 @@
 #  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-# make sure we use "own" gtk/pango/nss/etc
-export LD_LIBRARY_PATH=/storage/.kodi/addons/browser.chromium-browser/lib
+PKG_NAME="ninja"
+PKG_VERSION="1.6.0"
+PKG_REV="1"
+PKG_ARCH="any"
+PKG_LICENSE="Apache"
+PKG_SITE="http://martine.github.io/ninja/"
+PKG_URL="https://github.com/ninja-build/ninja/archive/v$PKG_VERSION.tar.gz"
+PKG_PRIORITY="optional"
+PKG_SECTION="devel"
+PKG_SHORTDESC="Small build system with a focus on speed"
+PKG_LONGDESC="Small build system with a focus on speed"
 
-# configure pango/pixbuf
-export PANGO_RC_FILE=/storage/.kodi/addons/browser.chromium-browser/config/pangorc
-export GDK_PIXBUF_MODULE_FILE=/storage/.kodi/addons/browser.chromium-browser/config/pixbuf.loaders.cache
+PKG_IS_ADDON="no"
+PKG_AUTORECONF="no"
 
-# font rendering in gtk widgets is brokeen with nvidia blob. use our Xdefaults
-export XENVIRONMENT=/storage/.kodi/addons/browser.chromium-browser/config/Xdefaults
+unpack() {
+  tar xf $ROOT/$SOURCES/$PKG_NAME/v$PKG_VERSION.tar.gz -C $ROOT/$BUILD
+}
 
-# start chromium
-exec /storage/.kodi/addons/browser.chromium-browser/bin/chromium.bin \
-  --user-data-dir=/storage/.kodi/userdata/addon_data/browser.chromium-browser/profile \
-  $@
+configure_host() {
+  :
+}
+
+make_host() {
+  python2 configure.py --bootstrap
+}
+
+makeinstall_host() {
+  cp ninja $ROOT/$TOOLCHAIN/bin/
+}
