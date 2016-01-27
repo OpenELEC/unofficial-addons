@@ -14,5 +14,6 @@
         <setting label="1030" type="lsep"/>
         <setting type="sep" />
         <setting label="1031" type="action" action="RunScript(browser.chromium, widevine)"/>
+        <setting label="1032" type="action" action="RunScript(browser.chromium, flash)"/>
     </category>
 </settings>
