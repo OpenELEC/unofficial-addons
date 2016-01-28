@@ -1,2 +1,4 @@
+7.0.1
+- add support for installing flash player
 7.0.0
 - initial release
