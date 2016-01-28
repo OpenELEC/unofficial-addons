@@ -11,4 +11,5 @@
         <string id="1026">    Audio Device</string>
         <string id="1030">Chromium Actions</string>
         <string id="1031">Install libwidevinecdm.so (Netflix Support)</string>
+        <string id="1032">Install libpepflashplayer.so (Flash Player Support)</string>
 </strings>

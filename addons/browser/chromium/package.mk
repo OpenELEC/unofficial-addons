@@ -20,7 +20,7 @@
 
 PKG_NAME="chromium"
 PKG_VERSION="48.0.2564.82"
-PKG_REV="0"
+PKG_REV="1"
 PKG_ARCH="x86_64"
 PKG_LICENSE="Mixed"
 PKG_SITE="http://www.chromium.org/Home"

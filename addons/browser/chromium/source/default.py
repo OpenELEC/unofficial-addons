@@ -34,21 +34,43 @@ __path__  = os.path.join(__addon__.getAddonInfo('path'), 'bin') + '/'
 
 pauseXBMC = __addon__.getSetting("PAUSE_XBMC")
 
-# widevine stuff
+# widevine and flash stuff
 __url__   = 'https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb'
 __file__  = __url__.split('/')[-1]
 __tar__   = 'data.tar.xz'
 __tmp__   = '/tmp/widevine/'
 __lib__   = 'opt/google/chrome/libwidevinecdm.so'
+__flash__ = 'opt/google/chrome/PepperFlash/libpepflashplayer.so'
 
-def widevine():
+def download():
   try:
     if not os.path.isdir(__tmp__):
       os.mkdir(__tmp__)
     if not os.path.exists(__tmp__ + __file__):
       oe.download_file(__url__, __tmp__ + __file__)
+  except Exception, e:
+    oe.notify('Chromium', 'Could not download file')
+
+def install_flash():
+  try:
+    download()
+    oe.notify('Chromium', 'Extracting libpepflashplayer.so')
+    if not os.path.isdir(__tmp__ + __tar__):
+      oe.execute('cd ' + __tmp__ + ' && ar -x ' + __file__)
+    oe.execute('tar xf ' + __tmp__ + __tar__ + ' -C ' + __tmp__ + ' ./' + __flash__)
+    if not os.path.isdir(__path__ + 'PepperFlash'):
+      os.mkdir(__path__ + 'PepperFlash')
+    oe.copy_file(__tmp__ + __flash__, __path__ + 'PepperFlash/' + __flash__.split('/')[-1])
+    oe.notify('Chromium', 'Installation of libpepflashplayer.so succeeded')
+  except Exception, e:
+    oe.notify('Chromium', 'Installation of libpepflashplayer.so failed')
+
+def install_widevine():
+  try:
+    download()
     oe.notify('Chromium', 'Extracting libwidevinecdm.so')
-    oe.execute('cd ' + __tmp__ + ' && ar -x ' + __file__)
+    if not os.path.isdir(__tmp__ + __tar__):
+      oe.execute('cd ' + __tmp__ + ' && ar -x ' + __file__)
     oe.execute('tar xf ' + __tmp__ + __tar__ + ' -C ' + __tmp__ + ' ./' + __lib__)
     oe.copy_file(__tmp__ + __lib__, __path__ + __lib__.split('/')[-1])
     oe.notify('Chromium', 'Installation of libwidevinecdm.so succeeded')
@@ -77,6 +99,9 @@ def startChromium(args):
         'kiosk': '--kiosk',
         'none': '',
     }
+    flash_plugin = ''
+    if os.path.exists(__path__ + 'PepperFlash/libpepflashplayer.so'):
+      flash_plugin = '--ppapi-flash-path=' + __path__ + 'PepperFlash/libpepflashplayer.so'
     gpu_blacklist = ''
     if __addon__.getSetting('IGNORE_GPU_BLACKLIST') == 'true':
       gpu_blacklist = '--ignore-gpu-blacklist'
@@ -87,7 +112,7 @@ def startChromium(args):
     alsa_param = ''
     if not alsa_device == None and not alsa_device == '':
       alsa_param = '--alsa-output-device=' + alsa_device
-    chrome_params = window_mode.get(__addon__.getSetting('WINDOW_MODE')) + ' ' + gpu_blacklist + ' ' + alsa_param + ' ' + args + ' ' + __addon__.getSetting('HOMEPAGE')
+    chrome_params = window_mode.get(__addon__.getSetting('WINDOW_MODE')) + ' ' + flash_plugin + ' ' + gpu_blacklist + ' ' + alsa_param + ' ' + args + ' ' + __addon__.getSetting('HOMEPAGE')
     oe.execute(__path__ + 'chromium ' + chrome_params)
   except:
     pass
@@ -129,10 +154,10 @@ try:
 except:
   args = ""
 
-oe.dbg_log('chromium', "'" + unicode(args) + "'")
-
 if args == 'widevine':
-    widevine()
+  install_widevine()
+elif args == 'flash':
+  install_flash()
 else:
   if not isRuning('chromium.bin'):
     pauseXbmc()
@@ -140,4 +165,3 @@ else:
     while isRuning('chromium.bin'):
       time.sleep(1)
     resumeXbmc()
-
