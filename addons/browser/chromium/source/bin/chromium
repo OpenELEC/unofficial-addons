@@ -28,6 +28,6 @@ export GDK_PIXBUF_MODULE_FILE=/storage/.kodi/addons/browser.chromium/config/pixb
 export XENVIRONMENT=/storage/.kodi/addons/browser.chromium/config/Xdefaults
 
 # start chromium
-exec /storage/.kodi/addons/browser.chromium/bin/chromium.bin \
+LD_PRELOAD=/usr/lib/libGL.so /storage/.kodi/addons/browser.chromium/bin/chromium.bin \
   --user-data-dir=/storage/.kodi/userdata/addon_data/browser.chromium/profile \
-  $@
+  --test-type $@
