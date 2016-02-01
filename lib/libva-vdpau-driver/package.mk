@@ -1,7 +1,6 @@
-#!/bin/sh
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
-#      Copyright (C) 2009-2014 Stephan Raue (stephan@openelec.tv)
+#      Copyright (C) 2009-2016 Stephan Raue (stephan@openelec.tv)
 #
 #  OpenELEC is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -17,17 +16,22 @@
 #  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-# make sure we use "own" gtk/pango/nss/etc
-export LD_LIBRARY_PATH=/storage/.kodi/addons/browser.chromium/lib
+PKG_NAME="libva-vdpau-driver"
+PKG_VERSION="0.7.4"
+PKG_REV="1"
+PKG_ARCH="any"
+PKG_LICENSE="GPL"
+PKG_SITE="http://freedesktop.org/wiki/Software/vaapi"
+PKG_URL="http://freedesktop.org/software/vaapi/releases/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.bz2"
+PKG_DEPENDS_TARGET="toolchain libva libvdpau mesa"
+PKG_PRIORITY="optional"
+PKG_SECTION="graphics"
+PKG_SHORTDESC="VDPAU backend for VA API"
+PKG_LONGDESC="VDPAU backend for VA API"
 
-# configure pango/pixbuf
-export PANGO_RC_FILE=/storage/.kodi/addons/browser.chromium/config/pangorc
-export GDK_PIXBUF_MODULE_FILE=/storage/.kodi/addons/browser.chromium/config/pixbuf.loaders.cache
+PKG_IS_ADDON="no"
+PKG_AUTORECONF="yes"
 
-# font rendering in gtk widgets is brokeen with nvidia blob. use our Xdefaults
-export XENVIRONMENT=/storage/.kodi/addons/browser.chromium/config/Xdefaults
-
-# start chromium
-LD_PRELOAD=/usr/lib/libGL.so /storage/.kodi/addons/browser.chromium/bin/chromium.bin \
-  --user-data-dir=/storage/.kodi/userdata/addon_data/browser.chromium/profile \
-  --test-type $@
+post_makeinstall_target() {
+  rm -rf $INSTALL/usr/lib/va/s3g_drv_video.so
+}
