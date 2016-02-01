@@ -20,12 +20,12 @@
 
 PKG_NAME="chromium"
 PKG_VERSION="48.0.2564.82"
-PKG_REV="1"
+PKG_REV="2"
 PKG_ARCH="x86_64"
 PKG_LICENSE="Mixed"
 PKG_SITE="http://www.chromium.org/Home"
 PKG_URL="https://commondatastorage.googleapis.com/chromium-browser-official/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain pciutils dbus libXcomposite libXcursor libXtst alsa-lib bzip2 yasm nss libXScrnSaver libexif ninja:host libpng harfbuzz atk gtk+"
+PKG_DEPENDS_TARGET="toolchain pciutils dbus libXcomposite libXcursor libXtst alsa-lib bzip2 yasm nss libXScrnSaver libexif ninja:host libpng harfbuzz atk gtk+ libva-vdpau-driver"
 PKG_PRIORITY="optional"
 PKG_SECTION="browser"
 PKG_SHORTDESC="Chromium Browser"
@@ -55,7 +55,7 @@ make_target() {
   # CFLAGS are passed through release_extra_cflags below
   export -n CFLAGS CXXFLAGS
 
-  export LDFLAGS="$LDFLAGS -ludev -lexif"
+  export LDFLAGS="$LDFLAGS -ludev"
 
   # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
   # Note: These are for OpenELEC use ONLY. For your own distribution, please
@@ -83,6 +83,7 @@ make_target() {
     -Dlogging_like_official_build=1
     -Dtracing_like_official_build=1
     -Dfieldtrial_testing_like_official_build=1
+    -Dremove_webcore_debug_symbols=1
     -Drelease_extra_cflags="$CFLAGS"
     -Dlibspeechd_h_prefix=speech-dispatcher/
     -Dffmpeg_branding=Chrome
@@ -122,7 +123,7 @@ make_target() {
 }
 
 makeinstall_target() {
-  : # nop
+  :
 }
 
 addon() {
@@ -171,4 +172,10 @@ addon() {
 
   # nspr
   cp -PL $(get_build_dir nspr)/.install_pkg/usr/lib/*.so $ADDON_BUILD/$PKG_ADDON_ID/lib
+
+  # libexif
+  cp -PL $(get_build_dir libexif)/.install_pkg/usr/lib/* $ADDON_BUILD/$PKG_ADDON_ID/lib
+
+  # libva-vdpau-driver
+  cp -PL $(get_build_dir libva-vdpau-driver)/.install_pkg/usr/lib/va/*.so $ADDON_BUILD/$PKG_ADDON_ID/lib
 }

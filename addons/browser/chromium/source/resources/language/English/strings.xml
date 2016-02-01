@@ -4,11 +4,12 @@
         <string id="1001">Actions</string>
         <string id="1020">Chromium Configuration</string>
         <string id="1021">Stop Kodi Player and Suspend AudioEngine</string>
-        <string id="1022">Ignore GPU Blacklist</string>
-        <string id="1023">Window Mode</string>
-        <string id="1024">Default Homepage</string>
-        <string id="1025">Use Custom Audio Device</string>
-        <string id="1026">    Audio Device</string>
+        <string id="1022">HW Acceleration Mode</string>
+        <string id="1023">Rasterization Mode</string>
+        <string id="1024">Window Mode</string>
+        <string id="1025">Default Homepage</string>
+        <string id="1026">Use Custom Audio Device</string>
+        <string id="1027">Audio Device</string>
         <string id="1030">Chromium Actions</string>
         <string id="1031">Install libwidevinecdm.so (Netflix Support)</string>
         <string id="1032">Install libpepflashplayer.so (Flash Player Support)</string>
