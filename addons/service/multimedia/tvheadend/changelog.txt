@@ -1,5 +1,10 @@
+7.0.1
+- update to tvheadend-4.0.8-7
+- fixes timeshift for Jarvis
+
 7.0.0
 - rebuild for OpenELEC-7.0
+
 6.0.3
 - update to tvheadend-4.0.8
 
