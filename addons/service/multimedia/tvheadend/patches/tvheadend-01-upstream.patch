@@ -1,0 +1,306 @@
+From 38e10fc802c5d4937fe94e05f5dce8d6252a95c1 Mon Sep 17 00:00:00 2001
+From: Ferni7 <fernii@gmail.com>
+Date: Thu, 3 Dec 2015 21:26:18 +1100
+Subject: [PATCH 1/7] Update linuxdvb_lnb.c
+
+Adding LNB widely used in Australia.
+---
+ src/input/mpegts/linuxdvb/linuxdvb_lnb.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/src/input/mpegts/linuxdvb/linuxdvb_lnb.c b/src/input/mpegts/linuxdvb/linuxdvb_lnb.c
+index f8d5878..ab0b017 100644
+--- a/src/input/mpegts/linuxdvb/linuxdvb_lnb.c
++++ b/src/input/mpegts/linuxdvb/linuxdvb_lnb.c
+@@ -302,6 +302,19 @@ struct linuxdvb_lnb_conf linuxdvb_lnb_all[] = {
+     .lnb_high   = 14350000,
+     .lnb_switch = 0,
+   },
++    {
++    { {
++      .ld_type    = "Ku 10700 (Australia)",
++      .ld_tune    = linuxdvb_lnb_standard_tune,
++      },
++      .lnb_freq   = linuxdvb_lnb_standard_freq,
++      .lnb_band   = linuxdvb_lnb_standard_band,
++      .lnb_pol    = linuxdvb_lnb_standard_pol,
++    },
++    .lnb_low    = 10700000,
++    .lnb_high   = 10700000,
++    .lnb_switch = 11800000,
++  },
+ };
+ 
+ /* **************************************************************************
+
+From a95317543b952d756ff237a16f8801c504883251 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Sat, 26 Dec 2015 17:35:40 +0100
+Subject: [PATCH 2/7] imagecache: deescape also file:// urls
+
+---
+ src/imagecache.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/src/imagecache.c b/src/imagecache.c
+index 26db0ac..cee8427 100644
+--- a/src/imagecache.c
++++ b/src/imagecache.c
+@@ -16,6 +16,7 @@
+  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  */
+ 
++#define _GNU_SOURCE
+ #include <sys/stat.h>
+ #include <sys/types.h>
+ #include <fcntl.h>
+@@ -542,6 +543,7 @@ int
+ imagecache_open ( uint32_t id )
+ {
+   imagecache_image_t skel, *i;
++  char *fn;
+   int fd = -1;
+ 
+   lock_assert(&global_lock);
+@@ -552,8 +554,11 @@ imagecache_open ( uint32_t id )
+     return -1;
+ 
+   /* Local file */
+-  if (!strncasecmp(i->url, "file://", 7))
+-    fd = open(i->url + 7, O_RDONLY);
++  if (!strncasecmp(i->url, "file://", 7)) {
++    fn = strdupa(i->url + 7);
++    http_deescape(fn);
++    fd = open(fn, O_RDONLY);
++  }
+ 
+   /* Remote file */
+ #if ENABLE_IMAGECACHE
+
+From c870eb9df0da93dd62ab24672f15a2186a001f64 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Sat, 26 Dec 2015 18:35:12 +0100
+Subject: [PATCH 3/7] capmt: when the caid is forced for a service, try to use
+ it as PID 8191, fixes #2942
+
+---
+ src/descrambler/capmt.c | 53 ++++++++++++++++++++++++++-----------------------
+ 1 file changed, 28 insertions(+), 25 deletions(-)
+
+diff --git a/src/descrambler/capmt.c b/src/descrambler/capmt.c
+index 8eecff2..3326915 100644
+--- a/src/descrambler/capmt.c
++++ b/src/descrambler/capmt.c
+@@ -1738,6 +1738,24 @@ capmt_table_input(void *opaque, int pid, const uint8_t *data, int len, int emm)
+ }
+ 
+ static void
++capmt_caid_add(capmt_service_t *ct, mpegts_service_t *t, int pid, caid_t *c)
++{
++  capmt_caid_ecm_t *cce;
++
++  tvhlog(LOG_DEBUG, "capmt",
++         "%s: New caid 0x%04X:0x%06X (pid 0x%04X) for service \"%s\"",
++          capmt_name(ct->ct_capmt), c->caid, c->providerid, pid, t->s_dvb_svcname);
++
++  cce = calloc(1, sizeof(capmt_caid_ecm_t));
++  cce->cce_caid = c->caid;
++  cce->cce_ecmpid = pid;
++  cce->cce_providerid = c->providerid;
++  cce->cce_service = t;
++  LIST_INSERT_HEAD(&ct->ct_caid_ecm, cce, cce_link);
++  ct->ct_constcw |= c->caid == 0x2600 ? 1 : 0;
++}
++
++static void
+ capmt_caid_change(th_descrambler_t *td)
+ {
+   capmt_service_t *ct = (capmt_service_t *)td;
+@@ -1766,18 +1784,7 @@ capmt_caid_change(th_descrambler_t *td)
+             break;
+       if (cce)
+         continue;
+-      tvhlog(LOG_DEBUG, "capmt",
+-             "%s: New caid 0x%04X:0x%06X for service \"%s\"",
+-              capmt_name(capmt), c->caid, c->providerid, t->s_dvb_svcname);
+-
+-      /* ecmpid not already seen, add it to list */
+-      cce             = calloc(1, sizeof(capmt_caid_ecm_t));
+-      cce->cce_caid   = c->caid;
+-      cce->cce_ecmpid = st->es_pid;
+-      cce->cce_providerid = c->providerid;
+-      cce->cce_service = t;
+-      LIST_INSERT_HEAD(&ct->ct_caid_ecm, cce, cce_link);
+-      ct->ct_constcw |= c->caid == 0x2600 ? 1 : 0;
++      capmt_caid_add(ct, t, st->es_pid, c);
+       change = 1;
+     }
+   }
+@@ -1970,7 +1977,6 @@ capmt_service_start(caclient_t *cac, service_t *s)
+ {
+   capmt_t *capmt = (capmt_t *)cac;
+   capmt_service_t *ct;
+-  capmt_caid_ecm_t *cce;
+   th_descrambler_t *td;
+   mpegts_service_t *t = (mpegts_service_t*)s;
+   elementary_stream_t *st;
+@@ -2055,22 +2061,19 @@ capmt_service_start(caclient_t *cac, service_t *s)
+         continue;
+       if (t->s_dvb_forcecaid && t->s_dvb_forcecaid != c->caid)
+         continue;
+-
+-      tvhlog(LOG_DEBUG, "capmt",
+-        "%s: New caid 0x%04X for service \"%s\"", capmt_name(capmt), c->caid, t->s_dvb_svcname);
+-
+-      /* add it to list */
+-      cce             = calloc(1, sizeof(capmt_caid_ecm_t));
+-      cce->cce_caid   = c->caid;
+-      cce->cce_ecmpid = st->es_pid;
+-      cce->cce_providerid = c->providerid;
+-      cce->cce_service = t;
+-      LIST_INSERT_HEAD(&ct->ct_caid_ecm, cce, cce_link);
+-      ct->ct_constcw |= c->caid == 0x2600 ? 1 : 0;
++      capmt_caid_add(ct, t, st->es_pid, c);
+       change = 1;
+     }
+   }
+ 
++  if (!change && t->s_dvb_forcecaid) {
++    caid_t sca;
++    memset(&sca, 0, sizeof(sca));
++    sca.caid = t->s_dvb_forcecaid;
++    capmt_caid_add(ct, t, 8191, &sca);
++    change = 1;
++  }
++
+   td = (th_descrambler_t *)ct;
+   snprintf(buf, sizeof(buf), "capmt-%s-%i",
+                              capmt->capmt_sockfile,
+
+From 1637d4d0e29e3c818e05fc4f7cb8b564c3f19c77 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 1 Jan 2016 17:20:53 +0100
+Subject: [PATCH 4/7] cwc: improve section logs
+
+---
+ src/descrambler/cwc.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/descrambler/cwc.c b/src/descrambler/cwc.c
+index 2483679..9025f74 100644
+--- a/src/descrambler/cwc.c
++++ b/src/descrambler/cwc.c
+@@ -728,8 +728,8 @@ handle_ecm_reply(cwc_service_t *ct, ecm_section_t *es, uint8_t *msg,
+ 
+     if (es->es_nok >= CWC_MAX_NOKS) {
+       tvhlog(LOG_DEBUG, "cwc",
+-             "Too many NOKs for service \"%s\"%s from %s",
+-             t->s_dvb_svcname, chaninfo, ct->td_nicename);
++             "Too many NOKs[%i] for service \"%s\"%s from %s",
++             es->es_section, t->s_dvb_svcname, chaninfo, ct->td_nicename);
+       goto forbid;
+     }
+ 
+@@ -800,12 +800,12 @@ handle_ecm_reply(cwc_service_t *ct, ecm_section_t *es, uint8_t *msg,
+ 
+     if(len < 35) {
+       tvhlog(LOG_DEBUG, "cwc",
+-             "Received ECM reply%s for service \"%s\" "
++             "Received ECM reply%s for service \"%s\" [%d] "
+              "even: %02x.%02x.%02x.%02x.%02x.%02x.%02x.%02x"
+              " odd: %02x.%02x.%02x.%02x.%02x.%02x.%02x.%02x (seqno: %d "
+              "Req delay: %"PRId64" ms)",
+              chaninfo,
+-             t->s_dvb_svcname,
++             t->s_dvb_svcname, es->es_section,
+              msg[3 + 0], msg[3 + 1], msg[3 + 2], msg[3 + 3], msg[3 + 4],
+              msg[3 + 5], msg[3 + 6], msg[3 + 7], msg[3 + 8], msg[3 + 9],
+              msg[3 + 10],msg[3 + 11],msg[3 + 12],msg[3 + 13],msg[3 + 14],
+
+From 2ccbd45c3ad0cfd65b4255a3f249f43de1b68c7a Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Thu, 17 Dec 2015 16:00:09 +0100
+Subject: [PATCH 5/7] timeshift: reallocate segment on close to release unused
+ tail
+
+---
+ src/timeshift/timeshift_filemgr.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/src/timeshift/timeshift_filemgr.c b/src/timeshift/timeshift_filemgr.c
+index de4e21f..a563b41 100644
+--- a/src/timeshift/timeshift_filemgr.c
++++ b/src/timeshift/timeshift_filemgr.c
+@@ -151,6 +151,7 @@ int timeshift_filemgr_makedirs ( int index, char *buf, size_t len )
+  */
+ void timeshift_filemgr_close ( timeshift_file_t *tsf )
+ {
++  uint8_t *ram;
+   ssize_t r = timeshift_write_eof(tsf);
+   if (r > 0)
+   {
+@@ -159,6 +160,14 @@ void timeshift_filemgr_close ( timeshift_file_t *tsf )
+     if (tsf->ram)
+       atomic_add_u64(&timeshift_total_ram_size, r);
+   }
++  if (tsf->ram) {
++    /* maintain unused memory block */
++    ram = realloc(tsf->ram, tsf->woff);
++    if (ram) {
++      tsf->ram = ram;
++      tsf->ram_size = tsf->woff;
++    }
++  }
+   if (tsf->wfd >= 0)
+     close(tsf->wfd);
+   tsf->wfd = -1;
+
+From c26c33a1ff5b0e278fca99c2e97db8b10f10b91c Mon Sep 17 00:00:00 2001
+From: Diego Rivera <diego.rivera.cr@gmail.com>
+Date: Mon, 1 Feb 2016 14:15:58 -0600
+Subject: [PATCH 6/7] Fixed bug-3507 - incorrect dereference of argv when
+ performing variable interpolation
+
+---
+ src/spawn.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/spawn.c b/src/spawn.c
+index d19b209..3743306 100644
+--- a/src/spawn.c
++++ b/src/spawn.c
+@@ -401,7 +401,7 @@ spawn_parse_args(char ***argv, int argc, const char *cmd, const char **replace)
+           strcpy(a, f);
+           strcat(a, r[1]);
+           strcat(a, p + l);
+-          *argv[i++] = a;
++          (*argv)[i++] = a;
+           break;
+         }
+       }
+
+From 8a979f923d96315ba3a5f8527ae61a84a78f440a Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Tue, 2 Feb 2016 15:09:53 +0100
+Subject: [PATCH 7/7] httpc: fix req conn-close ans conn-keep-alive handling,
+ fixes #3548
+
+---
+ src/httpc.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/src/httpc.c b/src/httpc.c
+index 4bdbeb1..1144293 100644
+--- a/src/httpc.c
++++ b/src/httpc.c
+@@ -997,9 +997,7 @@ http_client_run( http_client_t *hc )
+   if (p && ver != RTSP_VERSION_1_0) {
+     if (strcasecmp(p, "close") == 0)
+       hc->hc_keepalive = 0;
+-    else if (hc->hc_keepalive && strcasecmp(p, "keep-alive"))
+-      return http_client_flush(hc, -EINVAL);
+-    else if (!hc->hc_keepalive && strcasecmp(p, "close"))
++    else if (strcasecmp(p, "keep-alive")) /* no change for keep-alive */
+       return http_client_flush(hc, -EINVAL);
+   }
+   if (ver == RTSP_VERSION_1_0) {
