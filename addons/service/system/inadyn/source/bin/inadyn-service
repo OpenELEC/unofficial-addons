@@ -2,7 +2,7 @@
 
 #####################################################################
 # This program is part of the inadyn addon for OpenELEC.
-# Copyright (C) 2014 Anton Voyl (awiouy@gmail.com)
+# Copyright (C) 2014-2016 Anton Voyl (awiouy at gmail.com)
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -22,9 +22,24 @@
 . /etc/profile
 oe_setup_addon service.system.inadyn
 
-chmod a+x $ADDON_DIR/bin/*
-cp $ADDON_DIR/config/inadyn.conf.sample $ADDON_HOME
+config="$ADDON_HOME/inadyn.conf"
 
-if [ -f $ADDON_HOME/inadyn.conf ]; then
-  inadyn -b --config $ADDON_HOME/inadyn.conf
+options="-b"
+if [ "$inadyn_S" == "inadyn.conf" ]
+then
+   if [ -f "$config" ] && [ -s "$config"]
+   then
+      options="$options -F $config"
+   else
+      exit 0
+   fi
+else
+   options="$options -S $inadyn_S -u $inadyn_u -p $inadyn_p -a $inadyn_a"
+   if [ "$inadyn_s" == "true" ]
+   then
+      options="$options -s"
+   fi
 fi
+
+inadyn $options
+
