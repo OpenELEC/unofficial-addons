@@ -1,5 +1,12 @@
+7.0.1
+- Added settings to simplify configuration
+- Refactored system.d unit
+- Removed error message on empty configuration 
+- Removed plugin
+
 7.0.0
 - rebuild for OpenELEC-7.0
+
 6.0.0
 - rebuild for OE6
 

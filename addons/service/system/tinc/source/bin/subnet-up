@@ -1,0 +1,10 @@
+#!/bin/sh
+if [ -n "$SUBNET" ]
+then
+   if [ "$NAME" == "$NODE" ]
+   then
+      ip addr add "$SUBNET" dev $INTERFACE
+   else
+      ip route add "$SUBNET" dev $INTERFACE
+   fi
+fi

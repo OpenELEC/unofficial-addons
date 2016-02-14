@@ -5,7 +5,8 @@ After=network.target
 Requires=network.target
 
 [Service]
-ExecStart=/bin/sh -c "exec sh /storage/.kodi/addons/service.system.syncthing/bin/syncthing-service"
+Type=forking
+ExecStart=/bin/sh /storage/.kodi/addons/service.system.syncthing/bin/syncthing-service
 Restart=on-failure
 SuccessExitStatus=3 4
 RestartForceExitStatus=3 4
