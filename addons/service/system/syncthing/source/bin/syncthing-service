@@ -27,5 +27,6 @@ STNODEFAULTFOLDER="y" syncthing -home=$ADDON_HOME           \
                                 -gui-address="$gui_address" \
                                 -logflags=0                 \
                                 -no-browser                 \
-                                -no-restart
+                                -no-restart                 \
+                                &
 
