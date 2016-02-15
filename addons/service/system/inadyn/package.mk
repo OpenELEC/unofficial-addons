@@ -1,6 +1,6 @@
 #####################################################################
 # This file is part of the inadyn addon for OpenELEC.
-# Copyright (C) 2014 Anton Voyl (awiouy@gmail.com)
+# Copyright (C) 2014-2016 Anton Voyl (awiouy at gmail.com)
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -18,8 +18,8 @@
 #####################################################################
 
 PKG_NAME="inadyn"
-PKG_VERSION="1.99.12"
-PKG_REV="0"
+PKG_VERSION="1.99.15"
+PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPLv2"
 PKG_SITE="http://troglobit.com/inadyn.html"
@@ -29,14 +29,13 @@ PKG_PRIORITY="optional"
 PKG_SECTION="service/system"
 PKG_SHORTDESC="Inadyn, a small and simple DDNS client"
 PKG_LONGDESC="Inadyn is a small and simple DDNS client with HTTPS support. It is commonly available in many GNU/Linux distributions, used in off-the-shelf routers and Internet gateways to automate the task of keeping your DNS record up to date with any IP address changes from your ISP. It can also be used in installations with redundant (backup) connections to the Internet."
-PKG_DISCLAIMER="This is an unofficial addon. Do therefore not expect support from OpenELEC forum and irc channel."
+PKG_DISCLAIMER="This is a community addon. Do therefore not expect support from OpenELEC forum and irc channel."
+PKG_MAINTAINER="Anton Voyl (awiouy at gmail.com)"
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
 PKG_ADDON_PROVIDES=""
 PKG_ADDON_REPOVERSION="6.0"
-
-PKG_MAINTAINER="Anton Voyl (awiouy@gmail.com)"
 
 PKG_AUTORECONF="yes"
 PKG_CONFIGURE_OPTS_TARGET="--enable-openssl" # --sysconfdir is ineffective

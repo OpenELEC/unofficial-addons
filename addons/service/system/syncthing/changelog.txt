@@ -1,3 +1,8 @@
+6.0.2
+- Upgrade to version 0.12.19
+- Refactor system.d unit
+- Restart system.d unit upon changed settings
+
 6.0.1
 - Upgrade to version 0.12.15
 - Skip default folder creation on new install
