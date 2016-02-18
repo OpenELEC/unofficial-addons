@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+   <category label="30000">
+      <setting id="tinc_name" label="30001" type="text" enable="false"
+         default="tinc get name" />
+      <setting type="sep" />
+      <setting id="tinc_address" label="30002" type="text" />
+      <setting id="tinc_port" label="30003" type="number" enable="false"
+         default="tinc get port" />
+      <setting type="sep" />
+      <setting id="tinc_subnet" label="30004" type="ipaddress" enable="false"
+         default="tinc get subnet" />   
+      <setting id="tinc_subnets" label="30005" type="labelenum"
+         values="TunnelServer|StrictSubnets|Default" />
+   </category>
+</settings>

@@ -1,0 +1,8 @@
+<settings>
+    <setting id="tinc_address" value="" />
+    <setting id="tinc_name" value="" />
+    <setting id="tinc_port" value="" />
+    <setting id="tinc_subnet" value="" />
+    <setting id="tinc_subnets" value="TunnelServer" />
+</settings>
+

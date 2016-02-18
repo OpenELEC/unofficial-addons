@@ -1,0 +1,64 @@
+#!/bin/sh
+#####################################################################
+# This program is part of the inadyn addon for OpenELEC.
+# Copyright (C) 2014-2016 Anton Voyl (awiouy at gmail dot com)
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with OpenELEC; if not, write to the Free Software Foundation,
+# Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#####################################################################
+. /etc/profile
+oe_setup_addon service.system.tinc
+
+config="$ADDON_HOME/.config"
+
+if [ ! -d "$config" ]
+then
+   exit 0
+fi
+
+if [ -z "$tinc_address" ]
+then
+   tinc -c $config del address
+else
+   tinc -c $config set address $tinc_address
+fi
+
+case "$tinc_subnets" in
+   "StrictSubnets")
+      subnets="-o StrictSubnets=yes"
+      ;;
+   "TunnelServer")
+      subnets="-o TunnelServer=yes"
+      ;;
+   *)
+      subnets=""
+      ;;
+esac
+
+cp "$ADDON_DIR/bin/subnet-up" \
+   "$ADDON_DIR/bin/tinc-up"   \
+   "$config"
+
+ln -s "$config/hosts" "$ADDON_HOME/Directory"
+card="$ADDON_HOME/Calling Card"
+mkdir -p "$card"
+ln -s "$config/hosts/$tinc_name" "$card/$tinc_name"
+
+tincd -c $config            \
+      -n tinc_oe            \
+      -o AutoConnect=yes    \
+      -o LocalDiscovery=yes \
+      -o Mode=router        \
+      $subnets
+
