@@ -1,7 +1,7 @@
 From 38e10fc802c5d4937fe94e05f5dce8d6252a95c1 Mon Sep 17 00:00:00 2001
 From: Ferni7 <fernii@gmail.com>
 Date: Thu, 3 Dec 2015 21:26:18 +1100
-Subject: [PATCH 1/7] Update linuxdvb_lnb.c
+Subject: [PATCH 01/15] Update linuxdvb_lnb.c
 
 Adding LNB widely used in Australia.
 ---
@@ -36,7 +36,7 @@ index f8d5878..ab0b017 100644
 From a95317543b952d756ff237a16f8801c504883251 Mon Sep 17 00:00:00 2001
 From: Jaroslav Kysela <perex@perex.cz>
 Date: Sat, 26 Dec 2015 17:35:40 +0100
-Subject: [PATCH 2/7] imagecache: deescape also file:// urls
+Subject: [PATCH 02/15] imagecache: deescape also file:// urls
 
 ---
  src/imagecache.c | 9 +++++++--
@@ -80,8 +80,8 @@ index 26db0ac..cee8427 100644
 From c870eb9df0da93dd62ab24672f15a2186a001f64 Mon Sep 17 00:00:00 2001
 From: Jaroslav Kysela <perex@perex.cz>
 Date: Sat, 26 Dec 2015 18:35:12 +0100
-Subject: [PATCH 3/7] capmt: when the caid is forced for a service, try to use
- it as PID 8191, fixes #2942
+Subject: [PATCH 03/15] capmt: when the caid is forced for a service, try to
+ use it as PID 8191, fixes #2942
 
 ---
  src/descrambler/capmt.c | 53 ++++++++++++++++++++++++++-----------------------
@@ -180,7 +180,7 @@ index 8eecff2..3326915 100644
 From 1637d4d0e29e3c818e05fc4f7cb8b564c3f19c77 Mon Sep 17 00:00:00 2001
 From: Jaroslav Kysela <perex@perex.cz>
 Date: Fri, 1 Jan 2016 17:20:53 +0100
-Subject: [PATCH 4/7] cwc: improve section logs
+Subject: [PATCH 04/15] cwc: improve section logs
 
 ---
  src/descrambler/cwc.c | 8 ++++----
@@ -220,8 +220,8 @@ index 2483679..9025f74 100644
 From 2ccbd45c3ad0cfd65b4255a3f249f43de1b68c7a Mon Sep 17 00:00:00 2001
 From: Jaroslav Kysela <perex@perex.cz>
 Date: Thu, 17 Dec 2015 16:00:09 +0100
-Subject: [PATCH 5/7] timeshift: reallocate segment on close to release unused
- tail
+Subject: [PATCH 05/15] timeshift: reallocate segment on close to release
+ unused tail
 
 ---
  src/timeshift/timeshift_filemgr.c | 9 +++++++++
@@ -258,7 +258,7 @@ index de4e21f..a563b41 100644
 From c26c33a1ff5b0e278fca99c2e97db8b10f10b91c Mon Sep 17 00:00:00 2001
 From: Diego Rivera <diego.rivera.cr@gmail.com>
 Date: Mon, 1 Feb 2016 14:15:58 -0600
-Subject: [PATCH 6/7] Fixed bug-3507 - incorrect dereference of argv when
+Subject: [PATCH 06/15] Fixed bug-3507 - incorrect dereference of argv when
  performing variable interpolation
 
 ---
@@ -282,7 +282,7 @@ index d19b209..3743306 100644
 From 8a979f923d96315ba3a5f8527ae61a84a78f440a Mon Sep 17 00:00:00 2001
 From: Jaroslav Kysela <perex@perex.cz>
 Date: Tue, 2 Feb 2016 15:09:53 +0100
-Subject: [PATCH 7/7] httpc: fix req conn-close ans conn-keep-alive handling,
+Subject: [PATCH 07/15] httpc: fix req conn-close ans conn-keep-alive handling,
  fixes #3548
 
 ---
@@ -304,3 +304,421 @@ index 4bdbeb1..1144293 100644
        return http_client_flush(hc, -EINVAL);
    }
    if (ver == RTSP_VERSION_1_0) {
+
+From 50bbc270f738e2897e13c67caa5789366dfdfa7b Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Thu, 4 Feb 2016 09:15:33 +0100
+Subject: [PATCH 08/15] utils: makedirs - don't call chmod() in makedirs() when
+ mode is ok
+
+---
+ src/utils.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/utils.c b/src/utils.c
+index 446b9c2..4fdda53 100644
+--- a/src/utils.c
++++ b/src/utils.c
+@@ -477,6 +477,8 @@ md5sum ( const char *str )
+   return ret;
+ }
+ 
++#define FILE_MODE_BITS(x) (x&(S_IRWXU|S_IRWXG|S_IRWXO))
++
+ int
+ makedirs ( const char *inpath, int mode, gid_t gid, uid_t uid )
+ {
+@@ -499,7 +501,8 @@ makedirs ( const char *inpath, int mode, gid_t gid, uid_t uid )
+         err = mkdir(path, mode);
+         if (!err && gid != -1 && uid != -1)
+           err = chown(path, uid, gid);
+-        if (!err)
++        if (!err && !stat(path, &st) &&
++            FILE_MODE_BITS(mode) != FILE_MODE_BITS(st.st_mode))
+           err = chmod(path, mode); /* override umode */
+         tvhtrace("settings", "Creating directory \"%s\" with octal permissions "
+                              "\"%o\" gid %d uid %d", path, mode, gid, uid);
+
+From ce82e796e6286b84882787796d99ba256eaffe11 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Mon, 8 Feb 2016 10:26:17 +0100
+Subject: [PATCH 09/15] makedirs: pass subsystem, add mstrict command, fixes
+ #3459
+
+---
+ src/config.c                      |  4 ++--
+ src/dvr/dvr_rec.c                 |  3 ++-
+ src/settings.c                    |  2 +-
+ src/timeshift/timeshift_filemgr.c |  2 +-
+ src/tvheadend.h                   |  2 +-
+ src/tvhlog.h                      |  1 +
+ src/utils.c                       | 21 +++++++++++++++------
+ 7 files changed, 23 insertions(+), 12 deletions(-)
+
+diff --git a/src/config.c b/src/config.c
+index 10d2064..02c6663 100644
+--- a/src/config.c
++++ b/src/config.c
+@@ -1225,7 +1225,7 @@ dobackup(const char *oldver)
+   }
+ 
+   snprintf(outfile, sizeof(outfile), "%s/backup", root);
+-  if (makedirs(outfile, 0700, -1, -1))
++  if (makedirs("config", outfile, 0700, 1, -1, -1))
+     goto fatal;
+   if (chdir(root)) {
+     tvherror("config", "unable to find directory '%s'", root);
+@@ -1414,7 +1414,7 @@ config_boot ( const char *path, gid_t gid, uid_t uid )
+   /* Ensure directory exists */
+   if (stat(path, &st)) {
+     config_newcfg = 1;
+-    if (makedirs(path, 0700, gid, uid)) {
++    if (makedirs("config", path, 0700, 1, gid, uid)) {
+       tvhwarn("START", "failed to create settings directory %s,"
+                        " settings will not be saved", path);
+       return;
+diff --git a/src/dvr/dvr_rec.c b/src/dvr/dvr_rec.c
+index 99f294e..02ce2ae 100644
+--- a/src/dvr/dvr_rec.c
++++ b/src/dvr/dvr_rec.c
+@@ -261,7 +261,8 @@ pvr_generate_filename(dvr_entry_t *de, const streaming_start_t *ss)
+     }
+   }
+ 
+-  if (makedirs(path, cfg->dvr_muxcnf.m_directory_permissions, -1, -1) != 0)
++  if (makedirs("dvr", path,
++               cfg->dvr_muxcnf.m_directory_permissions, 0, -1, -1) != 0)
+     return -1;
+   
+   /* Construct final name */
+diff --git a/src/settings.c b/src/settings.c
+index 1fa9483..3f71ba8 100644
+--- a/src/settings.c
++++ b/src/settings.c
+@@ -82,7 +82,7 @@ hts_settings_makedirs ( const char *inpath )
+     }
+     x--;
+   }
+-  return makedirs(path, 0700, -1, -1);
++  return makedirs("settings", path, 0700, 1, -1, -1);
+ }
+ 
+ /**
+diff --git a/src/timeshift/timeshift_filemgr.c b/src/timeshift/timeshift_filemgr.c
+index a563b41..41818e3 100644
+--- a/src/timeshift/timeshift_filemgr.c
++++ b/src/timeshift/timeshift_filemgr.c
+@@ -143,7 +143,7 @@ int timeshift_filemgr_makedirs ( int index, char *buf, size_t len )
+   if (timeshift_filemgr_get_root(buf, len))
+     return 1;
+   snprintf(buf+strlen(buf), len-strlen(buf), "/%d", index);
+-  return makedirs(buf, 0700, -1, -1);
++  return makedirs("timeshift", buf, 0700, 0, -1, -1);
+ }
+ 
+ /*
+diff --git a/src/tvheadend.h b/src/tvheadend.h
+index 767f4e8..79bd1ff 100644
+--- a/src/tvheadend.h
++++ b/src/tvheadend.h
+@@ -747,7 +747,7 @@ static inline uint8_t *sbuf_peek(sbuf_t *sb, int off) { return sb->sb_data + off
+ 
+ char *md5sum ( const char *str );
+ 
+-int makedirs ( const char *path, int mode, gid_t gid, uid_t uid );
++int makedirs ( const char *subsys, const char *path, int mode, int mstrict, gid_t gid, uid_t uid );
+ 
+ int rmtree ( const char *path );
+ 
+diff --git a/src/tvhlog.h b/src/tvhlog.h
+index 864cc8d..6aaa341 100644
+--- a/src/tvhlog.h
++++ b/src/tvhlog.h
+@@ -117,6 +117,7 @@ static inline int tvhlog_limit ( tvhlog_limit_t *limit, uint32_t delay )
+ #define tvhwarn(...)   tvhlog(LOG_WARNING, ##__VA_ARGS__)
+ #define tvhnotice(...) tvhlog(LOG_NOTICE,  ##__VA_ARGS__)
+ #define tvherror(...)  tvhlog(LOG_ERR,     ##__VA_ARGS__)
++#define tvhalert(...)  tvhlog(LOG_ALERT,   ##__VA_ARGS__)
+ 
+ void dispatch_clock_update(struct timespec *ts);
+ 
+diff --git a/src/utils.c b/src/utils.c
+index 4fdda53..764f127 100644
+--- a/src/utils.c
++++ b/src/utils.c
+@@ -480,7 +480,8 @@ md5sum ( const char *str )
+ #define FILE_MODE_BITS(x) (x&(S_IRWXU|S_IRWXG|S_IRWXO))
+ 
+ int
+-makedirs ( const char *inpath, int mode, gid_t gid, uid_t uid )
++makedirs ( const char *subsys, const char *inpath, int mode,
++           int mstrict, gid_t gid, uid_t uid )
+ {
+   int err, ok;
+   size_t x;
+@@ -502,17 +503,25 @@ makedirs ( const char *inpath, int mode, gid_t gid, uid_t uid )
+         if (!err && gid != -1 && uid != -1)
+           err = chown(path, uid, gid);
+         if (!err && !stat(path, &st) &&
+-            FILE_MODE_BITS(mode) != FILE_MODE_BITS(st.st_mode))
++            FILE_MODE_BITS(mode) != FILE_MODE_BITS(st.st_mode)) {
+           err = chmod(path, mode); /* override umode */
+-        tvhtrace("settings", "Creating directory \"%s\" with octal permissions "
+-                             "\"%o\" gid %d uid %d", path, mode, gid, uid);
++          if (!mstrict) {
++            err = 0;
++            tvhwarn(subsys, "Unable to change directory permissions "
++                            "to \"%o\" for \"%s\" (keeping \"%o\")",
++                            mode, path, FILE_MODE_BITS(st.st_mode));
++            mode = FILE_MODE_BITS(st.st_mode);
++          }
++        }
++        tvhtrace(subsys, "Creating directory \"%s\" with octal permissions "
++                         "\"%o\" gid %d uid %d", path, mode, gid, uid);
+       } else {
+         err   = S_ISDIR(st.st_mode) ? 0 : 1;
+         errno = ENOTDIR;
+       }
+       if (err) {
+-        tvhlog(LOG_ALERT, "settings", "Unable to create dir \"%s\": %s",
+-               path, strerror(errno));
++        tvhalert(subsys, "Unable to create dir \"%s\": %s",
++                 path, strerror(errno));
+         return -1;
+       }
+       path[x] = '/';
+
+From e7c07444fbee997f54f470cabf5ae5f5715f6af7 Mon Sep 17 00:00:00 2001
+From: Adam Sutton <dev@adamsutton.me.uk>
+Date: Tue, 16 Feb 2016 23:03:31 +0000
+Subject: [PATCH 10/15] build: backported apt-update script from master
+
+---
+ support/apt-update | 36 ++++++++++++++++++++++++++++--------
+ 1 file changed, 28 insertions(+), 8 deletions(-)
+
+diff --git a/support/apt-update b/support/apt-update
+index 4caffec..95c9c72 100755
+--- a/support/apt-update
++++ b/support/apt-update
+@@ -5,6 +5,8 @@
+ # environment variables
+ #
+ 
++#set -x
++
+ # Terminate
+ function die
+ {
+@@ -18,13 +20,27 @@ DIR=$(cd $(dirname "$0"); pwd)
+ 
+ # Configuration
+ TVH_ROOT=$(cd "$(dirname "$0")"/..; pwd)
+-[ -z "$TVH_DIST" ] && TVH_DIST="wheezy lucid precise trusty utopic"
+-[ -z "$TVH_ARCH" ] && TVH_ARCH="i386 amd64"
++
++# Builds
++[ -z "$TVH_BUILD" ] && TVH_BUILD="
++precise:i386:amd64
++trusty:i386:amd64
++vivid:i386:amd64
++wily:i386:amd64
++wheezy:i386:amd64:armhf
++jessie:i386:amd64:armhf
++"
+ 
+ # Options
+ [ ! -z "$1" ] && REL=$1 || REL=master
+ [ ! -z "$2" ] && PPA=$2 || PPA=unstable
+ 
++# Set default package
++[ -z "$DEBEMAIL"    ] && DEBEMAIL="apt@tvheadend.org"
++[ -z "$DEBFULLNAME" ] && DEBFULLNAME="Tvheadend (Package Signing Key)"
++export DEBEMAIL
++export DEBFULLNAME
++
+ # Setup
+ cd "$TVH_ROOT" || exit 1
+ NOW=`date -R`
+@@ -48,22 +64,26 @@ cd "$TMPDIR/tvheadend" || die "failed to enter archived tree"
+ cd ..
+ 
+ # For each distro
+-for d in $TVH_DIST; do
++for b in $TVH_BUILD; do
++  d=${b%%:*}
++  arch=${b##${d}:}
++  arch=${arch/:/ }
++
++  # Update version
+   V=${VER}~${d}
+   mv tvheadend "tvheadend-${V}"
+   cd "tvheadend-${V}"
+ 
+   # Create changelog
+   ./support/changelog "$CHANGELOG" "$d" "$VER" || exit 1
+-  
++
+   # Build source package
+-  dpkg-buildpackage -I.git* -S -sgpg -pgpg || exit 1
++  dpkg-buildpackage -d -I.git* -S -sgpg -pgpg || exit 1
+ 
+   # Build
+   if [ "$CMD" == "pbuilder" ]; then
+-  
+-    for a in $TVH_ARCH; do
+-      pbuilder-dist $d $a ../tvheadend_${V}.dsc
++    for a in ${arch}; do
++      pbuilder-dist $d $a build ${PBUILDER_OPTS} ../tvheadend_${V}.dsc
+     done
+ 
+   # Upload
+
+From 495f37add9a288044d3e4b4fe52a9998585b4d35 Mon Sep 17 00:00:00 2001
+From: Adam Sutton <dev@adamsutton.me.uk>
+Date: Wed, 17 Feb 2016 11:32:47 +0000
+Subject: [PATCH 11/15] build: enable HDHR static build by default
+
+---
+ configure | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure b/configure
+index 487456b..47d2cf2 100755
+--- a/configure
++++ b/configure
+@@ -23,8 +23,8 @@ OPTIONS=(
+   "linuxdvb:yes"
+   "satip_server:yes"
+   "satip_client:yes"
+-  "hdhomerun_client:auto"
+-  "hdhomerun_static:no"
++  "hdhomerun_client:no"
++  "hdhomerun_static:yes"
+   "iptv:yes"
+   "tsfile:yes"
+   "dvbscan:yes"
+
+From 517779296db7ddb8126c4639630d9ee85aafedb1 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Wed, 27 Jan 2016 15:52:14 +0100
+Subject: [PATCH 12/15] getmuxlist: use own dtv-scan-tables repository (quick
+ fixes, merges)
+
+(cherry picked from commit 90f66ef27a78dd70f739cdf63f075d21c5d557c9)
+---
+ Makefile           | 2 +-
+ support/getmuxlist | 5 +++--
+ 2 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 07d6965..8c5e380 100644
+--- a/Makefile
++++ b/Makefile
+@@ -516,7 +516,7 @@ ${ROOTDIR}/libhdhomerun_static/libhdhomerun/libhdhomerun.a: Makefile.hdhomerun
+ 
+ # linuxdvb git tree
+ $(ROOTDIR)/data/dvb-scan/.stamp:
+-	@echo "Receiving data/dvb-scan/dvb-t from http://linuxtv.org/git/dtv-scan-tables.git"
++	@echo "Receiving data/dvb-scan/dvb-t from https://github.com/tvheadend/dtv-scan-tables.git#tvheadend"
+ 	@rm -rf $(ROOTDIR)/data/dvb-scan/*
+ 	@$(ROOTDIR)/support/getmuxlist $(ROOTDIR)/data/dvb-scan
+ 	@touch $@
+diff --git a/support/getmuxlist b/support/getmuxlist
+index e8ed054..5fe4c72 100755
+--- a/support/getmuxlist
++++ b/support/getmuxlist
+@@ -17,8 +17,9 @@ if [ -d "${DIR}/.git" ]; then
+   cd "${LAST}" || exit 1
+ # Fetch
+ elif [ ! -d "${DIR}" ]; then
+-  URL=http://linuxtv.org/git/dtv-scan-tables.git
+-  git clone $URL "${DIR}" > /dev/null 2>&1 || exit 1
++  URL=https://github.com/tvheadend/dtv-scan-tables.git
++  BRANCH=tvheadend
++  git clone -b $BRANCH $URL "${DIR}" > /dev/null 2>&1 || exit 1
+ fi
+ 
+ # Note: will not update existing set (if not .git)
+
+From 501a48b939887c3f2a212b407c7e6abae8d8a467 Mon Sep 17 00:00:00 2001
+From: Adam Sutton <dev@adamsutton.me.uk>
+Date: Wed, 17 Feb 2016 11:28:43 +0000
+Subject: [PATCH 13/15] debian: add ca-certificates to dep list as we need for
+ github access
+
+(cherry picked from commit f87b6fea81b727aa85021fbef5d57f2c9ad6e853)
+
+Conflicts:
+	debian/control
+---
+ debian/control | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/debian/control b/debian/control
+index e42175e..7da2d76 100644
+--- a/debian/control
++++ b/debian/control
+@@ -1,8 +1,8 @@
+ Source: tvheadend
+ Section: video
+ Priority: extra
+-Maintainer: Andreas Öman <andreas@tvheadend.org>
+-Build-Depends: debhelper (>= 7.0.50), pkg-config, libavahi-client-dev, libssl-dev, zlib1g-dev, wget, bzip2, libcurl4-gnutls-dev, git-core, liburiparser-dev, python
++Maintainer: Adam Sutton <aps@tvheadend.org>
++Build-Depends: debhelper (>= 7.0.50), pkg-config, gettext, libavahi-client-dev, libssl-dev, zlib1g-dev, wget, bzip2, libcurl4-gnutls-dev, git-core, liburiparser-dev, python, curl, ca-certificates
+ Standards-Version: 3.7.3
+ 
+ Package: tvheadend
+
+From b99e72c049985bc34792a6c1aa6c63c4a11c1cac Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 19 Feb 2016 14:15:02 +0100
+Subject: [PATCH 14/15] subscriptions: set ths_current_instance to NULL in
+ subscription_unlink_service0(), fixes #3577
+
+---
+ src/subscriptions.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/subscriptions.c b/src/subscriptions.c
+index 51365ca..073fb9e 100644
+--- a/src/subscriptions.c
++++ b/src/subscriptions.c
+@@ -124,6 +124,7 @@ subscription_unlink_service0(th_subscription_t *s, int reason, int stop)
+ 
+   /* Ignore - not actually linked */
+   if (!s->ths_current_instance) goto stop;
++  s->ths_current_instance = NULL;
+ 
+   pthread_mutex_lock(&t->s_stream_mutex);
+ 
+
+From aa680905aaa0349574e06be99f485e2d58a2765b Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Sat, 20 Feb 2016 10:55:16 +0100
+Subject: [PATCH 15/15] subscription: fix assert() fail caused by previous fix,
+ fixes #3577
+
+---
+ src/subscriptions.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/subscriptions.c b/src/subscriptions.c
+index 073fb9e..8bb96a3 100644
+--- a/src/subscriptions.c
++++ b/src/subscriptions.c
+@@ -336,10 +336,11 @@ subscription_reschedule(void)
+       t->s_streaming_status = 0;
+       t->s_status = SERVICE_IDLE;
+ 
+-      subscription_unlink_service0(s, SM_CODE_BAD_SOURCE, 0);
+-
+       si = s->ths_current_instance;
+       assert(si != NULL);
++
++      subscription_unlink_service0(s, SM_CODE_BAD_SOURCE, 0);
++
+       si->si_error = s->ths_testing_error;
+       time(&si->si_error_time);
+ 
