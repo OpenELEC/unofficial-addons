@@ -1,5 +1,14 @@
+7.0.1
+- Reverted to system.d service (legacy configurations are preserved)
+- Removed plugin
+- Added settings to simplify configuration
+- Added a wizard to generate settings on first install
+- Settings are applied to the system.d unit as soon as they are changed
+- Solved error message on initial installation
+
 7.0.0
 - rebuild for OpenELEC-7.0
+
 6.0.0
 - rebuild for OE6
 
