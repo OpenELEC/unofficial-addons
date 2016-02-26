@@ -1,3 +1,8 @@
+7.0.2
+- update to tvheadend-4.0.8-15
+- removed wait for network option (OE system wait-for-online preference is now respected)
+- add option to delay Tvh start (this is a workaround for slow drivers and other random problems with dvb hardware)
+
 7.0.1
 - update to tvheadend-4.0.8-7
 - fixes timeshift for Jarvis
