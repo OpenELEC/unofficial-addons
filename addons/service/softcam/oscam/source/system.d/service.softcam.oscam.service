@@ -1,6 +1,7 @@
 [Unit]
 Description=OScam
-After=graphical.target
+After=network-online.service
+Requires=network-online.service
 
 [Service]
 ExecStart=/bin/sh -c "exec sh /storage/.kodi/addons/service.softcam.oscam/bin/oscam.start"

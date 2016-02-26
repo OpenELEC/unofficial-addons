@@ -41,8 +41,8 @@ fi
 
 find $ADDON_DIR/bin -maxdepth 1 -type f ! -perm 0755 -exec chmod 0755 \{\} \;
 
-if [ "$WAIT_FOR_NET" == "true" ] ; then
-  cm-online $WAIT_FOR_NET_TIME
+if [ "$WORKAROUND_SLEEP" == "true" ] ; then
+  sleep $WORKAROUND_SLEEP_TIME
 fi
 
 # start userspace DVB driver/addon
