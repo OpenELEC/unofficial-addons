@@ -19,12 +19,12 @@
 ################################################################################
 
 PKG_NAME="nss"
-PKG_VERSION="3.15.5"
-PKG_REV="1"
-PKG_ARCH="x86_64"
+PKG_VERSION="3.22.2"
+PKG_REV="2"
+PKG_ARCH="any"
 PKG_LICENSE="Mozilla Public License"
 PKG_SITE="http://ftp.mozilla.org/"
-PKG_URL="http://ftp.mozilla.org/pub/mozilla.org/security/nss/releases/NSS_3_15_5_RTM/src/$PKG_NAME-$PKG_VERSION.tar.gz"
+PKG_URL="http://ftp.mozilla.org/pub/security/nss/releases/NSS_3_22_2_RTM/src/nss-3.22.2-with-nspr-4.12.tar.gz"
 PKG_DEPENDS_TARGET="toolchain nss:host nspr"
 PKG_PRIORITY="optional"
 PKG_SECTION="security"
@@ -39,25 +39,15 @@ MAKEFLAGS=-j1
 
 make_host() {
   cd $ROOT/$PKG_BUILD/nss
-
-  [ "`uname -m`" = "x86_64" ] && HOST_USE_64="USE_64=1"
-
-  # make host part for nsinstall binary and created library signatures
-  make -C coreconf/nsinstall $HOST_USE_64 \
-     USE_SYSTEM_ZLIB=1 ZLIB_LIBS=-lz \
-     V=1
-
-  # save library signatures to be used on target
-  #find ./ -name "lib*.chk" -exec cp {} $ROOT/$PKG_BUILD/dist/ \;
+  make -C coreconf/nsinstall  
 }
 
 makeinstall_host() {
-  cp $ROOT/$PKG_BUILD/nss/coreconf/nsinstall/Linux*_DBG.OBJ/nsinstall $ROOT/$TOOLCHAIN/bin
+  cp $ROOT/$PKG_BUILD/nss/coreconf/nsinstall/Linux*_PTH_DBG.OBJ/nsinstall $ROOT/$TOOLCHAIN/bin
 }
 
 post_makeinstall_host() {
-  # clean up host part
-  rm -rf `find  $ROOT/$PKG_BUILD/nss -type d -name Linux*_DBG.OBJ`
+  rm -rf $ROOT/$PKG_BUILD/nss/coreconf/nsinstall/Linux*_PTH_DBG.OBJ
 }
 
 make_target() {
@@ -86,4 +76,8 @@ makeinstall_target() {
   mkdir -p $SYSROOT_PREFIX/usr/include/nss
   cp -RL dist/{public,private}/nss/* $SYSROOT_PREFIX/usr/include/nss
   cp -L dist/Linux*/lib/pkgconfig/nss.pc $SYSROOT_PREFIX/usr/lib/pkgconfig
+  # cd nss
+  # make install $PKG_MAKEINSTALL_OPTS_TARGET \
+  #     NSINSTALL=$ROOT/$TOOLCHAIN/bin/nsinstall \
+  #     NSPR_INCLUDE_DIR=$SYSROOT_PREFIX/usr/include/nspr
 }

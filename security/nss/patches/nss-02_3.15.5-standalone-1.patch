@@ -237,5 +237,5 @@ Description:             Adds auto-generated nss.pc and nss-config script, and a
  
  RELEASE = nss
  
--DIRS = coreconf lib cmd
+-DIRS = coreconf lib cmd external_tests
 +DIRS = coreconf lib cmd config
