@@ -1,3 +1,6 @@
+7.0.4
+- update to chromium 49.0.2623.87
+
 7.0.3
 - update to chromium 48.0.2564.116
 
