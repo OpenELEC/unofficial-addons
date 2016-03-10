@@ -1,0 +1,11 @@
+--- a/tools/env/fw_env.h	2016-01-12 15:06:54.000000000 +0100
++++ b/tools/env/fw_env.h	2016-02-03 21:07:46.371967129 +0100
+@@ -22,7 +22,7 @@
+  * See included "fw_env.config" sample file
+  * for notes on configuration.
+  */
+-#define CONFIG_FILE     "/etc/fw_env.config"
++#define CONFIG_FILE     "/storage/.kodi/userdata/addon_data/tools.u-boot-tools/fw_env.config"
+ 
+ #ifndef CONFIG_FILE
+ #define HAVE_REDUND /* For systems with 2 env sectors */

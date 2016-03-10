@@ -1,0 +1,19 @@
+This addon can make your device unusable if improperly configured!!! Use at your own risk.
+This is an unofficial addon. Please don't ask for support in openelec forum / irc channel.
+
+THIS IS COMMAND LINE ONLY ADDON.
+
+Usage of fw_printenv and fw_setenv requires proper configuration. Never ever try to use
+fw_setenv when fw_printenv will prints any error(something like bad checksum etc.) at start 
+of its output - if you do it there is a big change to brick your device. Unbricking may require
+access to device serial console, which may not be directly available on your device and may 
+require soldering of proper pins on the device and USB-TTL adapter!!!
+
+fw_printenv and fw_setenv needs configuration file to be located in
+/storage/.kodi/userdata/addon_data/tools.u-boot-tools/fw_env.config 
+example configuaration can be found in /storage/.kodi/addons/tools.u-boot-tools/fw_env.config
+
+Addon may requre reboot to work properly
+
+example for my Amlogic M8N device:
+/dev/mtd1		0x100000		0x10000	0x10000
