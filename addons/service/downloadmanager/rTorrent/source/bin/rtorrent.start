@@ -117,6 +117,9 @@ while [ true ];do
 		[ -f $RTORRENT_LOCKFILE ] && rm -f $RTORRENT_LOCKFILE
 		dtach -n $RTORRENT_DTACH_FILE rtorrent $RTORRENT_ARG
 		echo "Started rTorrent: $?"
+		sleep 2
+		renice +10 $(pidof -o %PPID rtorrent)
+		echo "Reduced process priority of rtorrent"
 	fi
 	if [ ! "$(ps |grep "http[d] -p $RUTORRENT_PORT")" ];then
 		if [ "$RUTORRENT_ENABLED" == "true" ];then
