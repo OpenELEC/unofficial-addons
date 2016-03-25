@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="syncthing"
-PKG_VERSION="0.12.19"
+PKG_VERSION="0.12.21"
 PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="MPLv2"
@@ -44,10 +44,7 @@ elif [ "$TARGET_ARCH" = "x86_64" ]; then
 fi
 
 PKG_URL="https://github.com/$PKG_NAME/$PKG_NAME/releases/download/v$PKG_VERSION/$PKG_NAME-$ST_ARCH-v$PKG_VERSION.tar.gz"
-
-post_unpack() {
-  mv $ROOT/$BUILD/$PKG_NAME-$ST_ARCH-v$PKG_VERSION $PKG_BUILD
-}
+PKG_SOURCE_DIR="$PKG_NAME-$ST_ARCH-v$PKG_VERSION"
 
 make_target() {
   :
