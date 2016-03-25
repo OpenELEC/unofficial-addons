@@ -17,12 +17,13 @@
 ################################################################################
 
 PKG_NAME="ninja"
-PKG_VERSION="1.6.0"
+PKG_VERSION="v1.6.0"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="Apache"
 PKG_SITE="http://martine.github.io/ninja/"
-PKG_URL="https://github.com/ninja-build/ninja/archive/v$PKG_VERSION.tar.gz"
+PKG_GIT_URL="https://github.com/ninja-build/ninja.git"
+PKG_GIT_BRANCH="release"
 PKG_PRIORITY="optional"
 PKG_SECTION="devel"
 PKG_SHORTDESC="Small build system with a focus on speed"
@@ -30,10 +31,6 @@ PKG_LONGDESC="Small build system with a focus on speed"
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
-
-unpack() {
-  tar xf $ROOT/$SOURCES/$PKG_NAME/v$PKG_VERSION.tar.gz -C $ROOT/$BUILD
-}
 
 configure_host() {
   :
