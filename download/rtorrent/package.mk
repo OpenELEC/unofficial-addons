@@ -19,13 +19,13 @@
 ################################################################################
 
 PKG_NAME="rtorrent"
-PKG_VERSION="0.9.3"
+PKG_VERSION="0.9.6"
 PKG_REV="5"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
-PKG_SITE="http://libtorrent.rakshasa.no"
+PKG_SITE="https://rakshasa.github.io/rtorrent/"
 PKG_URL="http://rtorrent.net/downloads/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain libressl curl ncurses libtorrent zlib xmlrpc-c libsigc++"
+PKG_DEPENDS_TARGET="toolchain libressl curl ncurses libtorrent zlib xmlrpc-c"
 PKG_PRIORITY="optional"
 PKG_SECTION="service/downloadmanager"
 PKG_SHORTDESC="rTorrent: a very fast, free BitTorrent client"
