@@ -56,8 +56,9 @@ pre_build_target() {
 }
 
 pre_configure_target() {
-  # hack 
-    export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/libxml2"
+  # hack
+  export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/libxml2"
+  export MAKEFLAGS="-j1"
 }
 
 post_makeinstall_target() {
