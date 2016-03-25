@@ -19,16 +19,16 @@
 ################################################################################
 
 PKG_NAME="libtorrent"
-PKG_VERSION="0.13.3"
-PKG_REV="2"
+PKG_VERSION="0.13.6"
+PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://libtorrent.rakshasa.no"
 PKG_URL="http://rtorrent.net/downloads/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain libressl curl ncurses libsigc++"
+PKG_DEPENDS_TARGET="toolchain zlib libressl curl ncurses"
 PKG_PRIORITY="optional"
-PKG_SHORTDESC=""
-PKG_LONGDESC=""
+PKG_SHORTDESC="libtorrent"
+PKG_LONGDESC="libtorrent"
 PKG_IS_ADDON="no"
 
 PKG_AUTORECONF="yes"
@@ -38,6 +38,7 @@ PKG_MAINTAINER="Daniel Forsberg (jenkins101)"
 PKG_CONFIGURE_OPTS_TARGET="--disable-shared \
             --enable-static \
             --enable-aligned \
-	    --disable-debug \
-	    --without-kqueue \
-	    --with-posix-fallocate"
+            --disable-debug \
+            --without-kqueue \
+            --with-posix-fallocate \
+            --with-zlib=$SYSROOT_PREFIX/usr"
