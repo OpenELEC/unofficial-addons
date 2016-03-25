@@ -19,12 +19,11 @@
 ################################################################################
 
 PKG_NAME="nspr"
-PKG_VERSION="4.10.10"
-PKG_REV="1"
-PKG_ARCH="x86_64"
+PKG_VERSION="4.12"
+PKG_REV="2"
+PKG_ARCH="any"
 PKG_LICENSE="Mozilla Public License"
 PKG_SITE="http://www.linuxfromscratch.org/blfs/view/svn/general/nspr.html"
-PKG_URL="http://ftp.mozilla.org/pub/mozilla.org/nspr/releases/v$PKG_VERSION/src/$PKG_NAME-$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain nss:host"
 PKG_PRIORITY="optional"
 PKG_SECTION="security"
@@ -42,7 +41,10 @@ if [ "$TARGET_ARCH" = "x86_64" ] ; then
 fi
 
 PKG_CONFIGURE_OPTS_TARGET="--with-pthreads $TARGET_USE_64"
+PKG_MAKE_OPTS_TARGET="NSINSTALL=$ROOT/$TOOLCHAIN/bin/nsinstall"
+PKG_MAKEINSTALL_OPTS_TARGET="NSINSTALL=$ROOT/$TOOLCHAIN/bin/nsinstall"
 
-post_unpack() {
-  mv $ROOT/$PKG_BUILD/nspr/* $ROOT/$PKG_BUILD
+configure_target() {
+  cd $(get_build_dir nss)/nspr
+  ./configure --with-pthreads $TARGET_USE_64 $TARGET_CONFIGURE_OPTS 
 }
