@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="miniupnpc"
-PKG_VERSION="1.9"
+PKG_VERSION="1.9.20160209"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -28,8 +28,8 @@ PKG_URL="http://miniupnp.free.fr/files/$PKG_NAME-$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
 PKG_SECTION="system"
-PKG_SHORTDESC=""
-PKG_LONGDESC=""
+PKG_SHORTDESC="miniupnpc: software which supports the UPnP Internet Gateway Device (IGD) specifications"
+PKG_LONGDESC="The MiniUPnP project offers software which supports the UPnP Internet Gateway Device (IGD) specifications."
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
