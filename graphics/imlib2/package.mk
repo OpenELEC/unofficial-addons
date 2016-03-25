@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="imlib2"
-PKG_VERSION="1.4.5"
+PKG_VERSION="1.4.8"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -44,7 +44,14 @@ case "$TARGET_ARCH" in
     ;;
 esac
 
-PKG_CONFIGURE_OPTS_TARGET="$MMX_ARG"
+PKG_CONFIGURE_OPTS_TARGET="$MMX_ARG \
+                          --with-jpeg \
+                          --with-png \
+                          --with-tiff \
+                          --with-gif \
+                          --with-zlib \
+                          --with-bzip2 \
+                          --without-id3"
 
 pre_build_target() {
   sed -i "s|#define SYS_LOADERS_PATH .*|#define SYS_LOADERS_PATH \"$VDR_ADDON_DIR/lib/imlib2\"|" $PKG_BUILD/src/lib/loaderpath.h
