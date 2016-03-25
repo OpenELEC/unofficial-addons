@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="xmlrpc-c"
-PKG_VERSION="1.25.29"
+PKG_VERSION="1.39.07"
 PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -35,7 +35,9 @@ PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="Daniel Forsberg (jenkins101)"
 
-PKG_CONFIGURE_OPTS_TARGET="--enable-libxml2-backend \
+PKG_CONFIGURE_OPTS_TARGET="have_xml2_config=yes \
+            CURL_CONFIG=$SYSROOT_PREFIX/usr/bin/curl-config \
+            --enable-libxml2-backend \
             --disable-nls \
             --disable-cplusplus \
             --disable-libwww-client \
@@ -51,6 +53,11 @@ pre_build_target() {
 
   mkdir -p $PKG_BUILD/.$TARGET_NAME
   cp -RP $PKG_BUILD/* $PKG_BUILD/.$TARGET_NAME
+}
+
+pre_configure_target() {
+  # hack 
+    export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/libxml2"
 }
 
 post_makeinstall_target() {
