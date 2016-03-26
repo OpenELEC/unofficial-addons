@@ -19,13 +19,13 @@
 ################################################################################
 
 PKG_NAME="dvblast"
-PKG_VERSION="2.2"
+PKG_VERSION="3.0"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.videolan.org"
 PKG_URL="http://downloads.videolan.org/pub/videolan/dvblast/${PKG_VERSION}/dvblast-${PKG_VERSION}.tar.bz2"
-PKG_DEPENDS_TARGET="toolchain bitstream"
+PKG_DEPENDS_TARGET="toolchain bitstream libev"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"
 PKG_SHORTDESC="DVBlast is a simple and powerful MPEG-2/TS demux and streaming application"
@@ -40,6 +40,12 @@ PKG_ADDON_REPOVERSION="7.0"
 PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
+
+MAKEFLAGS="V=1"
+
+pre_configure_target() {
+  export LDFLAGS="$LDFLAGS -lm"
+}
 
 makeinstall_target() {
   : # nop
