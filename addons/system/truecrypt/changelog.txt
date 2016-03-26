@@ -1,50 +1,50 @@
-[B]7.0.1[/B]
+7.0.1
 - copy missing library libdevmapper.so.1.02
 - remove losetup (is now in image)
 
-[B]7.0.0[/B]
+7.0.0
 - rebuild for OpenELEC-7.0
 
-[B]6.0.0[/B]
+6.0.0
 - rebuild for OpenELEC-6.0
 
-[B]4.3.2[/B]
+4.3.2
 - rebuild
 
-[B]4.3.0[/B]
+4.3.0
  - rebuild
 
-[B]3.5.9[/B]
+3.5.9
  - rebuild
 
-[B]3.5.8[/B]
+3.5.8
  - update to kodi
 
-[B]3.5.7[/B]
+3.5.7
  - rebuild for addon api bump
  - update to LVM2.2.02.107
 
-[B]3.5.6[/B]
+3.5.6
  - no changes. version bump only
 
-[B]3.5.5[/B]
+3.5.5
 - rebuild for addon api bump
 
-[B]3.5.4[/B]
+3.5.4
 - rebuild
 
-[B]3.5.3[/B]
+3.5.3
  Fixed:
  - Exception thrown right after installation of addon before exec permission is given
    (before OpenELEC gets restarted) - user is notified that restart is needed. 
 
-[B]3.5.2[/B]
+3.5.2
  - rebuild for OpenELEC-4.0
 
-[B]3.5.1[/B]
+3.5.1
  - no changes. version bump only
 
-[B]3.5.0[/B]
+3.5.0
 Added:
  - Support for key files - creation, mounting, adding, changing and removing
  - Support for hidden volumes - mounting with hidden volume protection, creation of container with hidden volume
@@ -64,20 +64,20 @@ Added:
   - shell script has been rewritten to provide better flexibility 
  
   
-[B]3.1.3[/B]
+3.1.3
 
 Fixed:
 - Could not start up (ION version reported) --> fixed addon.xml
 
-[B]3.1.2[/B]
+3.1.2
 - Put in unofficial OpenELEC repository
 
-[B]3.1.1[/B]
+3.1.1
 Fixed:
 - Issue when mounting NTFS formated drives.
 
 
-[B]3.1.0[/B]
+3.1.0
 Fixed:
 - Compatibility issue with OL 3.0.5 /3.0.6 (no workaround anymore)
 - "No child processes error" seams to be solved
