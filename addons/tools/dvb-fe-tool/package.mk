@@ -19,12 +19,13 @@
 ################################################################################
 
 PKG_NAME="dvb-fe-tool"
-PKG_VERSION="0.9.5"
+PKG_VERSION="v4l-utils-1.10.0"
 PKG_REV="0"
-PKG_ARCH="x86_64"
+PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://linuxtv.org/"
-PKG_URL="$DISTRO_SRC/$PKG_NAME-$PKG_VERSION.tar.bz2"
+PKG_GIT_URL="https://git.linuxtv.org/cgit.cgi/v4l-utils.git"
+PKG_GIT_BRANCH="stable-1.10"
 PKG_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"
@@ -50,6 +51,13 @@ PKG_CONFIGURE_OPTS_TARGET="--disable-nls \
             --without-jpeg \
             --without-libiconv-prefix \
             --without-libintl-prefix"
+
+post_patch() {
+  mkdir -p $ROOT/$PKG_BUILD/build-aux/
+    touch $ROOT/$PKG_BUILD/build-aux/config.rpath
+    touch $ROOT/$PKG_BUILD/libdvbv5-po/Makefile.in.in
+    touch $ROOT/$PKG_BUILD/v4l-utils-po/Makefile.in.in
+}
 
 make_target() {
   cd $ROOT/$PKG_BUILD/.$TARGET_NAME/lib/libdvbv5
