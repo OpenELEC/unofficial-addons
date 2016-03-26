@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="xdpyinfo"
-PKG_VERSION="1.3.1"
+PKG_VERSION="1.3.2"
 PKG_REV="1"
 PKG_ARCH=""
 PKG_LICENSE="GPL"
