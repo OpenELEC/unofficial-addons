@@ -19,9 +19,9 @@
 ################################################################################
 
 PKG_NAME="cpuid"
-PKG_VERSION="20140123"
+PKG_VERSION="20151017"
 PKG_REV="0"
-PKG_ARCH="x86_64"
+PKG_ARCH="i386 x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.etallen.com/cpuid.html"
 PKG_URL="http://www.etallen.com/cpuid/$PKG_NAME-$PKG_VERSION.src.tar.gz"
