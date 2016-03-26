@@ -19,7 +19,7 @@
 PKG_NAME="axel"
 PKG_VERSION="2.4"
 PKG_REV="0"
-PKG_ARCH="x86_64"
+PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://freecode.com/projects/axel"
 PKG_URL="http://pkgs.fedoraproject.org/repo/pkgs/${PKG_NAME}/${PKG_NAME}-${PKG_VERSION}.tar.gz/a2a762fce0c96781965c8f9786a3d09d/${PKG_NAME}-${PKG_VERSION}.tar.gz"
@@ -52,6 +52,7 @@ configure_target() {
 makeinstall_target() {
   : # meh
 }
+
 post_makeinstall_target() {
   $STRIP axel
 }
