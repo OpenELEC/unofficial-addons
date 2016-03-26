@@ -21,7 +21,7 @@
 PKG_NAME="pmtools"
 PKG_VERSION="20110323"
 PKG_REV="0"
-PKG_ARCH="x86_64"
+PKG_ARCH="i386 x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="https://lesswatts.org/projects/acpi/utilities.php"
 PKG_URL="http://mirror.linux.org.au/linux/kernel/people/lenb/acpi/utils/$PKG_NAME-$PKG_VERSION.tar.bz2"
