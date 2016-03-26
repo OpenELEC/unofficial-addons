@@ -19,12 +19,13 @@
 ################################################################################
 
 PKG_NAME="handbrake"
-PKG_VERSION="b79c968"
+PKG_VERSION="0.10.5"
 PKG_REV="0"
-PKG_ARCH="x86_64"
+PKG_ARCH="i386 x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="https://handbrake.fr/"
-PKG_URL="$DISTRO_SRC/${PKG_NAME}-${PKG_VERSION}.tar.xz"
+PKG_GIT_URL="https://github.com/HandBrake/HandBrake.git"
+PKG_GIT_BRANCH="0.10.x"
 PKG_DEPENDS_TARGET="toolchain yasm:host bzip2 fontconfig freetype fribidi libxml2 libass libogg libvorbis lame"
 PKG_PRIORITY="optional"
 PKG_SECTION="lib/multimedia"

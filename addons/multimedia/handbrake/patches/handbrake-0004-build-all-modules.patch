@@ -1,7 +1,7 @@
-diff -Naur handbrake-7000.orig/make/include/main.defs handbrake-7000/make/include/main.defs
---- handbrake-7000.orig/make/include/main.defs	2015-03-24 15:03:02.242524032 -0700
-+++ handbrake-7000/make/include/main.defs	2015-03-24 15:03:39.998031359 -0700
-@@ -39,28 +39,12 @@
+diff -Naur handbrake-0.10.5/make/include/main.defs handbrake-0.10.5.patch/make/include/main.defs
+--- handbrake-0.10.5/make/include/main.defs	2016-02-11 21:14:05.000000000 +0100
++++ handbrake-0.10.5.patch/make/include/main.defs	2016-03-26 16:39:44.217723251 +0100
+@@ -39,27 +39,11 @@
  endif
  endif
  
@@ -17,7 +17,6 @@ diff -Naur handbrake-7000.orig/make/include/main.defs handbrake-7000/make/includ
 -    MODULES += contrib/libsamplerate
 -    MODULES += contrib/lame
 -    MODULES += contrib/x264
--    MODULES += contrib/jansson
 -endif
 -
 -ifeq (1,$(FEATURE.fdk_aac))
@@ -30,7 +29,6 @@ diff -Naur handbrake-7000.orig/make/include/main.defs handbrake-7000/make/includ
 +MODULES += contrib/libtheora
 +MODULES += contrib/libsamplerate
 +MODULES += contrib/x264
-+MODULES += contrib/jansson
 +MODULES += contrib/fdk-aac
 +MODULES += contrib/x265
  

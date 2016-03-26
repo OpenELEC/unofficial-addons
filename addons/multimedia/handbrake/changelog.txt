@@ -1,7 +1,12 @@
+7.0.1
+- update to handbrake-0.10.5
+
 7.0.0
 - rebuild for OpenELEC-7.0
+
 6.0.0
 - rebuild for OpenELEC-6.0
+
 4.3.2
 - rebuild
 
