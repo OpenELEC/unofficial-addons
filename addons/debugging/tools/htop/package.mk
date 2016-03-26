@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="htop"
-PKG_VERSION="1.0.3"
+PKG_VERSION="2.0.1"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -45,17 +45,14 @@ PKG_CONFIGURE_OPTS_TARGET="ac_cv_func_malloc_0_nonnull=yes \
             --enable-cgroup \
             --disable-vserver \
             --disable-unicode \
-            --disable-native-affinity \
+            --enable-proc \
             --disable-hwloc \
             --with-gnu-ld"
 
 pre_configure_target() {
-  export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses"
-}
-
-pre_build_target() {
-  mkdir -p $PKG_BUILD/.$TARGET_NAME
-  cp -RP $PKG_BUILD/* $PKG_BUILD/.$TARGET_NAME
+# htop fails to build in subdirs
+  cd $ROOT/$PKG_BUILD
+    rm -rf .$HOST_NAME
 }
 
 makeinstall_target() {
