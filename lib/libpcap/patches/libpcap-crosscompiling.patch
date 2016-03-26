@@ -1,11 +1,12 @@
-diff -Naur libpcap-1.6.2/configure.in libpcap-1.6.2.patch/configure.in
---- libpcap-1.6.2/configure.in	2014-07-19 15:21:09.000000000 +0200
-+++ libpcap-1.6.2.patch/configure.in	2014-09-06 05:58:33.918837813 +0200
-@@ -459,7 +459,6 @@
- 			AC_DEFINE(HAVE_LIBNL_3_x,1,[if libnl exists and is version 3.x])
- 			AC_DEFINE(HAVE_LIBNL_NLE,1,[libnl has NLE_FAILURE])
- 			AC_DEFINE(HAVE_LIBNL_SOCKETS,1,[libnl has new-style socket api])
--			V_INCLS="$V_INCLS -I/usr/include/libnl3"
- 			have_any_nl="yes"
- 		])
+diff -Naur libpcap-1.7.4/configure.in libpcap-1.7.4.patch/configure.in
+--- libpcap-1.7.4/configure.in	2015-04-22 22:19:15.000000000 +0200
++++ libpcap-1.7.4.patch/configure.in	2016-03-26 10:36:25.193757606 +0100
+@@ -456,7 +456,7 @@
+ 	if test x$with_libnl != xno ; then
+ 		have_any_nl="no"
  
+-                incdir=-I/usr/include/libnl3
++#                incdir=-I/usr/include/libnl3
+                 libnldir=
+                 if test x$withval != x ; then
+                   libnldir=-L${withval}/lib/.libs
