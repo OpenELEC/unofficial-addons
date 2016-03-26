@@ -20,7 +20,7 @@
 PKG_NAME="links"
 PKG_VERSION="2.12"
 PKG_REV="0"
-PKG_ARCH="x86_64"
+PKG_ARCH="i386 x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://links.twibright.com/"
 PKG_URL="http://links.twibright.com/download/$PKG_NAME-$PKG_VERSION.tar.gz"
