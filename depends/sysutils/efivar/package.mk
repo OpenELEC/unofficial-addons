@@ -53,8 +53,9 @@ makeinstall_host() {
 makeinstall_target() {
   mkdir -p $SYSROOT_PREFIX/usr/lib
     cp -P src/libefivar.a $SYSROOT_PREFIX/usr/lib/
-  mkdir -p $SYSROOT_PREFIX/usr/include
-    cp -P src/efivar.h $SYSROOT_PREFIX/usr/include/
-    cp -P src/efivar-guids.h $SYSROOT_PREFIX/usr/include/
+
+  mkdir -p $SYSROOT_PREFIX/usr/include/efivar
+    cp -P src/efivar.h $SYSROOT_PREFIX/usr/include/efivar
+    cp -P src/efivar-guids.h $SYSROOT_PREFIX/usr/include/efivar
 }
 
