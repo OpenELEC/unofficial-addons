@@ -19,16 +19,17 @@
 ################################################################################
 
 PKG_NAME="efivar"
-PKG_VERSION="0.10"
+PKG_VERSION="0.15" # Todo: later versions with buildproblems
 PKG_REV="0"
 PKG_ARCH="x86_64"
 PKG_LICENSE="LGPL"
 PKG_SITE="https://github.com/vathpela/efivar"
-PKG_URL="http://stbenz.de/openelec/$PKG_NAME-$PKG_VERSION.tar.gz"
+PKG_GIT_URL="https://github.com/vathpela/efivar-devel.git"
+PKG_GIT_BRANCH="master"
 PKG_DEPENDS_TARGET="toolchain efivar:host"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"
-PKG_SHORTDESC="EFI Variables"
+PKG_SHORTDESC="evivar: maniulate EFI Variables"
 PKG_LONGDESC="Tools and library to manipulate EFI variables."
 PKG_IS_ADDON="no"
 
@@ -51,9 +52,9 @@ makeinstall_host() {
 
 makeinstall_target() {
   mkdir -p $SYSROOT_PREFIX/usr/lib
+    cp -P src/libefivar.a $SYSROOT_PREFIX/usr/lib/
   mkdir -p $SYSROOT_PREFIX/usr/include
-  cp -P src/libefivar.a $SYSROOT_PREFIX/usr/lib/
-  cp -P src/efivar.h $SYSROOT_PREFIX/usr/include/
-  cp -P src/efivar-guids.h $SYSROOT_PREFIX/usr/include/
+    cp -P src/efivar.h $SYSROOT_PREFIX/usr/include/
+    cp -P src/efivar-guids.h $SYSROOT_PREFIX/usr/include/
 }
 
