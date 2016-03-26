@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="libmtp"
-PKG_VERSION="1.1.9"
+PKG_VERSION="1.1.11"
 PKG_REV="3"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
