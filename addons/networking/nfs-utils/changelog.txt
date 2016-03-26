@@ -1,6 +1,11 @@
+7.0.1 (unreleased)
+- update to nfs-utils-1.3.3
+
 7.0.0
 - rebuild for OpenELEC-7.0
+
 6.0.0
 - rebuild for OpenELEC-6.0
+
 4.3.0
 - Initial release
