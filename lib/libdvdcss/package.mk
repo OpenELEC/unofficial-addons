@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="libdvdcss"
-PKG_VERSION="1.3.0"
+PKG_VERSION="1.4.0"
 PKG_REV="3"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
