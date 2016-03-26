@@ -1,7 +1,13 @@
+7.0.1 (unreleased)
+- update to mediainfo-0.7.83
+- update to libmediainfo-0.7.83
+
 7.0.0
 - rebuild for OpenELEC-7.0
+
 6.0.0
 - rebuild for OpenELEC-6.0
+
 4.3.3
 - rebuild
 
