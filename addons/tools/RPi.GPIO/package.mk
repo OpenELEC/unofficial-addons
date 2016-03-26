@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="RPi.GPIO"
-PKG_VERSION="0.6.1"
+PKG_VERSION="0.6.2"
 PKG_REV="1"
 PKG_ARCH="arm"
 PKG_LICENSE="MIT"
