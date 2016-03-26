@@ -18,7 +18,7 @@
 ################################################################################
 
 PKG_NAME="dhcp"
-PKG_VERSION="4.1-ESV-R9"
+PKG_VERSION="4.3.3-P1"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -33,12 +33,14 @@ PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
 PKG_ADDON_PROVIDES=""
 PKG_ADDON_REPOVERSION="7.0"
-PKG_AUTORECONF="yes"
+PKG_AUTORECONF="no"
 PKG_MAINTAINER="Peter Smorada (smoradap@gmail.com)"
 PKG_DISCLAIMER="this is an unofficial addon. please don't ask for support in openelec forum / irc channel"
 
 PKG_CONFIGURE_OPTS_TARGET="ac_cv_file__dev_random=yes \
                            --sysconfdir=/storage/.kodi/userdata/addon_data/plugin.network.dhcp"
+
+MAKEFLAGS="-j1"
 
 pre_configure_target() {
   # dhcp fails to build in subdirs

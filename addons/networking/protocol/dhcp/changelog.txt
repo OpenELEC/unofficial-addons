@@ -1,16 +1,21 @@
+7.0.1 (unreleased)
+- update to dhcp-4.3.3-P1
+
 7.0.0
 - rebuild for OpenELEC-7.0
+
 6.0.0
 - rebuild for OpenELEC-6.0
-[B]4.3.3[B]
+
+4.3.3
 - rebuild
 
-[B]4.3.1[/B]
+4.3.1
 - update to kodi
 
-[B]4.3.0[/B]
+4.3.0
 - Addon bump
 
-[B]4.1.0[/B]
+4.1.0
 Initial version based on ISC DHCP 4.1-ESV-R9
 
