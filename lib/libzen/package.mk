@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="libzen"
-PKG_VERSION="0.4.29"
+PKG_VERSION="0.4.33"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
