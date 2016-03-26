@@ -19,16 +19,16 @@
 ################################################################################
 
 PKG_NAME="libsigc++"
-PKG_VERSION="2.3.1"
+PKG_VERSION="2.9.1"
 PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://libsigc.sourceforge.net"
-PKG_URL="http://ftp.gnome.org/pub/GNOME/sources/libsigc++/2.3/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_URL="http://ftp.gnome.org/pub/GNOME/sources/libsigc++/2.9/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
-PKG_SHORTDESC=""
-PKG_LONGDESC=""
+PKG_SHORTDESC="libsigc++: Callback Framework for C++"
+PKG_LONGDESC="Callback Framework for C++"
 
 PKG_IS_ADDON="no"
 
