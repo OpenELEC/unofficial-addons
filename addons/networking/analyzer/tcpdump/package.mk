@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="tcpdump"
-PKG_VERSION="4.6.1"
+PKG_VERSION="4.7.4"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_SITE="http://www.tcpdump.org/"
