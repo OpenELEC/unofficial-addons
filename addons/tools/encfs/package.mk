@@ -19,12 +19,12 @@
 ################################################################################
 
 PKG_NAME="encfs"
-PKG_VERSION="1.7.4"
+PKG_VERSION="1.8.1"
 PKG_REV="0"
-PKG_ARCH="x86_64"
+PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.arg0.net/encfs"
-PKG_URL="http://encfs.googlecode.com/files/$PKG_NAME-$PKG_VERSION.tgz"
+PKG_URL="https://github.com/vgough/encfs/releases/download/v$PKG_VERSION/$PKG_NAME-$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain fuse boost libressl rlog"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"
@@ -39,6 +39,8 @@ PKG_ADDON_REPOVERSION="7.0"
 PKG_AUTORECONF="yes"
 
 PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
+
+MAKEFLAGS="-j1"
 
 PKG_CONFIGURE_OPTS_TARGET="ac_cv_path_POD2MAN=no \
             --with-sysroot=$SYSROOT_PREFIX \
