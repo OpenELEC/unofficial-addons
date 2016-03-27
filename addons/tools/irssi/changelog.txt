@@ -1,4 +1,4 @@
-7.0.1 (unreleased)
+7.0.1
 - update to irssi-0.8.19
 
 7.0.0
