@@ -1,4 +1,4 @@
-7.0.1 (unreleased)
+7.0.1
 - update to lftp-4.6.5
 
 7.0.0
