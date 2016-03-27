@@ -1,4 +1,4 @@
-7.0.1 (unreleased)
+7.0.1
 - update to cpuid-20151017
 
 7.0.0
