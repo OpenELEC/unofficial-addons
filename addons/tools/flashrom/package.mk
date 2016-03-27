@@ -17,9 +17,9 @@
 ################################################################################
 
 PKG_NAME="flashrom"
-PKG_VERSION="0.9.6"
+PKG_VERSION="0.9.9"
 PKG_REV="0"
-PKG_ARCH="x86_64"
+PKG_ARCH="i386 x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.flashrom.org"
 PKG_URL="http://download.flashrom.org/releases/$PKG_NAME-$PKG_VERSION.tar.bz2"
@@ -39,7 +39,7 @@ PKG_DISCLAIMER="this is an unofficial addon. please don't ask for support in ope
 
 PKG_MAINTAINER="unofficial.addon.pro"
 
-PKG_MAKE_OPTS_TARGET="CC=$TARGET_CC STRIP=$STRIP PREFIX=/usr WARNERROR=no"
+PKG_MAKE_OPTS_TARGET="CC=$TARGET_CC STRIP=$STRIP PREFIX=/usr WARNERROR=no CONFIG_ENABLE_LIBUSB0_PROGRAMMERS=no"
 PKG_MAKEINSTALL_OPTS_TARGET="CC=$TARGET_CC STRIP=$STRIP PREFIX=/usr WARNERROR=no"
 
 pre_make_target() {
