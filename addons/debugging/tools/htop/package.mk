@@ -61,5 +61,5 @@ makeinstall_target() {
 
 addon() {
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
-  cp -P $PKG_BUILD/.$TARGET_NAME/htop $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp -P $PKG_BUILD/htop $ADDON_BUILD/$PKG_ADDON_ID/bin
 }
