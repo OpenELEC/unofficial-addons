@@ -20,7 +20,7 @@
 
 PKG_NAME="socat"
 PKG_VERSION="1.7.3.1"
-PKG_REV="0"
+PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL2"
 PKG_SITE="http://www.dest-unreach.org/socat/"
