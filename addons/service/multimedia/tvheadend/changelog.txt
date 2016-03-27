@@ -1,4 +1,4 @@
-7.0.3 (unreleased)
+7.0.3
 - update to tvheadend-4.0.9
 
 7.0.2
