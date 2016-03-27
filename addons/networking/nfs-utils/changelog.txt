@@ -1,4 +1,4 @@
-7.0.1 (unreleased)
+7.0.1
 - update to nfs-utils-1.3.3
 
 7.0.0

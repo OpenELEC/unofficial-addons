@@ -18,7 +18,7 @@
 
 PKG_NAME="nfs-utils"
 PKG_VERSION="1.3.3"
-PKG_REV="0"
+PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://linux-nfs.org/wiki/index.php/Main_Page"
