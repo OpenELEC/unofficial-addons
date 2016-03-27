@@ -33,7 +33,7 @@ PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
 PKG_ADDON_PROVIDES=""
 PKG_ADDON_REPOVERSION="7.0"
-PKG_AUTORECONF="no"
+PKG_AUTORECONF="yes"
 PKG_MAINTAINER="Peter Smorada (smoradap@gmail.com)"
 PKG_DISCLAIMER="this is an unofficial addon. please don't ask for support in openelec forum / irc channel"
 
@@ -42,14 +42,29 @@ PKG_CONFIGURE_OPTS_TARGET="ac_cv_file__dev_random=yes \
 
 MAKEFLAGS="-j1"
 
+pre_patch() {
+  # bind comes included as binary, unpack to patch (can be removed
+  # on next version if patch merged upstream)
+    cd $ROOT/$PKG_BUILD/bind
+      tar -xvf bind.tar.gz
+    cd $ROOT
+}
+
 pre_configure_target() {
   # dhcp fails to build in subdirs
   cd $ROOT/$PKG_BUILD
   rm -rf .$TARGET_NAME
 
-  export CFLAGS="$CFLAGS -D_PATH_DHCLIENT_SCRIPT='\"/storage/.kodi/addons/plugin.network.dhcp/bin/dhclient-script\"' \
+  export CFLAGS="-D_PATH_DHCLIENT_SCRIPT='\"/storage/.kodi/addons/plugin.network.dhcp/bin/dhclient-script\"' \
     -D_PATH_DHCPD_CONF='\"/storage/.kodi/userdata/addon_data/plugin.network.dhcp/dhcpd.conf\"'  \
     -D_PATH_DHCLIENT_CONF='\"/storage/.kodi/userdata/addon_data/plugin.network.dhcp/dhclient.conf\"'"
+
+  export BUILD_CC="$HOST_CC"
+  export BUILD_CFLAGS="$HOST_CFLAGS"
+  export BUILD_CPPFLAGS="$HOST_CPPFLAGS"
+  export BUILD_LDFLAGS="$HOST_LDFLAGS"
+  export BINDCONFIG="--with-randomdev=/dev/random"
+
 }
 
 addon() {
