@@ -43,9 +43,9 @@ makeinstall_target() {
 
 addon() {
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
-    cp -PL $(get_build_dir libdvdread)/.install_pkg/usr/lib/libdvdread.so.4 $ADDON_BUILD/$PKG_ADDON_ID/lib
-    cp -PL $(get_build_dir libdvdcss)/.install_pkg/usr/lib/libdvdcss.so.2 $ADDON_BUILD/$PKG_ADDON_ID/lib
+    cp -P $PKG_BUILD/.$TARGET_NAME/src/streamdisc_server $ADDON_BUILD/$PKG_ADDON_ID/bin
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
-    cp -P $PKG_BUILD/.$TARGET_NAME/src/streamdisc_server $ADDON_BUILD/$PKG_ADDON_ID/bin
+    cp -L $(get_build_dir libdvdread)/.install_pkg/usr/lib/libdvdread.so.4 $ADDON_BUILD/$PKG_ADDON_ID/lib
+    cp -L $(get_build_dir libdvdcss)/.install_pkg/usr/lib/libdvdcss.so.2 $ADDON_BUILD/$PKG_ADDON_ID/lib
 }
