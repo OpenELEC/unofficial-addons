@@ -1,7 +1,7 @@
-diff -Naur screen-4.2.1/configure screen-4.2.1.patch/configure
---- screen-4.2.1/configure	2014-04-26 12:58:46.000000000 +0200
-+++ screen-4.2.1.patch/configure	2014-07-20 09:29:38.524942070 +0200
-@@ -4155,7 +4155,6 @@
+diff -Naur screen-4.3.1/configure screen-4.3.1.patch/configure
+--- screen-4.3.1/configure	2015-06-28 23:42:40.000000000 +0200
++++ screen-4.3.1.patch/configure	2016-03-26 17:52:12.807054501 +0100
+@@ -4156,7 +4156,6 @@
  
  
  oldlibs="$LIBS"
@@ -9,10 +9,10 @@ diff -Naur screen-4.2.1/configure screen-4.2.1.patch/configure
  { $as_echo "$as_me:${as_lineno-$LINENO}: checking SVR4..." >&5
  $as_echo "$as_me: checking SVR4..." >&6;}
  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-diff -Naur screen-4.2.1/configure.in screen-4.2.1.patch/configure.in
---- screen-4.2.1/configure.in	2014-04-26 12:58:35.000000000 +0200
-+++ screen-4.2.1.patch/configure.in	2014-07-20 09:29:27.383915098 +0200
-@@ -202,7 +202,6 @@
+diff -Naur screen-4.3.1/configure.ac screen-4.3.1.patch/configure.ac
+--- screen-4.3.1/configure.ac	2015-06-28 23:22:55.000000000 +0200
++++ screen-4.3.1.patch/configure.ac	2016-03-26 17:52:03.538036990 +0100
+@@ -203,7 +203,6 @@
  ], LIBS="$LIBS -lsocket -linet";seqptx=1)
  
  oldlibs="$LIBS"

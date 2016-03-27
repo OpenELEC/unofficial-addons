@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="screen"
-PKG_VERSION="4.2.1"
+PKG_VERSION="4.3.1"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"

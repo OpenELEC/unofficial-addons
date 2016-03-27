@@ -1,9 +1,15 @@
+7.0.2 (unreleased
+- addon update to RPI.GPIO-0.6.2
+
 7.0.1
-- addon update to 0.6.1
+- addon update to RPI.GPIO-0.6.1
+
 7.0.0
 - rebuild for OpenELEC-7.0
+
 6.0.0
 - rebuild for OpenELEC-6.0
+
 4.3.2
 - rebuild
 

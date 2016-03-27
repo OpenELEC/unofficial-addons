@@ -1,5 +1,9 @@
+7.0.1 (unreleased)
+- update to vim-7.4.1662
+
 7.0.0
 - rebuild for OpenELEC-7.0
+
 6.0.1
 - Changed source to Github archive (official)
 - Enable huge feature set

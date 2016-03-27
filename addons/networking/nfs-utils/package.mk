@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="nfs-utils"
-PKG_VERSION="1.3.2"
+PKG_VERSION="1.3.3"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"

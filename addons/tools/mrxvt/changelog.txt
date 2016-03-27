@@ -1,7 +1,9 @@
 7.0.0
 - rebuild for OpenELEC-7.0
+
 6.0.0
 - rebuild for OpenELEC-6.0
+
 4.3.0
 - rebuild for addon api bump
 

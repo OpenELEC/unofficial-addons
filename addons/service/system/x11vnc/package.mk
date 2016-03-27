@@ -21,7 +21,7 @@
 PKG_NAME="x11vnc"
 PKG_VERSION="0.9.13"
 PKG_REV="0"
-PKG_ARCH="x86_64"
+PKG_ARCH="i386 x86_64"
 PKG_LICENSE="OSS"
 PKG_SITE="http://www.karlrunge.com/x11vnc/"
 PKG_URL="http://downloads.sourceforge.net/project/libvncserver/x11vnc/${PKG_VERSION}/x11vnc-${PKG_VERSION}.tar.gz"
@@ -76,5 +76,5 @@ makeinstall_target() {
 
 addon() {
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
-  cp $PKG_BUILD/.$TARGET_NAME/x11vnc/x11vnc $ADDON_BUILD/$PKG_ADDON_ID/bin
+    cp $PKG_BUILD/.$TARGET_NAME/x11vnc/x11vnc $ADDON_BUILD/$PKG_ADDON_ID/bin
 }

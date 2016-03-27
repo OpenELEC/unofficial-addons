@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="powertop"
-PKG_VERSION="2.6.1"
+PKG_VERSION="2.8"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"

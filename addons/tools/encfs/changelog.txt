@@ -1,5 +1,9 @@
+7.0.1 (unreleased)
+- update to encfs-1.8.1
+
 7.0.0
 - rebuild for OpenELEC-7.0
+
 6.0.0
 - rebuild for OE6
 

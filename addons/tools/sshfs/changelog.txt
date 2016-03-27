@@ -1,0 +1,30 @@
+7.0.1 (unreleased)
+- update to sshfs-2.7
+
+7.0.0
+- rebuild for OpenELEC-7.0
+
+6.0.0
+- rebuild for OpenELEC-6.0
+
+4.3.3
+- rebuild
+
+4.3.1
+- rebuild
+
+4.3.0
+- rebuild for addon api bump
+- update to sshfs-fuse-2.5
+
+4.1.0
+- rebuild for addon api bump
+
+4.0.1
+- rebuild
+
+4.0.0
+- rebuild for OpenELEC-4.0
+
+3.1.0
+- initial addon based on sshfs-fuse-2.4

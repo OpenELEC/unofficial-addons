@@ -1,7 +1,12 @@
+7.0.1 (unreleased)
+- rebuild with updated libmtp
+
 7.0.0
 - rebuild for OpenELEC-7.0
+
 6.0.0
 - rebuild for OpenELEC-6.0
+
 4.3.5
 - rebuild with updated libmtp
 

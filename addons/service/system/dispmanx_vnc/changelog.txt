@@ -1,9 +1,12 @@
 7.0.1
 - update to use patrikolausson/dispmanx_vnc
 - fix issue where vnc server would start to quickly resulting in a black screen
+
 7.0.0
 - rebuild for OpenELEC-7.0
+
 6.0.0
 - rebuild for OpenELEC-6.0
+
 4.3.0
 - Initial release

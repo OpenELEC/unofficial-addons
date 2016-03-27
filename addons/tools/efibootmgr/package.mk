@@ -19,12 +19,13 @@
 ################################################################################
 
 PKG_NAME="efibootmgr"
-PKG_VERSION="0.7.0"
+PKG_VERSION="ceb177a"
 PKG_REV="0"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/vathpela/efibootmgr"
-PKG_URL="http://stbenz.de/openelec/$PKG_NAME-$PKG_VERSION.tar.gz"
+PKG_GIT_URL="https://github.com/vathpela/efibootmgr-devel.git"
+PKG_GIT_BRANCH="master"
 PKG_DEPENDS_TARGET="toolchain efivar pciutils zlib"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"
@@ -43,8 +44,8 @@ PKG_MAINTAINER="Stefan Benz (benz.st@gmail.com)"
 
 pre_make_target() {
   strip_lto
-  export EXTRA_CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include -fgnu89-inline"
-  export LDFLAGS="$LDFLAGS -L$SYSROOT_PREFIX/usr/lib -ludev"
+  export EXTRA_CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include -I$SYSROOT_PREFIX/usr/include/efivar -fgnu89-inline"
+  export LDFLAGS="$LDFLAGS -L$SYSROOT_PREFIX/usr/lib -ludev -ldl"
 }
 
 makeinstall_target() {

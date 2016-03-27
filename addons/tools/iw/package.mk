@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="iw"
-PKG_VERSION="3.15"
+PKG_VERSION="4.3"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="PUBLIC_DOMAIN"

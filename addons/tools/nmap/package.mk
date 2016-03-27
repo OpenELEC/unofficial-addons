@@ -20,7 +20,7 @@
 ################################################################################
 
 PKG_NAME="nmap"
-PKG_VERSION="6.46"
+PKG_VERSION="7.11"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"

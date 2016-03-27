@@ -1,3 +1,6 @@
+7.0.3 (unreleased)
+- update to tvheadend-4.0.9
+
 7.0.2
 - update to tvheadend-4.0.8-15
 - removed wait for network option (OE system wait-for-online preference is now respected)

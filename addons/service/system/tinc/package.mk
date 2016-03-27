@@ -28,7 +28,9 @@ PKG_PRIORITY="optional"
 PKG_SECTION="service/system"
 PKG_SHORTDESC="tinc Virtual Private Network Daemon"
 PKG_LONGDESC="tinc is a virtual private network (VPN) daemon that uses tunnelling and encryption to create a secure private network between hosts on the Internet. Because the VPN appears to the IP level network code as a normal network device, there is no need to adapt any existing software. This allows VPN sites to share information with each other over the Internet without exposing any information to others."
+
 PKG_AUTORECONF="yes"
+
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
 PKG_ADDON_PROVIDES=""

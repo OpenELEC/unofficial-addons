@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="usb-modeswitch"
-PKG_VERSION="2.2.0"
+PKG_VERSION="2.3.0"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"

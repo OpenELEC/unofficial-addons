@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="lftp"
-PKG_VERSION="4.6.2"
+PKG_VERSION="4.6.5"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"

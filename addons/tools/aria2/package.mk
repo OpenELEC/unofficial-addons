@@ -17,13 +17,13 @@
 ################################################################################
 
 PKG_NAME="aria2"
-PKG_VERSION="1.18.8"
+PKG_VERSION="1.21.0"
 PKG_REV="0"
-PKG_ARCH="x86_64"
+PKG_ARCH="any"
 PKG_LICENSE="GPL"
-PKG_SITE="http://aria2.sourceforge.net/"
-PKG_URL="$SOURCEFORGE_SRC/aria2/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain libxml2"
+PKG_SITE="https://aria2.github.io/"
+PKG_URL="https://github.com/tatsuhiro-t/aria2/releases/download/release-$PKG_VERSION/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_DEPENDS_TARGET="toolchain zlib libressl libxml2"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"
 PKG_SHORTDESC="aria2: lightweight multi-protocol & multi-source command-line download utility"
@@ -40,7 +40,8 @@ PKG_DISCLAIMER="this is an unofficial addon. please don't ask for support in ope
 
 PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
 
-PKG_CONFIGURE_OPTS_TARGET="--without-libuv \
+PKG_CONFIGURE_OPTS_TARGET="XML2_CONFIG=$SYSROOT_PREFIX/usr/bin/xml2-config \
+         --without-libuv \
          --without-appletls \
          --without-wintls \
          --without-gnutls \

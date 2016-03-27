@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="RPi.GPIO"
-PKG_VERSION="0.6.1"
+PKG_VERSION="0.6.2"
 PKG_REV="1"
 PKG_ARCH="arm"
 PKG_LICENSE="MIT"
@@ -56,5 +56,5 @@ makeinstall_target() {
 
 addon() {
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib/RPi/
-  cp -P $PKG_BUILD/build/lib.linux-*/RPi/* $ADDON_BUILD/$PKG_ADDON_ID/lib/RPi
+  cp -PR $PKG_BUILD/build/lib.linux-*/RPi/* $ADDON_BUILD/$PKG_ADDON_ID/lib/RPi
 }

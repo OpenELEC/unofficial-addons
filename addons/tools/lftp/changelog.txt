@@ -1,5 +1,9 @@
+7.0.1 (unreleased)
+- update to lftp-4.6.5
+
 7.0.0
 - rebuild for OpenELEC-7.0
+
 6.0.0
 - update to lftp-4.6.2
 - rebuild for OE6

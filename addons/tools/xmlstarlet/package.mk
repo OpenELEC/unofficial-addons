@@ -42,16 +42,17 @@ PKG_MAINTAINER="James White"
 PKG_CONFIGURE_OPTS_TARGET="ac_cv_func_malloc_0_nonnull=yes \
                            ac_cv_func_realloc_0_nonnull=yes \
                            --enable-static-libs \
+                           LIBXML_CONFIG=$SYSROOT_PREFIX/usr/bin/xml2-config \
+                           LIBXSLT_CONFIG=$SYSROOT_PREFIX/usr/bin/xslt-config \
                            --with-libxml-include-prefix=$SYSROOT_PREFIX/usr/include/libxml2 \
                            --with-libxml-libs-prefix=$SYSROOT_PREFIX/usr/lib \
                            --with-libxslt-include-prefix=$SYSROOT_PREFIX/usr/include \
                            --with-libxslt-libs-prefix=$SYSROOT_PREFIX/usr/lib"
 makeinstall_target() {
-	: # nop
+ : # nop
 }
 
 addon() {
-	mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
-	cp -P $PKG_BUILD/.$TARGET_NAME/xml $ADDON_BUILD/$PKG_ADDON_ID/bin/xmlstarlet
+  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
+  cp -P $PKG_BUILD/.$TARGET_NAME/xml $ADDON_BUILD/$PKG_ADDON_ID/bin/xmlstarlet
 }
-
