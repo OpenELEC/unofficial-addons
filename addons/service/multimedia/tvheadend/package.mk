@@ -17,13 +17,14 @@
 ################################################################################
 
 PKG_NAME="tvheadend"
-PKG_VERSION="4.0.8"
+PKG_VERSION="v4.0.9"
 PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.tvheadend.org"
-PKG_URL="https://github.com/tvheadend/tvheadend/archive/v${PKG_VERSION}.tar.gz"
-PKG_DEPENDS_TARGET="toolchain libressl curl Python:host libhdhomerun"
+PKG_GIT_URL="https://github.com/tvheadend/tvheadend.git"
+PKG_GIT_BRANCH="release/4.0"
+PKG_DEPENDS_TARGET="toolchain libressl libdvbcsa curl Python:host libhdhomerun"
 PKG_PRIORITY="optional"
 PKG_SECTION="service/multimedia"
 PKG_SHORTDESC="tvheadend (Version: $PKG_VERSION): a TV streaming server for Linux supporting DVB-S, DVB-S2, DVB-C, DVB-T, ATSC, IPTV, and Analog video (V4L) as input sources."
@@ -35,47 +36,34 @@ PKG_ADDON_TYPE="xbmc.service"
 PKG_AUTORECONF="no"
 PKG_ADDON_REPOVERSION="7.0"
 
-if [ "$TARGET_ARCH" == "arm" ] ; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET libdvbcsa"
-fi
-
-unpack() {
-  tar xzf "$SOURCES/$PKG_NAME/v${PKG_VERSION}.tar.gz" -C $BUILD
-}
-
 post_unpack() {
   sed -e 's/VER="0.0.0~unknown"/VER="'$PKG_VERSION' ~ OpenELEC Tvh-addon v'$PKG_ADDON_REPOVERSION'.'$PKG_REV'"/g' -i $PKG_BUILD/support/version
 }
 
 pre_build_target() {
   mkdir -p $PKG_BUILD/.$TARGET_NAME
-  cp -RP $PKG_BUILD/* $PKG_BUILD/.$TARGET_NAME
+    cp -RP $PKG_BUILD/* $PKG_BUILD/.$TARGET_NAME
+
   export CROSS_COMPILE=$TARGET_PREFIX
-  if [ "$TARGET_ARCH" == "arm" ] ; then
-    DVBCSA="--enable-dvbcsa"
-  else
-    # TODO force dvbcsa on all projects
-    DVBCSA="--disable-dvbcsa"
-  fi
 }
 
 configure_target() {
   ./configure --prefix=/usr \
-            --arch=$TARGET_ARCH \
-            --cpu=$TARGET_CPU \
-            --cc=$TARGET_CC \
-            --enable-hdhomerun_client \
-            --enable-hdhomerun_static \
-            --disable-avahi \
-            --disable-libav \
-            --enable-inotify \
-            --enable-epoll \
-            --disable-uriparser \
-            --enable-tvhcsa \
-            --enable-bundle \
-            $DVBCSA \
-            --disable-dbus_1 \
-            --python=$ROOT/$TOOLCHAIN/bin/python
+              --arch=$TARGET_ARCH \
+              --cpu=$TARGET_CPU \
+              --cc=$TARGET_CC \
+              --enable-hdhomerun_client \
+              --enable-hdhomerun_static \
+              --disable-avahi \
+              --disable-libav \
+              --enable-inotify \
+              --enable-epoll \
+              --disable-uriparser \
+              --enable-tvhcsa \
+              --enable-bundle \
+              --enable-dvbcsa \
+              --disable-dbus_1 \
+              --python=$ROOT/$TOOLCHAIN/bin/python
 }
 
 post_make_target() {
