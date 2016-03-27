@@ -18,17 +18,17 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="sshfs-fuse"
-PKG_VERSION="2.5"
+PKG_NAME="sshfs"
+PKG_VERSION="2.7"
 PKG_REV="0"
-PKG_ARCH="x86_64"
+PKG_ARCH="any"
 PKG_LICENSE="GPL"
-PKG_SITE="http://fuse.sourceforge.net/sshfs.html"
-PKG_URL="http://downloads.sourceforge.net/project/fuse/sshfs-fuse/$PKG_VERSION/sshfs-fuse-$PKG_VERSION.tar.gz"
+PKG_SITE="https://github.com/libfuse/sshfs"
+PKG_URL="https://github.com/libfuse/sshfs/releases/download/sshfs-$PKG_VERSION/sshfs-$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain fuse glib"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"
-PKG_SHORTDESC="sshf-sfuse: a filesystem client based on the SSH File Transfer Protocol"
+PKG_SHORTDESC="sshfs: a filesystem client based on the SSH File Transfer Protocol"
 PKG_LONGDESC="This is a filesystem client based on the SSH File Transfer Protocol. Since most SSH servers already support this protocol it is very easy to set up: i.e. on the server side there's nothing to do.  On the client side mounting the filesystem is as easy as logging into the server with ssh."
 PKG_DISCLAIMER="this is an unofficial addon. please don't ask for support in openelec forum / irc channel"
 
