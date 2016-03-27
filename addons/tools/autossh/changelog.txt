@@ -1,4 +1,4 @@
-7.0.1 (unreleased)
+7.0.1
 - update to autossh-1.4e
 
 7.0.0
