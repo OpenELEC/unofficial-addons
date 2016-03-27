@@ -1,4 +1,4 @@
-7.0.1 (unreleased)
+7.0.1
 - update to dhcp-4.3.3-P1
 
 7.0.0
