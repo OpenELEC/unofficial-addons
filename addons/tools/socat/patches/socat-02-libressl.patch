@@ -1,8 +1,7 @@
-diff --git a/sslcls.c b/sslcls.c
-index 9fe7fb8..f5e86ab 100644
---- a/sslcls.c
-+++ b/sslcls.c
-@@ -275,14 +275,6 @@ void sycSSL_free(SSL *ssl) {
+diff -Naur socat-1.7.3.1/sslcls.c socat-1.7.3.1.patch/sslcls.c
+--- socat-1.7.3.1/sslcls.c	2015-01-24 11:15:22.000000000 +0100
++++ socat-1.7.3.1.patch/sslcls.c	2016-03-27 04:01:34.421259320 +0200
+@@ -331,14 +331,6 @@
     return;
  }
  
@@ -17,7 +16,7 @@ index 9fe7fb8..f5e86ab 100644
  DH *sycPEM_read_bio_DHparams(BIO *bp, DH **x, pem_password_cb *cb, void *u) {
     DH *result;
     Debug4("PEM_read_bio_DHparams(%p, %p, %p, %p)",
-@@ -319,7 +311,7 @@ int sycFIPS_mode_set(int onoff) {
+@@ -375,7 +367,7 @@
  }
  #endif /* WITH_FIPS */
  
@@ -26,11 +25,10 @@ index 9fe7fb8..f5e86ab 100644
  const COMP_METHOD *sycSSL_get_current_compression(SSL *ssl) {
     const COMP_METHOD *result;
     Debug1("SSL_get_current_compression(%p)", ssl);
-diff --git a/sslcls.h b/sslcls.h
-index b324fff..37bfb1a 100644
---- a/sslcls.h
-+++ b/sslcls.h
-@@ -41,7 +41,6 @@ X509 *sycSSL_get_peer_certificate(SSL *ssl);
+diff -Naur socat-1.7.3.1/sslcls.h socat-1.7.3.1.patch/sslcls.h
+--- socat-1.7.3.1/sslcls.h	2015-01-24 11:15:22.000000000 +0100
++++ socat-1.7.3.1.patch/sslcls.h	2016-03-27 04:03:31.450432363 +0200
+@@ -47,7 +47,6 @@
  int sycSSL_shutdown(SSL *ssl);
  void sycSSL_CTX_free(SSL_CTX *ctx);
  void sycSSL_free(SSL *ssl);
@@ -38,7 +36,7 @@ index b324fff..37bfb1a 100644
  
  DH *sycPEM_read_bio_DHparams(BIO *bp, DH **x, pem_password_cb *cb, void *u);
  
-@@ -49,7 +48,7 @@ BIO *sycBIO_new_file(const char *filename, const char *mode);
+@@ -55,7 +54,7 @@
  
  int sycFIPS_mode_set(int onoff);
  
@@ -47,7 +45,7 @@ index b324fff..37bfb1a 100644
  const COMP_METHOD *sycSSL_get_current_compression(SSL *ssl);
  const COMP_METHOD *sycSSL_get_current_expansion(SSL *ssl);
  const char *sycSSL_COMP_get_name(const COMP_METHOD *comp);
-@@ -92,7 +91,6 @@ const char *sycSSL_COMP_get_name(const COMP_METHOD *comp);
+@@ -98,7 +97,6 @@
  #define sycSSL_shutdown(s) SSL_shutdown(s)
  #define sycSSL_CTX_free(c) SSL_CTX_free(c)
  #define sycSSL_free(s) SSL_free(s)
@@ -55,11 +53,10 @@ index b324fff..37bfb1a 100644
  
  #define sycPEM_read_bio_DHparams(b,x,p,u) PEM_read_bio_DHparams(b,x,p,u)
  
-diff --git a/xio-openssl.c b/xio-openssl.c
-index 66d9c7d..3fc4891 100644
---- a/xio-openssl.c
-+++ b/xio-openssl.c
-@@ -102,7 +102,6 @@ const struct optdesc opt_openssl_key         = { "openssl-key",         "key",
+diff -Naur socat-1.7.3.1/xio-openssl.c socat-1.7.3.1.patch/xio-openssl.c
+--- socat-1.7.3.1/xio-openssl.c	2016-01-29 11:28:38.000000000 +0100
++++ socat-1.7.3.1.patch/xio-openssl.c	2016-03-27 04:07:46.585804896 +0200
+@@ -108,7 +108,6 @@
  const struct optdesc opt_openssl_dhparam     = { "openssl-dhparam",     "dh",    OPT_OPENSSL_DHPARAM,     GROUP_OPENSSL, PH_SPEC, TYPE_FILENAME, OFUNC_SPEC };
  const struct optdesc opt_openssl_cafile      = { "openssl-cafile",     "cafile", OPT_OPENSSL_CAFILE,      GROUP_OPENSSL, PH_SPEC, TYPE_FILENAME, OFUNC_SPEC };
  const struct optdesc opt_openssl_capath      = { "openssl-capath",     "capath", OPT_OPENSSL_CAPATH,      GROUP_OPENSSL, PH_SPEC, TYPE_FILENAME, OFUNC_SPEC };
@@ -67,7 +64,7 @@ index 66d9c7d..3fc4891 100644
  const struct optdesc opt_openssl_pseudo      = { "openssl-pseudo",     "pseudo", OPT_OPENSSL_PSEUDO,      GROUP_OPENSSL, PH_SPEC, TYPE_BOOL,     OFUNC_SPEC };
  #if OPENSSL_VERSION_NUMBER >= 0x00908000L
  const struct optdesc opt_openssl_compress    = { "openssl-compress",   "compress", OPT_OPENSSL_COMPRESS,  GROUP_OPENSSL, PH_SPEC, TYPE_STRING,   OFUNC_SPEC };
-@@ -140,7 +139,7 @@ int xio_reset_fips_mode(void) {
+@@ -147,7 +146,7 @@
  static void openssl_conn_loginfo(SSL *ssl) {
     Notice1("SSL connection using %s", SSL_get_cipher(ssl));
  
@@ -76,7 +73,7 @@ index 66d9c7d..3fc4891 100644
     {
        const COMP_METHOD *comp, *expansion;
  
-@@ -697,7 +696,6 @@ int
+@@ -722,7 +721,6 @@
     char *opt_dhparam = NULL;	/* file name of DH params */
     char *opt_cafile = NULL;	/* certificate authority file */
     char *opt_capath = NULL;	/* certificate authority directory */
@@ -84,7 +81,7 @@ index 66d9c7d..3fc4891 100644
  #if OPENSSL_VERSION_NUMBER >= 0x00908000L
     char *opt_compress = NULL;	/* compression method */
  #endif
-@@ -716,7 +714,6 @@ int
+@@ -741,7 +739,6 @@
     retropt_string(opts, OPT_OPENSSL_CAPATH, &opt_capath);
     retropt_string(opts, OPT_OPENSSL_KEY, &opt_key);
     retropt_string(opts, OPT_OPENSSL_DHPARAM, &opt_dhparam);
@@ -92,7 +89,7 @@ index 66d9c7d..3fc4891 100644
     retropt_bool(opts,OPT_OPENSSL_PSEUDO, &opt_pseudo);
  #if OPENSSL_VERSION_NUMBER >= 0x00908000L
     retropt_string(opts, OPT_OPENSSL_COMPRESS, &opt_compress);
-@@ -796,10 +793,6 @@ int
+@@ -877,10 +874,6 @@
        }
     }
  
@@ -103,20 +100,19 @@ index 66d9c7d..3fc4891 100644
     if (opt_pseudo) {
        long int randdata;
        /* initialize libc random from actual microseconds */
-@@ -979,7 +972,7 @@ static int openssl_SSL_ERROR_SSL(int level, const char *funcname) {
-    if (e == ((ERR_LIB_RAND<<24)|
- 	     (RAND_F_SSLEAY_RAND_BYTES<<12)|
- 	     (RAND_R_PRNG_NOT_SEEDED)) /*0x24064064*/) {
--      Error("too few entropy; use options \"egd\" or \"pseudo\"");
-+      Error("too few entropy; use options \"pseudo\"");
-       return STAT_NORETRY;
-    } else {
-       Msg2(level, "%s(): %s", funcname, ERR_error_string(e, buf));
-diff --git a/xio-openssl.h b/xio-openssl.h
-index d7be69d..e90f126 100644
---- a/xio-openssl.h
-+++ b/xio-openssl.h
-@@ -21,7 +21,6 @@ extern const struct optdesc opt_openssl_key;
+@@ -1105,7 +1098,7 @@
+       if (e == ((ERR_LIB_RAND<<24)|
+ 		(RAND_F_SSLEAY_RAND_BYTES<<12)|
+ 		(RAND_R_PRNG_NOT_SEEDED)) /*0x24064064*/) {
+-	 Error("too few entropy; use options \"egd\" or \"pseudo\"");
++	 Error("too few entropy; use options \"pseudo\"");
+ 	 stat = STAT_NORETRY;
+       } else {
+ 	 Msg2(level, "%s(): %s", funcname, ERR_error_string(e, buf));
+diff -Naur socat-1.7.3.1/xio-openssl.h socat-1.7.3.1.patch/xio-openssl.h
+--- socat-1.7.3.1/xio-openssl.h	2015-01-24 11:15:22.000000000 +0100
++++ socat-1.7.3.1.patch/xio-openssl.h	2016-03-27 04:08:02.900742120 +0200
+@@ -21,7 +21,6 @@
  extern const struct optdesc opt_openssl_dhparam;
  extern const struct optdesc opt_openssl_cafile;
  extern const struct optdesc opt_openssl_capath;
@@ -124,11 +120,10 @@ index d7be69d..e90f126 100644
  extern const struct optdesc opt_openssl_pseudo;
  #if OPENSSL_VERSION_NUMBER >= 0x00908000L
  extern const struct optdesc opt_openssl_compress;
-diff --git a/xioopts.c b/xioopts.c
-index c7ad842..a8a407d 100644
---- a/xioopts.c
-+++ b/xioopts.c
-@@ -409,7 +409,6 @@ const struct optname optionnames[] = {
+diff -Naur socat-1.7.3.1/xioopts.c socat-1.7.3.1.patch/xioopts.c
+--- socat-1.7.3.1/xioopts.c	2015-01-24 11:15:22.000000000 +0100
++++ socat-1.7.3.1.patch/xioopts.c	2016-03-27 04:08:56.969816096 +0200
+@@ -412,7 +412,6 @@
  #ifdef ECHOPRT
  	IF_TERMIOS("echoprt",	&opt_echoprt)
  #endif
@@ -136,7 +131,7 @@ index c7ad842..a8a407d 100644
  	IF_ANY    ("end-close",	&opt_end_close)
  	IF_TERMIOS("eof",	&opt_veof)
  	IF_TERMIOS("eol",	&opt_veol)
-@@ -1098,7 +1097,6 @@ const struct optname optionnames[] = {
+@@ -1102,7 +1101,6 @@
  	IF_OPENSSL("openssl-compress",	&opt_openssl_compress)
  #endif
  	IF_OPENSSL("openssl-dhparam",	&opt_openssl_dhparam)
@@ -144,11 +139,10 @@ index c7ad842..a8a407d 100644
  #if WITH_FIPS
  	IF_OPENSSL("openssl-fips",	&opt_openssl_fips)
  #endif
-diff --git a/xioopts.h b/xioopts.h
-index f6dd5b6..67de3db 100644
---- a/xioopts.h
-+++ b/xioopts.h
-@@ -477,7 +477,6 @@ enum e_optcode {
+diff -Naur socat-1.7.3.1/xioopts.h socat-1.7.3.1.patch/xioopts.h
+--- socat-1.7.3.1/xioopts.h	2015-01-24 11:15:22.000000000 +0100
++++ socat-1.7.3.1.patch/xioopts.h	2016-03-27 04:09:11.207835968 +0200
+@@ -478,7 +478,6 @@
     OPT_OPENSSL_COMPRESS,
  #endif
     OPT_OPENSSL_DHPARAM,
