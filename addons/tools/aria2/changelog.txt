@@ -1,4 +1,4 @@
-7.0.1 (unreleased)
+7.0.1
 - update to aria2-1.21.0
 
 7.0.0
