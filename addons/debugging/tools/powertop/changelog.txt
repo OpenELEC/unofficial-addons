@@ -1,4 +1,4 @@
-7.0.1 (unreleased)
+7.0.1
 - update to powertop-2.8
 
 7.0.0
