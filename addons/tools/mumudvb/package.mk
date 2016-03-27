@@ -19,12 +19,13 @@
 ################################################################################
 
 PKG_NAME="mumudvb"
-PKG_VERSION="1.7.2"
+PKG_VERSION="2.0.0"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.mumudvb.net/"
-PKG_URL="$DISTRO_SRC/${PKG_NAME}-${PKG_VERSION}.tar.gz"
+PKG_GIT_URL="https://github.com/braice/MuMuDVB.git"
+PKG_GIT_BRANCH="mumudvb2"
 PKG_DEPENDS_TARGET="toolchain libdvbcsa"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"
