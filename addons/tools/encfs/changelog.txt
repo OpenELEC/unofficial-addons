@@ -1,4 +1,4 @@
-7.0.1 (unreleased)
+7.0.1
 - update to encfs-1.8.1
 
 7.0.0
