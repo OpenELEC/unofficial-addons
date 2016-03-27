@@ -1,4 +1,4 @@
-7.0.1 (unreleased)
+7.0.1
 - update to tcpdump-4.7.4
 
 7.0.0
