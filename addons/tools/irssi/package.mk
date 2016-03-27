@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="irssi"
-PKG_VERSION="0.8.17"
+PKG_VERSION="0.8.19"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"

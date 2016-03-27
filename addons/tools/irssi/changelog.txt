@@ -1,5 +1,9 @@
+7.0.1 (unreleased)
+- update to irssi-0.8.19
+
 7.0.0
 - rebuild for OpenELEC-7.0
+
 6.0.0
 - rebuild for OE6
 
