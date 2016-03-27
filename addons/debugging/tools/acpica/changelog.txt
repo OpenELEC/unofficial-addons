@@ -1,4 +1,4 @@
-7.0.1 (unreleased)
+7.0.1
 - update to acpica-unix-20160318
 
 7.0.0
