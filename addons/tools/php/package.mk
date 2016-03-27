@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="php"
-PKG_VERSION="5.5.23"
+PKG_VERSION="5.6.19"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="OpenSource"
