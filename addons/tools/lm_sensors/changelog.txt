@@ -1,4 +1,4 @@
-7.0.1 (unreleased)
+7.0.1
 - update to lm_sensors-3.4.0
 
 7.0.0

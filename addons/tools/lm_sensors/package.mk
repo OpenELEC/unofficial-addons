@@ -18,7 +18,7 @@
 
 PKG_NAME="lm_sensors"
 PKG_VERSION="3.4.0"
-PKG_REV="0"
+PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://secure.netroedge.com/~lm78/"
