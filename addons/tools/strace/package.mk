@@ -18,7 +18,7 @@
 
 PKG_NAME="strace"
 PKG_VERSION="4.11"
-PKG_REV="0"
+PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="BSD"
 PKG_SITE="http://sourceforge.net/projects/strace/"

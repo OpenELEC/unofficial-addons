@@ -1,4 +1,4 @@
-7.0.1 (unreleased)
+7.0.1
 - update to strace-4.11
 
 7.0.0
