@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="proftpd"
-PKG_VERSION="1.3.5a"
+PKG_VERSION="1.3.5b"
 PKG_REV="0"
 PKG_ARCH="all"
 PKG_ARCH="any"
@@ -70,12 +70,12 @@ makeinstall_target() {
 
 addon() {
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
-  cp $PKG_BUILD/.$TARGET_NAME/proftpd   $ADDON_BUILD/$PKG_ADDON_ID/bin
-  cp $PKG_BUILD/.$TARGET_NAME/ftpwho  $ADDON_BUILD/$PKG_ADDON_ID/bin
-  cp $PKG_BUILD/.$TARGET_NAME/ftptop  $ADDON_BUILD/$PKG_ADDON_ID/bin
+    cp $PKG_BUILD/.$TARGET_NAME/proftpd   $ADDON_BUILD/$PKG_ADDON_ID/bin
+    cp $PKG_BUILD/.$TARGET_NAME/ftpwho  $ADDON_BUILD/$PKG_ADDON_ID/bin
+    cp $PKG_BUILD/.$TARGET_NAME/ftptop  $ADDON_BUILD/$PKG_ADDON_ID/bin
 
-  cp $BUILD/whois*/mkpasswd $ADDON_BUILD/$PKG_ADDON_ID/bin
+    cp $BUILD/whois*/mkpasswd $ADDON_BUILD/$PKG_ADDON_ID/bin
 
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/locale
-  cp $PKG_BUILD/.$TARGET_NAME/locale/* $ADDON_BUILD/$PKG_ADDON_ID/locale
+    cp $PKG_BUILD/.$TARGET_NAME/locale/* $ADDON_BUILD/$PKG_ADDON_ID/locale
 }
