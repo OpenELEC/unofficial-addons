@@ -1,4 +1,4 @@
-7.0.1 (unreleased)
+7.0.1
 - update to file-5.25
 
 7.0.0
