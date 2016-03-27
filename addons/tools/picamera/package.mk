@@ -17,13 +17,13 @@
 ################################################################################
 
 PKG_NAME="picamera"
-PKG_VERSION="1.9"
+PKG_VERSION="1.10"
 PKG_REV="0"
 PKG_ARCH="arm"
 PKG_LICENSE="BSD"
-PKG_SITE="http://sourceforge.net/p/raspberry-gpio-python/"
+PKG_SITE="https://github.com/waveform80/picamera"
 PKG_URL="https://pypi.python.org/packages/source/p/picamera/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain Python distutilscross:host bcm2835-driver"
+PKG_DEPENDS_TARGET="toolchain Python distutilscross:host bcm2835-firmware"
 PKG_PRIORITY="optional"
 PKG_SECTION="python"
 PKG_SHORTDESC="A python and shell interface for the Raspberry Pi camera module"
@@ -41,7 +41,7 @@ PKG_AUTORECONF="no"
 PKG_MAINTAINER="Lukas Rusak (lrusak at irc.freenode.net)"
 
 if [ "$TARGET_FLOAT" = "softfp" -o "$TARGET_FLOAT" = "soft" ]; then
-  FLOAT="softfp"
+  FLOAT="./"
 elif [ "$TARGET_FLOAT" = "hard" ]; then
   FLOAT="hardfp"
 fi
@@ -58,7 +58,7 @@ addon() {
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib/
     cp -rP $PKG_BUILD/picamera $ADDON_BUILD/$PKG_ADDON_ID/lib/picamera
 
-  BCM2835_DIR="$(get_build_dir bcm2835-driver)"
+  BCM2835_DIR="$(get_build_dir bcm2835-firmware)"
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin/
     cp -P $BCM2835_DIR/$FLOAT/opt/vc/bin/raspistill $ADDON_BUILD/$PKG_ADDON_ID/bin
     cp -P $BCM2835_DIR/$FLOAT/opt/vc/bin/raspiyuv $ADDON_BUILD/$PKG_ADDON_ID/bin
