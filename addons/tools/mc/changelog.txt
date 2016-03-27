@@ -1,4 +1,4 @@
-7.0.1 (unreleased)
+7.0.1
 - update to mc-4.8.16
 
 7.0.0
