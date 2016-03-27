@@ -1,4 +1,4 @@
-7.0.1 (unreleased)
+7.0.1
 - update to iw-4.3
 
 7.0.0
