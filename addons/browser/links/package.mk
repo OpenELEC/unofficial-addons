@@ -42,6 +42,7 @@ PKG_CONFIGURE_OPTS_TARGET="--x-includes=$SYSROOT_PREFIX/usr/include/X11/ \
         --enable-graphics \
         --with-ssl \
         --disable-ssl-pkgconfig \
+        --without-libevent \
         --without-bzip2 \
         --without-bzlib \
         --without-lzma \
