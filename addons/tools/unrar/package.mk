@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="unrar"
-PKG_VERSION="5.1.6"
+PKG_VERSION="5.3.11"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="free"
