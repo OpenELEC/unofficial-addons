@@ -1,4 +1,4 @@
-7.0.1 (unreleased)
+7.0.1
 - update to vim-7.4.1662
 
 7.0.0
