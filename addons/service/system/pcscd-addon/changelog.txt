@@ -1,4 +1,4 @@
-7.0.1 (unreleased)
+7.0.1
 - update to ccid-1.4.22
 - update to pcsc-lite-1.8.16
 
