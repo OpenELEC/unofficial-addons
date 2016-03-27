@@ -20,7 +20,7 @@
 
 PKG_NAME="dmidecode"
 PKG_VERSION="3.0"
-PKG_REV="0"
+PKG_REV="1"
 PKG_ARCH="i386 x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.nongnu.org/dmidecode/"
