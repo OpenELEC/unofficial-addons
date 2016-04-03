@@ -1,0 +1,3 @@
+#!/bin/sh
+ADDON_DIR="$HOME/.kodi/addons/tools.tvnamer"
+python $ADDON_DIR/resources/lib/tvnamer/main.py $@
