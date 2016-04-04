@@ -19,12 +19,12 @@
 ################################################################################
 
 PKG_NAME="dstat"
-PKG_VERSION="0.7.2"
+PKG_VERSION="0.7.3"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://dag.wieers.com/home-made/dstat/"
-PKG_URL="http://dag.wieers.com/home-made/dstat/$PKG_NAME-$PKG_VERSION.tar.bz2"
+PKG_URL="https://github.com/dagwieers/dstat/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
 PKG_SECTION="debug/tools"
