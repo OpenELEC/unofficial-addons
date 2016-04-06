@@ -20,7 +20,7 @@
 
 PKG_NAME="dstat"
 PKG_VERSION="0.7.3"
-PKG_REV="0"
+PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://dag.wieers.com/home-made/dstat/"

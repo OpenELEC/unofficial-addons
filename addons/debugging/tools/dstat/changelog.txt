@@ -1,3 +1,6 @@
+7.0.1(unreleased)
+- update to dstat-0.7.3
+
 7.0.0
 - rebuild for OpenELEC-7.0
 
