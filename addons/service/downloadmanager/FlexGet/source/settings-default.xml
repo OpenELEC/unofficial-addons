@@ -1,0 +1,9 @@
+<settings>
+    <setting id="FLEXGET_PWD" value="openelec" />
+    <setting id="FLEXGET_USER" value="openelec" />
+    <setting id="FLEXGET_DL_DIR" value="/storage/downloads" />
+    <setting id="FLEXGET_INC_DIR" value="/storage/downloads/incoming" />
+    <setting id="FLEXGET_WATCH_DIR" value="/storage/downloads/watch" />
+	<setting id="FLEXGET_ENABLE_CUSTOM_CONFIG" value="false" />
+    <setting id="FLEXGET_PATH_CUSTOM_CONFIG" value="/storage/.config/flexget" />
+</settings>
