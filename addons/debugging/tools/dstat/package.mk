@@ -40,6 +40,10 @@ PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="Dag Wieers (dag@wieers.com)"
 
+unpack() {
+  tar xf $ROOT/$SOURCES/$PKG_NAME/$PKG_VERSION.tar.gz -C $ROOT/$BUILD
+}
+
 make_target() {
   : # nop
 }
