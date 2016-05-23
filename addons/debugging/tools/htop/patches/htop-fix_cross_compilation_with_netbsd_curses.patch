@@ -1,0 +1,20 @@
+diff --git a/configure.ac b/configure.ac
+index fa32359..fde15e8 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -190,12 +190,9 @@ if test "x$enable_unicode" = xyes; then
+          [AC_CHECK_HEADERS([ncurses/curses.h],[:],
+             [AC_CHECK_HEADERS([ncurses.h],[:],[missing_headers="$missing_headers $ac_header"])])])])
+ else
+-   HTOP_CHECK_SCRIPT([ncurses6], [refresh], [HAVE_LIBNCURSES], "ncurses6-config",
+-    HTOP_CHECK_SCRIPT([ncurses], [refresh], [HAVE_LIBNCURSES], "ncurses5-config",
+-     HTOP_CHECK_LIB([ncurses6],  [refresh], [HAVE_LIBNCURSES],
+-      HTOP_CHECK_LIB([ncurses],  [refresh], [HAVE_LIBNCURSES],
+-      missing_libraries="$missing_libraries libncurses"
+-   ))))
++   PKG_CHECK_MODULES([NCURSES], [ncurses], [HAVE_LIBNCURSES; LIBS="$NCURSES_LIBS $LIBS"],
++     missing_libraries="$missing_libraries libncurses"
++   )
+    
+    AC_CHECK_HEADERS([curses.h],[:],
+       [AC_CHECK_HEADERS([ncurses/curses.h],[:],
