@@ -25,7 +25,7 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://01.org/powertop/"
 PKG_URL="https://01.org/sites/default/files/downloads/powertop/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain ncurses pciutils libnl"
+PKG_DEPENDS_TARGET="toolchain netbsd-curses pciutils libnl"
 PKG_PRIORITY="optional"
 PKG_SECTION="debug/tools"
 PKG_SHORTDESC="powertop: tool to diagnose issues with power consumption and power management"
@@ -43,8 +43,6 @@ PKG_MAINTAINER="Dag Wieers (dag@wieers.com)"
 PKG_CONFIGURE_OPTS_TARGET="ac_cv_func_malloc_0_nonnull=yes ac_cv_func_realloc_0_nonnull=yes"
 
 pre_configure_target() {
-  export CXXFLAGS="$CXXFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses"
-  export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses"
   export LDFLAGS="$LDFLAGS -ludev"
 }
 
