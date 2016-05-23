@@ -20,7 +20,7 @@
 
 PKG_NAME="powertop"
 PKG_VERSION="2.8"
-PKG_REV="1"
+PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://01.org/powertop/"
@@ -34,7 +34,7 @@ PKG_LONGDESC="PowerTOP is a Linux tool to diagnose issues with power consumption
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="7.0"
+PKG_ADDON_REPOVERSION="8.0"
 
 PKG_AUTORECONF="yes"
 
