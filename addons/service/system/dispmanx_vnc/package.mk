@@ -21,7 +21,7 @@
 PKG_NAME="dispmanx_vnc"
 PKG_ADDON_NAME="Raspberry Pi VNC"
 PKG_VERSION="78e6673"
-PKG_REV="1"
+PKG_REV="0"
 PKG_ARCH="arm"
 PKG_LICENSE="OSS"
 PKG_SITE="https://github.com/patrikolausson/dispmanx_vnc"
@@ -38,7 +38,7 @@ PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
 PKG_ADDON_PROVIDES=""
 PKG_ADDON_PROJECTS="RPi RPi2"
-PKG_ADDON_REPOVERSION="7.0"
+PKG_ADDON_REPOVERSION="8.0"
 
 PKG_AUTORECONF="no"
 

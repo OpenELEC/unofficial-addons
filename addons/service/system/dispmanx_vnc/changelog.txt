@@ -1,3 +1,6 @@
+8.0.0
+- rebuild for OpenELEC-8.0
+
 7.0.1
 - update to use patrikolausson/dispmanx_vnc
 - fix issue where vnc server would start to quickly resulting in a black screen
