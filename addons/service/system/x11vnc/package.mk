@@ -33,7 +33,7 @@ PKG_LONGDESC="x11vnc allows one to view remotely and interact with real X displa
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="7.0"
+PKG_ADDON_REPOVERSION="8.0"
 
 PKG_AUTORECONF="yes"
 
