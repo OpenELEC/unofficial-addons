@@ -20,7 +20,7 @@
 
 PKG_NAME="proftpd"
 PKG_VERSION="1.3.5b"
-PKG_REV="1"
+PKG_REV="0"
 PKG_ARCH="all"
 PKG_ARCH="any"
 PKG_LICENSE="OSS"
@@ -35,7 +35,7 @@ PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
 PKG_ADDON_PROVIDES=""
 PKG_AUTORECONF="no"
-PKG_ADDON_REPOVERSION="7.0"
+PKG_ADDON_REPOVERSION="8.0"
 PKG_MAINTAINER="vpeter4 (peter.vicman@gmail.com)"
 
 ADDON_DIR="/storage/.kodi/addons/service.system.proftpd"
