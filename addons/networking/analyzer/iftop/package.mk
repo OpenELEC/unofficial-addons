@@ -25,7 +25,7 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://htop.sourceforge.net/"
 PKG_URL="http://www.ex-parrot.com/pdw/iftop/download/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain ncurses libpcap libnl"
+PKG_DEPENDS_TARGET="toolchain netbsd-curses libpcap libnl"
 PKG_PRIORITY="optional"
 PKG_SECTION="network/analyzer"
 PKG_SHORTDESC="iftop: display bandwidth usage on an interface"
@@ -46,8 +46,9 @@ pre_build_target() {
 }
 
 pre_configure_target() {
-  export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses -I$SYSROOT_PREFIX/usr/include/pcap"
-  export LIBS="-lpcap -lnl-3 -lnl-genl-3"
+  export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/pcap"
+  export LIBS="-lpcap -lnl-3 -lnl-genl-3 -lterminfo"
+  strip_gold
 }
 
 makeinstall_target() {
