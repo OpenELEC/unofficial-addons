@@ -25,7 +25,7 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.gropp.org/?id=projects&sub=bwm-ng"
 PKG_URL="http://www.gropp.org/bwm-ng/bwm-ng-$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain ncurses libstatgrab"
+PKG_DEPENDS_TARGET="toolchain netbsd-curses libstatgrab"
 PKG_PRIORITY="optional"
 PKG_SECTION="network/analyzer"
 PKG_SHORTDESC="bwm-ng: small and simple console-based live network and disk io bandwidth monitor"
@@ -54,7 +54,7 @@ post_unpack() {
 }
 
 pre_configure_target() {
-  export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses"
+  export LIBS="-lterminfo"
 }
 
 makeinstall_target() {
