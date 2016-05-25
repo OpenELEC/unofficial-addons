@@ -88,7 +88,8 @@ make_target() {
      WX_ROOT=$WX_ROOT \
      WX_BUILD_DIR=$WX_BUILD_DIR \
      WX_CONFIG=$WX_BUILD_DIR/wx-config \
-     WX_LIBS="$WX_LIBS -lrt"
+     WX_LIBS="$WX_LIBS -lrt" \
+     TC_EXTRA_CXXFLAGS="-std=gnu++98"
 }
 
 makeinstall_target() {
