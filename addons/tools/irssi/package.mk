@@ -25,7 +25,7 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.irssi.org/"
 PKG_URL="https://github.com/irssi-import/irssi/releases/download/$PKG_VERSION/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain glib ncurses libressl"
+PKG_DEPENDS_TARGET="toolchain glib netbsd-curses libressl"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"
 PKG_SHORTDESC="IRC client"
@@ -54,6 +54,7 @@ PKG_CONFIGURE_OPTS_TARGET="--with-sysroot=$SYSROOT_PREFIX \
 
 pre_configure_target() {
   export CFLAGS="$CFLAGS -I$ROOT/$PKG_BUILD"
+  export LIBS="-lterminfo"
 }
 
 makeinstall_target() {
