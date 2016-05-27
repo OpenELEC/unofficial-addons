@@ -20,7 +20,7 @@
 
 PKG_NAME="mc"
 PKG_VERSION="4.8.16"
-PKG_REV="1"
+PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.midnight-commander.org"
@@ -34,7 +34,7 @@ PKG_LONGDESC="GNU Midnight Commander is a visual file manager, licensed under GN
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="7.0"
+PKG_ADDON_REPOVERSION="8.0"
 
 PKG_AUTORECONF="yes"
 
