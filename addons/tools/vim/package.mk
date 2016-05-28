@@ -23,7 +23,7 @@ PKG_ARCH="any"
 PKG_LICENSE="VIM"
 PKG_SITE="http://www.vim.org/"
 PKG_URL="https://github.com/vim/vim/archive/v$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain ncurses"
+PKG_DEPENDS_TARGET="toolchain netbsd-curses"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"
 PKG_SHORTDESC="vim: VI IMproved"
@@ -47,6 +47,7 @@ PKG_CONFIGURE_OPTS_TARGET="vim_cv_toupper_broken=no \
                            vim_cv_memmove_handles_overlap=yes \
                            ac_cv_sizeof_int=4 \
                            ac_cv_small_wchar_t=no \
+                           LIBS="-lterminfo" \
                            --prefix=/storage/.kodi/addons/tools.vim/ \
                            --enable-gui=no \
                            --with-compiledby=OpenELEC \
