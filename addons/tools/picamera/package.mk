@@ -18,7 +18,7 @@
 
 PKG_NAME="picamera"
 PKG_VERSION="1.10"
-PKG_REV="1"
+PKG_REV="0"
 PKG_ARCH="arm"
 PKG_LICENSE="BSD"
 PKG_SITE="https://github.com/waveform80/picamera"
@@ -34,7 +34,7 @@ PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.module"
 PKG_ADDON_PROVIDES=""
 PKG_ADDON_PROJECTS="RPi RPi2"
-PKG_ADDON_REPOVERSION="7.0"
+PKG_ADDON_REPOVERSION="8.0"
 
 PKG_AUTORECONF="no"
 

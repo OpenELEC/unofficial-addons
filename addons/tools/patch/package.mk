@@ -20,7 +20,7 @@
 
 PKG_NAME="patch"
 PKG_VERSION="2.7.5"
-PKG_REV="1"
+PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://savannah.gnu.org/projects/patch/"
@@ -34,7 +34,7 @@ PKG_LONGDESC="Patch takes a patch file containing a difference listing produced 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="7.0"
+PKG_ADDON_REPOVERSION="8.0"
 
 PKG_AUTORECONF="yes"
 

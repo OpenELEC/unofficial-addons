@@ -20,7 +20,7 @@
 
 PKG_NAME="transmission"
 PKG_VERSION="2.92"
-PKG_REV="1"
+PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="OSS"
 PKG_SITE="http://www.transmissionbt.com/"
@@ -34,7 +34,7 @@ PKG_LONGDESC="transmission is a fast, easy and free BitTorrent client"
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="7.0"
+PKG_ADDON_REPOVERSION="8.0"
 
 PKG_AUTORECONF="yes"
 

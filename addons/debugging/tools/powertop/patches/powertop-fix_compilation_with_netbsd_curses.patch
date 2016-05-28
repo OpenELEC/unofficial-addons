@@ -1,0 +1,13 @@
+diff --git a/src/display.cpp b/src/display.cpp
+index 57e3e45..8e60e99 100644
+--- a/src/display.cpp
++++ b/src/display.cpp
+@@ -84,7 +84,7 @@ void reset_display(void)
+ 	echo();
+ 	nocbreak();
+ 
+-	resetterm();
++	reset_shell_mode();
+ }
+ 
+ 

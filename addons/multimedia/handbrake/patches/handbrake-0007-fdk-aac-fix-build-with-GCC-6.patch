@@ -1,0 +1,12 @@
+diff --git a/contrib/fdk-aac/module.defs b/contrib/fdk-aac/module.defs
+index 36d711b..4b6337a 100644
+--- a/contrib/fdk-aac/module.defs
++++ b/contrib/fdk-aac/module.defs
+@@ -7,6 +7,7 @@ FDKAAC.FETCH.url = http://download.handbrake.fr/handbrake/contrib/fdk-aac-0.1.4.
+ # CFLAGS env variable is set during configure.  Since we set it, we
+ # also need to set the desired optimization option
+ FDKAAC.GCC.args.extra += $(FDKAAC.GCC.args.O.$(FDKAAC.GCC.O))
++FDKAAC.GCC.args.extra += -std=gnu++98
+ 
+ ## optional static libs need to be marked
+ FDKAAC.OSL.libs  = fdk-aac

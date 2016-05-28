@@ -18,7 +18,7 @@
 
 PKG_NAME="strace"
 PKG_VERSION="4.11"
-PKG_REV="1"
+PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="BSD"
 PKG_SITE="http://sourceforge.net/projects/strace/"
@@ -32,7 +32,7 @@ PKG_LONGDESC="In the simplest case strace runs the specified command until it ex
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="7.0"
+PKG_ADDON_REPOVERSION="8.0"
 
 PKG_AUTORECONF="yes"
 

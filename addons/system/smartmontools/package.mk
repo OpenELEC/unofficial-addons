@@ -21,7 +21,7 @@
 
 PKG_NAME="smartmontools"
 PKG_VERSION="6.4"
-PKG_REV="1"
+PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://smartmontools.sourceforge.net"
@@ -34,7 +34,7 @@ PKG_LONGDESC="S.M.A.R.T. disk monitoring tool with XBMC gui. This version is bas
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="7.0"
+PKG_ADDON_REPOVERSION="8.0"
 PKG_AUTORECONF="yes"
 PKG_MAINTAINER="Peter Smorada (smoradap@gmail.com)"
 

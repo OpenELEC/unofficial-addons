@@ -18,12 +18,12 @@
 
 PKG_NAME="vim"
 PKG_VERSION="7.4.1662"
-PKG_REV="1"
+PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="VIM"
 PKG_SITE="http://www.vim.org/"
 PKG_URL="https://github.com/vim/vim/archive/v$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain ncurses"
+PKG_DEPENDS_TARGET="toolchain netbsd-curses"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"
 PKG_SHORTDESC="vim: VI IMproved"
@@ -32,7 +32,7 @@ PKG_LONGDESC="Vim is a highly configurable text editor built to enable efficient
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="7.0"
+PKG_ADDON_REPOVERSION="8.0"
 
 PKG_AUTORECONF="no"
 
@@ -47,6 +47,7 @@ PKG_CONFIGURE_OPTS_TARGET="vim_cv_toupper_broken=no \
                            vim_cv_memmove_handles_overlap=yes \
                            ac_cv_sizeof_int=4 \
                            ac_cv_small_wchar_t=no \
+                           LIBS="-lterminfo" \
                            --prefix=/storage/.kodi/addons/tools.vim/ \
                            --enable-gui=no \
                            --with-compiledby=OpenELEC \

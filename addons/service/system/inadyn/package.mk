@@ -19,7 +19,7 @@
 
 PKG_NAME="inadyn"
 PKG_VERSION="1.99.15"
-PKG_REV="1"
+PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPLv2"
 PKG_SITE="http://troglobit.com/inadyn.html"
@@ -35,7 +35,7 @@ PKG_MAINTAINER="Anton Voyl (awiouy at gmail.com)"
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.service"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="7.0"
+PKG_ADDON_REPOVERSION="8.0"
 
 PKG_AUTORECONF="yes"
 PKG_CONFIGURE_OPTS_TARGET="--enable-openssl" # --sysconfdir is ineffective

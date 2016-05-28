@@ -20,12 +20,12 @@
 
 PKG_NAME="mc"
 PKG_VERSION="4.8.16"
-PKG_REV="1"
+PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.midnight-commander.org"
 PKG_URL="http://ftp.midnight-commander.org/${PKG_NAME}-${PKG_VERSION}.tar.xz"
-PKG_DEPENDS_TARGET="toolchain libtool:host gettext:host glib pcre ncurses"
+PKG_DEPENDS_TARGET="toolchain libtool:host gettext:host glib pcre netbsd-curses"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"
 PKG_SHORTDESC="mc: visual file manager"
@@ -34,7 +34,7 @@ PKG_LONGDESC="GNU Midnight Commander is a visual file manager, licensed under GN
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
-PKG_ADDON_REPOVERSION="7.0"
+PKG_ADDON_REPOVERSION="8.0"
 
 PKG_AUTORECONF="yes"
 
@@ -57,10 +57,10 @@ PKG_CONFIGURE_OPTS_TARGET="--sysconfdir=/storage/.kodi/addons/tools.mc/etc \
             --without-libintl-prefix \
             --with-internal-edit \
             --without-diff-viewer \
-            --with-subshell"
+            --with-subshell \
+            LIBS=-lterminfo"
 
 pre_configure_target() {
-  export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses"
   export LDFLAGS=`echo $LDFLAGS | sed -e "s|-Wl,--as-needed||"`
 }
 

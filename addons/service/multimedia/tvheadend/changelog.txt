@@ -1,3 +1,6 @@
+8.0.0
+- rebuild for OpenELEC-8.0
+
 7.0.4(unreleased)
 - update to tvheadend-ac9e47d
 

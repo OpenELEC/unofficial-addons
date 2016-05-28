@@ -1,2 +1,5 @@
+8.0.0
+- rebuild for OpenELEC-8.0
+
 7.0.0
 - initial version
