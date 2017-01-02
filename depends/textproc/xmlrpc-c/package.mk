@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="xmlrpc-c"
-PKG_VERSION="1.39.07"
+PKG_VERSION="1.39.12"
 PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
