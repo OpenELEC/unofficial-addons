@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="libvncserver"
-PKG_VERSION="0.9.10"
+PKG_VERSION="0.9.11"
 PKG_REV="0"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
