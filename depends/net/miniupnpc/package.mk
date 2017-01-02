@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="miniupnpc"
-PKG_VERSION="1.9.20160209"
+PKG_VERSION="2.0.20161216"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
