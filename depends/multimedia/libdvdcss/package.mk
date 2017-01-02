@@ -1,6 +1,6 @@
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
-#      Copyright (C) 2009-2014 Stephan Raue (stephan@openelec.tv)
+#      Copyright (C) 2009-2016 Stephan Raue (stephan@openelec.tv)
 #
 #  OpenELEC is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -17,14 +17,20 @@
 ################################################################################
 
 PKG_NAME="libdvdcss"
-PKG_VERSION="1.4.0"
-PKG_REV="3"
+PKG_VERSION="2f12236"
+PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
-PKG_SITE="http://www.videolan.org/developers/libdvdcss.html"
-PKG_URL="http://download.videolan.org/pub/videolan/$PKG_NAME/$PKG_VERSION/$PKG_NAME-$PKG_VERSION.tar.bz2"
+PKG_SITE="https://github.com/xbmc/libdvdcss"
+PKG_GIT_URL="https://github.com/xbmc/libdvdcss.git"
+PKG_GIT_BRANCH="master"
 PKG_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
-PKG_IS_ADDON="no"
+PKG_SECTION="multimedia"
+PKG_SHORTDESC="libdvdcss: a simple library designed for accessing DVDs as a block device without having to bother about the decryption."
+PKG_LONGDESC="libdvdcss is a simple library designed for accessing DVDs as a block device without having to bother about the decryption."
 
-PKG_MAINTAINER="tilwolff (at) yahoo (dotcom)"
+PKG_IS_ADDON="no"
+PKG_AUTORECONF="yes"
+
+PKG_CONFIGURE_OPTS_TARGET="--enable-static --disable-shared --with-pic"
