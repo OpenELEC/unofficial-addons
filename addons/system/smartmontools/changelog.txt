@@ -1,3 +1,6 @@
+7.0.2
+- update to smartmontools-6.5
+
 7.0.1
 - update to smartmontools-6.4
 
