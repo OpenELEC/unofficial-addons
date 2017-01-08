@@ -1,3 +1,6 @@
+7.0.1
+- update to links-2.14
+
 7.0.0
 - rebuild for OpenELEC-7.0
 
