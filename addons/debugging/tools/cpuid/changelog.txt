@@ -1,3 +1,6 @@
+7.0.2
+- update to cpuid-20161201
+
 7.0.1
 - update to cpuid-20151017
 
