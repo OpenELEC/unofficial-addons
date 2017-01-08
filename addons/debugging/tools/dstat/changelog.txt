@@ -1,4 +1,4 @@
-7.0.1(unreleased)
+7.0.1
 - update to dstat-0.7.3
 
 7.0.0
