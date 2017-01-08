@@ -1,6 +1,6 @@
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
-#      Copyright (C) 2009-2014 Stephan Raue (stephan@openelec.tv)
+#      Copyright (C) 2009-2017 Stephan Raue (stephan@openelec.tv)
 #
 #  OpenELEC is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -17,8 +17,8 @@
 ################################################################################
 
 PKG_NAME="nfs-utils"
-PKG_VERSION="1.3.3"
-PKG_REV="1"
+PKG_VERSION="1.3.4"
+PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://linux-nfs.org/wiki/index.php/Main_Page"
