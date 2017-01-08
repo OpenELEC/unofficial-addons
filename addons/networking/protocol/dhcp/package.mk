@@ -1,7 +1,7 @@
 ################################################################################
-# This file is part of OpenELEC - http://www.openelec.tv
-# Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
-# Copyright (C) 2014 smory
+#      This file is part of OpenELEC - http://www.openelec.tv
+#      Copyright (C) 2014 smory
+#      Copyright (C) 2009-2017 Stephan Raue (stephan@openelec.tv)
 #
 #  OpenELEC is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -18,8 +18,8 @@
 ################################################################################
 
 PKG_NAME="dhcp"
-PKG_VERSION="4.3.3-P1"
-PKG_REV="1"
+PKG_VERSION="4.3.5"
+PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://www.isc.org/"
@@ -37,7 +37,7 @@ PKG_AUTORECONF="yes"
 PKG_MAINTAINER="Peter Smorada (smoradap@gmail.com)"
 PKG_DISCLAIMER="this is an unofficial addon. please don't ask for support in openelec forum / irc channel"
 
-PKG_CONFIGURE_OPTS_TARGET="ac_cv_file__dev_random=yes \
+PKG_CONFIGURE_OPTS_TARGET="--with-randomdev=/dev/random \
                            --sysconfdir=/storage/.kodi/userdata/addon_data/plugin.network.dhcp"
 
 MAKEFLAGS="-j1"
