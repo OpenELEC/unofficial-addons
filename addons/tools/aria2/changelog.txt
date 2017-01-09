@@ -1,3 +1,6 @@
+7.0.2
+- update to aria2-1.30.0
+
 7.0.1
 - update to aria2-1.21.0
 

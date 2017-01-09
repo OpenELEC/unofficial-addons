@@ -1,6 +1,6 @@
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
-#      Copyright (C) 2009-2014 Stephan Raue (stephan@openelec.tv)
+#      Copyright (C) 2009-2017 Stephan Raue (stephan@openelec.tv)
 #
 #  OpenELEC is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -17,12 +17,12 @@
 ################################################################################
 
 PKG_NAME="aria2"
-PKG_VERSION="1.21.0"
-PKG_REV="1"
+PKG_VERSION="1.30.0"
+PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://aria2.github.io/"
-PKG_URL="https://github.com/tatsuhiro-t/aria2/releases/download/release-$PKG_VERSION/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_URL="https://github.com/aria2/aria2/releases/download/release-$PKG_VERSION/$PKG_NAME-$PKG_VERSION.tar.xz"
 PKG_DEPENDS_TARGET="toolchain zlib libressl libxml2"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"
@@ -53,7 +53,7 @@ PKG_CONFIGURE_OPTS_TARGET="XML2_CONFIG=$SYSROOT_PREFIX/usr/bin/xml2-config \
          --without-libexpat \
          --with-libxml2 \
          --without-libcares \
-         --with-ca-bundle=$SSL_CERTIFICATES/cacert.pem \
+         --with-ca-bundle=/etc/ssl/cert.pem \
          --with-gnu-ld"
 
 makeinstall_target() {
