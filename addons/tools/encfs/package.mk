@@ -1,31 +1,29 @@
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
-#      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
+#      Copyright (C) 2009-2017 Stephan Raue (stephan@openelec.tv)
 #
-#  This Program is free software; you can redistribute it and/or modify
+#  OpenELEC is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation; either version 2, or (at your option)
-#  any later version.
+#  the Free Software Foundation, either version 2 of the License, or
+#  (at your option) any later version.
 #
-#  This Program is distributed in the hope that it will be useful,
+#  OpenELEC is distributed in the hope that it will be useful,
 #  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #  GNU General Public License for more details.
 #
 #  You should have received a copy of the GNU General Public License
-#  along with OpenELEC.tv; see the file COPYING.  If not, write to
-#  the Free Software Foundation, 51 Franklin Street, Suite 500, Boston, MA 02110, USA.
-#  http://www.gnu.org/copyleft/gpl.html
+#  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
 PKG_NAME="encfs"
-PKG_VERSION="1.8.1"
-PKG_REV="1"
+PKG_VERSION="1.9.1"
+PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.arg0.net/encfs"
 PKG_URL="https://github.com/vgough/encfs/releases/download/v$PKG_VERSION/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain fuse boost libressl rlog"
+PKG_DEPENDS_TARGET="toolchain fuse libressl"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"
 PKG_SHORTDESC="encfs: encrypted filesystem in user-space"
@@ -36,22 +34,14 @@ PKG_ADDON_TYPE="xbmc.python.script"
 PKG_ADDON_PROVIDES=""
 PKG_ADDON_REPOVERSION="7.0"
 
-PKG_AUTORECONF="yes"
+PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
 
-MAKEFLAGS="-j1"
-
-PKG_CONFIGURE_OPTS_TARGET="ac_cv_path_POD2MAN=no \
-            --with-sysroot=$SYSROOT_PREFIX \
-            --without-libiconv-prefix \
-            --without-libintl-prefix \
-            --with-boost=$SYSROOT_PREFIX/usr \
-            --with-boost-libdir=$SYSROOT_PREFIX/usr/lib"
-
-pre_build_target() {
-  mkdir -p $PKG_BUILD/.$TARGET_NAME
-  cp -RP $PKG_BUILD/* $PKG_BUILD/.$TARGET_NAME
+configure_target() {
+  cmake -DCMAKE_TOOLCHAIN_FILE=$CMAKE_CONF \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        ..
 }
 
 makeinstall_target() {
@@ -60,8 +50,6 @@ makeinstall_target() {
 
 addon() {
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
-  cp -P $PKG_BUILD/.$TARGET_NAME/encfs/.libs/encfs $ADDON_BUILD/$PKG_ADDON_ID/bin/
-
-  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
-  cp $PKG_BUILD/.$TARGET_NAME/encfs/.libs/libencfs.so* $ADDON_BUILD/$PKG_ADDON_ID/lib
+    cp -P $PKG_BUILD/.$TARGET_NAME/encfs $ADDON_BUILD/$PKG_ADDON_ID/bin/
+    cp -P $PKG_BUILD/.$TARGET_NAME/encfsctl $ADDON_BUILD/$PKG_ADDON_ID/bin/
 }

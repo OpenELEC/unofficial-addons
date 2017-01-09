@@ -1,3 +1,6 @@
+7.0.2
+- update to encfs-1.9.1
+
 7.0.1
 - update to encfs-1.8.1
 
