@@ -1,4 +1,10 @@
-7.0.2(unreleased)
+7.0.4
+- update to mpd-0.20.1
+
+7.0.3
+- update to mpd-0.19.21
+
+7.0.2
 - add lame mp3 encoder support
 - add http server output support
 
