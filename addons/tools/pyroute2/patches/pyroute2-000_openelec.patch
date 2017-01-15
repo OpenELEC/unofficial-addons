@@ -1,0 +1,30 @@
+diff -Naur pyroute2-0.3.4/pyroute2/netlink/rtnl/tcmsg.py pyroute2-0.3.4-openelec/pyroute2/netlink/rtnl/tcmsg.py
+--- pyroute2-0.3.4/pyroute2/netlink/rtnl/tcmsg.py	2014-11-18 21:25:11.000000000 +0100
++++ pyroute2-0.3.4-openelec/pyroute2/netlink/rtnl/tcmsg.py	2015-01-14 00:44:39.986235872 +0100
+@@ -25,15 +25,17 @@
+ 
+ TIME_UNITS_PER_SEC = 1000000
+ 
+-_psched = open('/proc/net/psched', 'r')
+-[_t2us,
+- _us2t,
+- _clock_res,
+- _wee] = [int(i, 16) for i in _psched.read().split()]
+-_clock_factor = float(_clock_res) / TIME_UNITS_PER_SEC
+-_tick_in_usec = float(_t2us) / _us2t * _clock_factor
+-_first_letter = re.compile('[^0-9]+')
+-_psched.close()
++# /proc/net/psched does not exist on OpenELEC
++#
++#_psched = open('/proc/net/psched', 'r')
++#[_t2us,
++# _us2t,
++# _clock_res,
++# _wee] = [int(i, 16) for i in _psched.read().split()]
++#_clock_factor = float(_clock_res) / TIME_UNITS_PER_SEC
++#_tick_in_usec = float(_t2us) / _us2t * _clock_factor
++#_first_letter = re.compile('[^0-9]+')
++#_psched.close()
+ 
+ 
+ def _get_hz():
