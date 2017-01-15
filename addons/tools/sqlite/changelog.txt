@@ -1,0 +1,2 @@
+6.0.0
+- Inital release, package.mk adapted from OpenELEC source tree and converted to addon with latest sqlite version
