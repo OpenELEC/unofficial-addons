@@ -1,0 +1,71 @@
+################################################################################
+#      This file is part of OpenELEC - http://www.openelec.tv
+#      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
+#
+#  This Program is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 2, or (at your option)
+#  any later version.
+#
+#  This Program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+#  GNU General Public License for more details.
+#
+#  You should have received a copy of the GNU General Public License
+#  along with OpenELEC.tv; see the file COPYING.  If not, write to
+#  the Free Software Foundation, 51 Franklin Street, Suite 500, Boston, MA 02110, USA.
+#  http://www.gnu.org/copyleft/gpl.html
+################################################################################
+
+#
+# You must replace "<template>" with the name of your new package.
+#
+
+#
+# PKG_VERSION, PKG_NAME and PKG_URL define
+# the upstream location of the source code for the package.
+#
+# You should change all these variables to suit your package.
+# Please make sure that you add a description, and that you
+# list all your packages' dependencies.
+# 
+# you should list yourself as PKG_MAINTAINER, please give a valid email
+# address, and indicate your irc nick if it cannot be easily deduced
+# from your name or email address. 
+#
+
+# Enter pkg name and pkg version, is mapped to PKG_URL link
+PKG_NAME="<template>"
+PKG_VERSION="3.1"
+PKG_REV="1"
+
+# On what arches is this pkg supported?
+PKG_ARCH="any"
+PKG_DEPENDS=""
+PKG_BUILD_DEPENDS="toolchain" 
+
+# Add site and download info if source is needed
+PKG_SITE="http://www.<template>.com/"
+PKG_URL="http://download.<template>.com/files/$PKG_NAME-$PKG_VERSION.tar.xz"
+
+# Pkg info section
+PKG_PRIORITY="optional"
+PKG_LICENSE="OSS"
+PKG_SECTION="service/downloadmanager"
+
+# Pkg description, shown in xbmc to
+PKG_SHORTDESC="<template>: a bla"
+PKG_LONGDESC="<template> is a addon for bla"
+
+# Is this pkg a xbmc addon?
+PKG_IS_ADDON="yes"
+# If PKG_IS_ADDON=yes what type of addon
+PKG_ADDON_TYPE="xbmc.service"
+
+# Do source need autoreconf? recomended!
+PKG_AUTORECONF="yes"
+
+# Please add maintainer info
+PKG_MAINTAINER=""
+
