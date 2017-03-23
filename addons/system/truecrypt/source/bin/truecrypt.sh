@@ -148,16 +148,23 @@ getMountedFiles() {
 }
 
 # Function will print all partitions on the system. Devices with following format are retruned: 
-# sdXY and hdXY.
-# It won't return whole disk like sda or hda. 
+# sdX[Y] and hdX[Y].
+# Because TrueCrypt can encrypt entire drives, this script is modified to accept mounting of entire drives like sda, sdb, hda etc.
 getPartitions() {
-	ls /dev 2>/dev/null | awk "/sd[a-z]?[0-9]+$|hd[a-z]?[0-9]+$/"'{print $1}' 2>/dev/null
+	ls /dev 2>/dev/null | awk "/sd[a-z]?[0-9]?+$|hd[a-z]?[0-9]?+$/"'{print $1}' 2>/dev/null
+
 }
 
-# Function returns corespnding label to the partition. Only name of the partition should be supplied e.g. sda1
+# Function returns coresponding label to the partition if found. 
+# If the label is not found (which you won't get from an encrypted drive), it will use the less nicer ID instead.
+# Only name of the partition should be supplied e.g. sda, sda1
 getPartitionLabel() {
 	if [ "$1" != "" ] ; then
-		ls /dev/disk/by-label -l 2>/dev/null | awk "/$1\$/"'{printf $9}'
+                GET_LABEL="$(ls /dev/disk/by-label -l 2>/dev/null | awk "/$1\$/"'{printf $9}')"
+                if [ "$GET_LABEL" == "" ] ; then
+                        GET_LABEL="$(ls /dev/disk/by-id -l 2>/dev/null | awk "/$1\$/"'{printf $9}')"
+                fi
+                echo -n "$GET_LABEL"
 		# more "d:\test.txt" | awk "/$1\$/"'{print $9}'
 	fi
 	
