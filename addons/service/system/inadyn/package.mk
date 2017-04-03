@@ -19,7 +19,7 @@
 
 PKG_NAME="inadyn"
 PKG_VERSION="1.99.15"
-PKG_REV="1"
+PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPLv2"
 PKG_SITE="http://troglobit.com/inadyn.html"

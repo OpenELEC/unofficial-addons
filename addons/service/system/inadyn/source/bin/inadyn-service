@@ -27,7 +27,7 @@ config="$ADDON_HOME/inadyn.conf"
 options="-b"
 if [ "$inadyn_S" == "inadyn.conf" ]
 then
-   if [ -f "$config" ] && [ -s "$config"]
+   if [ -f "$config" ] && [ -s "$config" ]
    then
       options="$options -F $config"
    else
