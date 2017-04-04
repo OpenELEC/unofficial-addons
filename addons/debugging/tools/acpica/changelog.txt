@@ -1,3 +1,6 @@
+7.0.2
+- update to acpica-unix-20161222
+
 7.0.1
 - update to acpica-unix-20160318
 
