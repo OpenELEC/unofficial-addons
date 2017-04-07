@@ -18,13 +18,13 @@
 
 PKG_NAME="streamdisc"
 PKG_VERSION="14f152c"
-PKG_REV="0"
+PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/tilwolff/streamdisc"
 PKG_GIT_URL="https://github.com/tilwolff/streamdisc.git"
 PKG_GIT_BRANCH="master"
-PKG_DEPENDS_TARGET="toolchain libbluray libdvdread"
+PKG_DEPENDS_TARGET="toolchain libbluray libdvdread libdvdcss"
 PKG_PRIORITY="optional"
 PKG_SECTION="service/multimedia"
 PKG_SHORTDESC="streamdisc (Version: $PKG_VERSION): stream unencrypted DVD and BluRay content to clients that do not have an optical drive."
@@ -37,6 +37,10 @@ PKG_ADDON_REPOVERSION="7.0"
 
 PKG_MAINTAINER="tilwolff (at) yahoo (dotcom)"
 
+pre_configure_target() {
+  export LIBS="-ldvdread -ldvdcss"
+}
+
 makeinstall_target() {
   : # nothing to do here
 }
@@ -44,8 +48,4 @@ makeinstall_target() {
 addon() {
   mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/bin
     cp -P $PKG_BUILD/.$TARGET_NAME/src/streamdisc_server $ADDON_BUILD/$PKG_ADDON_ID/bin
-
-  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib
-    cp -L $(get_build_dir libdvdread)/.install_pkg/usr/lib/libdvdread.so.4 $ADDON_BUILD/$PKG_ADDON_ID/lib
-    cp -L $(get_build_dir libdvdcss)/.install_pkg/usr/lib/libdvdcss.so.2 $ADDON_BUILD/$PKG_ADDON_ID/lib
 }
