@@ -1,3 +1,9 @@
+7.0.6
+- update to mpd-0.20.3
+
+7.0.5
+- update to mpd-0.20.2
+
 7.0.4
 - update to mpd-0.20.1
 

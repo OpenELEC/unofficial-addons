@@ -17,13 +17,13 @@
 ################################################################################
 
 PKG_NAME="mpd"
-PKG_VERSION="0.20.1"
-PKG_REV="4"
+PKG_VERSION="0.20.3"
+PKG_REV="6"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://mpd.wikia.com/wiki/Music_Player_Daemon_Wiki"
 PKG_URL="http://www.musicpd.org/download/${PKG_NAME}/${PKG_VERSION%.*}/${PKG_NAME}-${PKG_VERSION}.tar.xz"
-PKG_DEPENDS_TARGET="toolchain boost glib ffmpeg libmad libogg flac faad2 curl alsa-lib yajl libid3tag lame"
+PKG_DEPENDS_TARGET="toolchain boost ffmpeg libmad libogg flac faad2 curl alsa-lib yajl libid3tag lame"
 PKG_PRIORITY="optional"
 PKG_SECTION="service.multimedia"
 PKG_SHORTDESC="Flexible, powerful, server-side application for playing music"
