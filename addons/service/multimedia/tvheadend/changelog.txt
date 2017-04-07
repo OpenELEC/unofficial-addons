@@ -1,4 +1,7 @@
-7.0.4(unreleased)
+7.0.5(unreleased)
+- update to tvheadend-10f1326
+
+7.0.4
 - update to tvheadend-ac9e47d
 
 7.0.3

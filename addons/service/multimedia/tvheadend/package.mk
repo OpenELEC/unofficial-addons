@@ -17,24 +17,32 @@
 ################################################################################
 
 PKG_NAME="tvheadend"
-PKG_VERSION="ac9e47d"
-PKG_REV="4"
+PKG_VERSION="10f1326"
+PKG_REV="5"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.tvheadend.org"
 PKG_GIT_URL="https://github.com/tvheadend/tvheadend.git"
-PKG_GIT_BRANCH="release/4.0"
+PKG_GIT_BRANCH="master"
 PKG_DEPENDS_TARGET="toolchain libressl libdvbcsa curl Python:host libhdhomerun"
 PKG_PRIORITY="optional"
 PKG_SECTION="service/multimedia"
 PKG_SHORTDESC="tvheadend (Version: $PKG_VERSION): a TV streaming server for Linux supporting DVB-S, DVB-S2, DVB-C, DVB-T, ATSC, IPTV, and Analog video (V4L) as input sources."
 PKG_LONGDESC="Tvheadend (Version: $PKG_VERSION) is a TV streaming server for Linux supporting DVB-S, DVB-S2, DVB-C, DVB-T, ATSC, IPTV, and Analog video (V4L) as input sources. It also comes with a powerful and easy to use web interface both used for configuration and day-to-day operations, such as searching the EPG and scheduling recordings. Even so, the most notable feature of Tvheadend is how easy it is to set up: Install it, navigate to the web user interface, drill into the TV adapters tab, select your current location and Tvheadend will start scanning channels and present them to you in just a few minutes. If installing as an Addon a reboot is needed"
 
-PKG_IS_ADDON="yes"
+#PKG_IS_ADDON="yes"
 PKG_ADDON_NAME="Tvheadend"
 PKG_ADDON_TYPE="xbmc.service"
 PKG_AUTORECONF="no"
 PKG_ADDON_REPOVERSION="7.0"
+
+# transcoding only for generic
+if [ "$TARGET_ARCH" = x86_64 ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET libva-intel-driver"
+  TVH_TRANSCODING="--disable-ffmpeg_static --enable-libfdkaac --disable-libtheora --enable-libvorbis --enable-libvpx --enable-libx264 --enable-libx265 --disable-qsv"
+else
+  TVH_TRANSCODING="--disable-ffmpeg_static --disable-libav"
+fi
 
 post_unpack() {
   sed -e 's/VER="0.0.0~unknown"/VER="'$PKG_VERSION' ~ OpenELEC Tvh-addon v'$PKG_ADDON_REPOVERSION'.'$PKG_REV'"/g' -i $PKG_BUILD/support/version
@@ -63,6 +71,7 @@ configure_target() {
               --enable-bundle \
               --enable-dvbcsa \
               --disable-dbus_1 \
+              $TVH_TRANSCODING \
               --python=$ROOT/$TOOLCHAIN/bin/python
 }
 
