@@ -1,3 +1,6 @@
+7.0.2
+- update to efibootmgr-0bb83cf
+
 7.0.1
 - update to efibootmgr-ceb177a
 
