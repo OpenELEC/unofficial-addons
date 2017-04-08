@@ -18,13 +18,13 @@
 #####################################################################
 
 PKG_NAME="inadyn"
-PKG_VERSION="1.99.15"
-PKG_REV="1"
+PKG_VERSION="2.1"
+PKG_REV="3"
 PKG_ARCH="any"
 PKG_LICENSE="GPLv2"
 PKG_SITE="http://troglobit.com/inadyn.html"
-PKG_URL="ftp://troglobit.com/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
-PKG_DEPENDS_TARGET="toolchain libressl"
+PKG_URL="ftp://ftp.troglobit.com/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.xz"
+PKG_DEPENDS_TARGET="toolchain libressl libite confuse"
 PKG_PRIORITY="optional"
 PKG_SECTION="service/system"
 PKG_SHORTDESC="Inadyn, a small and simple DDNS client"
@@ -38,7 +38,7 @@ PKG_ADDON_PROVIDES=""
 PKG_ADDON_REPOVERSION="7.0"
 
 PKG_AUTORECONF="yes"
-PKG_CONFIGURE_OPTS_TARGET="--enable-openssl" # --sysconfdir is ineffective
+PKG_CONFIGURE_OPTS_TARGET="--enable-openssl"
 
 pre_configure_target() {
   # inadyn fails to build in subdirs
