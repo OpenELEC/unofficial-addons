@@ -20,12 +20,12 @@
 
 PKG_NAME="ltrace"
 PKG_VERSION="0.7.3"
-PKG_REV="0"
+PKG_REV="1"
 PKG_ARCH="i386 x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://ltrace.org/"
 PKG_URL="http://fossies.org/linux/misc/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain elfutils"
+PKG_DEPENDS_TARGET="toolchain elfutils zlib"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"
 PKG_SHORTDESC="ltrace intercepts and records dynamic library calls which are called by an executed process and the signals received by that process"
@@ -42,6 +42,10 @@ PKG_AUTORECONF="yes"
 PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
 
 PKG_CONFIGURE_OPTS_TARGET="--disable-werror --without-libunwind --with-sysroot=$SYSROOT_PREFIX"
+
+pre_configure_target() {
+  export LIBS="-lz"
+}
 
 makeinstall_target() {
   : # nop
