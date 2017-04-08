@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="libite"
-PKG_VERSION="1.8.2"
+PKG_VERSION="1.8.3"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
