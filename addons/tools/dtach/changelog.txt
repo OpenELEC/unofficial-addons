@@ -1,3 +1,6 @@
+7.0.1
+- update to dtach-0.9
+
 7.0.0
 - rebuild for OpenELEC-7.0
 
