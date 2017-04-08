@@ -1,3 +1,6 @@
+7.0.2
+- update to oscam-11306
+
 7.0.1
 - update to oscam-11211
 - removed wait for network option (OE system wait-for-online preference is now respected)
