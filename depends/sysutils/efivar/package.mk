@@ -19,14 +19,14 @@
 ################################################################################
 
 PKG_NAME="efivar"
-PKG_VERSION="0.15" # Todo: later versions with buildproblems
+PKG_VERSION="30" # Todo: later versions with buildproblems
 PKG_REV="0"
 PKG_ARCH="x86_64"
 PKG_LICENSE="LGPL"
 PKG_SITE="https://github.com/vathpela/efivar"
-PKG_GIT_URL="https://github.com/vathpela/efivar-devel.git"
-PKG_GIT_BRANCH="master"
-PKG_DEPENDS_TARGET="toolchain efivar:host"
+PKG_URL="https://github.com/rhinstaller/efivar/releases/download/$PKG_VERSION/$PKG_NAME-$PKG_VERSION.tar.bz2"
+#PKG_DEPENDS_TARGET="toolchain efivar:host"
+PKG_DEPENDS_TARGET="toolchain"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"
 PKG_SHORTDESC="evivar: maniulate EFI Variables"
@@ -37,25 +37,24 @@ PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="Stefan Benz (benz.st@gmail.com)"
 
-make_host() {
-  make -C src/ makeguids
-}
-
 make_target() {
   strip_lto
-  make -C src/ libefivar.a efivar-guids.h efivar.h
-}
-
-makeinstall_host() {
-  : # noop
+  CC="$HOST_CC" \
+  CFLAGS="$HOST_CFLAGS" \
+  LDFLAGS="$HOST_LDFLAGS" \
+  make -C src/ makeguids
+  make
 }
 
 makeinstall_target() {
   mkdir -p $SYSROOT_PREFIX/usr/lib
     cp -P src/libefivar.a $SYSROOT_PREFIX/usr/lib/
 
-  mkdir -p $SYSROOT_PREFIX/usr/include/efivar
-    cp -P src/efivar.h $SYSROOT_PREFIX/usr/include/efivar
-    cp -P src/efivar-guids.h $SYSROOT_PREFIX/usr/include/efivar
+  mkdir -p $SYSROOT_PREFIX/usr/lib/pkgconfig
+    cp -P src/efivar.pc $SYSROOT_PREFIX/usr/lib/pkgconfig
+
+  mkdir -p $SYSROOT_PREFIX/usr/include
+    cp -P src/efivar.h $SYSROOT_PREFIX/usr/include
+    cp -P src/efivar-guids.h $SYSROOT_PREFIX/usr/include
 }
 
