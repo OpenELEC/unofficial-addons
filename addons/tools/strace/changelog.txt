@@ -1,4 +1,7 @@
 7.0.2
+- update to strace-4.16
+
+7.0.2
 - update to strace-4.15
 
 7.0.1
