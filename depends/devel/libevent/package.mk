@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="libevent"
-PKG_VERSION="2.0.22-stable"
+PKG_VERSION="2.1.8-stable"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="BSD"
