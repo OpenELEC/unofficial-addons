@@ -1,4 +1,7 @@
-7.0.2 (unreleased
+7.0.3
+- addon update to RPI.GPIO-0.6.3
+
+7.0.2
 - addon update to RPI.GPIO-0.6.2
 
 7.0.1

@@ -1,6 +1,6 @@
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
-#      Copyright (C) 2009-2014 Stephan Raue (stephan@openelec.tv)
+#      Copyright (C) 2009-2017 Stephan Raue (stephan@openelec.tv)
 #
 #  OpenELEC is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -17,12 +17,12 @@
 ################################################################################
 
 PKG_NAME="RPi.GPIO"
-PKG_VERSION="0.6.2"
-PKG_REV="1"
+PKG_VERSION="0.6.3"
+PKG_REV="3"
 PKG_ARCH="arm"
 PKG_LICENSE="MIT"
 PKG_SITE="http://sourceforge.net/p/raspberry-gpio-python/"
-PKG_URL="https://pypi.python.org/packages/source/R/RPi.GPIO/$PKG_NAME-$PKG_VERSION.tar.gz"
+PKG_URL="https://pypi.python.org/packages/e2/58/6e1b775606da6439fa3fd1550e7f714ac62aa75e162eed29dbec684ecb3e/$PKG_NAME-$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain Python distutilscross:host"
 PKG_PRIORITY="optional"
 PKG_SECTION="python"
@@ -41,8 +41,6 @@ PKG_AUTORECONF="no"
 PKG_MAINTAINER="Lukas Rusak (lrusak at irc.freenode.net)"
 
 pre_configure_target() {
-  export PYTHONXCPREFIX="$SYSROOT_PREFIX/usr"
-  export LDSHARED="$CC -shared"
   export CPPFLAGS="$TARGET_CPPFLAGS -I${SYSROOT_PREFIX}/usr/include/python2.7"
 }
 
