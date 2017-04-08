@@ -1,3 +1,6 @@
+7.0.2
+- update to tinc-1.1pre14
+
 7.0.1
 - Reverted to system.d service (legacy configurations are preserved)
 - Removed plugin
