@@ -1,3 +1,6 @@
+7.0.1
+- update to hid_mapper-2a80972
+
 7.0.0
 - rebuild for OpenELEC-7.0
 
