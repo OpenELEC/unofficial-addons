@@ -19,13 +19,13 @@
 ################################################################################
 
 PKG_NAME="mc"
-PKG_VERSION="4.8.16"
-PKG_REV="1"
+PKG_VERSION="4.8.18"
+PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.midnight-commander.org"
 PKG_URL="http://ftp.midnight-commander.org/${PKG_NAME}-${PKG_VERSION}.tar.xz"
-PKG_DEPENDS_TARGET="toolchain libtool:host gettext:host glib pcre ncurses"
+PKG_DEPENDS_TARGET="toolchain libtool:host gettext:host glib pcre netbsd-curses"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"
 PKG_SHORTDESC="mc: visual file manager"
@@ -60,8 +60,8 @@ PKG_CONFIGURE_OPTS_TARGET="--sysconfdir=/storage/.kodi/addons/tools.mc/etc \
             --with-subshell"
 
 pre_configure_target() {
-  export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses"
   export LDFLAGS=`echo $LDFLAGS | sed -e "s|-Wl,--as-needed||"`
+  export LIBS="-lncurses -ltermcap"
 }
 
 post_makeinstall_target() {
