@@ -20,8 +20,8 @@
 ################################################################################
 
 PKG_NAME="mediainfo"
-PKG_VERSION="0.7.83"
-PKG_REV="1"
+PKG_VERSION="0.7.91"
+PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://mediaarea.net/en/MediaInfo/Download/Source"
@@ -42,6 +42,10 @@ PKG_ADDON_REPOVERSION="7.0"
 PKG_AUTORECONF="no"
 
 PKG_MAINTAINER="Stefan Saraev (seo at irc.freenode.net)"
+
+pre_configure_target() {
+  export LIBS="-lmediainfo -lzen"
+}
 
 make_target() {
   cd Project/GNU/CLI
