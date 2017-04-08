@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="gdk-pixbuf"
-PKG_VERSION="2.36.3"
+PKG_VERSION="2.36.4"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="OSS"
