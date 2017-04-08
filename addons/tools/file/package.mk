@@ -1,6 +1,6 @@
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
-#      Copyright (C) 2009-2014 Stephan Raue (stephan@openelec.tv)
+#      Copyright (C) 2009-2017 Stephan Raue (stephan@openelec.tv)
 #
 #  OpenELEC is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -17,8 +17,8 @@
 ################################################################################
 
 PKG_NAME="file"
-PKG_VERSION="5.25"
-PKG_REV="1"
+PKG_VERSION="5.30"
+PKG_REV="3"
 PKG_ARCH="any"
 PKG_LICENSE="BSD"
 PKG_SITE="http://www.darwinsys.com/file/"
