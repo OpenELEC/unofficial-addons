@@ -1,3 +1,6 @@
+7.0.2
+- update to vim-8.0.0142
+
 7.0.1
 - update to vim-7.4.1662
 
