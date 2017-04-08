@@ -1,0 +1,12 @@
+diff -Naur irssi-1.0.0/configure.ac irssi-1.0.0.patch/configure.ac
+--- irssi-1.0.0/configure.ac	2017-01-05 13:58:42.000000000 +0100
++++ irssi-1.0.0.patch/configure.ac	2017-01-09 15:58:26.336522899 +0100
+@@ -286,7 +286,7 @@
+ 
+ 	TEXTUI_NO_LIBS="$LIBS"
+ 	LIBS=
+-	AC_SEARCH_LIBS([setupterm], [tinfo ncursesw ncurses], [want_textui=yes], [
++	AC_SEARCH_LIBS([setupterm], [terminfo ncurses], [want_textui=yes], [
+ 		AC_ERROR(Terminfo not found - install libncurses-dev or ncurses-devel package)
+ 		want_textui="no, Terminfo not found"
+ 	])

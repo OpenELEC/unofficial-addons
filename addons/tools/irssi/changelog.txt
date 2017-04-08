@@ -1,3 +1,9 @@
+7.0.3
+- update to irssi-1.0.0
+
+7.0.2
+- update to irssi-0.8.20
+
 7.0.1
 - update to irssi-0.8.19
 
