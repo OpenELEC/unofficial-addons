@@ -1,0 +1,20 @@
+[Unit]
+Description=FlexGet
+After=graphical.target
+
+[Service]
+Type=idle
+ExecStart=/bin/sh -c "exec sh /storage/.kodi/addons/service.downloadmanager.FlexGet/bin/FlexGet.start daemon start"
+ExecStop=/bin/sh -c "exec sh /storage/.kodi/addons/service.downloadmanager.FlexGet/bin/FlexGet.start daemon stop"
+ExecReload=/bin/sh -c "exec sh /storage/.kodi/addons/service.downloadmanager.FlexGet/bin/FlexGet.start daemon reload"
+TimeoutStopSec=5
+Restart=always
+RestartSec=10
+StartLimitInterval=0
+Nice=19
+CPUSchedulingPolicy=idle
+Restart=on-failure
+
+[Install]
+WantedBy=kodi.target
+

@@ -1,0 +1,4 @@
+1.2.360
+- Initial version
+1.2.503
+- Version bump to FlexGet 1.2.503
